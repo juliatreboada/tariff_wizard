@@ -39,3 +39,47 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Private reference material (FIG sheets, federation PDFs, filled examples)
+/reference/*
+!/reference/README.example.md
+
+/private/
+
+# Personal learning notes (not for the deployed app)
+/docs/learning/
+/notes/
+*.local.md
+
+# Editor / local tooling (keep shared rules, ignore the rest)
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+.idea/
+.vscode/settings.json
+
+# OS / tooling noise
+.turbo
+
+# Private reference material (FIG sheets, federation PDFs, filled examples)
+/reference/*
+!/reference/README.example.md
+
+/private/
+
+# Personal learning notes (not for the deployed app)
+/docs/learning/
+/notes/
+*.local.md
+
+# Editor / local tooling (keep shared rules, ignore the rest)
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+
+.idea/
+.vscode/settings.json
+
+# OS / tooling noise
+*.log
+.turbo

@@ -1,0 +1,26 @@
+---
+description: Tariff Wizard — slow, teaching-first development pace
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Tariff Wizard — pace and scope
+
+Follow [docs/HOW-WE-WORK.md](docs/HOW-WE-WORK.md).
+
+## Rules
+
+- **One concept per step**: small diffs; user must be able to run and understand each change.
+- **Teach**: explain what, how (files + data flow), and why before adding the next layer.
+- **Brake**: split requests that combine UI + calculations + PDF + auth; ship the smallest slice first.
+- **Done** when `npm run build` passes and no secrets/private data are committed.
+- **Copy** in `lib/i18n/messages/es.ts` (English later in `en.ts`).
+- **Tariff logic** in pure functions under `lib/tariff/` (no React in calculation code).
+- **Step 1 wizard** uses placeholder steps until header fields are defined from user's `reference/` PDFs.
+- Do not commit files in `reference/` (except `README.example.md`), `docs/learning/`, `notes/`, or `*.local.md`.
+
+## Stack notes
+
+- Next.js 16 App Router — check `node_modules/next/dist/docs/` if APIs differ from older Next.js.
+- Dependencies for forms/state: zod, react-hook-form, zustand — introduce only when the step needs them.

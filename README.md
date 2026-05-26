@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tariff Wizard
 
-## Getting Started
+Asistente para crear **hojas de tarifa** de gimnasia acrobática.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Use **Comenzar asistente** to open the wizard shell at `/wizard`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project docs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [How we work](docs/HOW-WE-WORK.md) — pace, teaching, definition of done
+- [Context](docs/CONTEXT.md) — users, header fields, pair-first scope
+- [Field labels](docs/FIELD-LABELS.md) — exact labels from BASE.xls
+- [Level & category](docs/LEVEL-AND-CATEGORY.md) — two-part level, category rules, VALUE rows
+- [UX direction](docs/UX.md) — wizard steps, layout, calculated fields
+- [Step 2 prerequisites](docs/STEP-2-PREREQUISITES.md) — before the first real form
 
-## Learn More
+## Private reference material
 
-To learn more about Next.js, take a look at the following resources:
+Put official PDFs and sample sheets in `reference/` on your machine (gitignored). See [reference/README.example.md](reference/README.example.md).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Run `npm run build` locally.
+2. Push to GitHub and import the repo on [Vercel](https://vercel.com/new).
+3. Add secrets in the Vercel dashboard only (never commit `.env.local`).
 
-## Deploy on Vercel
+## Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 16 (App Router), React 19, Tailwind CSS 4, TypeScript. Form/state libraries (`zod`, `react-hook-form`, `zustand`) are installed for Step 2 onward.
