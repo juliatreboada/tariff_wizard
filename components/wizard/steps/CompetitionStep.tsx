@@ -80,132 +80,141 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
       className="flex flex-col gap-5"
       noValidate
     >
-      <p className="text-sm text-zinc-500">{t.wizard.step1.description}</p>
+      {/* <p className="text-sm text-zinc-700">{t.wizard.step1.description}</p> */}
 
-      <FormField
-        label={t.sheetLabels.country}
-        htmlFor="country"
-        optional
-        error={errors.country?.message}
-      >
-        <input
-          id="country"
-          className={fieldInputClass(!!errors.country)}
-          {...register("country")}
-        />
-      </FormField>
-
-      <FormField
-        label={t.sheetLabels.club}
-        htmlFor="clubName"
-        error={errors.clubName?.message}
-      >
-        <input
-          id="clubName"
-          className={fieldInputClass(!!errors.clubName)}
-          {...register("clubName")}
-        />
-      </FormField>
-
-      <FormField
-        label={t.sheetLabels.participationNumber}
-        htmlFor="participationNumber"
-        optional
-        hint="Puedes completarlo más tarde en la competición."
-        error={errors.participationNumber?.message}
-      >
-        <input
-          id="participationNumber"
-          className={fieldInputClass(!!errors.participationNumber)}
-          {...register("participationNumber")}
-        />
-      </FormField>
-
-      <FormField
-        label={t.sheetLabels.competition}
-        htmlFor="competition"
-        error={errors.competition?.message}
-      >
-        <input
-          id="competition"
-          className={fieldInputClass(!!errors.competition)}
-          {...register("competition")}
-        />
-      </FormField>
-
-      <div className="grid gap-5 sm:grid-cols-2">
-        <FormField
-          label={t.sheetLabels.levelSystem}
-          htmlFor="levelSystem"
-          error={errors.levelSystem?.message}
-        >
-          <select
-            id="levelSystem"
-            className={fieldInputClass(!!errors.levelSystem)}
-            {...register("levelSystem")}
+      <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
+        <div className="grid gap-5 sm:grid-cols-2 lg:col-span-2">
+          <FormField
+            label={t.sheetLabels.competition}
+            htmlFor="competition"
+            error={errors.competition?.message}
           >
-            {LEVEL_SYSTEMS.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </FormField>
+            <input
+              id="competition"
+              className={fieldInputClass(!!errors.competition)}
+              {...register("competition")}
+            />
+          </FormField>
 
-        <FormField
-          label={t.sheetLabels.levelAge}
-          htmlFor="levelAge"
-          error={errors.levelAge?.message}
-        >
-          <select
-            id="levelAge"
-            className={fieldInputClass(!!errors.levelAge)}
-            {...register("levelAge")}
+          <FormField
+            label={t.sheetLabels.participationNumber}
+            htmlFor="participationNumber"
+            optional
+            error={errors.participationNumber?.message}
           >
-            {ageOptions.map((age) => (
-              <option key={age} value={age}>
-                {age}
-              </option>
-            ))}
-          </select>
-        </FormField>
+            <input
+              id="participationNumber"
+              className={fieldInputClass(!!errors.participationNumber)}
+              {...register("participationNumber")}
+            />
+          </FormField>
+        </div>
+
+        <div className="flex flex-col gap-5">
+          <FormField
+            label={t.sheetLabels.club}
+            htmlFor="clubName"
+            error={errors.clubName?.message}
+          >
+            <input
+              id="clubName"
+              className={fieldInputClass(!!errors.clubName)}
+              {...register("clubName")}
+            />
+          </FormField>
+
+          <FormField
+            label={t.sheetLabels.country}
+            htmlFor="country"
+            optional
+            error={errors.country?.message}
+          >
+            <input
+              id="country"
+              className={fieldInputClass(!!errors.country)}
+              {...register("country")}
+            />
+          </FormField>
+        </div>
+
+        <div className="flex flex-col gap-5">
+          <div className="grid gap-5 sm:grid-cols-2">
+            <FormField
+              label={t.sheetLabels.levelSystem}
+              htmlFor="levelSystem"
+              error={errors.levelSystem?.message}
+            >
+              <select
+                id="levelSystem"
+                className={fieldInputClass(!!errors.levelSystem)}
+                {...register("levelSystem")}
+              >
+                {LEVEL_SYSTEMS.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            </FormField>
+
+            <FormField
+              label={t.sheetLabels.levelAge}
+              htmlFor="levelAge"
+              error={errors.levelAge?.message}
+            >
+              <select
+                id="levelAge"
+                className={fieldInputClass(!!errors.levelAge)}
+                {...register("levelAge")}
+              >
+                {ageOptions.map((age) => (
+                  <option key={age} value={age}>
+                    {age}
+                  </option>
+                ))}
+              </select>
+            </FormField>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            <FormField
+              label={t.sheetLabels.category}
+              htmlFor="category"
+              error={errors.category?.message}
+            >
+              <select
+                id="category"
+                className={fieldInputClass(!!errors.category)}
+                {...register("category")}
+              >
+                {categoryOptions.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+            </FormField>
+
+            <FormField
+              label={t.sheetLabels.exercise}
+              htmlFor="exercise"
+              error={errors.exercise?.message}
+            >
+              <select
+                id="exercise"
+                className={fieldInputClass(!!errors.exercise)}
+                {...register("exercise")}
+              >
+                {EXERCISES.map((ex) => (
+                  <option key={ex} value={ex}>
+                    {ex}
+                  </option>
+                ))}
+              </select>
+            </FormField>
+          </div>
+        </div>
       </div>
-
-      <FormField
-        label={t.sheetLabels.category}
-        htmlFor="category"
-        error={errors.category?.message}
-      >
-        <select
-          id="category"
-          className={fieldInputClass(!!errors.category)}
-          {...register("category")}
-        >
-          {categoryOptions.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
-      </FormField>
-
-      <FormField
-        label={t.sheetLabels.exercise}
-        htmlFor="exercise"
-        error={errors.exercise?.message}
-      >
-        <select
-          id="exercise"
-          className={fieldInputClass(!!errors.exercise)}
-          {...register("exercise")}
-        >
-          {EXERCISES.map((ex) => (
-            <option key={ex} value={ex}>
-              {ex}
-            </option>
-          ))}
-        </select>
-      </FormField>
     </form>
   );
 }

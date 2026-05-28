@@ -3,7 +3,7 @@ import { EXERCISES, LEVEL_AGE_BY_SYSTEM, LEVEL_SYSTEMS } from "./enums";
 import { getCategoryOptions, getLevelAgeOptions } from "./level-category";
 import { isValidParticipationNumber, isValidPhone } from "./validation";
 
-const requiredName = z.string().trim().min(2, "Mínimo 2 caracteres");
+const requiredName = z.string().trim().min(2, "Obligatorio");
 
 export const competitionStepSchema = z
   .object({

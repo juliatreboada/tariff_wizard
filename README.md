@@ -19,6 +19,12 @@ Open [http://localhost:3000](http://localhost:3000). Use **Comenzar asistente** 
 - [Level & category](docs/LEVEL-AND-CATEGORY.md) — two-part level, category rules, VALUE rows
 - [UX direction](docs/UX.md) — wizard steps, layout, calculated fields
 - [Step 2 prerequisites](docs/STEP-2-PREREQUISITES.md) — before the first real form
+- [Element catalog](docs/CATALOG.md) — FGX Balance (`catalog/FGX/manifest.json`)
+- [Print / PDF](docs/PRINT.md) — export via browser print
+
+```bash
+npm run validate-catalog   # check manifest.json ↔ image files
+```
 
 ## Private reference material
 

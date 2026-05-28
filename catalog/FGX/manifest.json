@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "region": "FGX",
+  "description": "Catálogo FGX — elementos Balance (código galego). Edita entries al añadir PNG en public/catalog/FGX/balance/",
+  "entries": [
+    {
+      "id": "fgx-balance-row-iii-c",
+      "region": "FGX",
+      "elementFamily": "balance",
+      "subtype": "mount",
+      "label": "ROW III C",
+      "image": "balance/ROW-III-C.png",
+      "galicianCode": "ROW-III-C",
+      "value": 1.0,
+      "filters": {
+        "levelSystems": ["Base", "Escolar", "RFEG", "FIG"],
+        "categories": [
+          "Parejas",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta",
+          "Tríos",
+          "Cuartetos"
+        ],
+        "exercises": ["Balance", "Combined"]
+      }
+    },
+    {
+      "id": "fgx-balance-row-iv-a",
+      "region": "FGX",
+      "elementFamily": "balance",
+      "subtype": "static",
+      "label": "ROW IV A",
+      "image": "balance/ROW-IV-A.png",
+      "galicianCode": "ROW-IV-A",
+      "value": 1.0,
+      "holdDuration": "3\"",
+      "filters": {
+        "levelSystems": ["Base", "Escolar", "RFEG", "FIG"],
+        "categories": [
+          "Parejas",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta",
+          "Tríos",
+          "Cuartetos"
+        ],
+        "exercises": ["Balance", "Combined"]
+      }
+    },
+    {
+      "id": "fgx-balance-row-v-d",
+      "region": "FGX",
+      "elementFamily": "balance",
+      "subtype": "motion",
+      "label": "ROW V D",
+      "image": "balance/ROW-V-D.png",
+      "galicianCode": "ROW-V-D",
+      "value": 1.0,
+      "filters": {
+        "levelSystems": ["Base", "Escolar", "RFEG", "FIG"],
+        "categories": [
+          "Parejas",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta",
+          "Tríos",
+          "Cuartetos"
+        ],
+        "exercises": ["Balance", "Combined"]
+      }
+    }
+  ]
+}

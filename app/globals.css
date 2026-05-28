@@ -12,15 +12,143 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: linear-gradient(180deg, #eef4ff 0%, #eff8ff 45%, #ffffff 100%);
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Shared app surface styles (non-print pages) */
+.app-page {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eef4ff 0%, #eff8ff 45%, #ffffff 100%);
+}
+
+.app-shell {
+  margin-inline: auto;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.5rem 1rem;
+}
+
+.app-shell-narrow {
+  max-width: 48rem;
+}
+
+.app-shell-wide {
+  max-width: 72rem;
+}
+
+.app-card {
+  border: 1px solid #d4d4d8;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 6%);
+}
+
+.app-subtle {
+  color: #52525b;
+}
+
+/*
+ * Temporary global visual normalization (non-print app screens).
+ * We centralize contrast here and later give components bespoke styling.
+ */
+.app-page:not(.print-sheet-root) {
+  --app-text-strong: #18181b;
+  --app-text-body: #27272a;
+  --app-text-muted: #3f3f46;
+  --app-text-soft: #52525b;
+  --app-border: #d4d4d8;
+  --app-surface: #ffffff;
+  --app-surface-soft: #f8fafc;
+}
+
+.app-page:not(.print-sheet-root) h1,
+.app-page:not(.print-sheet-root) h2,
+.app-page:not(.print-sheet-root) h3,
+.app-page:not(.print-sheet-root) h4,
+.app-page:not(.print-sheet-root) h5,
+.app-page:not(.print-sheet-root) h6 {
+  color: var(--app-text-strong);
+}
+
+.app-page:not(.print-sheet-root) p,
+.app-page:not(.print-sheet-root) li,
+.app-page:not(.print-sheet-root) dt,
+.app-page:not(.print-sheet-root) dd,
+.app-page:not(.print-sheet-root) label {
+  color: var(--app-text-body);
+}
+
+.app-page:not(.print-sheet-root) .bg-white {
+  background-color: var(--app-surface) !important;
+}
+
+.app-page:not(.print-sheet-root) .bg-zinc-50,
+.app-page:not(.print-sheet-root) .bg-indigo-50,
+.app-page:not(.print-sheet-root) .bg-sky-50 {
+  background-color: var(--app-surface-soft) !important;
+}
+
+.app-page:not(.print-sheet-root) .border-zinc-200,
+.app-page:not(.print-sheet-root) .border-zinc-300,
+.app-page:not(.print-sheet-root) .border-indigo-200 {
+  border-color: var(--app-border) !important;
+}
+
+.app-page:not(.print-sheet-root) .text-zinc-900,
+.app-page:not(.print-sheet-root) .text-zinc-800 {
+  color: var(--app-text-strong) !important;
+}
+
+.app-page:not(.print-sheet-root) .text-zinc-700,
+.app-page:not(.print-sheet-root) .text-zinc-600 {
+  color: var(--app-text-body) !important;
+}
+
+.app-page:not(.print-sheet-root) .text-zinc-500,
+.app-page:not(.print-sheet-root) .text-zinc-400 {
+  color: var(--app-text-muted) !important;
+}
+
+.app-page:not(.print-sheet-root) .text-xs.text-zinc-500,
+.app-page:not(.print-sheet-root) .text-xs.text-zinc-600 {
+  color: var(--app-text-soft) !important;
+}
+
+/* Also force consistent readability for nested card content */
+.app-page:not(.print-sheet-root) .app-card {
+  color: var(--app-text-body);
+  background-color: var(--app-surface) !important;
+  border-color: var(--app-border) !important;
+}
+
+.app-page:not(.print-sheet-root) .app-card p,
+.app-page:not(.print-sheet-root) .app-card li,
+.app-page:not(.print-sheet-root) .app-card dt,
+.app-page:not(.print-sheet-root) .app-card dd,
+.app-page:not(.print-sheet-root) .app-card label {
+  color: var(--app-text-body) !important;
+}
+
+.app-page:not(.print-sheet-root) .app-card .text-zinc-500,
+.app-page:not(.print-sheet-root) .app-card .text-zinc-600,
+.app-page:not(.print-sheet-root) .app-card .text-zinc-700 {
+  color: var(--app-text-muted) !important;
+}
+
+.app-page:not(.print-sheet-root) .app-card .text-zinc-800,
+.app-page:not(.print-sheet-root) .app-card .text-zinc-900 {
+  color: var(--app-text-strong) !important;
+}
+
+.app-page:not(.print-sheet-root) .app-card .bg-zinc-50,
+.app-page:not(.print-sheet-root) .app-card .bg-indigo-50,
+.app-page:not(.print-sheet-root) .app-card .bg-sky-50,
+.app-page:not(.print-sheet-root) .app-card .bg-white {
+  background-color: var(--app-surface-soft) !important;
 }

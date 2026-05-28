@@ -27,6 +27,7 @@ This document is the **pace agreement** for the project. It stays in git so ever
 - Production build succeeds (`npm run build`).
 - No private data in committed files.
 - Spanish copy lives in `lib/i18n/messages/` (English later via `en.ts`).
+- Sheet progress auto-saves in the browser (`localStorage` via Zustand persist) — not on the server yet.
 
 ## Where code will live (long term)
 

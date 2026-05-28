@@ -35,3 +35,25 @@ export function findCategoryCodeForLabel(
   ).find(([, value]) => value === label);
   return entry?.[0];
 }
+
+/**
+ * D-SCORE rule from competition sheet:
+ * - DV/100 for: Absoluto Escolar, Junior Base, Senior Base,
+ *   Pre-Junior, Junior, Senior, Youth
+ * - otherwise: D-SCORE = DV
+ */
+export function usesDvOver100ForDScore(
+  levelSystem: LevelSystem,
+  levelAge: string,
+): boolean {
+  if (levelSystem === "Escolar" && levelAge === "Absoluto") return true;
+  if (levelSystem === "Base" && (levelAge === "Junior" || levelAge === "Senior")) {
+    return true;
+  }
+  return (
+    levelAge === "Pre-Junior" ||
+    levelAge === "Junior" ||
+    levelAge === "Senior" ||
+    levelAge === "Youth"
+  );
+}

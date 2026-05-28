@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useWizardStore } from "@/lib/tariff/store";
 import {
   COMPETITION_FORM_ID,
   CompetitionStep,
@@ -15,6 +16,7 @@ const TOTAL_STEPS = 3;
 
 export function WizardShell() {
   const t = getMessages();
+  const header = useWizardStore((s) => s.header);
   const [step, setStep] = useState(1);
 
   const isFirst = step === 1;
@@ -34,11 +36,12 @@ export function WizardShell() {
         : undefined;
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 px-6 py-12">
+    <div className="app-page">
+      <div className="app-shell app-shell-wide px-4 sm:px-6 lg:px-10">
       <header className="flex flex-col gap-2">
         <Link
           href="/"
-          className="text-sm text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
+          className="text-sm text-zinc-500 hover:text-zinc-800"
         >
           ← Inicio
         </Link>
@@ -48,13 +51,10 @@ export function WizardShell() {
         <p className="text-sm text-zinc-500">
           {t.wizard.stepIndicator(step, TOTAL_STEPS)}
         </p>
-        <p className="text-xs text-zinc-400">{t.wizard.hint}</p>
+        {/* <p className="text-xs text-zinc-400">{t.wizard.hint}</p> */}
       </header>
 
-      <section
-        className="rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950"
-        aria-live="polite"
-      >
+      <section className="app-card rounded-lg p-6" aria-live="polite">
         <h2 className="mb-4 text-xl font-semibold">{stepMeta.title}</h2>
         {step === 1 && (
           <CompetitionStep onSuccess={() => setStep(2)} />
@@ -70,7 +70,7 @@ export function WizardShell() {
           type="button"
           onClick={() => setStep((s) => Math.max(1, s - 1))}
           disabled={isFirst}
-          className="rounded-full border border-zinc-300 px-5 py-2.5 text-sm font-medium transition-colors enabled:hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-zinc-700 dark:enabled:hover:bg-zinc-900"
+          className="rounded-full border border-zinc-300 px-5 py-2.5 text-sm font-medium transition-colors enabled:hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {t.wizard.back}
         </button>
@@ -78,20 +78,28 @@ export function WizardShell() {
           <button
             type="submit"
             form={activeFormId}
-            className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+            className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700"
           >
             {t.wizard.next}
           </button>
+        ) : header ? (
+          <Link
+            href="/sheet"
+            className="inline-flex h-[42px] items-center justify-center rounded-full bg-zinc-900 px-5 text-sm font-medium text-white transition-colors hover:bg-zinc-700"
+          >
+            {t.wizard.continueToSheet}
+          </Link>
         ) : (
           <button
             type="button"
-            disabled={isLast}
-            className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors enabled:hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-40 dark:bg-zinc-100 dark:text-zinc-900 dark:enabled:hover:bg-zinc-300"
+            disabled
+            className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white opacity-40"
           >
             {t.wizard.finish}
           </button>
         )}
       </footer>
+      </div>
     </div>
   );
 }

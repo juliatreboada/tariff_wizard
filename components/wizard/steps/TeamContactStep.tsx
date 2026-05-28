@@ -47,68 +47,75 @@ export function TeamContactStep({ onSuccess }: TeamContactStepProps) {
     <form
       id={FORM_ID}
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-5"
+      className="flex flex-col gap-6"
       noValidate
     >
-      <p className="text-sm text-zinc-500">{t.wizard.step2.description}</p>
+      {/* <p className="text-sm text-zinc-700">{t.wizard.step2.description}</p> */}
 
-      <fieldset className="flex flex-col gap-4 rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-        <legend className="px-1 text-sm font-medium">
-          {t.sheetLabels.gymnastsSection}
-        </legend>
-        <FormField
-          label={t.sheetLabels.top}
-          htmlFor="topName"
-          error={errors.topName?.message}
-        >
-          <input
-            id="topName"
-            className={fieldInputClass(!!errors.topName)}
-            {...register("topName")}
-          />
-        </FormField>
-        <FormField
-          label={t.sheetLabels.base}
-          htmlFor="baseName"
-          error={errors.baseName?.message}
-        >
-          <input
-            id="baseName"
-            className={fieldInputClass(!!errors.baseName)}
-            {...register("baseName")}
-          />
-        </FormField>
-      </fieldset>
+      <div className="grid gap-5 lg:grid-cols-2">
+        <fieldset className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white/80 p-4 sm:p-5">
+          <legend className="px-1 text-sm font-semibold tracking-wide text-zinc-800">
+            {t.sheetLabels.gymnastsSection}
+          </legend>
+          <FormField
+            label={t.sheetLabels.top}
+            htmlFor="topName"
+            error={errors.topName?.message}
+          >
+            <input
+              id="topName"
+              className={fieldInputClass(!!errors.topName)}
+              autoComplete="name"
+              {...register("topName")}
+            />
+          </FormField>
+          <FormField
+            label={t.sheetLabels.base}
+            htmlFor="baseName"
+            error={errors.baseName?.message}
+          >
+            <input
+              id="baseName"
+              className={fieldInputClass(!!errors.baseName)}
+              autoComplete="name"
+              {...register("baseName")}
+            />
+          </FormField>
+        </fieldset>
 
-      <fieldset className="flex flex-col gap-4 rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-        <legend className="px-1 text-sm font-medium">
-          {t.sheetLabels.contactSection}
-        </legend>
-        <FormField
-          label={t.sheetLabels.contactName}
-          htmlFor="contactName"
-          error={errors.contactName?.message}
-        >
-          <input
-            id="contactName"
-            className={fieldInputClass(!!errors.contactName)}
-            {...register("contactName")}
-          />
-        </FormField>
-        <FormField
-          label={t.sheetLabels.contactPhone}
-          htmlFor="contactPhone"
-          error={errors.contactPhone?.message}
-        >
-          <input
-            id="contactPhone"
-            type="tel"
-            className={fieldInputClass(!!errors.contactPhone)}
-            placeholder="627 42 90 24"
-            {...register("contactPhone")}
-          />
-        </FormField>
-      </fieldset>
+        <fieldset className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white/80 p-4 sm:p-5">
+          <legend className="px-1 text-sm font-semibold tracking-wide text-zinc-800">
+            {t.sheetLabels.contactSection}
+          </legend>
+          <FormField
+            label={t.sheetLabels.contactName}
+            htmlFor="contactName"
+            error={errors.contactName?.message}
+          >
+            <input
+              id="contactName"
+              className={fieldInputClass(!!errors.contactName)}
+              autoComplete="name"
+              {...register("contactName")}
+            />
+          </FormField>
+          <FormField
+            label={t.sheetLabels.contactPhone}
+            htmlFor="contactPhone"
+            error={errors.contactPhone?.message}
+          >
+            <input
+              id="contactPhone"
+              type="tel"
+              inputMode="tel"
+              className={fieldInputClass(!!errors.contactPhone)}
+              placeholder="627 42 90 24"
+              autoComplete="tel"
+              {...register("contactPhone")}
+            />
+          </FormField>
+        </fieldset>
+      </div>
     </form>
   );
 }

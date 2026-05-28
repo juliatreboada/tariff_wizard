@@ -16,3 +16,11 @@ export type StoredHeader = {
   contactName: string;
   contactPhone: string;
 };
+
+/** Totals under VALUE on the right column (calculated later from elements). */
+export type ValueBreakdown = {
+  total: number;
+  balance: number;
+  dynamic: number;
+  individual: number;
+};
