@@ -30,7 +30,7 @@ export function getCatalogEntries(
   return loadCatalog(catalogId).entries;
 }
 
-/** Public URL for an entry image (`public/catalog/<region>/…`). */
+/** Public URL for an entry image (`public/catalog/<code>/…`). */
 export function catalogImageUrl(
   imagePath: string,
   catalogId: CatalogId = DEFAULT_CATALOG_ID,

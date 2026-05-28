@@ -10,8 +10,20 @@ import {
   migrateElementsRecordToRoutine,
   refreshRoutineFromCatalog,
 } from "./migrate-routine";
+import {
+  syncGroupInternalLinks,
+  findDisplayRowIndex,
+  flattenDisplayRows,
+  groupRoutineForDisplay,
+  individualGroupId,
+  moveDisplayRow,
+} from "./routine-groups";
 import { newRoutineItemId } from "./routine-id";
-import type { RoutineItem } from "./routine-types";
+import type {
+  RoutineElementRole,
+  RoutineGymnastRole,
+  RoutineItem,
+} from "./routine-types";
 import type {
   CompetitionStepFormValues,
   TeamContactStepValues,
@@ -36,6 +48,23 @@ export type WizardStore = {
   commitHeader: () => void;
   addRoutineElement: (
     entry: CatalogEntry,
+    options?: {
+      linkedToPrevious?: boolean;
+      block?: RoutineItem["block"];
+      role?: RoutineElementRole;
+      gymnastRole?: RoutineGymnastRole;
+      individualOrder?: 1 | 2 | 3;
+      allowDuplicate?: boolean;
+      individualGroupId?: string;
+      baseIndex?: number;
+    },
+  ) => boolean;
+  addIndividualGroup: (
+    picks: Array<{
+      entry: CatalogEntry;
+      gymnastRole: RoutineGymnastRole;
+      baseIndex?: number;
+    }>,
     options?: { linkedToPrevious?: boolean },
   ) => boolean;
   removeRoutineItem: (itemId: string) => void;
@@ -43,6 +72,8 @@ export type WizardStore = {
   setRoutineItemLinked: (itemId: string, linked: boolean) => void;
   loadSavedSheet: (sheetId: string) => void;
   deleteSavedSheet: (sheetId: string) => void;
+  /** Persist current TS, then clear in-progress work for a new wizard run. */
+  saveProgressAndStartNew: () => void;
   reset: () => void;
 };
 
@@ -131,27 +162,40 @@ export const useWizardStore = create<WizardStore>()(
       setTeamContact: (values) => set({ teamContact: values }),
 
       commitHeader: () => {
-        const { competition, teamContact } = get();
         const previous = get();
-        const savedSheets = saveCurrentSnapshot(previous);
+        const { competition, teamContact } = previous;
+        const header = buildHeader(competition, teamContact);
+        const currentSheetId = previous.currentSheetId ?? newRoutineItemId();
+        const valueBreakdown = recalculateValueBreakdown(previous.routine);
         set({
-          header: buildHeader(competition, teamContact),
-          valueBreakdown: emptyValueBreakdown(),
-          routine: [],
-          currentSheetId: newRoutineItemId(),
-          savedSheets,
+          header,
+          valueBreakdown,
+          routine: previous.routine,
+          currentSheetId,
+          savedSheets: upsertSavedSheet(previous.savedSheets, {
+            id: currentSheetId,
+            updatedAtIso: new Date().toISOString(),
+            header,
+            routine: previous.routine,
+            valueBreakdown,
+          }),
         });
       },
 
       addRoutineElement: (entry, options) => {
         const routine = get().routine;
-        if (isCatalogIdUsedInRoutine(routine, entry.id)) {
+        if (!options?.allowDuplicate && isCatalogIdUsedInRoutine(routine, entry.id)) {
           return false;
         }
         const item: RoutineItem = {
           id: newRoutineItemId(),
-          block: inferElementBlock(entry),
+          block: options?.block ?? inferElementBlock(entry),
           linkedToPrevious: options?.linkedToPrevious ?? false,
+          role: options?.role,
+          gymnastRole: options?.gymnastRole,
+          baseIndex: options?.baseIndex,
+          individualGroupId: options?.individualGroupId,
+          individualOrder: options?.individualOrder,
           element: catalogEntryToPlaced(entry),
         };
         const next = [...routine, item];
@@ -168,8 +212,48 @@ export const useWizardStore = create<WizardStore>()(
         return true;
       },
 
+      addIndividualGroup: (picks, options) => {
+        if (picks.length === 0) return false;
+        const groupId = newRoutineItemId();
+        const routine = get().routine;
+        const newItems: RoutineItem[] = picks.map((pick, idx) => ({
+          id: newRoutineItemId(),
+          block: "combined",
+          role: "individual",
+          linkedToPrevious:
+            idx === 0 ? (options?.linkedToPrevious ?? false) : true,
+          gymnastRole: pick.gymnastRole,
+          baseIndex: pick.baseIndex,
+          individualGroupId: groupId,
+          element: catalogEntryToPlaced(pick.entry),
+        }));
+        const next = [...routine, ...newItems];
+        const valueBreakdown = recalculateValueBreakdown(next);
+        set({
+          routine: next,
+          valueBreakdown,
+          savedSheets: saveCurrentSnapshot({
+            ...get(),
+            routine: next,
+            valueBreakdown,
+          }),
+        });
+        return true;
+      },
+
       removeRoutineItem: (itemId) => {
-        const next = get().routine.filter((item) => item.id !== itemId);
+        const target = get().routine.find((item) => item.id === itemId);
+        const next = get().routine.filter((item) => {
+          if (item.id === itemId) return false;
+          if (
+            target?.role === "individual" &&
+            target.individualGroupId &&
+            item.individualGroupId === target.individualGroupId
+          ) {
+            return false;
+          }
+          return true;
+        });
         const valueBreakdown = recalculateValueBreakdown(next);
         set({
           routine: next,
@@ -183,30 +267,39 @@ export const useWizardStore = create<WizardStore>()(
       },
 
       moveRoutineItem: (itemId, direction) => {
-        const routine = [...get().routine];
-        const index = routine.findIndex((item) => item.id === itemId);
-        if (index < 0) return;
-        const swap = direction === "up" ? index - 1 : index + 1;
-        if (swap < 0 || swap >= routine.length) return;
-        const tmp = routine[index];
-        routine[index] = routine[swap];
-        routine[swap] = tmp;
-        if (swap === 0) routine[0].linkedToPrevious = false;
-        const valueBreakdown = recalculateValueBreakdown(routine);
+        const routine = get().routine;
+        const rows = groupRoutineForDisplay(routine);
+        const rowIndex = findDisplayRowIndex(rows, itemId);
+        if (rowIndex < 0) return;
+        const moved = moveDisplayRow(rows, rowIndex, direction);
+        let next = flattenDisplayRows(moved);
+        if (next[0]) next[0].linkedToPrevious = false;
+        next = syncGroupInternalLinks(next);
+        const valueBreakdown = recalculateValueBreakdown(next);
         set({
-          routine,
+          routine: next,
           valueBreakdown,
           savedSheets: saveCurrentSnapshot({
             ...get(),
-            routine,
+            routine: next,
             valueBreakdown,
           }),
         });
       },
 
       setRoutineItemLinked: (itemId, linked) => {
-        const routine = get().routine.map((item) =>
-          item.id === itemId ? { ...item, linkedToPrevious: linked } : item,
+        const state = get().routine;
+        const rows = groupRoutineForDisplay(state);
+        const rowIndex = findDisplayRowIndex(rows, itemId);
+        const row = rowIndex >= 0 ? rows[rowIndex] : null;
+        const firstId =
+          row == null
+            ? itemId
+            : row.kind === "single"
+              ? row.item.id
+              : row.items[0]?.id;
+        const routine = state.map((item) =>
+          item.id === firstId ? { ...item, linkedToPrevious: linked } : item,
         );
         if (routine[0]) routine[0].linkedToPrevious = false;
         const valueBreakdown = recalculateValueBreakdown(routine);
@@ -246,6 +339,31 @@ export const useWizardStore = create<WizardStore>()(
                 currentSheetId: null,
               }
             : {}),
+        });
+      },
+
+      saveProgressAndStartNew: () => {
+        const state = get();
+        let savedSheets = state.savedSheets;
+        if (state.header) {
+          const sheetId = state.currentSheetId ?? newRoutineItemId();
+          const valueBreakdown = recalculateValueBreakdown(state.routine);
+          savedSheets = upsertSavedSheet(state.savedSheets, {
+            id: sheetId,
+            updatedAtIso: new Date().toISOString(),
+            header: state.header,
+            routine: state.routine,
+            valueBreakdown,
+          });
+        }
+        set({
+          savedSheets,
+          competition: emptyCompetitionStep(),
+          teamContact: emptyTeamContactStep(),
+          header: null,
+          valueBreakdown: emptyValueBreakdown(),
+          routine: [],
+          currentSheetId: null,
         });
       },
 

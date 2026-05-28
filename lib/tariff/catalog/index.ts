@@ -1,6 +1,6 @@
 export {
   filterCatalogEntries,
-  getAvailableBalanceSubtypes,
+  getAvailableTypes,
   type CatalogFilterContext,
 } from "./filter-catalog";
 export {
@@ -8,13 +8,20 @@ export {
   getCatalogEntries,
   loadCatalog,
 } from "./load-catalog";
+export {
+  codeToCoordinates,
+  groupCatalogEntriesByRow,
+  parseRowColumnFromCoordinates,
+} from "./coordinates";
 export { catalogEntryToPlaced } from "./to-placed";
 export {
-  BALANCE_SUBTYPES,
   CATALOG_IDS,
   DEFAULT_CATALOG_ID,
-  type BalanceSubtype,
+  ELEMENT_FAMILIES,
+  ELEMENT_TYPES,
   type CatalogEntry,
   type CatalogId,
   type CatalogManifest,
+  type ElementFamily,
+  type ElementType,
 } from "./types";

@@ -31,6 +31,17 @@ export function migrateElementsRecordToRoutine(
   return routine;
 }
 
+/** Legacy image paths before `pairs/` wrapper (ESCOLAR parejas layout). */
+function normalizeLegacyCatalogImage(image: string): string {
+  if (image.startsWith("pairs/") || image.startsWith("individuals/")) {
+    return image;
+  }
+  if (image.startsWith("balance/") || image.startsWith("dynamic/")) {
+    return `pairs/${image}`;
+  }
+  return image;
+}
+
 /** Rehydrate placed elements if catalogId still exists. */
 export function refreshRoutineFromCatalog(
   routine: RoutineItem[],
@@ -38,7 +49,11 @@ export function refreshRoutineFromCatalog(
   const entries = getCatalogEntries();
   return routine.map((item) => {
     const entry = entries.find((e) => e.id === item.element.catalogId);
-    if (!entry) return item;
-    return { ...item, element: catalogEntryToPlaced(entry) };
+    if (entry) {
+      return { ...item, element: catalogEntryToPlaced(entry) };
+    }
+    const image = normalizeLegacyCatalogImage(item.element.image);
+    if (image === item.element.image) return item;
+    return { ...item, element: { ...item.element, image } };
   });
 }

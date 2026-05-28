@@ -4,12 +4,11 @@ import type { CatalogEntry } from "./types";
 export function catalogEntryToPlaced(entry: CatalogEntry): PlacedElement {
   return {
     catalogId: entry.id,
-    galicianCode: entry.galicianCode,
+    coordinates: entry.coordinates,
     value: entry.value,
     image: entry.image,
-    subtype: entry.subtype,
-    label: entry.label,
+    ...(entry.type != null ? { type: entry.type } : {}),
     holdDuration: entry.holdDuration,
-    dynamicNotation: entry.dynamicNotation,
+    rotation: entry.rotation,
   };
 }

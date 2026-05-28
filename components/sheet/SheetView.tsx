@@ -12,7 +12,7 @@ export function SheetView() {
   const t = getMessages();
   const router = useRouter();
   const header = useWizardStore((s) => s.header);
-  const reset = useWizardStore((s) => s.reset);
+  const saveProgressAndStartNew = useWizardStore((s) => s.saveProgressAndStartNew);
   const hydrated = useStoreHydrated();
   const [confirmNewSheet, setConfirmNewSheet] = useState(false);
 
@@ -34,7 +34,7 @@ export function SheetView() {
   }
 
   function handleNewSheet() {
-    reset();
+    saveProgressAndStartNew();
     router.push("/wizard");
   }
 

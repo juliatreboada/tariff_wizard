@@ -6,9 +6,13 @@ export type CatalogId = (typeof CATALOG_IDS)[number];
 
 export const DEFAULT_CATALOG_ID: CatalogId = "FGX";
 
-/** Balance element subtypes (picker step 1). */
-export const BALANCE_SUBTYPES = ["mount", "static", "motion"] as const;
-export type BalanceSubtype = (typeof BALANCE_SUBTYPES)[number];
+/** Catalog section: equilibrio grid, dinámico grid, or individual figures. */
+export const ELEMENT_FAMILIES = ["balance", "dynamic", "individual"] as const;
+export type ElementFamily = (typeof ELEMENT_FAMILIES)[number];
+
+/** Element table type (EQ, FLEX, AG, TUM) — not used on dynamic for now. */
+export const ELEMENT_TYPES = ["EQ", "FLEX", "AG", "TUM"] as const;
+export type ElementType = (typeof ELEMENT_TYPES)[number];
 
 export type CatalogFilters = {
   levelSystems: LevelSystem[];
@@ -18,25 +22,26 @@ export type CatalogFilters = {
 
 export type CatalogEntry = {
   id: string;
-  region: CatalogId;
-  elementFamily: "balance";
-  subtype: BalanceSubtype;
-  label: string;
-  /** Path relative to `public/catalog/<region>/` */
+  /** Catalog set identifier (e.g. FGX). */
+  code: CatalogId;
+  elementFamily: ElementFamily;
+  /** EQ / FLEX / AG / TUM (balance + individual; dynamic omits for now). */
+  type?: ElementType;
+  /** Table coordinates (e.g. ROW-I A, FLEX 3) — SH row and UI. */
+  coordinates: string;
+  /** Path relative to `public/catalog/<code>/` */
   image: string;
-  /** Reference shown on SH row (Galician / table code). */
-  galicianCode: string;
   value: number;
-  /** Balance static: hold time for meta row (e.g. 3"). */
+  /** Balance static hold time for meta row (e.g. 3"). */
   holdDuration?: string;
-  /** Dynamic: rotation label for meta row (e.g. 1/4 BACK). */
-  dynamicNotation?: string;
+  /** Dynamic rotation for meta row (e.g. 1/4 BACK). */
+  rotation?: string;
   filters: CatalogFilters;
 };
 
 export type CatalogManifest = {
   version: 1;
-  region: CatalogId;
+  code: CatalogId;
   description?: string;
   entries: CatalogEntry[];
 };

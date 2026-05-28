@@ -1,12 +1,12 @@
 import type { Exercise } from "./enums";
 import {
   OFFICIAL_COMBINED_FOOTER,
-  OFFICIAL_SHEET_BLOCKS,
-  OFFICIAL_MAX_ELEMENT_COLUMNS,
   OFFICIAL_MAX_BLOCK_COUNT,
-  type OfficialSheetBlockId,
+  OFFICIAL_MAX_ELEMENT_COLUMNS,
 } from "./official-sheet-layout";
-import type { RoutineItem } from "./routine-types";
+import { groupRoutineForDisplay, sortIndividualGroupItems } from "./routine-groups";
+import type { OfficialSheetBlockId } from "./official-sheet-layout";
+import type { RoutineElementRole, RoutineItem } from "./routine-types";
 import type { PlacedElement } from "./sheet-types";
 
 export type SheetColumnSlot =
@@ -16,48 +16,29 @@ export type SheetColumnSlot =
       routineItemId: string;
       element: PlacedElement;
       elementNumber: number;
+      block: OfficialSheetBlockId;
+      role?: RoutineElementRole;
+    }
+  | {
+      kind: "individual-group";
+      routineItemIds: string[];
+      elements: PlacedElement[];
+      elementNumber: number;
     };
 
 export type ComputedBlockLayout = {
-  blockId: OfficialSheetBlockId;
   blockIndex: number;
   columns: SheetColumnSlot[];
 };
 
+/** Routine order flows left→right; overflows into block rows 2 and 3 (9 cols each). */
 export type ComputedSheetLayout = {
   blocks: ComputedBlockLayout[];
   columnCount: number;
 };
 
-const BLOCK_ORDER: OfficialSheetBlockId[] = ["balance", "dynamic", "combined"];
-
-function placeItemsInColumns(
-  items: RoutineItem[],
-  startNumber: number,
-): { columns: SheetColumnSlot[]; nextNumber: number } {
-  const columns: SheetColumnSlot[] = [];
-  let colIdx = 0;
-  let seq = startNumber;
-
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    if (i > 0 && !item.linkedToPrevious) {
-      if (colIdx >= OFFICIAL_MAX_ELEMENT_COLUMNS) break;
-      columns.push({ kind: "empty" });
-      colIdx++;
-    }
-    if (colIdx >= OFFICIAL_MAX_ELEMENT_COLUMNS) break;
-    columns.push({
-      kind: "element",
-      routineItemId: item.id,
-      element: item.element,
-      elementNumber: seq++,
-    });
-    colIdx++;
-  }
-
-  return { columns, nextNumber: seq };
-}
+const MAX_TIMELINE_COLUMNS =
+  OFFICIAL_MAX_ELEMENT_COLUMNS * OFFICIAL_MAX_BLOCK_COUNT;
 
 function padColumns(
   columns: SheetColumnSlot[],
@@ -70,30 +51,67 @@ function padColumns(
   return result.slice(0, targetLength);
 }
 
-/** Always three block rows (balance, dynamic, combined). */
-export function selectBlocksToShow(): OfficialSheetBlockId[] {
-  return BLOCK_ORDER.slice(0, OFFICIAL_MAX_BLOCK_COUNT);
+function placeRoutineInColumns(routine: RoutineItem[]): SheetColumnSlot[] {
+  const rows = groupRoutineForDisplay(routine);
+  const columns: SheetColumnSlot[] = [];
+  let seq = 1;
+
+  for (const row of rows) {
+    const linked =
+      row.kind === "single"
+        ? row.item.linkedToPrevious
+        : row.items[0]?.linkedToPrevious ?? false;
+
+    if (columns.length > 0 && row.index > 0 && !linked) {
+      if (columns.length >= MAX_TIMELINE_COLUMNS) break;
+      columns.push({ kind: "empty" });
+    }
+    if (columns.length >= MAX_TIMELINE_COLUMNS) break;
+
+    const elementNumber = seq++;
+
+    if (row.kind === "single") {
+      columns.push({
+        kind: "element",
+        routineItemId: row.item.id,
+        element: row.item.element,
+        elementNumber,
+        block: row.item.block,
+        role: row.item.role,
+      });
+    } else {
+      columns.push({
+        kind: "individual-group",
+        routineItemIds: row.items.map((item) => item.id),
+        elements: sortIndividualGroupItems(row.items).map((item) => item.element),
+        elementNumber,
+      });
+    }
+  }
+
+  return columns;
+}
+
+function splitTimelineIntoBlocks(
+  timeline: SheetColumnSlot[],
+): ComputedBlockLayout[] {
+  return Array.from({ length: OFFICIAL_MAX_BLOCK_COUNT }, (_, blockIndex) => {
+    const start = blockIndex * OFFICIAL_MAX_ELEMENT_COLUMNS;
+    const slice = timeline.slice(start, start + OFFICIAL_MAX_ELEMENT_COLUMNS);
+    return {
+      blockIndex,
+      columns: padColumns(slice, OFFICIAL_MAX_ELEMENT_COLUMNS),
+    };
+  });
 }
 
 export function computeSheetLayout(
   routine: RoutineItem[],
   _exercise: Exercise,
 ): ComputedSheetLayout {
-  const blockIds = selectBlocksToShow();
   const columnCount = OFFICIAL_MAX_ELEMENT_COLUMNS;
-  let elementSeq = 1;
-
-  const blocks: ComputedBlockLayout[] = blockIds.map((blockId, blockIndex) => {
-    const items = routine.filter((item) => item.block === blockId);
-    const { columns, nextNumber } = placeItemsInColumns(items, elementSeq);
-    elementSeq = nextNumber;
-    return {
-      blockId,
-      blockIndex,
-      columns: padColumns(columns, columnCount),
-    };
-  });
-
+  const timeline = placeRoutineInColumns(routine);
+  const blocks = splitTimelineIntoBlocks(timeline);
   return { blocks, columnCount };
 }
 
@@ -104,4 +122,4 @@ export function combinedFooterSpans(columnCount: number): [number, number, numbe
   return [a, b, c];
 }
 
-export { OFFICIAL_COMBINED_FOOTER, OFFICIAL_SHEET_BLOCKS };
+export { OFFICIAL_COMBINED_FOOTER };

@@ -1,9 +1,10 @@
 import type { StoredHeader } from "../types";
-import type { BalanceSubtype, CatalogEntry } from "./types";
+import type { CatalogEntry, ElementFamily, ElementType } from "./types";
 
 export type CatalogFilterContext = {
   header: StoredHeader;
-  subtype?: BalanceSubtype;
+  elementFamily?: ElementFamily;
+  type?: ElementType;
 };
 
 function matchesFilters(entry: CatalogEntry, header: StoredHeader): boolean {
@@ -20,22 +21,26 @@ export function filterCatalogEntries(
   ctx: CatalogFilterContext,
 ): CatalogEntry[] {
   return entries.filter((entry) => {
-    if (entry.elementFamily !== "balance") return false;
-    if (ctx.subtype && entry.subtype !== ctx.subtype) return false;
+    if (ctx.elementFamily && entry.elementFamily !== ctx.elementFamily) {
+      return false;
+    }
+    if (ctx.type && entry.type !== ctx.type) return false;
     return matchesFilters(entry, ctx.header);
   });
 }
 
-/** Subtypes that have at least one entry for this header. */
-export function getAvailableBalanceSubtypes(
+/** Types that have at least one entry for this header and family. */
+export function getAvailableTypes(
   entries: CatalogEntry[],
   header: StoredHeader,
-): BalanceSubtype[] {
-  const subtypes = new Set<BalanceSubtype>();
+  elementFamily?: ElementFamily,
+): ElementType[] {
+  const types = new Set<ElementType>();
   for (const entry of entries) {
-    if (matchesFilters(entry, header)) {
-      subtypes.add(entry.subtype);
+    if (elementFamily && entry.elementFamily !== elementFamily) continue;
+    if (matchesFilters(entry, header) && entry.type) {
+      types.add(entry.type);
     }
   }
-  return [...subtypes].sort();
+  return [...types].sort();
 }

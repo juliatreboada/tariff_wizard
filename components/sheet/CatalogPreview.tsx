@@ -4,8 +4,9 @@ import Image from "next/image";
 import {
   catalogImageUrl,
   filterCatalogEntries,
-  getAvailableBalanceSubtypes,
+  getAvailableTypes,
   getCatalogEntries,
+  type CatalogEntry,
 } from "@/lib/tariff/catalog";
 import { getMessages } from "@/lib/i18n";
 import type { StoredHeader } from "@/lib/tariff/types";
@@ -18,41 +19,37 @@ export function CatalogPreview({ header }: CatalogPreviewProps) {
   const t = getMessages();
   const entries = getCatalogEntries();
   const matching = filterCatalogEntries(entries, { header });
-  const subtypes = getAvailableBalanceSubtypes(entries, header);
-
-  if (matching.length === 0) {
-    return (
-      <p className="mt-3 text-sm text-amber-700 dark:text-amber-400">
-        {t.sheet.catalogEmpty}
-      </p>
-    );
-  }
+  const types = getAvailableTypes(entries, header);
 
   return (
-    <div className="mt-4 flex flex-col gap-3">
-      <p className="text-sm text-zinc-600 dark:text-zinc-400">
-        {t.sheet.catalogSummary(matching.length, subtypes.join(", "))}
+    <details className="rounded-lg border border-zinc-200 bg-zinc-50 p-3">
+      <summary className="cursor-pointer text-sm font-medium text-zinc-800">
+        {t.sheet.catalogToggle}
+      </summary>
+      <p className="mt-2 text-xs text-zinc-600">
+        {matching.length === 0
+          ? t.sheet.catalogEmpty
+          : t.sheet.catalogSummary(matching.length, types.join(", "))}
       </p>
-      <ul className="flex flex-wrap gap-3">
-        {matching.map((entry) => (
-          <li
-            key={entry.id}
-            className="flex w-28 flex-col gap-1 rounded border border-zinc-200 bg-white p-2 dark:border-zinc-700 dark:bg-zinc-950"
-          >
-            <Image
-              src={catalogImageUrl(entry.image)}
-              alt={entry.label}
-              width={112}
-              height={75}
-              className="h-[75px] w-full object-contain"
-            />
-            <span className="truncate text-xs font-medium">{entry.label}</span>
-            <span className="font-mono text-[10px] text-zinc-500">
-              {entry.galicianCode} · {entry.value.toFixed(1)}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
+      {matching.length > 0 ? (
+        <ul className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
+          {matching.map((entry: CatalogEntry) => (
+            <li
+              key={entry.id}
+              className="flex flex-col items-center rounded border border-zinc-200 bg-white p-1"
+            >
+              <Image
+                src={catalogImageUrl(entry.image)}
+                alt={entry.coordinates}
+                width={64}
+                height={48}
+                className="h-10 w-full object-contain"
+              />
+              <span className="mt-0.5 truncate text-[10px]">{entry.coordinates}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </details>
   );
 }

@@ -169,6 +169,33 @@
   overflow: hidden;
 }
 
+.official-img-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.official-img-main {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.official-img-role-footer {
+  flex: 0 0 auto;
+  padding-top: 0.3mm;
+  font-size: 5.5pt;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.1;
+}
+
 .official-img-button {
   display: flex;
   width: 100%;
@@ -187,6 +214,29 @@
   max-height: 100%;
   width: auto;
   height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.official-stacked-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 0.2mm;
+  padding: 0.2mm 0;
+  box-sizing: border-box;
+}
+
+.official-stacked-img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  flex: 1 1 0;
+  min-height: 0;
+  max-height: calc((100% - 0.4mm) / var(--stack-count, 2));
   margin: 0 auto;
   object-fit: contain;
 }
@@ -252,7 +302,6 @@
   background: #fff;
 }
 
-/* Close each block with a full bottom edge */
 .official-block-last-row th,
 .official-block-last-row td {
   border-bottom: 1px solid #000 !important;

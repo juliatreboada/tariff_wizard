@@ -5,7 +5,12 @@ import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { FormField, fieldInputClass } from "@/components/wizard/FormField";
 import { getMessages } from "@/lib/i18n";
-import { EXERCISES, LEVEL_SYSTEMS } from "@/lib/tariff/enums";
+import { LEVEL_SYSTEMS } from "@/lib/tariff/enums";
+import {
+  exerciseLabel,
+  exerciseOptionsForLevel,
+  isCombinedRoutineLevel,
+} from "@/lib/tariff/exercise-display";
 import { getCategoryOptions, getLevelAgeOptions } from "@/lib/tariff/level-category";
 import {
   type CompetitionStepFormValues,
@@ -42,7 +47,10 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
   });
 
   const levelSystem = watch("levelSystem");
+  const levelAge = watch("levelAge");
   const prevSystem = useRef(levelSystem);
+  const exerciseOptions = exerciseOptionsForLevel(levelSystem, levelAge);
+  const combinedRoutineLevel = isCombinedRoutineLevel(levelSystem, levelAge);
 
   useEffect(() => {
     reset({
@@ -60,6 +68,12 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
     setValue("levelAge", ages[0] ?? "");
     setValue("category", categories[0] ?? "");
   }, [levelSystem, setValue]);
+
+  useEffect(() => {
+    if (combinedRoutineLevel) {
+      setValue("exercise", "Combined");
+    }
+  }, [combinedRoutineLevel, setValue]);
 
   function onSubmit(data: CompetitionStepValues) {
     setCompetition({
@@ -205,12 +219,17 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
                 className={fieldInputClass(!!errors.exercise)}
                 {...register("exercise")}
               >
-                {EXERCISES.map((ex) => (
+                {exerciseOptions.map((ex) => (
                   <option key={ex} value={ex}>
-                    {ex}
+                    {exerciseLabel(ex, t.exercises)}
                   </option>
                 ))}
               </select>
+              {combinedRoutineLevel ? (
+                <p className="mt-1 text-xs text-zinc-600">
+                  {t.exercises.combinedRoutineHint}
+                </p>
+              ) : null}
             </FormField>
           </div>
         </div>

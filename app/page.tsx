@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getMessages } from "@/lib/i18n";
+import { exerciseLabel } from "@/lib/tariff/exercise-display";
 import { useWizardStore } from "@/lib/tariff/store";
 import { useStoreHydrated } from "@/lib/tariff/use-store-hydrated";
 
@@ -15,6 +16,7 @@ export default function Home() {
   const savedSheets = useWizardStore((s) => s.savedSheets);
   const loadSavedSheet = useWizardStore((s) => s.loadSavedSheet);
   const deleteSavedSheet = useWizardStore((s) => s.deleteSavedSheet);
+  const saveProgressAndStartNew = useWizardStore((s) => s.saveProgressAndStartNew);
   const reset = useWizardStore((s) => s.reset);
 
   const hasHeader = Boolean(header);
@@ -51,7 +53,11 @@ export default function Home() {
   }
 
   function startNewWizard() {
-    reset();
+    if (hasHeader) {
+      saveProgressAndStartNew();
+    } else {
+      reset();
+    }
     router.push("/wizard");
   }
 
@@ -157,14 +163,20 @@ export default function Home() {
                 key={sheet.id}
                 className="rounded-xl border border-zinc-200 bg-zinc-50 p-4"
               >
+                {(() => {
+                  const gymnasts = [sheet.header.topName, ...sheet.header.baseNames]
+                    .filter(Boolean)
+                    .join(" · ");
+                  return (
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0">
                     <p className="font-medium text-zinc-900">
-                      {sheet.header.clubName} · {sheet.header.levelAge} {sheet.header.levelSystem}
+                      {sheet.header.clubName} · {gymnasts || t.home.statusNoData}
                     </p>
                     <p className="text-sm text-zinc-700">
+                      {sheet.header.levelAge} {sheet.header.levelSystem} ·{" "}
                       {sheet.header.categoryCode ?? sheet.header.category} ·{" "}
-                      {sheet.header.exercise}
+                      {exerciseLabel(sheet.header.exercise, t.exercises)}
                     </p>
                     <p className="text-xs text-zinc-600">
                       {t.home.savedUpdated(formatShortDate(sheet.updatedAtIso))}
@@ -201,6 +213,8 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
+                  );
+                })()}
               </li>
             ))}
           </ul>

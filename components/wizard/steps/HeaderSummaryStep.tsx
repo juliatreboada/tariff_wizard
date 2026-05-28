@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { getMessages } from "@/lib/i18n";
+import { exerciseLabel } from "@/lib/tariff/exercise-display";
 import { useWizardStore } from "@/lib/tariff/store";
 
 function Row({ label, value }: { label: string; value?: string }) {
@@ -68,7 +69,10 @@ export function HeaderSummaryStep() {
         <SummarySection title="Categoría y ejercicio">
           <Row label="LEVEL" value={levelDisplay} />
           <Row label={t.sheetLabels.category} value={categoryDisplay} />
-          <Row label={t.sheetLabels.exercise} value={header.exercise} />
+          <Row
+            label={t.sheetLabels.exercise}
+            value={exerciseLabel(header.exercise, t.exercises)}
+          />
         </SummarySection>
 
         <SummarySection title={t.sheetLabels.gymnastsSection}>

@@ -1,6 +1,7 @@
 "use client";
 
 import { getMessages } from "@/lib/i18n";
+import { exerciseLabel } from "@/lib/tariff/exercise-display";
 import type { StoredHeader } from "@/lib/tariff/types";
 
 function Row({ label, value }: { label: string; value?: string }) {
@@ -44,7 +45,10 @@ export function HeaderPanel({ header }: HeaderPanelProps) {
         <Row label={t.sheetLabels.competition} value={header.competition} />
         <Row label="LEVEL" value={levelDisplay} />
         <Row label={t.sheetLabels.category} value={categoryDisplay} />
-        <Row label={t.sheetLabels.exercise} value={header.exercise} />
+        <Row
+          label={t.sheetLabels.exercise}
+          value={exerciseLabel(header.exercise, t.exercises)}
+        />
         <Row label={t.sheetLabels.top} value={header.topName} />
         <Row label={t.sheetLabels.base} value={header.baseNames[0]} />
         <Row label={t.sheetLabels.contactName} value={header.contactName} />

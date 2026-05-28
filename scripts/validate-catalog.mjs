@@ -19,9 +19,9 @@ function validateCatalog(catalogId) {
   if (manifest.version !== 1) {
     errors.push(`${catalogId}: version must be 1`);
   }
-  if (manifest.region !== catalogId) {
+  if (manifest.code !== catalogId) {
     errors.push(
-      `${catalogId}: manifest.region must be "${catalogId}" (got "${manifest.region}")`,
+      `${catalogId}: manifest.code must be "${catalogId}" (got "${manifest.code}")`,
     );
   }
 
@@ -30,8 +30,8 @@ function validateCatalog(catalogId) {
     if (ids.has(entry.id)) errors.push(`duplicate id: ${entry.id}`);
     ids.add(entry.id);
 
-    if (entry.region !== catalogId) {
-      errors.push(`${entry.id}: entry.region must be ${catalogId}`);
+    if (entry.code !== catalogId) {
+      errors.push(`${entry.id}: entry.code must be ${catalogId}`);
     }
 
     const imagePath = path.join(publicCatalog, entry.image);

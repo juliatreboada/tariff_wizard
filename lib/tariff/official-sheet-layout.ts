@@ -16,6 +16,12 @@ export const OFFICIAL_ELEMENT_COLUMN_COUNT = OFFICIAL_MAX_ELEMENT_COLUMNS;
 export const OFFICIAL_SLOT_SUBCOLS = 4;
 export const OFFICIAL_VALUE_SUBCOLS = 4;
 
+/** VALUE row (row 3): balance in subcell 1, dynamic in subcell 2. */
+export const OFFICIAL_BALANCE_VALUE_SUBCELL = 0;
+export const OFFICIAL_DYNAMIC_VALUE_SUBCELL = 1;
+
+export type OfficialIndividualCoordinateRow = "sh" | "top" | "base";
+
 export const OFFICIAL_SHEET_BLOCKS = [
   { id: "balance" as const },
   { id: "dynamic" as const },

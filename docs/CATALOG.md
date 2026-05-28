@@ -5,11 +5,10 @@ How pictures and codes are stored **without a database**. The picker (Phase D) r
 ## Folder layout
 
 ```text
-catalog/FGX/manifest.json          ← edit here (metadata)
-public/catalog/FGX/balance/      ← PNG files (served by the app)
-  ROW-III-C.png
-  ROW-IV-A.png
-  ROW-V-D.png
+catalog/FGX/manifest.json              ← edit here (metadata)
+public/catalog/FGX/pairs/balance/    ← PNG files (parejas — equilibrio)
+public/catalog/FGX/pairs/dynamic/    ← PNG files (parejas — dinámico)
+public/catalog/FGX/individuals/      ← PNG files (individuales)
 ```
 
 | File | Role |
@@ -21,18 +20,17 @@ public/catalog/FGX/balance/      ← PNG files (served by the app)
 
 ## Add a new element
 
-1. Add `public/catalog/FGX/balance/MY-ELEMENT.png`
+1. Add `public/catalog/FGX/pairs/balance/MY-ELEMENT.png`
 2. Add an entry to [`catalog/FGX/manifest.json`](../catalog/FGX/manifest.json):
 
 ```json
 {
   "id": "fgx-balance-my-element",
-  "region": "FGX",
+  "code": "FGX",
   "elementFamily": "balance",
   "subtype": "mount",
-  "label": "My element",
-  "image": "balance/MY-ELEMENT.png",
-  "galicianCode": "ROW-VI-B",
+  "coordinates": "ROW-VI B",
+  "image": "pairs/balance/MY-ELEMENT.png",
   "value": 2.0,
   "filters": {
     "levelSystems": ["RFEG", "FIG"],
@@ -61,7 +59,7 @@ An entry appears only if the sheet **header** matches:
 | Manifest field | On the tariff sheet |
 |----------------|---------------------|
 | `image` | Big cell (TOP/BASE area) |
-| `galicianCode` | **SH** row |
+| `coordinates` | **SH** row and picker labels |
 | `value` | **VALUE** row (element column) |
 
 ## Code
@@ -75,7 +73,7 @@ An entry appears only if the sheet **header** matches:
 
 ```gitignore
 /public/catalog/FGX/**
-!/public/catalog/FGX/balance/ROW-III-C.png
+!/public/catalog/FGX/pairs/balance/ROW-III-C.png
 ```
 
 Keep `catalog/FGX/manifest.json` committed.
