@@ -207,11 +207,16 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                         {t.routine.escolarIndividual} ({row.items.length}{" "}
                         {t.routine.escolarGymnastsInSet})
                       </p>
-                      <div className="mt-2 flex flex-wrap gap-2">
+                      <div
+                        className="mt-2 grid w-full min-w-0 gap-1 sm:gap-1.5"
+                        style={{
+                          gridTemplateColumns: `repeat(${row.items.length}, minmax(0, 1fr))`,
+                        }}
+                      >
                         {sortIndividualGroupItems(row.items).map((item) => (
                           <div
                             key={item.id}
-                            className="flex w-24 flex-col items-center rounded-lg border border-zinc-100 bg-zinc-50 p-1.5"
+                            className="flex min-w-0 flex-col items-center rounded-lg border border-zinc-100 bg-zinc-50 p-1 sm:p-1.5"
                           >
                             <Image
                               src={catalogImageUrl(item.element.image)}

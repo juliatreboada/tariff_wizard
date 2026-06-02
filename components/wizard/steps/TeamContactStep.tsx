@@ -1,12 +1,14 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { FormField, fieldInputClass } from "@/components/wizard/FormField";
 import { getMessages } from "@/lib/i18n";
+import { baseCountForCategory } from "@/lib/tariff/level-category";
 import {
   type TeamContactStepValues,
+  normalizeTeamContact,
   teamContactStepSchema,
 } from "@/lib/tariff/schema";
 import { useWizardStore } from "@/lib/tariff/store";
@@ -17,11 +19,31 @@ type TeamContactStepProps = {
   onSuccess: () => void;
 };
 
+function baseFieldLabel(
+  index: number,
+  baseCount: number,
+  labels: ReturnType<typeof getMessages>["sheetLabels"],
+): string {
+  return baseCount <= 1 ? labels.base : labels.baseNumber(index + 1);
+}
+
 export function TeamContactStep({ onSuccess }: TeamContactStepProps) {
   const t = getMessages();
+  const competition = useWizardStore((s) => s.competition);
   const stored = useWizardStore((s) => s.teamContact);
   const setTeamContact = useWizardStore((s) => s.setTeamContact);
   const commitHeader = useWizardStore((s) => s.commitHeader);
+
+  const baseCount = baseCountForCategory(competition.category);
+  const schema = useMemo(
+    () => teamContactStepSchema(baseCount),
+    [baseCount],
+  );
+
+  const defaultValues = useMemo(
+    () => normalizeTeamContact(stored, competition.category),
+    [stored, competition.category],
+  );
 
   const {
     register,
@@ -29,19 +51,21 @@ export function TeamContactStep({ onSuccess }: TeamContactStepProps) {
     reset,
     formState: { errors },
   } = useForm<TeamContactStepValues>({
-    resolver: zodResolver(teamContactStepSchema),
-    defaultValues: stored,
+    resolver: zodResolver(schema),
+    defaultValues,
   });
 
   useEffect(() => {
-    reset(stored);
-  }, [stored, reset]);
+    reset(normalizeTeamContact(stored, competition.category));
+  }, [stored, competition.category, reset]);
 
   function onSubmit(data: TeamContactStepValues) {
     setTeamContact(data);
     commitHeader();
     onSuccess();
   }
+
+  const baseErrors = errors.baseNames;
 
   return (
     <form
@@ -50,8 +74,6 @@ export function TeamContactStep({ onSuccess }: TeamContactStepProps) {
       className="flex flex-col gap-6"
       noValidate
     >
-      {/* <p className="text-sm text-zinc-700">{t.wizard.step2.description}</p> */}
-
       <div className="grid gap-5 lg:grid-cols-2">
         <fieldset className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white/80 p-4 sm:p-5">
           <legend className="px-1 text-sm font-semibold tracking-wide text-zinc-800">
@@ -69,18 +91,31 @@ export function TeamContactStep({ onSuccess }: TeamContactStepProps) {
               {...register("topName")}
             />
           </FormField>
-          <FormField
-            label={t.sheetLabels.base}
-            htmlFor="baseName"
-            error={errors.baseName?.message}
-          >
-            <input
-              id="baseName"
-              className={fieldInputClass(!!errors.baseName)}
-              autoComplete="name"
-              {...register("baseName")}
-            />
-          </FormField>
+          {Array.from({ length: baseCount }, (_, index) => (
+            <FormField
+              key={index}
+              label={baseFieldLabel(index, baseCount, t.sheetLabels)}
+              htmlFor={`baseNames.${index}`}
+              error={
+                Array.isArray(baseErrors)
+                  ? baseErrors[index]?.message
+                  : baseErrors?.message
+              }
+            >
+              <input
+                id={`baseNames.${index}`}
+                className={fieldInputClass(
+                  !!(
+                    Array.isArray(baseErrors)
+                      ? baseErrors[index]
+                      : baseErrors
+                  ),
+                )}
+                autoComplete="name"
+                {...register(`baseNames.${index}` as const)}
+              />
+            </FormField>
+          ))}
         </fieldset>
 
         <fieldset className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white/80 p-4 sm:p-5">

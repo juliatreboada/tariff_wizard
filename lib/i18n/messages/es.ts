@@ -67,11 +67,7 @@ export const es = {
       "Vista como la hoja oficial. Pulsa una celda de imagen para añadir el elemento.",
     savedLocally:
       "Guardado automáticamente en este navegador (no en la nube).",
-    newSheet: "Guardar y nueva hoja",
-    newSheetConfirm:
-      "Se guardará el progreso de esta hoja en el navegador y volverás al inicio del asistente para crear otra TS.",
-    newSheetYes: "Guardar y empezar otra",
-    newSheetNo: "Cancelar",
+    save: "Guardar",
     headerTitle: "Encabezado",
     backToWizard: "Volver al asistente",
     loading: "Cargando…",
@@ -200,6 +196,7 @@ export const es = {
     exercise: "EXERCISE",
     top: "TOP",
     base: "BASE",
+    baseNumber: (n: number) => `BASE ${n}`,
     contactName: "NAME",
     contactPhone: "TEL",
     contactSection: "CONTACT PERSON",

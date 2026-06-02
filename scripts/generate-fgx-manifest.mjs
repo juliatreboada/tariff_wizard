@@ -1,6 +1,6 @@
 /**
  * Build catalog/FGX/manifest.json from PNGs under public/catalog/FGX/.
- * Column values (ESCOLAR pairs): A=0, B=0.1, …, E=0.4.
+ * Column values (ESCOLAR): A=0, B=0.1, …, E=0.4.
  *
  * Usage: node scripts/generate-fgx-manifest.mjs
  */
@@ -14,11 +14,33 @@ const manifestPath = path.join(root, "catalog/FGX/manifest.json");
 
 const COLUMN_VALUE = { A: 0, B: 0.1, C: 0.2, D: 0.3, E: 0.4 };
 
-const PAIRS_FILTERS = {
-  levelSystems: ["Escolar"],
-  categories: ["Parejas"],
-  exercises: ["Combined"],
-};
+/** Folder under public/catalog/FGX/ → filter category label */
+const TEAM_CATALOGS = [
+  { folder: "pairs", category: "Parejas" },
+  { folder: "trios", category: "Tríos" },
+  { folder: "cuartetos", category: "Cuartetos" },
+];
+
+const ESCOLAR_TEAM_CATEGORIES = TEAM_CATALOGS.map((t) => t.category);
+
+const INDIVIDUALS_DIR = "individuals";
+
+function escolarFilters(category) {
+  return {
+    levelSystems: ["Escolar"],
+    categories: [category],
+    exercises: ["Combined"],
+  };
+}
+
+/** Individual figures are shared across Parejas, Tríos and Cuartetos. */
+function escolarIndividualFilters() {
+  return {
+    levelSystems: ["Escolar"],
+    categories: [...ESCOLAR_TEAM_CATEGORIES],
+    exercises: ["Combined"],
+  };
+}
 
 function slugify(s) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -56,7 +78,15 @@ function listPngs(dir) {
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 }
 
-function makeRowEntry({ elementFamily, relImage, basename }) {
+function entryId(teamFolder, elementFamily, code) {
+  const slug = slugify(code);
+  if (teamFolder === "pairs") {
+    return `fgx-${elementFamily}-${slug}`;
+  }
+  return `fgx-${teamFolder}-${elementFamily}-${slug}`;
+}
+
+function makeRowEntry({ elementFamily, relImage, basename, category, teamFolder }) {
   const parsed = parseRowElement(basename.replace(/\.png$/i, ""));
   if (!parsed) {
     console.warn(`skip (bad name): ${relImage}`);
@@ -68,13 +98,13 @@ function makeRowEntry({ elementFamily, relImage, basename }) {
     return null;
   }
   const entry = {
-    id: `fgx-${elementFamily}-${slugify(parsed.code)}`,
+    id: entryId(teamFolder, elementFamily, parsed.code),
     code: "FGX",
     elementFamily,
     coordinates: codeToCoordinates(parsed.code),
     image: relImage.replace(/\\/g, "/"),
     value,
-    filters: PAIRS_FILTERS,
+    filters: escolarFilters(category),
   };
   if (elementFamily === "balance") {
     entry.type = "EQ";
@@ -100,7 +130,6 @@ function makeIndividualEntry({ relImage, index, folder }) {
     console.warn(`skip individual folder: ${folder}`);
     return null;
   }
-  /** ESCOLAR individuals do not carry DV — keep catalog value at 0. */
   const value = 0;
   const code = `${folder}-${index}`;
   const entry = {
@@ -111,9 +140,8 @@ function makeIndividualEntry({ relImage, index, folder }) {
     coordinates: codeToCoordinates(code),
     image: relImage.replace(/\\/g, "/"),
     value,
-    filters: PAIRS_FILTERS,
+    filters: escolarIndividualFilters(),
   };
-  /** Individual EQ statics — 2" hold (ESCOLAR). */
   if (type === "EQ") {
     entry.holdDuration = '2"';
   }
@@ -122,27 +150,34 @@ function makeIndividualEntry({ relImage, index, folder }) {
 
 const entries = [];
 
-const pairsRoot = path.join(publicFgx, "pairs");
+for (const team of TEAM_CATALOGS) {
+  const teamRoot = path.join(publicFgx, team.folder);
+  if (!fs.existsSync(teamRoot)) continue;
 
-for (const file of listPngs(path.join(pairsRoot, "balance"))) {
-  const e = makeRowEntry({
-    elementFamily: "balance",
-    relImage: `pairs/balance/${file}`,
-    basename: file,
-  });
-  if (e) entries.push(e);
+  for (const file of listPngs(path.join(teamRoot, "balance"))) {
+    const e = makeRowEntry({
+      elementFamily: "balance",
+      relImage: `${team.folder}/balance/${file}`,
+      basename: file,
+      category: team.category,
+      teamFolder: team.folder,
+    });
+    if (e) entries.push(e);
+  }
+
+  for (const file of listPngs(path.join(teamRoot, "dynamic"))) {
+    const e = makeRowEntry({
+      elementFamily: "dynamic",
+      relImage: `${team.folder}/dynamic/${file}`,
+      basename: file,
+      category: team.category,
+      teamFolder: team.folder,
+    });
+    if (e) entries.push(e);
+  }
 }
 
-for (const file of listPngs(path.join(pairsRoot, "dynamic"))) {
-  const e = makeRowEntry({
-    elementFamily: "dynamic",
-    relImage: `pairs/dynamic/${file}`,
-    basename: file,
-  });
-  if (e) entries.push(e);
-}
-
-const individualRoot = path.join(publicFgx, "individuals");
+const individualRoot = path.join(publicFgx, INDIVIDUALS_DIR);
 if (fs.existsSync(individualRoot)) {
   for (const folder of fs.readdirSync(individualRoot, { withFileTypes: true })) {
     if (!folder.isDirectory()) continue;
@@ -151,7 +186,7 @@ if (fs.existsSync(individualRoot)) {
       const m = file.match(/^(\d+)\.png$/i);
       if (!m) continue;
       const e = makeIndividualEntry({
-        relImage: `individuals/${folder.name}/${file}`,
+        relImage: `${INDIVIDUALS_DIR}/${folder.name}/${file}`,
         index: Number(m[1]),
         folder: folder.name,
       });
@@ -164,9 +199,18 @@ const manifest = {
   version: 1,
   code: "FGX",
   description:
-    "Catálogo FGX ESCOLAR — Parejas. elementFamily: balance|dynamic|individual; type: EQ|FLEX|AG|TUM.",
+    "Catálogo FGX ESCOLAR — Parejas, Tríos, Cuartetos. elementFamily: balance|dynamic|individual.",
   entries,
 };
 
 fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+
+const byCategory = {};
+for (const e of entries) {
+  const cat = e.filters.categories[0];
+  byCategory[cat] = (byCategory[cat] ?? 0) + 1;
+}
 console.log(`Wrote ${entries.length} entries to ${manifestPath}`);
+for (const [cat, n] of Object.entries(byCategory)) {
+  console.log(`  ${cat}: ${n}`);
+}

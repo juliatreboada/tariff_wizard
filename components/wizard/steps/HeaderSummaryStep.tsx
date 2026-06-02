@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { getMessages } from "@/lib/i18n";
 import { exerciseLabel } from "@/lib/tariff/exercise-display";
+import { gymnastSidebarRows } from "@/lib/tariff/gymnast-display";
 import { useWizardStore } from "@/lib/tariff/store";
 
 function Row({ label, value }: { label: string; value?: string }) {
@@ -76,8 +77,9 @@ export function HeaderSummaryStep() {
         </SummarySection>
 
         <SummarySection title={t.sheetLabels.gymnastsSection}>
-          <Row label={t.sheetLabels.top} value={header.topName} />
-          <Row label={t.sheetLabels.base} value={header.baseNames[0]} />
+          {gymnastSidebarRows(header, t.sheetLabels).map((row) => (
+            <Row key={row.role} label={row.role} value={row.name} />
+          ))}
         </SummarySection>
 
         <SummarySection title={t.sheetLabels.contactSection}>

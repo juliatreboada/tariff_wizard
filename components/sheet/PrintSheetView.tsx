@@ -7,6 +7,7 @@ import { TariffSheet } from "@/components/sheet/TariffSheet";
 import { computeSheetLayout } from "@/lib/tariff/compute-sheet-layout";
 import { getMessages } from "@/lib/i18n";
 import { useWizardStore } from "@/lib/tariff/store";
+import { pdfFilenameFromHeader } from "@/lib/tariff/sheet-banner";
 import { useStoreHydrated } from "@/lib/tariff/use-store-hydrated";
 
 export function PrintSheetView() {
@@ -29,6 +30,16 @@ export function PrintSheetView() {
     }
   }, [hydrated, header, router]);
 
+  useEffect(() => {
+    if (!header) return;
+    const filename = pdfFilenameFromHeader(header);
+    const previousTitle = document.title;
+    document.title = filename;
+    return () => {
+      document.title = previousTitle;
+    };
+  }, [header]);
+
   if (!hydrated || !header || !layout) {
     return (
       <p className="px-6 py-12 text-sm text-zinc-500">{t.sheet.loading}</p>
@@ -36,6 +47,9 @@ export function PrintSheetView() {
   }
 
   function handlePrint() {
+    if (header) {
+      document.title = pdfFilenameFromHeader(header);
+    }
     window.print();
   }
 

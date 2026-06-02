@@ -1,7 +1,7 @@
 {
   "version": 1,
   "code": "FGX",
-  "description": "Catálogo FGX ESCOLAR — Parejas. elementFamily: balance|dynamic|individual; type: EQ|FLEX|AG|TUM.",
+  "description": "Catálogo FGX ESCOLAR — Parejas, Tríos, Cuartetos. elementFamily: balance|dynamic|individual.",
   "entries": [
     {
       "id": "fgx-balance-row-i-a",
@@ -1092,6 +1092,1729 @@
       "rotation": "0/4"
     },
     {
+      "id": "fgx-trios-balance-row-i-a",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "trios/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-i-b",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "trios/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-i-c",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "trios/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-i-d",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "trios/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-i-e",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I E",
+      "image": "trios/balance/ROW-I-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-ii-a",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "trios/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-ii-b",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "trios/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-ii-c",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "trios/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-ii-d-1",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D-1",
+      "image": "trios/balance/ROW-II-D-1.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-ii-d-2",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D-2",
+      "image": "trios/balance/ROW-II-D-2.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-ii-e",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II E",
+      "image": "trios/balance/ROW-II-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iii-a",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "trios/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iii-b",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "trios/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iii-c",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "trios/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iii-d",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "trios/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iii-e-1",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III E-1",
+      "image": "trios/balance/ROW-III-E-1.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iii-e-2",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III E-2",
+      "image": "trios/balance/ROW-III-E-2.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iv-a",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV A",
+      "image": "trios/balance/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iv-b",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV B",
+      "image": "trios/balance/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iv-c",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV C",
+      "image": "trios/balance/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iv-d",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV D",
+      "image": "trios/balance/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iv-e-1",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV E-1",
+      "image": "trios/balance/ROW-IV-E-1.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-balance-row-iv-e-2",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV E-2",
+      "image": "trios/balance/ROW-IV-E-2.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-trios-dynamic-row-i-a",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I A",
+      "image": "trios/dynamic/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-i-b",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "trios/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-i-c",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "trios/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-i-d",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "trios/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-i-e",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I E",
+      "image": "trios/dynamic/ROW-I-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-ii-a",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II A",
+      "image": "trios/dynamic/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-ii-b",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "trios/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-ii-c",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "trios/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-ii-d",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "trios/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-ii-e",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II E",
+      "image": "trios/dynamic/ROW-II-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iii-a-1",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III A-1",
+      "image": "trios/dynamic/ROW-III-A-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iii-a-2",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III A-2",
+      "image": "trios/dynamic/ROW-III-A-2.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iii-b",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "trios/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iii-c",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "trios/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iii-d",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "trios/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iii-e",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III E",
+      "image": "trios/dynamic/ROW-III-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iv-a",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV A",
+      "image": "trios/dynamic/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iv-b",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "trios/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iv-c",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "trios/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iv-d",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "trios/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-trios-dynamic-row-iv-e",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV E",
+      "image": "trios/dynamic/ROW-IV-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-i-a",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "cuartetos/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-i-b",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "cuartetos/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-i-c",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "cuartetos/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-i-d",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "cuartetos/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-i-e",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I E",
+      "image": "cuartetos/balance/ROW-I-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-ii-a",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "cuartetos/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-ii-b",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "cuartetos/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-ii-c",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "cuartetos/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-ii-d",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "cuartetos/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-ii-e",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II E",
+      "image": "cuartetos/balance/ROW-II-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iii-a",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "cuartetos/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iii-b",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "cuartetos/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iii-c",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "cuartetos/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iii-d",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "cuartetos/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iii-e",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III E",
+      "image": "cuartetos/balance/ROW-III-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iv-a",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV A",
+      "image": "cuartetos/balance/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iv-b",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV B",
+      "image": "cuartetos/balance/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iv-c",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV C",
+      "image": "cuartetos/balance/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iv-d",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV D",
+      "image": "cuartetos/balance/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-balance-row-iv-e",
+      "code": "FGX",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV E",
+      "image": "cuartetos/balance/ROW-IV-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-i-a",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I A",
+      "image": "cuartetos/dynamic/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-i-b",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "cuartetos/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-i-c",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "cuartetos/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-i-d",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "cuartetos/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-i-e",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I E",
+      "image": "cuartetos/dynamic/ROW-I-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-ii-a",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II A",
+      "image": "cuartetos/dynamic/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-ii-b",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "cuartetos/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-ii-c",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "cuartetos/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-ii-d",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "cuartetos/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-ii-e",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II E",
+      "image": "cuartetos/dynamic/ROW-II-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iii-a",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III A",
+      "image": "cuartetos/dynamic/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iii-b",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "cuartetos/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iii-c",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "cuartetos/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iii-d",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "cuartetos/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iii-e",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III E",
+      "image": "cuartetos/dynamic/ROW-III-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iv-a",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV A",
+      "image": "cuartetos/dynamic/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iv-b",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "cuartetos/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iv-c",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "cuartetos/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iv-d",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "cuartetos/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fgx-cuartetos-dynamic-row-iv-e",
+      "code": "FGX",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV E",
+      "image": "cuartetos/dynamic/ROW-IV-E.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "Escolar"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
       "id": "fgx-individual-ag-1",
       "code": "FGX",
       "elementFamily": "individual",
@@ -1104,7 +2827,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1124,7 +2849,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1144,7 +2871,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1164,7 +2893,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1184,7 +2915,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1204,7 +2937,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1224,7 +2959,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1244,7 +2981,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1265,7 +3004,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1286,7 +3027,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1307,7 +3050,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1328,7 +3073,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1349,7 +3096,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1369,7 +3118,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1389,7 +3140,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1409,7 +3162,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"
@@ -1429,7 +3184,9 @@
           "Escolar"
         ],
         "categories": [
-          "Parejas"
+          "Parejas",
+          "Tríos",
+          "Cuartetos"
         ],
         "exercises": [
           "Combined"

@@ -1,6 +1,6 @@
 import type { CategoryCode, Exercise, LevelSystem } from "./enums";
 
-/** Header data persisted in the wizard store (pair v1: one base). */
+/** Header data persisted in the wizard store (TOP + 1–3 bases by category). */
 export type StoredHeader = {
   country?: string;
   clubName: string;
@@ -12,7 +12,7 @@ export type StoredHeader = {
   categoryCode?: CategoryCode;
   exercise: Exercise;
   topName: string;
-  baseNames: [string];
+  baseNames: string[];
   contactName: string;
   contactPhone: string;
 };

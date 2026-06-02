@@ -5,17 +5,19 @@
 | Qué | Dónde |
 |-----|--------|
 | **Lista de elementos** (editas esto) | [`manifest.json`](manifest.json) |
-| **Imágenes parejas** (equilibrio / dinámico) | [`public/catalog/FGX/pairs/`](../../public/catalog/FGX/pairs/) |
-| **Imágenes individuales** | [`public/catalog/FGX/individuals/`](../../public/catalog/FGX/individuals/) |
+| **Parejas** (equilibrio / dinámico) | [`public/catalog/FGX/pairs/`](../../public/catalog/FGX/pairs/) |
+| **Tríos** (equilibrio / dinámico) | [`public/catalog/FGX/trios/`](../../public/catalog/FGX/trios/) |
+| **Cuartetos** (equilibrio / dinámico) | [`public/catalog/FGX/cuartetos/`](../../public/catalog/FGX/cuartetos/) |
+| **Individuales** (comunes a Parejas, Tríos y Cuartetos) | [`public/catalog/FGX/individuals/`](../../public/catalog/FGX/individuals/) |
 
 El campo `image` en el manifest es la ruta **desde** `public/catalog/FGX/`.
 
 Ejemplo: `"image": "pairs/balance/ROW-III-C.png"` → archivo  
 `public/catalog/FGX/pairs/balance/ROW-III-C.png`
 
-## Regenerar manifest desde PNGs (ESCOLAR parejas)
+## Regenerar manifest desde PNGs (ESCOLAR)
 
-Si tienes las carpetas `pairs/balance/`, `pairs/dynamic/` e `individuals/` rellenas:
+Si tienes las carpetas `pairs/`, `trios/`, `cuartetos/` (cada una con `balance/` y `dynamic/`) e `individuals/` rellenas:
 
 ```bash
 npm run generate-catalog

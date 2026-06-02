@@ -1,6 +1,11 @@
 import { z } from "zod";
 import { EXERCISES, LEVEL_AGE_BY_SYSTEM, LEVEL_SYSTEMS } from "./enums";
-import { getCategoryOptions, getLevelAgeOptions } from "./level-category";
+import {
+  baseCountForCategory,
+  getCategoryOptions,
+  getLevelAgeOptions,
+  normalizeBaseNames,
+} from "./level-category";
 import { isValidParticipationNumber, isValidPhone } from "./validation";
 
 const requiredName = z.string().trim().min(2, "Obligatorio");
@@ -42,24 +47,30 @@ export const competitionStepSchema = z
     }
   });
 
-export const teamContactStepSchema = z.object({
-  topName: requiredName,
-  baseName: requiredName,
-  contactName: requiredName,
-  contactPhone: z
-    .string()
-    .trim()
-    .min(1, "Obligatorio")
-    .refine(isValidPhone, "Teléfono: 9–15 dígitos"),
-});
+export type TeamContactStepValues = {
+  topName: string;
+  baseNames: string[];
+  contactName: string;
+  contactPhone: string;
+};
 
-export const tariffHeaderSchema = competitionStepSchema.and(
-  teamContactStepSchema,
-);
+export function teamContactStepSchema(baseCount: number) {
+  return z.object({
+    topName: requiredName,
+    baseNames: z
+      .array(requiredName)
+      .length(baseCount, `Indica ${baseCount} base(s)`),
+    contactName: requiredName,
+    contactPhone: z
+      .string()
+      .trim()
+      .min(1, "Obligatorio")
+      .refine(isValidPhone, "Teléfono: 9–15 dígitos"),
+  });
+}
 
 export type CompetitionStepValues = z.infer<typeof competitionStepSchema>;
 export type CompetitionStepFormValues = z.input<typeof competitionStepSchema>;
-export type TeamContactStepValues = z.infer<typeof teamContactStepSchema>;
 
 export function emptyCompetitionStep(): CompetitionStepFormValues {
   return {
@@ -74,11 +85,43 @@ export function emptyCompetitionStep(): CompetitionStepFormValues {
   };
 }
 
-export function emptyTeamContactStep(): TeamContactStepValues {
+export function emptyTeamContactStep(baseCount = 1): TeamContactStepValues {
   return {
     topName: "",
-    baseName: "",
+    baseNames: Array.from({ length: baseCount }, () => ""),
     contactName: "",
     contactPhone: "",
+  };
+}
+
+export function normalizeTeamContact(
+  raw: unknown,
+  category: string,
+): TeamContactStepValues {
+  const baseCount = baseCountForCategory(category);
+  const empty = emptyTeamContactStep(baseCount);
+
+  if (!raw || typeof raw !== "object") return empty;
+
+  const record = raw as Record<string, unknown>;
+  const legacyBase =
+    typeof record.baseName === "string" ? record.baseName.trim() : "";
+
+  const baseNames = Array.isArray(record.baseNames)
+    ? normalizeBaseNames(
+        record.baseNames.map((n) => String(n)),
+        baseCount,
+      )
+    : legacyBase
+      ? normalizeBaseNames([legacyBase], baseCount)
+      : empty.baseNames;
+
+  return {
+    topName: typeof record.topName === "string" ? record.topName : "",
+    baseNames,
+    contactName:
+      typeof record.contactName === "string" ? record.contactName : "",
+    contactPhone:
+      typeof record.contactPhone === "string" ? record.contactPhone : "",
   };
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getMessages } from "@/lib/i18n";
 import { exerciseLabel } from "@/lib/tariff/exercise-display";
+import { categoryDisplayLabel } from "@/lib/tariff/level-category";
 import { useWizardStore } from "@/lib/tariff/store";
 import { useStoreHydrated } from "@/lib/tariff/use-store-hydrated";
 
@@ -31,7 +32,7 @@ export default function Home() {
       ? `${header.levelAge} ${header.levelSystem}`
       : t.home.statusNoData;
   const categoryText =
-    header != null ? header.categoryCode ?? header.category : t.home.statusNoData;
+    header != null ? categoryDisplayLabel(header) : t.home.statusNoData;
   const gymnastsText =
     header != null
       ? [header.topName, ...header.baseNames].filter(Boolean).join(" · ")
@@ -175,7 +176,7 @@ export default function Home() {
                     </p>
                     <p className="text-sm text-zinc-700">
                       {sheet.header.levelAge} {sheet.header.levelSystem} ·{" "}
-                      {sheet.header.categoryCode ?? sheet.header.category} ·{" "}
+                      {categoryDisplayLabel(sheet.header)} ·{" "}
                       {exerciseLabel(sheet.header.exercise, t.exercises)}
                     </p>
                     <p className="text-xs text-zinc-600">

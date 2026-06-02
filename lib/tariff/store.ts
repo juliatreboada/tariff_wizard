@@ -5,7 +5,11 @@ import { catalogEntryToPlaced } from "./catalog/to-placed";
 import type { CatalogEntry } from "./catalog/types";
 import { isCatalogIdUsedInRoutine } from "./element-uniqueness";
 import { inferElementBlock } from "./infer-element-block";
-import { findCategoryCodeForLabel } from "./level-category";
+import {
+  baseCountForCategory,
+  findCategoryCodeForLabel,
+  normalizeBaseNames,
+} from "./level-category";
 import {
   migrateElementsRecordToRoutine,
   refreshRoutineFromCatalog,
@@ -28,7 +32,11 @@ import type {
   CompetitionStepFormValues,
   TeamContactStepValues,
 } from "./schema";
-import { emptyCompetitionStep, emptyTeamContactStep } from "./schema";
+import {
+  emptyCompetitionStep,
+  emptyTeamContactStep,
+  normalizeTeamContact,
+} from "./schema";
 import type { ElementColumnId, PlacedElement } from "./sheet-types";
 import type { StoredHeader, ValueBreakdown } from "./types";
 import { emptyValueBreakdown } from "./value-breakdown";
@@ -102,7 +110,10 @@ function buildHeader(
     categoryCode,
     exercise: competition.exercise,
     topName: team.topName,
-    baseNames: [team.baseName],
+    baseNames: normalizeBaseNames(
+      team.baseNames,
+      baseCountForCategory(competition.category),
+    ),
     contactName: team.contactName,
     contactPhone: team.contactPhone,
   };
@@ -400,11 +411,26 @@ export const useWizardStore = create<WizardStore>()(
         const valueBreakdown = p.header
           ? recalculateValueBreakdown(routine)
           : emptyValueBreakdown();
+        const competition = p.competition ?? current.competition;
+        const teamContact = normalizeTeamContact(
+          p.teamContact ?? current.teamContact,
+          competition.category,
+        );
+        let header = p.header ?? null;
+        if (header && header.baseNames.length !== baseCountForCategory(header.category)) {
+          header = {
+            ...header,
+            baseNames: normalizeBaseNames(
+              header.baseNames,
+              baseCountForCategory(header.category),
+            ),
+          };
+        }
         return {
           ...current,
-          competition: p.competition ?? current.competition,
-          teamContact: p.teamContact ?? current.teamContact,
-          header: p.header ?? null,
+          competition,
+          teamContact,
+          header,
           routine,
           valueBreakdown,
           currentSheetId: p.currentSheetId ?? current.currentSheetId,

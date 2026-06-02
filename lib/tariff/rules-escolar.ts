@@ -1,3 +1,4 @@
+import { gymnastCountForCategory } from "./level-category";
 import { countCompleteIndividualSets } from "./routine-groups";
 import type { RoutineItem } from "./routine-types";
 import type { StoredHeader } from "./types";
@@ -68,7 +69,9 @@ export function evaluateEscolarRules(
     (item) => item.role === "optional" && item.block === "dynamic",
   ).length;
 
-  const gymnastCount = 1 + (header?.baseNames.length ?? 1);
+  const gymnastCount = header
+    ? gymnastCountForCategory(header.category)
+    : 2;
   const { complete: completeIndividualSets } = countCompleteIndividualSets(
     routine,
     gymnastCount,

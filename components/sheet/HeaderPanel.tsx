@@ -2,6 +2,7 @@
 
 import { getMessages } from "@/lib/i18n";
 import { exerciseLabel } from "@/lib/tariff/exercise-display";
+import { gymnastSidebarRows } from "@/lib/tariff/gymnast-display";
 import type { StoredHeader } from "@/lib/tariff/types";
 
 function Row({ label, value }: { label: string; value?: string }) {
@@ -49,8 +50,9 @@ export function HeaderPanel({ header }: HeaderPanelProps) {
           label={t.sheetLabels.exercise}
           value={exerciseLabel(header.exercise, t.exercises)}
         />
-        <Row label={t.sheetLabels.top} value={header.topName} />
-        <Row label={t.sheetLabels.base} value={header.baseNames[0]} />
+        {gymnastSidebarRows(header, t.sheetLabels).map((row) => (
+          <Row key={row.role} label={row.role} value={row.name} />
+        ))}
         <Row label={t.sheetLabels.contactName} value={header.contactName} />
         <Row label={t.sheetLabels.contactPhone} value={header.contactPhone} />
       </dl>

@@ -30,11 +30,6 @@ type GymnastPickState = {
   entry?: CatalogEntry;
 };
 
-type IndividualPreview = {
-  gymnastKey: string;
-  entry: CatalogEntry;
-};
-
 export type ElementPickerSelection =
   | {
       kind: "single";
@@ -95,15 +90,30 @@ function ElementPickerPreview({
       {title ? (
         <p className="mb-3 text-xs font-semibold text-zinc-800">{title}</p>
       ) : null}
-      <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-        <div className="w-full max-w-[220px] shrink-0 rounded-lg border border-zinc-200 bg-white p-3">
-          <Image
-            src={catalogImageUrl(entry.image)}
-            alt={entry.coordinates}
-            width={200}
-            height={140}
-            className="h-32 w-full object-contain sm:h-36"
-          />
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+        <div className="flex shrink-0 items-start gap-3">
+          <div className="w-full max-w-[220px] rounded-lg border border-zinc-200 bg-white p-3">
+            <Image
+              src={catalogImageUrl(entry.image)}
+              alt={entry.coordinates}
+              width={200}
+              height={140}
+              className="h-32 w-full object-contain sm:h-36"
+            />
+          </div>
+          {showRole && role != null && onRoleChange ? (
+            <label className="flex max-w-[9rem] cursor-pointer items-start gap-2 pt-1 text-sm text-zinc-800">
+              <input
+                type="checkbox"
+                checked={role === "optional"}
+                onChange={(e) =>
+                  onRoleChange(e.target.checked ? "optional" : "compulsory")
+                }
+                className="mt-0.5 size-4 shrink-0 rounded border-zinc-300"
+              />
+              <span className="leading-snug">{t.routine.escolarOptional}</span>
+            </label>
+          ) : null}
         </div>
         <dl className="min-w-0 flex-1 space-y-2 text-sm">
           <div>
@@ -136,19 +146,6 @@ function ElementPickerPreview({
           ) : null}
         </dl>
       </div>
-      {showRole && role != null && onRoleChange ? (
-        <label className="mt-4 flex flex-col gap-1 text-xs text-zinc-700">
-          <span>{t.routine.escolarRole}</span>
-          <select
-            value={role}
-            onChange={(e) => onRoleChange(e.target.value as PickerRole)}
-            className="rounded-md border border-zinc-300 bg-white px-2 py-2 text-sm"
-          >
-            <option value="compulsory">{t.routine.escolarCompulsory}</option>
-            <option value="optional">{t.routine.escolarOptional}</option>
-          </select>
-        </label>
-      ) : null}
       {duplicateError ? (
         <p className="mt-3 text-sm text-amber-700">{t.sheet.picker.duplicateElement}</p>
       ) : null}
@@ -207,7 +204,7 @@ function CatalogRowGrid({
               {rowDisabled ? " · —" : ""}
             </p>
             <ul
-              className={`flex flex-wrap gap-1.5 sm:gap-2 lg:flex-nowrap ${
+              className={`flex flex-nowrap gap-2.5 overflow-x-auto pb-1 sm:gap-3 ${
                 rowDisabled ? "pointer-events-none opacity-50" : ""
               }`}
               aria-disabled={rowDisabled}
@@ -215,13 +212,13 @@ function CatalogRowGrid({
               {rowEntries.map((entry) => (
                 <li
                   key={entry.id}
-                  className="w-[calc(33.333%-0.5rem)] min-w-[4.25rem] sm:w-[calc(20%-0.65rem)] lg:min-w-0 lg:flex-1"
+                  className="w-[8.5rem] shrink-0 sm:w-[9.5rem] md:w-[10.5rem]"
                 >
                   <button
                     type="button"
                     disabled={rowDisabled}
                     onClick={() => onSelect(entry)}
-                    className={`flex h-full w-full flex-col items-center rounded-lg border p-1.5 sm:p-2 ${
+                    className={`flex h-full w-full flex-col items-center rounded-lg border p-2.5 sm:p-3 ${
                       rowDisabled
                         ? "border-zinc-200 bg-zinc-100"
                         : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
@@ -230,14 +227,15 @@ function CatalogRowGrid({
                     <Image
                       src={catalogImageUrl(entry.image)}
                       alt={entry.coordinates}
-                      width={80}
-                      height={56}
-                      className="h-12 w-full object-contain sm:h-14"
+                      width={128}
+                      height={96}
+                      className="h-20 w-full object-contain sm:h-24 md:h-28"
+                      sizes="(max-width: 640px) 136px, 168px"
                     />
-                    <span className="mt-1 w-full truncate text-center text-[10px] font-medium sm:text-[11px]">
+                    <span className="mt-1.5 w-full truncate text-center text-[11px] font-medium sm:text-xs">
                       {entry.coordinates.replace(/^ROW-[IVX]+\s+/i, "")}
                     </span>
-                    <span className="text-[9px] text-zinc-600 sm:text-[10px]">
+                    <span className="text-[10px] text-zinc-600 sm:text-[11px]">
                       {formatSheetValue(entry.value)}
                     </span>
                   </button>
@@ -291,9 +289,6 @@ export function ElementPickerPanel({
   const [elementType, setElementType] = useState<PickerElementType>("balance");
   const [selectedRole, setSelectedRole] = useState<PickerRole>("optional");
   const [previewEntry, setPreviewEntry] = useState<CatalogEntry | null>(null);
-  const [individualPreview, setIndividualPreview] = useState<IndividualPreview | null>(
-    null,
-  );
   const [duplicateError, setDuplicateError] = useState(false);
 
   const gymnastKeys = gymnastKeysForHeader(header.baseNames.length);
@@ -344,43 +339,30 @@ export function ElementPickerPanel({
     onClose();
   }
 
-  function confirmIndividualPreview() {
-    if (!individualPreview) return;
-    const row = gymnastRows.find((g) => g.key === individualPreview.gymnastKey);
-    if (!row) return;
-    const type =
-      individualByGymnast[individualPreview.gymnastKey]?.type ?? "EQ";
-    const nextState = {
-      ...individualByGymnast,
-      [individualPreview.gymnastKey]: {
-        type,
-        entry: individualPreview.entry,
-      },
-    };
-    setIndividualByGymnast(nextState);
-    setIndividualPreview(null);
-    setDuplicateError(false);
+  const allIndividualsPicked = gymnastRows.every(
+    (g) => individualByGymnast[g.key]?.entry != null,
+  );
 
-    const allPicked = gymnastRows.every((g) => nextState[g.key]?.entry != null);
-    if (allPicked) {
-      const picks = gymnastRows.map((g) => ({
-        gymnastRole: g.role,
-        baseIndex: g.baseIndex,
-        entry: nextState[g.key]!.entry!,
-      }));
-      const ok = onSave({ kind: "individual", picks });
-      if (!ok) {
-        setDuplicateError(true);
-        return;
-      }
-      onClose();
+  function saveAllIndividuals() {
+    if (!allIndividualsPicked) return;
+    const picks = gymnastRows.map((g) => ({
+      gymnastRole: g.role,
+      baseIndex: g.baseIndex,
+      entry: individualByGymnast[g.key]!.entry!,
+    }));
+    const ok = onSave({ kind: "individual", picks });
+    if (!ok) {
+      setDuplicateError(true);
+      return;
     }
+    setDuplicateError(false);
+    onClose();
   }
 
   const isPopover = variant === "popover";
   const shellClass = isPopover
-    ? "flex w-full max-w-5xl flex-col rounded-xl border border-zinc-300 bg-white shadow-lg"
-    : "flex w-full max-w-5xl shrink-0 flex-col rounded-lg border border-zinc-200 bg-white shadow-sm";
+    ? "flex w-full min-w-0 max-w-5xl flex-col rounded-xl border border-zinc-300 bg-white shadow-lg"
+    : "flex w-full min-w-0 max-w-5xl shrink-0 flex-col rounded-lg border border-zinc-200 bg-white shadow-sm";
 
   const currentEntries =
     elementType === "balance"
@@ -417,7 +399,6 @@ export function ElementPickerPanel({
                 setElementType(type);
                 setDuplicateError(false);
                 setPreviewEntry(null);
-                setIndividualPreview(null);
               }}
               className={`rounded-lg border px-3 py-2 text-left text-sm ${
                 elementType === type
@@ -455,33 +436,18 @@ export function ElementPickerPanel({
                 duplicateError={duplicateError}
                 t={t}
               />
+            ) : currentEntries.length === 0 ? (
+              <p className="text-sm text-amber-700">{t.sheet.catalogEmpty}</p>
             ) : (
-              <>
-                <label className="flex flex-col gap-1 text-xs text-zinc-700">
-                  <span>{t.routine.escolarRole}</span>
-                  <select
-                    value={selectedRole}
-                    onChange={(e) => setSelectedRole(e.target.value as PickerRole)}
-                    className="rounded-md border border-zinc-300 bg-white px-2 py-2 text-sm"
-                  >
-                    <option value="compulsory">{t.routine.escolarCompulsory}</option>
-                    <option value="optional">{t.routine.escolarOptional}</option>
-                  </select>
-                </label>
-                {currentEntries.length === 0 ? (
-                  <p className="text-sm text-amber-700">{t.sheet.catalogEmpty}</p>
-                ) : (
-                  <CatalogRowGrid
-                    entries={currentEntries}
-                    disabledRowKeys={usedRowKeys}
-                    rowDisabledHint={t.sheet.picker.rowAlreadyUsed}
-                    onSelect={(entry) => {
-                      setPreviewEntry(entry);
-                      setDuplicateError(false);
-                    }}
-                  />
-                )}
-              </>
+              <CatalogRowGrid
+                entries={currentEntries}
+                disabledRowKeys={usedRowKeys}
+                rowDisabledHint={t.sheet.picker.rowAlreadyUsed}
+                onSelect={(entry) => {
+                  setPreviewEntry(entry);
+                  setDuplicateError(false);
+                }}
+              />
             )
           ) : (
             <>
@@ -496,98 +462,99 @@ export function ElementPickerPanel({
                     state.type,
                   ).filter((entry) => !isCatalogIdUsedInRoutine(routine, entry.id));
                   const rowTitle = gymnastRowTitle(row, t);
-                  const showingPreview =
-                    individualPreview?.gymnastKey === row.key && individualPreview != null;
 
                   return (
                     <div
                       key={row.key}
-                      className="rounded-lg border border-zinc-200 p-2.5"
+                      className="min-w-0 rounded-lg border border-zinc-200 p-2.5"
                     >
-                      {showingPreview ? (
-                        <ElementPickerPreview
-                          entry={individualPreview.entry}
-                          title={rowTitle}
-                          onBack={() => {
-                            setIndividualPreview(null);
-                            setDuplicateError(false);
-                          }}
-                          onSave={confirmIndividualPreview}
-                          duplicateError={duplicateError}
-                          t={t}
-                        />
-                      ) : (
-                        <>
-                          <p className="mb-2 text-xs font-semibold text-zinc-800">
-                            {rowTitle}
-                            {state.entry ? (
-                              <span className="ml-1 font-normal text-emerald-700">
-                                · {state.entry.coordinates}
-                              </span>
-                            ) : null}
-                          </p>
-                          <label className="mb-2 flex flex-col gap-1 text-xs text-zinc-700">
-                            <span>{t.routine.escolarIndividualFamily}</span>
-                            <select
-                              value={state.type}
-                              onChange={(e) =>
+                      <p className="mb-2 text-xs font-semibold text-zinc-800">
+                        {rowTitle}
+                        {state.entry ? (
+                          <span className="ml-1 font-normal text-emerald-700">
+                            · {state.entry.coordinates}
+                          </span>
+                        ) : null}
+                      </p>
+                      <label className="mb-2 flex flex-col gap-1 text-xs text-zinc-700">
+                        <span>{t.routine.escolarIndividualFamily}</span>
+                        <select
+                          value={state.type}
+                          onChange={(e) =>
+                            setIndividualByGymnast((prev) => ({
+                              ...prev,
+                              [row.key]: {
+                                type: e.target.value as ElementType,
+                                entry: undefined,
+                              },
+                            }))
+                          }
+                          className="rounded-md border border-zinc-300 bg-white px-2 py-2 text-sm"
+                        >
+                          {INDIVIDUAL_TYPES.map((type) => (
+                            <option key={type} value={type}>
+                              {individualTypeLabel(type, t)}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      <ul
+                        className="grid w-full min-w-0 gap-0.5 sm:gap-1"
+                        style={{
+                          gridTemplateColumns: `repeat(${Math.max(individualEntries.length, 1)}, minmax(0, 1fr))`,
+                        }}
+                      >
+                        {individualEntries.map((entry) => (
+                          <li key={`${row.key}-${entry.id}`} className="min-w-0">
+                            <button
+                              type="button"
+                              onClick={() => {
                                 setIndividualByGymnast((prev) => ({
                                   ...prev,
                                   [row.key]: {
-                                    type: e.target.value as ElementType,
-                                    entry: undefined,
+                                    type: state.type,
+                                    entry,
                                   },
-                                }))
-                              }
-                              className="rounded-md border border-zinc-300 bg-white px-2 py-2 text-sm"
+                                }));
+                                setDuplicateError(false);
+                              }}
+                              className={`flex h-full w-full min-w-0 flex-col items-center rounded-lg border p-0.5 sm:p-1.5 ${
+                                state.entry?.id === entry.id
+                                  ? "border-zinc-900 bg-zinc-100"
+                                  : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+                              }`}
                             >
-                              {INDIVIDUAL_TYPES.map((type) => (
-                                <option key={type} value={type}>
-                                  {individualTypeLabel(type, t)}
-                                </option>
-                              ))}
-                            </select>
-                          </label>
-                          <ul className="flex flex-wrap gap-1.5 sm:gap-2 lg:flex-nowrap">
-                            {individualEntries.map((entry) => (
-                              <li
-                                key={`${row.key}-${entry.id}`}
-                                className="w-[calc(50%-0.375rem)] min-w-[4.25rem] sm:w-[calc(33.333%-0.55rem)] lg:min-w-0 lg:flex-1"
-                              >
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setIndividualPreview({
-                                      gymnastKey: row.key,
-                                      entry,
-                                    });
-                                    setDuplicateError(false);
-                                  }}
-                                  className={`flex h-full w-full flex-col items-center rounded-lg border p-1.5 sm:p-2 ${
-                                    state.entry?.id === entry.id
-                                      ? "border-zinc-900 bg-zinc-100"
-                                      : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
-                                  }`}
-                                >
-                                  <Image
-                                    src={catalogImageUrl(entry.image)}
-                                    alt={entry.coordinates}
-                                    width={80}
-                                    height={56}
-                                    className="h-12 w-full object-contain sm:h-14"
-                                  />
-                                  <span className="mt-1 w-full truncate text-center text-[10px] font-medium sm:text-[11px]">
-                                    {entry.coordinates}
-                                  </span>
-                                </button>
-                              </li>
-                            ))}
-                          </ul>
-                        </>
-                      )}
+                              <Image
+                                src={catalogImageUrl(entry.image)}
+                                alt={entry.coordinates}
+                                width={80}
+                                height={56}
+                                className="h-8 w-full object-contain sm:h-12"
+                                sizes="(max-width: 640px) 20vw, 80px"
+                              />
+                              <span className="mt-0.5 w-full truncate text-center text-[8px] font-medium leading-tight sm:text-[10px]">
+                                {entry.coordinates}
+                              </span>
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   );
                 })}
+              </div>
+              {duplicateError ? (
+                <p className="text-sm text-amber-700">{t.sheet.picker.duplicateElement}</p>
+              ) : null}
+              <div className="border-t border-zinc-200 pt-3">
+                <button
+                  type="button"
+                  disabled={!allIndividualsPicked}
+                  onClick={saveAllIndividuals}
+                  className="h-10 rounded-full bg-zinc-900 px-5 text-sm font-medium text-white enabled:hover:bg-zinc-700 disabled:opacity-40"
+                >
+                  {t.sheet.picker.save}
+                </button>
               </div>
             </>
           )}

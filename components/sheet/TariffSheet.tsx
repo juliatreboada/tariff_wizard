@@ -19,7 +19,11 @@ import {
 } from "@/lib/tariff/element-display";
 import { isEscolarRuleset } from "@/lib/tariff/rules-escolar";
 import { exerciseLabel } from "@/lib/tariff/exercise-display";
-import { usesDvOver100ForDScore } from "@/lib/tariff/level-category";
+import { gymnastSidebarRows } from "@/lib/tariff/gymnast-display";
+import {
+  categoryDisplayLabel,
+  usesDvOver100ForDScore,
+} from "@/lib/tariff/level-category";
 import {
   OFFICIAL_ROW_LABELS,
   OFFICIAL_VALUE_SUBCOLS,
@@ -143,14 +147,14 @@ function TariffSidebar({
   exerciseDisplay: string;
   escolar: boolean;
 }) {
+  const t = getMessages();
   const dv = valueBreakdown.total;
   const dScore = usesDvOver100ForDScore(header.levelSystem, header.levelAge)
     ? dv / 100
     : dv;
-  const gymnastRows = [
-    { role: "TOP", name: header.topName },
-    { role: "BASE", name: header.baseNames[0] },
-  ];
+  const gymnastRows = gymnastSidebarRows(header, t.sheetLabels, {
+    numberedBases: false,
+  });
 
   return (
     <aside className="official-ts-sidebar">
@@ -163,8 +167,11 @@ function TariffSidebar({
 
       <div className="official-sidebar-box">
         <div className="official-sidebar-box-title">GYMNASTS</div>
-        {gymnastRows.map((row) => (
-          <div key={row.role} className="official-sidebar-gymnast-row">
+        {gymnastRows.map((row, index) => (
+          <div
+            key={`gymnast-${index}-${row.name}`}
+            className="official-sidebar-gymnast-row"
+          >
             <span className="official-sidebar-gymnast-role">{row.role}</span>
             <span className="official-sidebar-gymnast-name">{row.name}</span>
           </div>
@@ -194,7 +201,7 @@ function TariffSidebar({
       />
       <SidebarBox
         title="CATEGORY"
-        value={header.categoryCode ?? header.category}
+        value={categoryDisplayLabel(header)}
       />
       <SidebarBox title="EXERCISE" value={exerciseDisplay} />
 
