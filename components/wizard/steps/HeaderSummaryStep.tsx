@@ -18,6 +18,36 @@ function Row({ label, value }: { label: string; value?: string }) {
   );
 }
 
+function ClubRow({
+  label,
+  name,
+  logo,
+}: {
+  label: string;
+  name?: string;
+  logo?: string;
+}) {
+  if (!name) return null;
+  return (
+    <div className="flex flex-col gap-1 border-b border-zinc-200 py-3 last:border-0">
+      <dt className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+        {label}
+      </dt>
+      <dd className="flex items-center gap-2 text-sm font-medium text-zinc-900">
+        {logo ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={logo}
+            alt={`${name} logo`}
+            className="h-10 w-10 rounded-sm object-contain"
+          />
+        ) : null}
+        <span>{name}</span>
+      </dd>
+    </div>
+  );
+}
+
 function SummarySection({
   title,
   children,
@@ -63,7 +93,11 @@ export function HeaderSummaryStep() {
             label={t.sheetLabels.participationNumber}
             value={header.participationNumber}
           />
-          <Row label={t.sheetLabels.club} value={header.clubName} />
+          <ClubRow
+            label={t.sheetLabels.club}
+            name={header.clubName}
+            logo={header.clubLogo}
+          />
           <Row label={t.sheetLabels.country} value={header.country} />
         </SummarySection>
 

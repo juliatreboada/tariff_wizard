@@ -356,6 +356,19 @@
   word-break: break-word;
 }
 
+.official-sidebar-club-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1mm;
+}
+
+.official-sidebar-club-logo {
+  width: 8mm;
+  height: 8mm;
+  object-fit: contain;
+}
+
 .official-sidebar-gymnast-row {
   display: grid;
   grid-template-columns: 28% 72%;

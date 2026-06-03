@@ -4,6 +4,7 @@ import type { CategoryCode, Exercise, LevelSystem } from "./enums";
 export type StoredHeader = {
   country?: string;
   clubName: string;
+  clubLogo?: string;
   participationNumber?: string;
   competition: string;
   levelSystem: LevelSystem;

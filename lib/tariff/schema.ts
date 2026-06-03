@@ -17,6 +17,11 @@ export const competitionStepSchema = z
       .transform((s) => s.trim())
       .transform((s) => (s === "" ? undefined : s))
       .optional(),
+    clubLogo: z
+      .string()
+      .transform((s) => s.trim())
+      .transform((s) => (s === "" ? undefined : s))
+      .optional(),
     clubName: requiredName,
     participationNumber: z
       .string()
@@ -75,6 +80,7 @@ export type CompetitionStepFormValues = z.input<typeof competitionStepSchema>;
 export function emptyCompetitionStep(): CompetitionStepFormValues {
   return {
     country: "",
+    clubLogo: "",
     clubName: "",
     participationNumber: "",
     competition: "",

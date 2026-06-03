@@ -7,14 +7,16 @@ import {
   filterCatalogEntries,
   getCatalogEntries,
   groupCatalogEntriesByRow,
+  parseRowColumnFromCoordinates,
   type CatalogEntry,
   type ElementFamily,
   type ElementType,
 } from "@/lib/tariff/catalog";
 import { getMessages } from "@/lib/i18n";
 import { isCatalogIdUsedInRoutine } from "@/lib/tariff/element-uniqueness";
+import { gymnastCountForCategory } from "@/lib/tariff/level-category";
 import { rowKeysUsedInRoutine } from "@/lib/tariff/row-uniqueness";
-import { gymnastKeysForHeader } from "@/lib/tariff/routine-groups";
+import { countCompleteIndividualSets, gymnastKeysForHeader } from "@/lib/tariff/routine-groups";
 import type { RoutineGymnastRole } from "@/lib/tariff/routine-types";
 import type { StoredHeader } from "@/lib/tariff/types";
 import { useWizardStore } from "@/lib/tariff/store";
@@ -24,6 +26,8 @@ type PickerElementType = "balance" | "dynamic" | "individual";
 type PickerRole = "compulsory" | "optional";
 
 const INDIVIDUAL_TYPES: ElementType[] = ["EQ", "FLEX", "AG", "TUM"];
+const MAX_ESCOLAR_INDIVIDUAL_SETS = 3;
+const MAX_ESCOLAR_PER_BLOCK = 2;
 
 type GymnastPickState = {
   type: ElementType;
@@ -51,6 +55,8 @@ type ElementPickerPanelProps = {
   onClose: () => void;
   onSave: (selection: ElementPickerSelection) => boolean;
   variant?: "panel" | "popover";
+  editItemId?: string;
+  editBlock?: "balance" | "dynamic";
 };
 
 function entriesForFamily(
@@ -68,9 +74,6 @@ function ElementPickerPreview({
   onBack,
   onSave,
   saveDisabled,
-  role,
-  onRoleChange,
-  showRole,
   duplicateError,
   t,
 }: {
@@ -79,9 +82,6 @@ function ElementPickerPreview({
   onBack: () => void;
   onSave: () => void;
   saveDisabled?: boolean;
-  role?: PickerRole;
-  onRoleChange?: (role: PickerRole) => void;
-  showRole?: boolean;
   duplicateError?: boolean;
   t: ReturnType<typeof getMessages>;
 }) {
@@ -101,19 +101,6 @@ function ElementPickerPreview({
               className="h-32 w-full object-contain sm:h-36"
             />
           </div>
-          {showRole && role != null && onRoleChange ? (
-            <label className="flex max-w-[9rem] cursor-pointer items-start gap-2 pt-1 text-sm text-zinc-800">
-              <input
-                type="checkbox"
-                checked={role === "optional"}
-                onChange={(e) =>
-                  onRoleChange(e.target.checked ? "optional" : "compulsory")
-                }
-                className="mt-0.5 size-4 shrink-0 rounded border-zinc-300"
-              />
-              <span className="leading-snug">{t.routine.escolarOptional}</span>
-            </label>
-          ) : null}
         </div>
         <dl className="min-w-0 flex-1 space-y-2 text-sm">
           <div>
@@ -175,11 +162,17 @@ function CatalogRowGrid({
   disabledRowKeys,
   rowDisabledHint,
   onSelect,
+  selectedCatalogId,
+  selectedByRowKey,
+  selectedHint,
 }: {
   entries: CatalogEntry[];
   disabledRowKeys: Set<string>;
   rowDisabledHint: string;
   onSelect: (entry: CatalogEntry) => void;
+  selectedCatalogId?: string;
+  selectedByRowKey?: Map<string, string>;
+  selectedHint?: string;
 }) {
   const rows = useMemo(() => groupCatalogEntriesByRow(entries), [entries]);
 
@@ -204,42 +197,57 @@ function CatalogRowGrid({
               {rowDisabled ? " · —" : ""}
             </p>
             <ul
-              className={`flex flex-nowrap gap-2.5 overflow-x-auto pb-1 sm:gap-3 ${
+              className={`flex flex-nowrap gap-2 overflow-x-auto pb-0.5 sm:gap-2.5 ${
                 rowDisabled ? "pointer-events-none opacity-50" : ""
               }`}
               aria-disabled={rowDisabled}
             >
               {rowEntries.map((entry) => (
+                (() => {
+                  const rowKey = parseRowColumnFromCoordinates(entry.coordinates)?.rowKey;
+                  const selectedInRow =
+                    rowKey != null ? selectedByRowKey?.get(rowKey) : undefined;
+                  const isSelected =
+                    selectedCatalogId === entry.id || selectedInRow === entry.id;
+                  return (
                 <li
                   key={entry.id}
-                  className="w-[8.5rem] shrink-0 sm:w-[9.5rem] md:w-[10.5rem]"
+                  className="w-[5.75rem] shrink-0 sm:w-[6.5rem] lg:min-w-0 lg:flex-1"
                 >
                   <button
                     type="button"
                     disabled={rowDisabled}
                     onClick={() => onSelect(entry)}
-                    className={`flex h-full w-full flex-col items-center rounded-lg border p-2.5 sm:p-3 ${
-                      rowDisabled
-                        ? "border-zinc-200 bg-zinc-100"
+                    className={`flex h-full w-full flex-col items-center rounded-lg border p-2 sm:p-2.5 ${
+                      isSelected
+                          ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
+                        : rowDisabled
+                          ? "border-zinc-200 bg-zinc-100"
                         : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
                     }`}
                   >
                     <Image
                       src={catalogImageUrl(entry.image)}
                       alt={entry.coordinates}
-                      width={128}
-                      height={96}
-                      className="h-20 w-full object-contain sm:h-24 md:h-28"
-                      sizes="(max-width: 640px) 136px, 168px"
+                      width={96}
+                      height={68}
+                      className="h-14 w-full object-contain sm:h-16"
                     />
-                    <span className="mt-1.5 w-full truncate text-center text-[11px] font-medium sm:text-xs">
+                    <span className="mt-1 w-full truncate text-center text-[10px] font-medium sm:text-[11px]">
                       {entry.coordinates.replace(/^ROW-[IVX]+\s+/i, "")}
                     </span>
-                    <span className="text-[10px] text-zinc-600 sm:text-[11px]">
+                    <span className="text-[9px] text-zinc-600 sm:text-[10px]">
                       {formatSheetValue(entry.value)}
                     </span>
+                    {isSelected ? (
+                      <span className="mt-0.5 text-[9px] font-medium text-zinc-800">
+                        ✓ {selectedHint}
+                      </span>
+                    ) : null}
                   </button>
                 </li>
+                  );
+                })()
               ))}
             </ul>
           </div>
@@ -281,15 +289,22 @@ export function ElementPickerPanel({
   onClose,
   onSave,
   variant = "panel",
+  editItemId,
+  editBlock,
 }: ElementPickerPanelProps) {
   const t = getMessages();
   const allEntries = getCatalogEntries();
   const routine = useWizardStore((s) => s.routine);
 
-  const [elementType, setElementType] = useState<PickerElementType>("balance");
-  const [selectedRole, setSelectedRole] = useState<PickerRole>("optional");
+  const editMode = editItemId != null && editBlock != null;
+  const [elementType, setElementType] = useState<PickerElementType>(
+    editBlock ?? "balance",
+  );
   const [previewEntry, setPreviewEntry] = useState<CatalogEntry | null>(null);
   const [duplicateError, setDuplicateError] = useState(false);
+  const [limitError, setLimitError] = useState<"roleBlock" | "individuals" | null>(
+    null,
+  );
 
   const gymnastKeys = gymnastKeysForHeader(header.baseNames.length);
   const gymnastRows = gymnastKeys.map((g) => ({
@@ -311,30 +326,79 @@ export function ElementPickerPanel({
   const [individualByGymnast, setIndividualByGymnast] =
     useState<Record<string, GymnastPickState>>(initialIndividualState);
 
+  const editingItem = useMemo(
+    () => routine.find((item) => item.id === editItemId),
+    [routine, editItemId],
+  );
+  const routineExcludingEditing = useMemo(
+    () => routine.filter((item) => item.id !== editItemId),
+    [routine, editItemId],
+  );
   const usedRowKeys = useMemo(() => {
     if (elementType === "individual") return new Set<string>();
-    return rowKeysUsedInRoutine(routine, elementType);
-  }, [routine, elementType]);
+    return rowKeysUsedInRoutine(routineExcludingEditing, elementType);
+  }, [routineExcludingEditing, elementType]);
+  const compulsoryBalanceCount = useMemo(
+    () =>
+      routineExcludingEditing.filter(
+        (item) => item.block === "balance" && item.role === "compulsory",
+      ).length,
+    [routineExcludingEditing],
+  );
+  const optionalBalanceCount = useMemo(
+    () =>
+      routineExcludingEditing.filter(
+        (item) => item.block === "balance" && item.role === "optional",
+      ).length,
+    [routineExcludingEditing],
+  );
+  const compulsoryDynamicCount = useMemo(
+    () =>
+      routineExcludingEditing.filter(
+        (item) => item.block === "dynamic" && item.role === "compulsory",
+      ).length,
+    [routineExcludingEditing],
+  );
+  const optionalDynamicCount = useMemo(
+    () =>
+      routineExcludingEditing.filter(
+        (item) => item.block === "dynamic" && item.role === "optional",
+      ).length,
+    [routineExcludingEditing],
+  );
+  const balanceTotalCount = compulsoryBalanceCount + optionalBalanceCount;
+  const dynamicTotalCount = compulsoryDynamicCount + optionalDynamicCount;
+  const balanceBlockFull = balanceTotalCount >= MAX_ESCOLAR_PER_BLOCK;
+  const dynamicBlockFull = dynamicTotalCount >= MAX_ESCOLAR_PER_BLOCK;
+  const individualGroupCount = useMemo(() => {
+    const gymnastCount = gymnastCountForCategory(header.category);
+    return countCompleteIndividualSets(routineExcludingEditing, gymnastCount).totalGroups;
+  }, [routineExcludingEditing, header.category]);
 
-  const balanceEntries = entriesForFamily(allEntries, header, "balance").filter(
-    (entry) => !isCatalogIdUsedInRoutine(routine, entry.id),
-  );
-  const dynamicEntries = entriesForFamily(allEntries, header, "dynamic").filter(
-    (entry) => !isCatalogIdUsedInRoutine(routine, entry.id),
-  );
+  const balanceEntries = entriesForFamily(allEntries, header, "balance");
+  const dynamicEntries = entriesForFamily(allEntries, header, "dynamic");
+
+  const currentBlockIsFull =
+    elementType === "balance"
+      ? balanceBlockFull
+      : elementType === "dynamic"
+        ? dynamicBlockFull
+        : false;
 
   function saveSingle(block: "balance" | "dynamic", entry: CatalogEntry) {
     const ok = onSave({
       kind: "single",
       entry,
       block,
-      role: selectedRole,
+      role: "compulsory",
     });
     if (!ok) {
       setDuplicateError(true);
+      setLimitError(null);
       return;
     }
     setDuplicateError(false);
+    setLimitError(null);
     setPreviewEntry(null);
     onClose();
   }
@@ -345,6 +409,11 @@ export function ElementPickerPanel({
 
   function saveAllIndividuals() {
     if (!allIndividualsPicked) return;
+    if (individualGroupCount >= MAX_ESCOLAR_INDIVIDUAL_SETS) {
+      setLimitError("individuals");
+      setDuplicateError(false);
+      return;
+    }
     const picks = gymnastRows.map((g) => ({
       gymnastRole: g.role,
       baseIndex: g.baseIndex,
@@ -353,9 +422,11 @@ export function ElementPickerPanel({
     const ok = onSave({ kind: "individual", picks });
     if (!ok) {
       setDuplicateError(true);
+      setLimitError(null);
       return;
     }
     setDuplicateError(false);
+    setLimitError(null);
     onClose();
   }
 
@@ -370,7 +441,20 @@ export function ElementPickerPanel({
       : elementType === "dynamic"
         ? dynamicEntries
         : [];
-
+  const selectedByRowKey = useMemo(() => {
+    if (elementType !== "balance" && elementType !== "dynamic") {
+      return new Map<string, string>();
+    }
+    const map = new Map<string, string>();
+    for (const item of routine) {
+      if (item.block !== elementType) continue;
+      const rowKey = parseRowColumnFromCoordinates(item.element.coordinates)?.rowKey;
+      if (rowKey) {
+        map.set(rowKey, item.element.catalogId);
+      }
+    }
+    return map;
+  }, [routine, elementType]);
   return (
     <aside className={shellClass} aria-label={t.routine.addElement}>
       <header
@@ -396,14 +480,26 @@ export function ElementPickerPanel({
               key={type}
               type="button"
               onClick={() => {
+                if (editMode && type !== editBlock) return;
+                if ((type === "balance" && balanceBlockFull) || (type === "dynamic" && dynamicBlockFull)) {
+                  return;
+                }
                 setElementType(type);
                 setDuplicateError(false);
+                setLimitError(null);
                 setPreviewEntry(null);
               }}
+              disabled={
+                (editMode && type !== editBlock) ||
+                (type === "balance" && balanceBlockFull) ||
+                (type === "dynamic" && dynamicBlockFull)
+              }
               className={`rounded-lg border px-3 py-2 text-left text-sm ${
                 elementType === type
                   ? "border-zinc-900 bg-zinc-900 text-white"
-                  : "border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50"
+                  : (type === "balance" && balanceBlockFull) || (type === "dynamic" && dynamicBlockFull)
+                    ? "cursor-not-allowed border-zinc-200 bg-zinc-100 text-zinc-400"
+                    : "border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50"
               }`}
             >
               {type === "balance"
@@ -417,25 +513,31 @@ export function ElementPickerPanel({
 
         <div className="flex min-w-0 flex-col gap-3">
           {elementType !== "individual" ? (
+            currentBlockIsFull ? (
+              <p className="text-sm text-amber-700">{t.sheet.picker.limitRoleBlock}</p>
+            ) :
             previewEntry ? (
-              <ElementPickerPreview
-                entry={previewEntry}
-                onBack={() => {
-                  setPreviewEntry(null);
-                  setDuplicateError(false);
-                }}
-                onSave={() =>
-                  saveSingle(
-                    elementType === "balance" ? "balance" : "dynamic",
-                    previewEntry,
-                  )
-                }
-                role={selectedRole}
-                onRoleChange={setSelectedRole}
-                showRole
-                duplicateError={duplicateError}
-                t={t}
-              />
+              <>
+                <ElementPickerPreview
+                  entry={previewEntry}
+                  onBack={() => {
+                    setPreviewEntry(null);
+                    setDuplicateError(false);
+                    setLimitError(null);
+                  }}
+                  onSave={() =>
+                    saveSingle(
+                      elementType === "balance" ? "balance" : "dynamic",
+                      previewEntry,
+                    )
+                  }
+                  duplicateError={duplicateError}
+                  t={t}
+                />
+                {limitError === "roleBlock" ? (
+                  <p className="text-sm text-amber-700">{t.sheet.picker.limitRoleBlock}</p>
+                ) : null}
+              </>
             ) : currentEntries.length === 0 ? (
               <p className="text-sm text-amber-700">{t.sheet.catalogEmpty}</p>
             ) : (
@@ -443,9 +545,13 @@ export function ElementPickerPanel({
                 entries={currentEntries}
                 disabledRowKeys={usedRowKeys}
                 rowDisabledHint={t.sheet.picker.rowAlreadyUsed}
+                selectedCatalogId={editingItem?.element.catalogId}
+                selectedByRowKey={selectedByRowKey}
+                selectedHint={t.routine.escolarDone}
                 onSelect={(entry) => {
                   setPreviewEntry(entry);
                   setDuplicateError(false);
+                  setLimitError(null);
                 }}
               />
             )
@@ -517,6 +623,7 @@ export function ElementPickerPanel({
                                   },
                                 }));
                                 setDuplicateError(false);
+                                setLimitError(null);
                               }}
                               className={`flex h-full w-full min-w-0 flex-col items-center rounded-lg border p-0.5 sm:p-1.5 ${
                                 state.entry?.id === entry.id
@@ -546,10 +653,16 @@ export function ElementPickerPanel({
               {duplicateError ? (
                 <p className="text-sm text-amber-700">{t.sheet.picker.duplicateElement}</p>
               ) : null}
+              {limitError === "individuals" ? (
+                <p className="text-sm text-amber-700">{t.sheet.picker.limitIndividuals}</p>
+              ) : null}
               <div className="border-t border-zinc-200 pt-3">
                 <button
                   type="button"
-                  disabled={!allIndividualsPicked}
+                  disabled={
+                    !allIndividualsPicked ||
+                    individualGroupCount >= MAX_ESCOLAR_INDIVIDUAL_SETS
+                  }
                   onClick={saveAllIndividuals}
                   className="h-10 rounded-full bg-zinc-900 px-5 text-sm font-medium text-white enabled:hover:bg-zinc-700 disabled:opacity-40"
                 >

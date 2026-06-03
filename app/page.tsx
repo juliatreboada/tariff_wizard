@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { ClubLogoUpload } from "@/components/ClubLogoUpload";
 import { getMessages } from "@/lib/i18n";
 import { exerciseLabel } from "@/lib/tariff/exercise-display";
 import { categoryDisplayLabel } from "@/lib/tariff/level-category";
+import type { DefaultProfile } from "@/lib/tariff/store";
 import { useWizardStore } from "@/lib/tariff/store";
 import { useStoreHydrated } from "@/lib/tariff/use-store-hydrated";
 
@@ -19,24 +22,17 @@ export default function Home() {
   const deleteSavedSheet = useWizardStore((s) => s.deleteSavedSheet);
   const saveProgressAndStartNew = useWizardStore((s) => s.saveProgressAndStartNew);
   const reset = useWizardStore((s) => s.reset);
+  const defaultProfile = useWizardStore((s) => s.defaultProfile);
+  const setDefaultProfile = useWizardStore((s) => s.setDefaultProfile);
+  const [defaultsDraft, setDefaultsDraft] = useState<DefaultProfile>(defaultProfile);
 
   const hasHeader = Boolean(header);
-  const hasRoutine = routineCount > 0;
   const resumeHref = hasHeader ? "/sheet" : "/wizard";
   const resumeLabel = hasHeader ? t.home.continueRoutine : t.home.continueWizard;
-  const statusText = hasHeader
-    ? t.home.statusReady(routineCount)
-    : t.home.statusMissingHeader;
-  const levelText =
-    header != null
-      ? `${header.levelAge} ${header.levelSystem}`
-      : t.home.statusNoData;
-  const categoryText =
-    header != null ? categoryDisplayLabel(header) : t.home.statusNoData;
-  const gymnastsText =
-    header != null
-      ? [header.topName, ...header.baseNames].filter(Boolean).join(" · ")
-      : t.home.statusNoData;
+
+  useEffect(() => {
+    setDefaultsDraft(defaultProfile);
+  }, [defaultProfile]);
 
   function formatShortDate(iso: string): string {
     return new Date(iso).toLocaleString("es-ES", {
@@ -62,18 +58,22 @@ export default function Home() {
     router.push("/wizard");
   }
 
+  function saveDefaults() {
+    setDefaultProfile(defaultsDraft);
+  }
+
   return (
     <div className="app-page">
       <div className="app-shell app-shell-wide px-4 sm:px-6 lg:px-10">
-      <main className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-        <section className="app-card border-indigo-200 p-6 sm:p-8">
+      <main className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
+        <section className="app-card h-full border-indigo-200 p-6 sm:p-8">
           <span className="inline-flex rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-800">
             {t.home.badge}
           </span>
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
+          <h1 className="mt-4 max-w-xl text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
             {t.home.title}
           </h1>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-zinc-800 sm:text-lg">
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-800 sm:text-base">
             {t.home.subtitle}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -93,62 +93,102 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="app-card border-indigo-200 p-6">
+        <section className="app-card h-full border-indigo-200 p-6">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-800">
-            {t.home.statusTitle}: {gymnastsText}
+            {t.home.processTitle}
           </h2>
-          <p className="mt-2 text-sm text-zinc-800">{statusText}</p>
-          
-
-          <dl className="mt-4 grid grid-cols-2 gap-3 text-sm">
-            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3">
-              <dt className="text-xs font-medium uppercase tracking-wide text-zinc-600">
-                LEVEL
-              </dt>
-              <dd className="mt-1 text-zinc-900">{levelText}</dd>
+          <div className="mt-3 grid gap-3">
+            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-sm text-zinc-700">
+              {t.home.process1}
             </div>
-            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3">
-              <dt className="text-xs font-medium uppercase tracking-wide text-zinc-600">
-                CATEGORY
-              </dt>
-              <dd className="mt-1 text-zinc-900">{categoryText}</dd>
+            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-sm text-zinc-700">
+              {t.home.process2}
             </div>
-          </dl>
-
-          <div className="mt-5 flex flex-col gap-2">
-            <Link
-              href={resumeHref}
-              className="inline-flex h-10 items-center justify-center rounded-full border border-zinc-300 px-4 text-sm font-medium text-zinc-800 hover:bg-zinc-50"
-            >
-              {resumeLabel}
-            </Link>
-            {hydrated && hasHeader && hasRoutine ? (
-              <Link
-                href="/sheet/view"
-                className="inline-flex h-10 items-center justify-center rounded-full border border-zinc-300 px-4 text-sm font-medium text-zinc-800 hover:bg-zinc-50"
-              >
-                {t.home.viewTs}
-              </Link>
-            ) : null}
+            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-sm text-zinc-700">
+              {t.home.process3}
+            </div>
           </div>
         </section>
       </main>
-
+      
       <section className="app-card mt-6 border-zinc-200 p-6">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-800">
-          {t.home.processTitle}
+          {t.home.defaultsTitle}
         </h2>
-        <div className="mt-3 grid gap-3 md:grid-cols-3">
-          <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-sm text-zinc-700">
-            {t.home.process1}
-          </div>
-          <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-sm text-zinc-700">
-            {t.home.process2}
-          </div>
-          <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-sm text-zinc-700">
-            {t.home.process3}
-          </div>
+        <p className="mt-2 text-sm text-zinc-700">{t.home.defaultsHint}</p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
+            <span>{t.sheetLabels.club}</span>
+            <input
+              value={defaultsDraft.clubName}
+              onChange={(e) =>
+                setDefaultsDraft((prev) => ({ ...prev, clubName: e.target.value }))
+              }
+              className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm"
+            />
+          </label>
+          <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
+            <span>{t.sheetLabels.clubLogo}</span>
+            <ClubLogoUpload
+              value={defaultsDraft.clubLogo}
+              onChange={(clubLogo) =>
+                setDefaultsDraft((prev) => ({ ...prev, clubLogo }))
+              }
+            />
+          </label>
+          <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
+            <span>{t.sheetLabels.competition}</span>
+            <input
+              value={defaultsDraft.competition}
+              onChange={(e) =>
+                setDefaultsDraft((prev) => ({
+                  ...prev,
+                  competition: e.target.value,
+                }))
+              }
+              className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm"
+            />
+          </label>
+          <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
+            <span>{t.sheetLabels.contactName}</span>
+            <input
+              value={defaultsDraft.contactName}
+              onChange={(e) =>
+                setDefaultsDraft((prev) => ({ ...prev, contactName: e.target.value }))
+              }
+              className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm"
+            />
+          </label>
+          <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
+            <span>{t.sheetLabels.country}</span>
+            <input
+              value={defaultsDraft.country}
+              onChange={(e) =>
+                setDefaultsDraft((prev) => ({ ...prev, country: e.target.value }))
+              }
+              className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm"
+            />
+          </label>
+          <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
+            <span>{t.sheetLabels.contactPhone}</span>
+            <input
+              type="tel"
+              inputMode="tel"
+              value={defaultsDraft.contactPhone}
+              onChange={(e) =>
+                setDefaultsDraft((prev) => ({ ...prev, contactPhone: e.target.value }))
+              }
+              className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm"
+            />
+          </label>
         </div>
+        <button
+          type="button"
+          onClick={saveDefaults}
+          className="mt-4 inline-flex h-10 items-center justify-center rounded-full border border-zinc-300 px-4 text-sm font-medium text-zinc-800 hover:bg-zinc-50"
+        >
+          {t.home.defaultsSave}
+        </button>
       </section>
 
       <section className="app-card mt-6 border-zinc-200 p-6">
@@ -171,8 +211,10 @@ export default function Home() {
                   return (
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0">
-                    <p className="font-medium text-zinc-900">
-                      {sheet.header.clubName} · {gymnasts || t.home.statusNoData}
+                    <p className="text-base font-semibold text-zinc-900">
+                      {[sheet.header.clubName, gymnasts]
+                        .filter(Boolean)
+                        .join(" · ") || t.home.statusNoData}
                     </p>
                     <p className="text-sm text-zinc-700">
                       {sheet.header.levelAge} {sheet.header.levelSystem} ·{" "}
@@ -187,28 +229,28 @@ export default function Home() {
                     <button
                       type="button"
                       onClick={() => openSaved(sheet.id, "/sheet")}
-                      className="rounded-full border border-zinc-300 px-3 py-1.5 text-xs font-medium text-zinc-800 hover:bg-white"
+                      className="rounded-full border border-zinc-300 px-3 py-1 text-xs font-medium text-zinc-800 hover:bg-white"
                     >
                       {t.home.openBuilder}
                     </button>
                     <button
                       type="button"
                       onClick={() => openSaved(sheet.id, "/sheet/view")}
-                      className="rounded-full border border-zinc-300 px-3 py-1.5 text-xs font-medium text-zinc-800 hover:bg-white"
+                      className="rounded-full border border-zinc-300 px-3 py-1 text-xs font-medium text-zinc-800 hover:bg-white"
                     >
                       {t.home.openPreview}
                     </button>
                     <button
                       type="button"
                       onClick={() => openSaved(sheet.id, "/sheet/print")}
-                      className="rounded-full border border-zinc-300 px-3 py-1.5 text-xs font-medium text-zinc-800 hover:bg-white"
+                      className="rounded-full border border-zinc-300 px-3 py-1 text-xs font-medium text-zinc-800 hover:bg-white"
                     >
                       {t.home.openPrint}
                     </button>
                     <button
                       type="button"
                       onClick={() => deleteSavedSheet(sheet.id)}
-                      className="rounded-full border border-red-200 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50"
+                      className="rounded-full border border-red-200 px-3 py-1 text-xs font-medium text-red-700 hover:bg-red-50"
                     >
                       {t.home.deleteSaved}
                     </button>
@@ -221,6 +263,7 @@ export default function Home() {
           </ul>
         )}
       </section>
+
       </div>
     </div>
   );

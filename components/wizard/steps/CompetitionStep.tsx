@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { FormField, fieldInputClass } from "@/components/wizard/FormField";
+import { ClubLogoUpload } from "@/components/ClubLogoUpload";
 import { getMessages } from "@/lib/i18n";
 import { LEVEL_SYSTEMS } from "@/lib/tariff/enums";
 import {
@@ -20,6 +21,8 @@ import {
 import { useWizardStore } from "@/lib/tariff/store";
 
 const FORM_ID = "wizard-competition-form";
+const AVAILABLE_LEVEL_SYSTEM = "Escolar" as const;
+const COMING_SOON_ESCOLAR_AGE = "Absoluto";
 
 type CompetitionStepProps = {
   onSuccess: () => void;
@@ -42,20 +45,28 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
     defaultValues: {
       ...stored,
       country: stored.country ?? "",
+      clubLogo: stored.clubLogo ?? "",
       participationNumber: stored.participationNumber ?? "",
     },
   });
 
   const levelSystem = watch("levelSystem");
   const levelAge = watch("levelAge");
+  const clubLogo = watch("clubLogo");
   const prevSystem = useRef(levelSystem);
   const exerciseOptions = exerciseOptionsForLevel(levelSystem, levelAge);
   const combinedRoutineLevel = isCombinedRoutineLevel(levelSystem, levelAge);
 
   useEffect(() => {
+    if (levelSystem === AVAILABLE_LEVEL_SYSTEM) return;
+    setValue("levelSystem", AVAILABLE_LEVEL_SYSTEM);
+  }, [levelSystem, setValue]);
+
+  useEffect(() => {
     reset({
       ...stored,
       country: stored.country ?? "",
+      clubLogo: stored.clubLogo ?? "",
       participationNumber: stored.participationNumber ?? "",
     });
   }, [stored, reset]);
@@ -75,10 +86,20 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
     }
   }, [combinedRoutineLevel, setValue]);
 
+  useEffect(() => {
+    if (levelSystem !== AVAILABLE_LEVEL_SYSTEM) return;
+    if (levelAge !== COMING_SOON_ESCOLAR_AGE) return;
+    const firstAvailableAge = getLevelAgeOptions(levelSystem).find(
+      (age) => age !== COMING_SOON_ESCOLAR_AGE,
+    );
+    setValue("levelAge", firstAvailableAge ?? "");
+  }, [levelSystem, levelAge, setValue]);
+
   function onSubmit(data: CompetitionStepValues) {
     setCompetition({
       ...data,
       country: data.country ?? "",
+      clubLogo: data.clubLogo ?? "",
       participationNumber: data.participationNumber ?? "",
     });
     onSuccess();
@@ -138,6 +159,22 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
           </FormField>
 
           <FormField
+            label={t.sheetLabels.clubLogo}
+            htmlFor="clubLogo"
+            optional
+            error={errors.clubLogo?.message}
+          >
+            <ClubLogoUpload
+              id="clubLogo"
+              value={clubLogo ?? ""}
+              hasError={!!errors.clubLogo}
+              onChange={(next) =>
+                setValue("clubLogo", next, { shouldDirty: true, shouldValidate: true })
+              }
+            />
+          </FormField>
+
+          <FormField
             label={t.sheetLabels.country}
             htmlFor="country"
             optional
@@ -164,11 +201,19 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
                 {...register("levelSystem")}
               >
                 {LEVEL_SYSTEMS.map((s) => (
-                  <option key={s} value={s}>
+                  <option
+                    key={s}
+                    value={s}
+                    disabled={s !== AVAILABLE_LEVEL_SYSTEM}
+                  >
                     {s}
+                    {s !== AVAILABLE_LEVEL_SYSTEM ? ` · ${t.wizard.comingSoon}` : ""}
                   </option>
                 ))}
               </select>
+              <p className="mt-1 text-xs text-zinc-600">
+                {t.wizard.levelSystemAvailability}
+              </p>
             </FormField>
 
             <FormField
@@ -182,11 +227,25 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
                 {...register("levelAge")}
               >
                 {ageOptions.map((age) => (
-                  <option key={age} value={age}>
+                  <option
+                    key={age}
+                    value={age}
+                    disabled={
+                      levelSystem === AVAILABLE_LEVEL_SYSTEM &&
+                      age === COMING_SOON_ESCOLAR_AGE
+                    }
+                  >
                     {age}
+                    {levelSystem === AVAILABLE_LEVEL_SYSTEM &&
+                    age === COMING_SOON_ESCOLAR_AGE
+                      ? ` · ${t.wizard.comingSoon}`
+                      : ""}
                   </option>
                 ))}
               </select>
+              <p className="mt-1 text-xs text-zinc-600">
+                {t.wizard.levelAgeAvailability}
+              </p>
             </FormField>
           </div>
 
@@ -225,11 +284,11 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
                   </option>
                 ))}
               </select>
-              {combinedRoutineLevel ? (
+              {/* {combinedRoutineLevel ? (
                 <p className="mt-1 text-xs text-zinc-600">
                   {t.exercises.combinedRoutineHint}
                 </p>
-              ) : null}
+              ) : null} */}
             </FormField>
           </div>
         </div>

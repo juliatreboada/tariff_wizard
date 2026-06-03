@@ -127,11 +127,19 @@ function MetaRowCell({ slot }: { slot: SheetColumnSlot }) {
   );
 }
 
-function SidebarBox({ title, value }: { title: string; value?: string }) {
+function SidebarBox({
+  title,
+  value,
+  valueNode,
+}: {
+  title: string;
+  value?: string;
+  valueNode?: React.ReactNode;
+}) {
   return (
     <div className="official-sidebar-box">
       <div className="official-sidebar-box-title">{title}</div>
-      <div className="official-sidebar-box-value">{value ?? ""}</div>
+      <div className="official-sidebar-box-value">{valueNode ?? value ?? ""}</div>
     </div>
   );
 }
@@ -163,7 +171,24 @@ function TariffSidebar({
         value={header.participationNumber}
       />
       <SidebarBox title="COUNTRY" value={header.country} />
-      <SidebarBox title="CLUB" value={header.clubName} />
+      <SidebarBox
+        title="CLUB"
+        valueNode={
+          header.clubLogo ? (
+            <span className="official-sidebar-club-value">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={header.clubLogo}
+                alt={`${header.clubName} logo`}
+                className="official-sidebar-club-logo"
+              />
+              <span>{header.clubName}</span>
+            </span>
+          ) : (
+            header.clubName
+          )
+        }
+      />
 
       <div className="official-sidebar-box">
         <div className="official-sidebar-box-title">GYMNASTS</div>

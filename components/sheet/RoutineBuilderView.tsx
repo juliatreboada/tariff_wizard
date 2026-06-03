@@ -44,17 +44,24 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
   const removeRoutineItem = useWizardStore((s) => s.removeRoutineItem);
   const moveRoutineItem = useWizardStore((s) => s.moveRoutineItem);
   const setRoutineItemLinked = useWizardStore((s) => s.setRoutineItemLinked);
+  const replaceRoutineElement = useWizardStore((s) => s.replaceRoutineElement);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [linkNext, setLinkNext] = useState(false);
+  const [editingSingle, setEditingSingle] = useState<{
+    itemId: string;
+    block: "balance" | "dynamic";
+  } | null>(null);
   const escolarMode = isEscolarRuleset(header);
   const escolarStatus = evaluateEscolarRules(header, routine);
 
   function savePickerSelection(selection: ElementPickerSelection): boolean {
     if (selection.kind === "single") {
+      if (editingSingle) {
+        return replaceRoutineElement(editingSingle.itemId, selection.entry);
+      }
       return addRoutineElement(selection.entry, {
         linkedToPrevious: linkNext && routine.length > 0,
         block: selection.block,
-        role: selection.role,
       });
     }
     return addIndividualGroup(
@@ -180,9 +187,9 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                       <Image
                         src={catalogImageUrl(row.item.element.image)}
                         alt={row.item.element.coordinates}
-                        width={64}
-                        height={48}
-                        className="h-12 w-16 shrink-0 rounded border border-zinc-100 bg-zinc-50 object-contain"
+                        width={96}
+                        height={72}
+                        className="h-[4.5rem] w-24 shrink-0 rounded border border-zinc-100 bg-zinc-50 object-contain sm:h-20 sm:w-28"
                       />
                       <div className="min-w-0 flex-1">
                         <p className="truncate font-mono text-[15px] font-semibold leading-5 text-zinc-900 sm:text-sm">
@@ -260,7 +267,24 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                         : t.routine.linkedHint}
                     </p>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-1">
+                  <div className="grid grid-cols-4 gap-2 sm:flex sm:gap-1">
+                    {row.kind === "single" &&
+                    (row.item.block === "balance" || row.item.block === "dynamic") ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setEditingSingle({
+                            itemId: row.item.id,
+                            block:
+                              row.item.block === "dynamic" ? "dynamic" : "balance",
+                          });
+                          setPickerOpen(true);
+                        }}
+                        className="rounded border border-zinc-300 px-3 py-2 text-[13px]"
+                      >
+                        {t.routine.edit}
+                      </button>
+                    ) : null}
                     <button
                       type="button"
                       disabled={row.index === 0}
@@ -308,7 +332,10 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
         {!pickerOpen ? (
           <button
             type="button"
-            onClick={() => setPickerOpen(true)}
+            onClick={() => {
+              setEditingSingle(null);
+              setPickerOpen(true);
+            }}
             className="h-11 w-full rounded-full border border-zinc-300 px-4 text-sm font-medium hover:bg-zinc-50 sm:w-auto"
           >
             {t.routine.addElement}
@@ -317,12 +344,18 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
           <ElementPickerPanel
             variant="popover"
             header={header}
-            onClose={() => setPickerOpen(false)}
+            editItemId={editingSingle?.itemId}
+            editBlock={editingSingle?.block}
+            onClose={() => {
+              setPickerOpen(false);
+              setEditingSingle(null);
+            }}
             onSave={(selection) => {
               const ok = savePickerSelection(selection);
               if (ok) {
                 setPickerOpen(false);
                 setLinkNext(false);
+                setEditingSingle(null);
               }
               return ok;
             }}

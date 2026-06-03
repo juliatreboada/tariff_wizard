@@ -30,6 +30,10 @@ export const es = {
     process1: "1. Completa encabezado (club, nivel, categoría, ejercicio).",
     process2: "2. Ordena los elementos y define enlaces.",
     process3: "3. Revisa TS en A4 y exporta a PDF.",
+    defaultsTitle: "Datos por defecto",
+    defaultsHint:
+      "Se usarán para pre-rellenar nuevas hojas. Luego puedes editar cada campo en el asistente.",
+    defaultsSave: "Guardar datos por defecto",
     savedTitle: "Tariff Sheets guardadas",
     savedEmpty: "Aún no hay hojas guardadas en este navegador.",
     savedUpdated: (date: string) => `Actualizada: ${date}`,
@@ -59,6 +63,11 @@ export const es = {
     next: "Siguiente",
     finish: "Finalizar",
     continueToSheet: "Continuar a la TS",
+    comingSoon: "próximamente",
+    levelSystemAvailability:
+      "Por ahora solo está disponible ESCOLAR. BASE, RFEG y FIG se habilitarán próximamente.",
+    levelAgeAvailability:
+      "En ESCOLAR, la categoría de edad Absoluto se habilitará próximamente.",
   },
   sheet: {
     title: "Tariff Sheet",
@@ -100,6 +109,10 @@ export const es = {
       clear: "Quitar elemento",
       duplicateElement:
         "Este elemento ya está en otra columna. No puede repetirse en la rutina.",
+      limitRoleBlock:
+        "Límite alcanzado para este bloque: máximo 2 elementos (en equilibrio o en dinámico).",
+      limitIndividuals:
+        "Límite alcanzado: solo se permiten 3 sets de individuales.",
       rowAlreadyUsed:
         "Ya hay un elemento de esta fila en la rutina (solo uno por fila en este tipo).",
       back: "Atrás",
@@ -155,6 +168,7 @@ export const es = {
     linkedHint: "Activa solo si este elemento va pegado al anterior.",
     linkNext: "Enlazar siguiente",
     remove: "Quitar",
+    edit: "Editar",
     moveUp: "Subir",
     moveDown: "Bajar",
     viewSheet: "Ver hoja TS",
@@ -188,6 +202,11 @@ export const es = {
   sheetLabels: {
     country: "COUNTRY",
     club: "CLUB",
+    clubLogo: "CLUB LOGO",
+    clubLogoHint: "PNG o JPG, máx. 500 KB.",
+    clubLogoRemove: "Quitar logo",
+    clubLogoTooLarge: "La imagen es demasiado grande (máx. 500 KB).",
+    clubLogoInvalid: "Selecciona un archivo de imagen válido.",
     participationNumber: "PARTICIPATION NUMBER",
     competition: "COMPETITION",
     levelSystem: "LEVEL",
