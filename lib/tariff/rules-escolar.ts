@@ -4,6 +4,9 @@ import type { RoutineItem } from "./routine-types";
 import type { StoredHeader } from "./types";
 
 const EXPECTED_INDIVIDUAL_SETS = 3;
+const MISSING_ELEMENT_PENALTY = 0.5;
+/** One flat penalty if any individual set is missing, regardless of how many. */
+const MISSING_INDIVIDUALS_PENALTY = 1;
 
 type RequirementStatus = {
   expected: number;
@@ -104,11 +107,11 @@ export function evaluateEscolarRules(
     );
   }
   const penaltyTotal =
-    (missingCompulsoryBalance ? 0.5 : 0) +
-    (missingCompulsoryDynamic ? 0.5 : 0) +
-    (missingOptionalBalance ? 0.5 : 0) +
-    (missingOptionalDynamic ? 0.5 : 0) +
-    (missingIndividuals ? 0.5 : 0);
+    (missingCompulsoryBalance ? MISSING_ELEMENT_PENALTY : 0) +
+    (missingCompulsoryDynamic ? MISSING_ELEMENT_PENALTY : 0) +
+    (missingOptionalBalance ? MISSING_ELEMENT_PENALTY : 0) +
+    (missingOptionalDynamic ? MISSING_ELEMENT_PENALTY : 0) +
+    (missingIndividuals ? MISSING_INDIVIDUALS_PENALTY : 0);
 
   return {
     enabled: true,
