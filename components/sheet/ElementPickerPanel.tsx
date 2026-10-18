@@ -7,7 +7,6 @@ import {
   filterCatalogEntries,
   getCatalogEntries,
   groupCatalogEntriesByRow,
-  parseRowColumnFromCoordinates,
   type CatalogEntry,
   type ElementFamily,
   type ElementType,
@@ -15,7 +14,6 @@ import {
 import { getMessages } from "@/lib/i18n";
 import { isCatalogIdUsedInRoutine } from "@/lib/tariff/element-uniqueness";
 import { gymnastCountForCategory } from "@/lib/tariff/level-category";
-import { rowKeysUsedInRoutine } from "@/lib/tariff/row-uniqueness";
 import { countCompleteIndividualSets, gymnastKeysForHeader } from "@/lib/tariff/routine-groups";
 import type { RoutineGymnastRole } from "@/lib/tariff/routine-types";
 import type { StoredHeader } from "@/lib/tariff/types";
@@ -159,19 +157,15 @@ function ElementPickerPreview({
 
 function CatalogRowGrid({
   entries,
-  disabledRowKeys,
-  rowDisabledHint,
   onSelect,
   selectedCatalogId,
-  selectedByRowKey,
+  selectedCatalogIds,
   selectedHint,
 }: {
   entries: CatalogEntry[];
-  disabledRowKeys: Set<string>;
-  rowDisabledHint: string;
   onSelect: (entry: CatalogEntry) => void;
   selectedCatalogId?: string;
-  selectedByRowKey?: Map<string, string>;
+  selectedCatalogIds?: Set<string>;
   selectedHint?: string;
 }) {
   const rows = useMemo(() => groupCatalogEntriesByRow(entries), [entries]);
@@ -181,34 +175,19 @@ function CatalogRowGrid({
   return (
     <div className="flex flex-col gap-3">
       {rows.map(({ rowKey, rowLabel, entries: rowEntries }) => {
-        const rowDisabled = disabledRowKeys.has(rowKey);
         return (
-          <div
-            key={rowKey}
-            className={rowDisabled ? "rounded-lg bg-zinc-50/80" : undefined}
-            title={rowDisabled ? rowDisabledHint : undefined}
-          >
-            <p
-              className={`mb-1.5 text-[10px] font-semibold uppercase tracking-wide ${
-                rowDisabled ? "text-zinc-400" : "text-zinc-500"
-              }`}
-            >
+          <div key={rowKey}>
+            <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-500">
               {rowLabel}
-              {rowDisabled ? " · —" : ""}
             </p>
-            <ul
-              className={`flex flex-nowrap gap-2 overflow-x-auto pb-0.5 sm:gap-2.5 ${
-                rowDisabled ? "pointer-events-none opacity-50" : ""
-              }`}
-              aria-disabled={rowDisabled}
-            >
+            <ul className="flex flex-nowrap gap-2 overflow-x-auto pb-0.5 sm:gap-2.5">
               {rowEntries.map((entry) => (
                 (() => {
-                  const rowKey = parseRowColumnFromCoordinates(entry.coordinates)?.rowKey;
-                  const selectedInRow =
-                    rowKey != null ? selectedByRowKey?.get(rowKey) : undefined;
                   const isSelected =
-                    selectedCatalogId === entry.id || selectedInRow === entry.id;
+                    selectedCatalogId === entry.id ||
+                    (selectedCatalogIds?.has(entry.id) ?? false);
+                  // Already in the routine (and not the element being edited).
+                  const isUsed = isSelected && selectedCatalogId !== entry.id;
                   return (
                 <li
                   key={entry.id}
@@ -216,13 +195,11 @@ function CatalogRowGrid({
                 >
                   <button
                     type="button"
-                    disabled={rowDisabled}
+                    disabled={isUsed}
                     onClick={() => onSelect(entry)}
                     className={`flex h-full w-full flex-col items-center rounded-lg border p-2 sm:p-2.5 ${
                       isSelected
-                          ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
-                        : rowDisabled
-                          ? "border-zinc-200 bg-zinc-100"
+                        ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
                         : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
                     }`}
                   >
@@ -334,10 +311,6 @@ export function ElementPickerPanel({
     () => routine.filter((item) => item.id !== editItemId),
     [routine, editItemId],
   );
-  const usedRowKeys = useMemo(() => {
-    if (elementType === "individual") return new Set<string>();
-    return rowKeysUsedInRoutine(routineExcludingEditing, elementType);
-  }, [routineExcludingEditing, elementType]);
   const compulsoryBalanceCount = useMemo(
     () =>
       routineExcludingEditing.filter(
@@ -441,19 +414,15 @@ export function ElementPickerPanel({
       : elementType === "dynamic"
         ? dynamicEntries
         : [];
-  const selectedByRowKey = useMemo(() => {
+  const selectedCatalogIds = useMemo(() => {
     if (elementType !== "balance" && elementType !== "dynamic") {
-      return new Map<string, string>();
+      return new Set<string>();
     }
-    const map = new Map<string, string>();
-    for (const item of routine) {
-      if (item.block !== elementType) continue;
-      const rowKey = parseRowColumnFromCoordinates(item.element.coordinates)?.rowKey;
-      if (rowKey) {
-        map.set(rowKey, item.element.catalogId);
-      }
-    }
-    return map;
+    return new Set(
+      routine
+        .filter((item) => item.block === elementType)
+        .map((item) => item.element.catalogId),
+    );
   }, [routine, elementType]);
   return (
     <aside className={shellClass} aria-label={t.routine.addElement}>
@@ -543,10 +512,8 @@ export function ElementPickerPanel({
             ) : (
               <CatalogRowGrid
                 entries={currentEntries}
-                disabledRowKeys={usedRowKeys}
-                rowDisabledHint={t.sheet.picker.rowAlreadyUsed}
                 selectedCatalogId={editingItem?.element.catalogId}
-                selectedByRowKey={selectedByRowKey}
+                selectedCatalogIds={selectedCatalogIds}
                 selectedHint={t.routine.escolarDone}
                 onSelect={(entry) => {
                   setPreviewEntry(entry);

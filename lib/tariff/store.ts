@@ -228,18 +228,35 @@ function applyEscolarAutoRolesForBlock(
     const idx = indexes[0]!.index;
     return routine.map((item, i) => (i === idx ? { ...item, role: "compulsory" } : item));
   }
-  let optionalIdx = indexes[0]!.index;
-  let minValue = indexes[0]!.item.element.value;
-  for (const { item, index } of indexes) {
-    if (item.element.value < minValue) {
-      minValue = item.element.value;
-      optionalIdx = index;
-    }
-  }
+  const minValue = Math.min(...indexes.map(({ item }) => item.element.value));
+  const tied = indexes.filter(({ item }) => item.element.value === minValue);
+  // On a tie keep whichever element is already optional (stable across reorder,
+  // replace and reload); otherwise the last one — the newest on add — is optional.
+  const optionalIdx = (
+    tied.find(({ item }) => item.role === "optional") ?? tied[tied.length - 1]!
+  ).index;
   return routine.map((item, i) => {
     if (!indexes.some((x) => x.index === i)) return item;
     return { ...item, role: i === optionalIdx ? "optional" : "compulsory" };
   });
+}
+
+/** Prefer the committed header: loading a saved sheet does not update `competition`. */
+function escolarActive(
+  state: Pick<WizardStore, "header" | "competition">,
+): boolean {
+  return (state.header ?? state.competition).levelSystem === "Escolar";
+}
+
+function applyEscolarAutoRoles(
+  routine: RoutineItem[],
+  levelSystem: string | undefined,
+): RoutineItem[] {
+  if (levelSystem !== "Escolar") return routine;
+  return applyEscolarAutoRolesForBlock(
+    applyEscolarAutoRolesForBlock(routine, "balance"),
+    "dynamic",
+  );
 }
 
 export const useWizardStore = create<WizardStore>()(
@@ -299,7 +316,7 @@ export const useWizardStore = create<WizardStore>()(
           return false;
         }
         const block = options?.block ?? inferElementBlock(entry);
-        if (state.competition.levelSystem === "Escolar") {
+        if (escolarActive(state)) {
           if (block === "balance" || block === "dynamic") {
             const existing = routine.filter((item) => item.block === block).length;
             if (existing >= MAX_ESCOLAR_PER_BLOCK) {
@@ -319,7 +336,7 @@ export const useWizardStore = create<WizardStore>()(
           element: catalogEntryToPlaced(entry),
         };
         let next = [...routine, item];
-        if (state.competition.levelSystem === "Escolar" && (block === "balance" || block === "dynamic")) {
+        if (escolarActive(state) && (block === "balance" || block === "dynamic")) {
           next = applyEscolarAutoRolesForBlock(next, block);
         }
         const valueBreakdown = recalculateValueBreakdown(next);
@@ -338,8 +355,10 @@ export const useWizardStore = create<WizardStore>()(
       addIndividualGroup: (picks, options) => {
         if (picks.length === 0) return false;
         const state = get();
-        if (state.competition.levelSystem === "Escolar") {
-          const gymnastCount = gymnastCountForCategory(state.competition.category);
+        if (escolarActive(state)) {
+          const gymnastCount = gymnastCountForCategory(
+            (state.header ?? state.competition).category,
+          );
           const { totalGroups } = countCompleteIndividualSets(
             state.routine,
             gymnastCount,
@@ -380,6 +399,7 @@ export const useWizardStore = create<WizardStore>()(
         const target = state.routine.find((item) => item.id === itemId);
         if (!target || target.role === "individual") return false;
         const nextBlock = target.block;
+        if (inferElementBlock(entry) !== nextBlock) return false;
 
         if (
           state.routine.some(
@@ -399,7 +419,7 @@ export const useWizardStore = create<WizardStore>()(
             : item,
         );
         if (
-          state.competition.levelSystem === "Escolar" &&
+          escolarActive(state) &&
           (nextBlock === "balance" || nextBlock === "dynamic")
         ) {
           next = applyEscolarAutoRolesForBlock(next, nextBlock);
@@ -431,7 +451,7 @@ export const useWizardStore = create<WizardStore>()(
           return true;
         });
         if (
-          get().competition.levelSystem === "Escolar" &&
+          escolarActive(get()) &&
           (target?.block === "balance" || target?.block === "dynamic")
         ) {
           next = applyEscolarAutoRolesForBlock(next, target.block);
@@ -499,10 +519,14 @@ export const useWizardStore = create<WizardStore>()(
       loadSavedSheet: (sheetId) => {
         const sheet = get().savedSheets.find((s) => s.id === sheetId);
         if (!sheet) return;
+        const routine = applyEscolarAutoRoles(
+          sheet.routine,
+          sheet.header.levelSystem,
+        );
         set({
           header: sheet.header,
-          routine: sheet.routine,
-          valueBreakdown: sheet.valueBreakdown,
+          routine,
+          valueBreakdown: recalculateValueBreakdown(routine),
           currentSheetId: sheet.id,
         });
       },
@@ -594,7 +618,10 @@ export const useWizardStore = create<WizardStore>()(
           routine = migrateElementsRecordToRoutine(p.elements);
         }
         if (p.header) {
-          routine = refreshRoutineFromCatalog(routine);
+          routine = applyEscolarAutoRoles(
+            refreshRoutineFromCatalog(routine),
+            p.header.levelSystem,
+          );
         }
         const valueBreakdown = p.header
           ? recalculateValueBreakdown(routine)

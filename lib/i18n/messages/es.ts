@@ -113,8 +113,6 @@ export const es = {
         "Límite alcanzado para este bloque: máximo 2 elementos (en equilibrio o en dinámico).",
       limitIndividuals:
         "Límite alcanzado: solo se permiten 3 sets de individuales.",
-      rowAlreadyUsed:
-        "Ya hay un elemento de esta fila en la rutina (solo uno por fila en este tipo).",
       back: "Atrás",
       close: "Cerrar",
     },

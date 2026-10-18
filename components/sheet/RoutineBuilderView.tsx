@@ -139,7 +139,9 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
               </ul>
             </div>
             <p className="shrink-0 text-xs font-semibold text-amber-900 lg:pt-6 lg:text-sm">
-              {t.routine.escolarPenalty}: -{escolarStatus.penaltyTotal.toFixed(1)}
+              {t.routine.escolarPenalty}:{" "}
+              {escolarStatus.penaltyTotal > 0 ? "-" : ""}
+              {escolarStatus.penaltyTotal.toFixed(1)}
             </p>
           </div>
           {escolarStatus.missingMessages.length > 0 ? (
@@ -305,7 +307,13 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                     </button>
                     <button
                       type="button"
-                      onClick={() => removeRoutineItem(controlId)}
+                      onClick={() => {
+                        removeRoutineItem(controlId);
+                        if (editingSingle?.itemId === controlId) {
+                          setPickerOpen(false);
+                          setEditingSingle(null);
+                        }
+                      }}
                       className="rounded border border-zinc-300 px-3 py-2 text-[13px] text-red-700 hover:bg-red-50"
                     >
                       {t.routine.remove}
@@ -342,6 +350,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
           </button>
         ) : (
           <ElementPickerPanel
+            key={editingSingle?.itemId ?? "add"}
             variant="popover"
             header={header}
             editItemId={editingSingle?.itemId}
