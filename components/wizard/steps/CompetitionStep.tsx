@@ -8,6 +8,10 @@ import { ClubLogoUpload } from "@/components/ClubLogoUpload";
 import { getMessages } from "@/lib/i18n";
 import { LEVEL_SYSTEMS } from "@/lib/tariff/enums";
 import {
+  availableLevelSystems,
+  isLevelAgeReady,
+} from "@/lib/tariff/rulesets";
+import {
   exerciseLabel,
   exerciseOptionsForLevel,
   isCombinedRoutineLevel,
@@ -21,8 +25,8 @@ import {
 import { useWizardStore } from "@/lib/tariff/store";
 
 const FORM_ID = "wizard-competition-form";
-const AVAILABLE_LEVEL_SYSTEM = "Escolar" as const;
-const COMING_SOON_ESCOLAR_AGE = "Absoluto";
+/** Only levels with a ruleset can be picked; the rest show as "coming soon". */
+const AVAILABLE_LEVEL_SYSTEMS = availableLevelSystems();
 
 type CompetitionStepProps = {
   onSuccess: () => void;
@@ -58,8 +62,8 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
   const combinedRoutineLevel = isCombinedRoutineLevel(levelSystem, levelAge);
 
   useEffect(() => {
-    if (levelSystem === AVAILABLE_LEVEL_SYSTEM) return;
-    setValue("levelSystem", AVAILABLE_LEVEL_SYSTEM);
+    if (AVAILABLE_LEVEL_SYSTEMS.includes(levelSystem)) return;
+    setValue("levelSystem", AVAILABLE_LEVEL_SYSTEMS[0]!);
   }, [levelSystem, setValue]);
 
   useEffect(() => {
@@ -87,10 +91,10 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
   }, [combinedRoutineLevel, setValue]);
 
   useEffect(() => {
-    if (levelSystem !== AVAILABLE_LEVEL_SYSTEM) return;
-    if (levelAge !== COMING_SOON_ESCOLAR_AGE) return;
-    const firstAvailableAge = getLevelAgeOptions(levelSystem).find(
-      (age) => age !== COMING_SOON_ESCOLAR_AGE,
+    if (!AVAILABLE_LEVEL_SYSTEMS.includes(levelSystem)) return;
+    if (isLevelAgeReady(levelSystem, levelAge)) return;
+    const firstAvailableAge = getLevelAgeOptions(levelSystem).find((age) =>
+      isLevelAgeReady(levelSystem, age),
     );
     setValue("levelAge", firstAvailableAge ?? "");
   }, [levelSystem, levelAge, setValue]);
@@ -204,10 +208,12 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
                   <option
                     key={s}
                     value={s}
-                    disabled={s !== AVAILABLE_LEVEL_SYSTEM}
+                    disabled={!AVAILABLE_LEVEL_SYSTEMS.includes(s)}
                   >
                     {s}
-                    {s !== AVAILABLE_LEVEL_SYSTEM ? ` · ${t.wizard.comingSoon}` : ""}
+                    {!AVAILABLE_LEVEL_SYSTEMS.includes(s)
+                      ? ` · ${t.wizard.comingSoon}`
+                      : ""}
                   </option>
                 ))}
               </select>
@@ -230,14 +236,10 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
                   <option
                     key={age}
                     value={age}
-                    disabled={
-                      levelSystem === AVAILABLE_LEVEL_SYSTEM &&
-                      age === COMING_SOON_ESCOLAR_AGE
-                    }
+                    disabled={!isLevelAgeReady(levelSystem, age)}
                   >
                     {age}
-                    {levelSystem === AVAILABLE_LEVEL_SYSTEM &&
-                    age === COMING_SOON_ESCOLAR_AGE
+                    {!isLevelAgeReady(levelSystem, age)
                       ? ` · ${t.wizard.comingSoon}`
                       : ""}
                   </option>

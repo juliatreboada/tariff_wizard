@@ -44,11 +44,11 @@ export function sheetImageCellRoleFooter(
 function elementValueText(
   value: number,
   role: RoutineElementRole | undefined,
-  escolar: boolean,
+  hideIndividualValues: boolean,
   block: OfficialSheetBlockId,
 ): string {
   if (block === "combined") {
-    return escolar ? SHEET_NO_VALUE : formatSheetValue(value);
+    return hideIndividualValues ? SHEET_NO_VALUE : formatSheetValue(value);
   }
   if (role === "optional") return SHEET_NO_VALUE;
   if (role === "compulsory" || block === "balance" || block === "dynamic") {
@@ -68,21 +68,21 @@ function individualElementAt(
 export function sheetValueInSubcell(
   slot: SheetColumnSlot,
   subcellIndex: number,
-  escolar: boolean,
+  hideIndividualValues: boolean,
 ): string {
   if (slot.kind === "empty") return "";
 
   if (slot.kind === "individual-group") {
     const el = individualElementAt(slot, subcellIndex);
     if (!el) return "";
-    return escolar ? SHEET_NO_VALUE : formatSheetValue(el.value);
+    return hideIndividualValues ? SHEET_NO_VALUE : formatSheetValue(el.value);
   }
 
   if (slot.block === "balance" && subcellIndex === OFFICIAL_BALANCE_VALUE_SUBCELL) {
     return elementValueText(
       slot.element.value,
       slot.role,
-      escolar,
+      hideIndividualValues,
       slot.block,
     );
   }
@@ -91,7 +91,7 @@ export function sheetValueInSubcell(
     return elementValueText(
       slot.element.value,
       slot.role,
-      escolar,
+      hideIndividualValues,
       slot.block,
     );
   }
@@ -127,8 +127,8 @@ export function sheetCoordinatesInRow(
 export function formatSidebarBreakdownValue(
   key: keyof Pick<ValueBreakdown, "balance" | "dynamic" | "individual">,
   breakdown: ValueBreakdown,
-  escolar: boolean,
+  hideIndividualValues: boolean,
 ): string {
-  if (escolar && key === "individual") return SHEET_NO_VALUE;
+  if (hideIndividualValues && key === "individual") return SHEET_NO_VALUE;
   return formatSheetValue(breakdown[key]);
 }

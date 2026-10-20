@@ -17,6 +17,7 @@ import { gymnastCountForCategory } from "@/lib/tariff/level-category";
 import { countCompleteIndividualSets, gymnastKeysForHeader } from "@/lib/tariff/routine-groups";
 import type { RoutineGymnastRole } from "@/lib/tariff/routine-types";
 import type { StoredHeader } from "@/lib/tariff/types";
+import { rulesetFor } from "@/lib/tariff/rulesets";
 import { useWizardStore } from "@/lib/tariff/store";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
 
@@ -24,8 +25,6 @@ type PickerElementType = "balance" | "dynamic" | "individual";
 type PickerRole = "compulsory" | "optional";
 
 const INDIVIDUAL_TYPES: ElementType[] = ["EQ", "FLEX", "AG", "TUM"];
-const MAX_ESCOLAR_INDIVIDUAL_SETS = 3;
-const MAX_ESCOLAR_PER_BLOCK = 2;
 
 type GymnastPickState = {
   type: ElementType;
@@ -270,10 +269,13 @@ export function ElementPickerPanel({
   editBlock,
 }: ElementPickerPanelProps) {
   const t = getMessages();
-  const allEntries = getCatalogEntries();
+  const ruleset = rulesetFor(header);
+  const allEntries = getCatalogEntries(ruleset?.catalogId);
   const routine = useWizardStore((s) => s.routine);
 
   const editMode = editItemId != null && editBlock != null;
+  const maxPerBlock = ruleset?.blocks.maxElements ?? Infinity;
+  const maxIndividualSets = ruleset?.individualSets ?? Infinity;
   const [elementType, setElementType] = useState<PickerElementType>(
     editBlock ?? "balance",
   );
@@ -341,8 +343,8 @@ export function ElementPickerPanel({
   );
   const balanceTotalCount = compulsoryBalanceCount + optionalBalanceCount;
   const dynamicTotalCount = compulsoryDynamicCount + optionalDynamicCount;
-  const balanceBlockFull = balanceTotalCount >= MAX_ESCOLAR_PER_BLOCK;
-  const dynamicBlockFull = dynamicTotalCount >= MAX_ESCOLAR_PER_BLOCK;
+  const balanceBlockFull = balanceTotalCount >= maxPerBlock;
+  const dynamicBlockFull = dynamicTotalCount >= maxPerBlock;
   const individualGroupCount = useMemo(() => {
     const gymnastCount = gymnastCountForCategory(header.category);
     return countCompleteIndividualSets(routineExcludingEditing, gymnastCount).totalGroups;
@@ -382,7 +384,7 @@ export function ElementPickerPanel({
 
   function saveAllIndividuals() {
     if (!allIndividualsPicked) return;
-    if (individualGroupCount >= MAX_ESCOLAR_INDIVIDUAL_SETS) {
+    if (individualGroupCount >= maxIndividualSets) {
       setLimitError("individuals");
       setDuplicateError(false);
       return;
@@ -628,7 +630,7 @@ export function ElementPickerPanel({
                   type="button"
                   disabled={
                     !allIndividualsPicked ||
-                    individualGroupCount >= MAX_ESCOLAR_INDIVIDUAL_SETS
+                    individualGroupCount >= maxIndividualSets
                   }
                   onClick={saveAllIndividuals}
                   className="h-10 rounded-full bg-zinc-900 px-5 text-sm font-medium text-white enabled:hover:bg-zinc-700 disabled:opacity-40"

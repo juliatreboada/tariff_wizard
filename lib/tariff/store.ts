@@ -25,6 +25,12 @@ import {
   moveDisplayRow,
 } from "./routine-groups";
 import { newRoutineItemId } from "./routine-id";
+import {
+  applyRulesetRoles,
+  applyRulesetRolesForBlock,
+  rulesetFor,
+  type Ruleset,
+} from "./rulesets";
 import type {
   RoutineElementRole,
   RoutineGymnastRole,
@@ -44,8 +50,6 @@ import type { StoredHeader, ValueBreakdown } from "./types";
 import { emptyValueBreakdown } from "./value-breakdown";
 
 const STORAGE_KEY = "tariff-wizard-v1";
-const MAX_ESCOLAR_PER_BLOCK = 2;
-const MAX_ESCOLAR_INDIVIDUAL_SETS = 3;
 
 export type DefaultProfile = {
   competition: string;
@@ -216,47 +220,11 @@ function saveCurrentSnapshot(state: Pick<
   });
 }
 
-function applyEscolarAutoRolesForBlock(
-  routine: RoutineItem[],
-  block: "balance" | "dynamic",
-): RoutineItem[] {
-  const indexes = routine
-    .map((item, index) => ({ item, index }))
-    .filter(({ item }) => item.block === block && item.role !== "individual");
-  if (indexes.length === 0) return routine;
-  if (indexes.length === 1) {
-    const idx = indexes[0]!.index;
-    return routine.map((item, i) => (i === idx ? { ...item, role: "compulsory" } : item));
-  }
-  const minValue = Math.min(...indexes.map(({ item }) => item.element.value));
-  const tied = indexes.filter(({ item }) => item.element.value === minValue);
-  // On a tie keep whichever element is already optional (stable across reorder,
-  // replace and reload); otherwise the last one — the newest on add — is optional.
-  const optionalIdx = (
-    tied.find(({ item }) => item.role === "optional") ?? tied[tied.length - 1]!
-  ).index;
-  return routine.map((item, i) => {
-    if (!indexes.some((x) => x.index === i)) return item;
-    return { ...item, role: i === optionalIdx ? "optional" : "compulsory" };
-  });
-}
-
 /** Prefer the committed header: loading a saved sheet does not update `competition`. */
-function escolarActive(
+function activeRuleset(
   state: Pick<WizardStore, "header" | "competition">,
-): boolean {
-  return (state.header ?? state.competition).levelSystem === "Escolar";
-}
-
-function applyEscolarAutoRoles(
-  routine: RoutineItem[],
-  levelSystem: string | undefined,
-): RoutineItem[] {
-  if (levelSystem !== "Escolar") return routine;
-  return applyEscolarAutoRolesForBlock(
-    applyEscolarAutoRolesForBlock(routine, "balance"),
-    "dynamic",
-  );
+): Ruleset | null {
+  return rulesetFor(state.header ?? state.competition);
 }
 
 export const useWizardStore = create<WizardStore>()(
@@ -316,12 +284,11 @@ export const useWizardStore = create<WizardStore>()(
           return false;
         }
         const block = options?.block ?? inferElementBlock(entry);
-        if (escolarActive(state)) {
-          if (block === "balance" || block === "dynamic") {
-            const existing = routine.filter((item) => item.block === block).length;
-            if (existing >= MAX_ESCOLAR_PER_BLOCK) {
-              return false;
-            }
+        const ruleset = activeRuleset(state);
+        if (ruleset && (block === "balance" || block === "dynamic")) {
+          const existing = routine.filter((item) => item.block === block).length;
+          if (existing >= ruleset.blocks.maxElements) {
+            return false;
           }
         }
         const item: RoutineItem = {
@@ -336,8 +303,8 @@ export const useWizardStore = create<WizardStore>()(
           element: catalogEntryToPlaced(entry),
         };
         let next = [...routine, item];
-        if (escolarActive(state) && (block === "balance" || block === "dynamic")) {
-          next = applyEscolarAutoRolesForBlock(next, block);
+        if (block === "balance" || block === "dynamic") {
+          next = applyRulesetRolesForBlock(next, block, ruleset);
         }
         const valueBreakdown = recalculateValueBreakdown(next);
         set({
@@ -355,7 +322,8 @@ export const useWizardStore = create<WizardStore>()(
       addIndividualGroup: (picks, options) => {
         if (picks.length === 0) return false;
         const state = get();
-        if (escolarActive(state)) {
+        const ruleset = activeRuleset(state);
+        if (ruleset) {
           const gymnastCount = gymnastCountForCategory(
             (state.header ?? state.competition).category,
           );
@@ -363,7 +331,7 @@ export const useWizardStore = create<WizardStore>()(
             state.routine,
             gymnastCount,
           );
-          if (totalGroups >= MAX_ESCOLAR_INDIVIDUAL_SETS) {
+          if (totalGroups >= ruleset.individualSets) {
             return false;
           }
         }
@@ -418,11 +386,8 @@ export const useWizardStore = create<WizardStore>()(
               }
             : item,
         );
-        if (
-          escolarActive(state) &&
-          (nextBlock === "balance" || nextBlock === "dynamic")
-        ) {
-          next = applyEscolarAutoRolesForBlock(next, nextBlock);
+        if (nextBlock === "balance" || nextBlock === "dynamic") {
+          next = applyRulesetRolesForBlock(next, nextBlock, activeRuleset(state));
         }
         const valueBreakdown = recalculateValueBreakdown(next);
         set({
@@ -450,11 +415,8 @@ export const useWizardStore = create<WizardStore>()(
           }
           return true;
         });
-        if (
-          escolarActive(get()) &&
-          (target?.block === "balance" || target?.block === "dynamic")
-        ) {
-          next = applyEscolarAutoRolesForBlock(next, target.block);
+        if (target?.block === "balance" || target?.block === "dynamic") {
+          next = applyRulesetRolesForBlock(next, target.block, activeRuleset(get()));
         }
         const valueBreakdown = recalculateValueBreakdown(next);
         set({
@@ -519,10 +481,7 @@ export const useWizardStore = create<WizardStore>()(
       loadSavedSheet: (sheetId) => {
         const sheet = get().savedSheets.find((s) => s.id === sheetId);
         if (!sheet) return;
-        const routine = applyEscolarAutoRoles(
-          sheet.routine,
-          sheet.header.levelSystem,
-        );
+        const routine = applyRulesetRoles(sheet.routine, rulesetFor(sheet.header));
         set({
           header: sheet.header,
           routine,
@@ -618,9 +577,9 @@ export const useWizardStore = create<WizardStore>()(
           routine = migrateElementsRecordToRoutine(p.elements);
         }
         if (p.header) {
-          routine = applyEscolarAutoRoles(
+          routine = applyRulesetRoles(
             refreshRoutineFromCatalog(routine),
-            p.header.levelSystem,
+            rulesetFor(p.header),
           );
         }
         const valueBreakdown = p.header
