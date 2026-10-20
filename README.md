@@ -21,9 +21,11 @@ Open [http://localhost:3000](http://localhost:3000). Use **Comenzar asistente** 
 - [Step 2 prerequisites](docs/STEP-2-PREREQUISITES.md) — before the first real form
 - [Element catalog](docs/CATALOG.md) — FGX Balance (`catalog/FGX/manifest.json`)
 - [Print / PDF](docs/PRINT.md) — export via browser print
+- [Rulesets](docs/RULESETS.md) — competition rules as config; how to add a level
 
 ```bash
 npm run validate-catalog   # check manifest.json ↔ image files
+npm test                   # rule and store tests (Vitest)
 ```
 
 ## Private reference material

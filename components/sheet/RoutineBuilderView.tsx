@@ -14,7 +14,7 @@ import {
   sortIndividualGroupItems,
 } from "@/lib/tariff/routine-groups";
 import { routineRoleLabel } from "@/lib/tariff/routine-role-label";
-import { evaluateEscolarRules, isEscolarRuleset } from "@/lib/tariff/rules-escolar";
+import { evaluateRules, rulesetFor } from "@/lib/tariff/rulesets";
 import type { StoredHeader } from "@/lib/tariff/types";
 import type { RoutineItem } from "@/lib/tariff/routine-types";
 import { useWizardStore } from "@/lib/tariff/store";
@@ -51,8 +51,9 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
     itemId: string;
     block: "balance" | "dynamic";
   } | null>(null);
-  const escolarMode = isEscolarRuleset(header);
-  const escolarStatus = evaluateEscolarRules(header, routine);
+  const ruleset = rulesetFor(header);
+  const escolarMode = ruleset != null;
+  const escolarStatus = evaluateRules(ruleset, header, routine);
 
   function savePickerSelection(selection: ElementPickerSelection): boolean {
     if (selection.kind === "single") {

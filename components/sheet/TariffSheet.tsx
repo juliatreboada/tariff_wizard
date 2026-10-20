@@ -17,7 +17,7 @@ import {
   sheetSlotMetaDisplay,
   sheetValueInSubcell,
 } from "@/lib/tariff/element-display";
-import { isEscolarRuleset } from "@/lib/tariff/rules-escolar";
+import { rulesetFor } from "@/lib/tariff/rulesets";
 import { exerciseLabel } from "@/lib/tariff/exercise-display";
 import { gymnastSidebarRows } from "@/lib/tariff/gymnast-display";
 import {
@@ -40,16 +40,16 @@ export type TariffSheetProps = {
 
 function ValueSubcells({
   slot,
-  escolar,
+  hideIndividualValues,
 }: {
   slot: SheetColumnSlot;
-  escolar: boolean;
+  hideIndividualValues: boolean;
 }) {
   return (
     <div className="official-value-grid">
       {Array.from({ length: OFFICIAL_VALUE_SUBCOLS }, (_, i) => (
         <div key={i} className="official-value-subcell">
-          {sheetValueInSubcell(slot, i, escolar)}
+          {sheetValueInSubcell(slot, i, hideIndividualValues)}
         </div>
       ))}
     </div>
@@ -148,12 +148,12 @@ function TariffSidebar({
   header,
   valueBreakdown,
   exerciseDisplay,
-  escolar,
+  hideIndividualValues,
 }: {
   header: StoredHeader;
   valueBreakdown: ValueBreakdown;
   exerciseDisplay: string;
-  escolar: boolean;
+  hideIndividualValues: boolean;
 }) {
   const t = getMessages();
   const dv = valueBreakdown.total;
@@ -247,19 +247,19 @@ function TariffSidebar({
         <div className="official-sidebar-split-row">
           <span>BALANCE</span>
           <span className="tabular-nums">
-            {formatSidebarBreakdownValue("balance", valueBreakdown, escolar)}
+            {formatSidebarBreakdownValue("balance", valueBreakdown, hideIndividualValues)}
           </span>
         </div>
         <div className="official-sidebar-split-row">
           <span>DYNAMIC</span>
           <span className="tabular-nums">
-            {formatSidebarBreakdownValue("dynamic", valueBreakdown, escolar)}
+            {formatSidebarBreakdownValue("dynamic", valueBreakdown, hideIndividualValues)}
           </span>
         </div>
         <div className="official-sidebar-split-row">
           <span>INDIVIDUAL</span>
           <span className="tabular-nums">
-            {formatSidebarBreakdownValue("individual", valueBreakdown, escolar)}
+            {formatSidebarBreakdownValue("individual", valueBreakdown, hideIndividualValues)}
           </span>
         </div>
       </div>
@@ -278,12 +278,12 @@ function BlockDivider({ colSpan }: { colSpan: number }) {
 function ElementBlockRows({
   block,
   isLastBlock,
-  escolar,
+  hideIndividualValues,
   optionalLabel,
 }: {
   block: ComputedBlockLayout;
   isLastBlock: boolean;
-  escolar: boolean;
+  hideIndividualValues: boolean;
   optionalLabel: string;
 }) {
   const { columns } = block;
@@ -313,7 +313,10 @@ function ElementBlockRows({
         </th>
         {columns.map((slot, col) => (
           <td key={col} className="official-element-col official-value-cell">
-            <ValueSubcells slot={slot} escolar={escolar} />
+            <ValueSubcells
+              slot={slot}
+              hideIndividualValues={hideIndividualValues}
+            />
           </td>
         ))}
       </tr>
@@ -370,7 +373,8 @@ export function TariffSheet({
 }: TariffSheetProps) {
   const t = getMessages();
   const exerciseDisplay = exerciseLabel(header.exercise, t.exercises);
-  const escolar = isEscolarRuleset(header);
+  const hideIndividualValues =
+    rulesetFor(header)?.display.hideIndividualValues ?? false;
 
   return (
     <div
@@ -410,7 +414,7 @@ export function TariffSheet({
                   <ElementBlockRows
                     block={block}
                     isLastBlock={index === layout.blocks.length - 1}
-                    escolar={escolar}
+                    hideIndividualValues={hideIndividualValues}
                     optionalLabel={t.routine.escolarOptional}
                   />
                 </Fragment>
@@ -422,7 +426,7 @@ export function TariffSheet({
           header={header}
           valueBreakdown={valueBreakdown}
           exerciseDisplay={exerciseDisplay}
-          escolar={escolar}
+          hideIndividualValues={hideIndividualValues}
         />
       </div>
     </div>
