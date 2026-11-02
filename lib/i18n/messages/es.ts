@@ -1,7 +1,9 @@
 /**
  * Spanish UI strings.
  *
- * Sheet field labels (COUNTRY, CLUB, …) stay in English to match the PDF.
+ * Inputs and screens use `fieldLabels` (Spanish). The printed official sheet
+ * stays in English to match the federation form: its titles are written in
+ * TariffSheet.tsx, and its TOP/BASE rows use `sheetLabels`.
  */
 export const es = {
   meta: {
@@ -49,11 +51,12 @@ export const es = {
     hint: "Datos de la columna derecha de la hoja (como en el PDF).",
     step1: {
       title: "Club y Competición",
-      description: "PARTICIPATION NUMBER, COUNTRY, CLUB, COMPETITION, LEVEL, CATEGORY, EXERCISE",
+      description:
+        "Número de participación, país, club, competición, nivel, categoría y ejercicio",
     },
     step2: {
       title: "Equipo y Contacto",
-      description: "GYMNASTS (TOP, BASE) y CONTACT PERSON",
+      description: "Gimnastas (TOP, BASE) y persona de contacto",
     },
     step3: {
       title: "Resumen del encabezado",
@@ -120,7 +123,7 @@ export const es = {
     catalogSummary: (count: number, subtypes: string) =>
       `Catálogo FGX: ${count} elemento(s) para tu hoja (tipos: ${subtypes}).`,
     catalogEmpty:
-      "Ningún elemento del catálogo coincide con LEVEL / CATEGORY / EXERCISE de esta hoja. Revisa manifest.json o los filtros.",
+      "Ningún elemento del catálogo coincide con el nivel, la categoría y el ejercicio de esta hoja. Revisa manifest.json o los filtros.",
     printSheet: "Imprimir / PDF",
   },
   routine: {
@@ -197,27 +200,34 @@ export const es = {
       "Aún no hay elementos en el primer bloque. La hoja se imprimirá con celdas vacías.",
     footer: "Tariff Wizard — vista para impresión",
   },
-  sheetLabels: {
-    country: "COUNTRY",
-    club: "CLUB",
-    clubLogo: "CLUB LOGO",
+  /** Labels for inputs and on-screen summaries. */
+  fieldLabels: {
+    country: "País",
+    club: "Club",
+    clubLogo: "Logo del club",
     clubLogoHint: "PNG o JPG, máx. 500 KB.",
     clubLogoRemove: "Quitar logo",
     clubLogoTooLarge: "La imagen es demasiado grande (máx. 500 KB).",
     clubLogoInvalid: "Selecciona un archivo de imagen válido.",
-    participationNumber: "PARTICIPATION NUMBER",
-    competition: "COMPETITION",
-    levelSystem: "LEVEL",
-    levelAge: "AGE-GROUP",
-    category: "CATEGORY",
-    exercise: "EXERCISE",
+    participationNumber: "Número de participación",
+    competition: "Competición",
+    levelSystem: "Nivel",
+    levelAge: "Categoría de edad",
+    category: "Categoría",
+    exercise: "Ejercicio",
     top: "TOP",
     base: "BASE",
     baseNumber: (n: number) => `BASE ${n}`,
-    contactName: "NAME",
-    contactPhone: "TEL",
-    contactSection: "CONTACT PERSON",
-    gymnastsSection: "GYMNASTS",
+    contactName: "Nombre",
+    contactPhone: "Teléfono",
+    contactSection: "Persona de contacto",
+    gymnastsSection: "Gimnastas",
+  },
+  /** Printed official sheet's TOP/BASE rows — English, as on the federation form. */
+  sheetLabels: {
+    top: "TOP",
+    base: "BASE",
+    baseNumber: (n: number) => `BASE ${n}`,
   },
   placeholders: {
     select: "Seleccionar…",

@@ -22,7 +22,7 @@ type TeamContactStepProps = {
 function baseFieldLabel(
   index: number,
   baseCount: number,
-  labels: ReturnType<typeof getMessages>["sheetLabels"],
+  labels: ReturnType<typeof getMessages>["fieldLabels"],
 ): string {
   return baseCount <= 1 ? labels.base : labels.baseNumber(index + 1);
 }
@@ -77,10 +77,10 @@ export function TeamContactStep({ onSuccess }: TeamContactStepProps) {
       <div className="grid gap-5 lg:grid-cols-2">
         <fieldset className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white/80 p-4 sm:p-5">
           <legend className="px-1 text-sm font-semibold tracking-wide text-zinc-800">
-            {t.sheetLabels.gymnastsSection}
+            {t.fieldLabels.gymnastsSection}
           </legend>
           <FormField
-            label={t.sheetLabels.top}
+            label={t.fieldLabels.top}
             htmlFor="topName"
             error={errors.topName?.message}
           >
@@ -94,7 +94,7 @@ export function TeamContactStep({ onSuccess }: TeamContactStepProps) {
           {Array.from({ length: baseCount }, (_, index) => (
             <FormField
               key={index}
-              label={baseFieldLabel(index, baseCount, t.sheetLabels)}
+              label={baseFieldLabel(index, baseCount, t.fieldLabels)}
               htmlFor={`baseNames.${index}`}
               error={
                 Array.isArray(baseErrors)
@@ -120,10 +120,10 @@ export function TeamContactStep({ onSuccess }: TeamContactStepProps) {
 
         <fieldset className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white/80 p-4 sm:p-5">
           <legend className="px-1 text-sm font-semibold tracking-wide text-zinc-800">
-            {t.sheetLabels.contactSection}
+            {t.fieldLabels.contactSection}
           </legend>
           <FormField
-            label={t.sheetLabels.contactName}
+            label={t.fieldLabels.contactName}
             htmlFor="contactName"
             error={errors.contactName?.message}
           >
@@ -135,7 +135,7 @@ export function TeamContactStep({ onSuccess }: TeamContactStepProps) {
             />
           </FormField>
           <FormField
-            label={t.sheetLabels.contactPhone}
+            label={t.fieldLabels.contactPhone}
             htmlFor="contactPhone"
             error={errors.contactPhone?.message}
           >
