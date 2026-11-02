@@ -68,9 +68,9 @@ export const es = {
     continueToSheet: "Continuar a la TS",
     comingSoon: "próximamente",
     levelSystemAvailability:
-      "Por ahora solo está disponible ESCOLAR. BASE, RFEG y FIG se habilitarán próximamente.",
+      "Por ahora están disponibles ESCOLAR y BASE. RFEG y FIG se habilitarán próximamente.",
     levelAgeAvailability:
-      "En ESCOLAR, la categoría de edad Absoluta se habilitará próximamente.",
+      "En ESCOLAR, Absoluta se habilitará próximamente; en BASE, Junior y Senior.",
   },
   sheet: {
     title: "Tariff Sheet",
@@ -113,9 +113,18 @@ export const es = {
       duplicateElement:
         "Este elemento ya está en otra columna. No puede repetirse en la rutina.",
       limitRoleBlock:
-        "Límite alcanzado para este bloque: máximo 2 elementos (en equilibrio o en dinámico).",
-      limitIndividuals:
-        "Límite alcanzado: solo se permiten 3 sets de individuales.",
+        "Bloque completo: ya tiene todos sus elementos obligatorios y opcionales.",
+      limitIndividuals: (n: number) =>
+        `Límite alcanzado: solo se permiten ${n} sets de individuales.`,
+      individualsComingSoon: "Elementos individuales: próximamente.",
+      sectionCompulsory: (age: string) => `Obligatorios · ${age}`,
+      sectionOptional: (age: string) => `Opcionales · ${age} (no suman dificultad)`,
+      problemSameRow: "Ya hay un obligatorio de esta fila",
+      problemFullCompulsory: "Obligatorios completos",
+      problemFullOptional: "Opcional ya elegido",
+      problemNotAllowed: "No permitido",
+      problemNoPyramid: (codes: string) => `Necesita ${codes}`,
+      addOnHint: (codes: string) => `Se suma a ${codes}`,
       back: "Atrás",
       close: "Cerrar",
     },
@@ -132,7 +141,7 @@ export const es = {
       "Añade los elementos en el orden de la rutina. Marca «Enlazado» si va en la columna siguiente sin hueco (p. ej. mount + static).",
     linkHint:
       "Sin enlazar: se deja una columna en blanco entre elementos. La hoja tiene 3 bloques × 9 columnas.",
-    escolarTagTitle: "Tipo de elemento (ESCOLAR)",
+    tagTitle: (label: string) => `Tipo de elemento (${label})`,
     escolarRole: "Rol",
     escolarBlock: "Bloque",
     escolarGymnast: "Gimnasta",
@@ -146,7 +155,8 @@ export const es = {
     escolarFamilyTumbling: "Tumbling",
     escolarFamilyAgility: "Agilidad",
     escolarStatusTitle: "Control ESCOLAR (guiado)",
-    escolarChecklistTitle: "Checklist ESCOLAR",
+    checklistTitle: (label: string) => `Checklist ${label}`,
+    removeAddOn: (code: string) => `Quitar ${code}`,
     escolarMissingTitle: "Pendientes para completar la estructura",
     escolarDone: "Completado",
     escolarMissing: "Falta",

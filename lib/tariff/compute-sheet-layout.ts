@@ -15,6 +15,8 @@ export type SheetColumnSlot =
       kind: "element";
       routineItemId: string;
       element: PlacedElement;
+      /** Performed with `element` in the same cell (Cuartetos ROW III). */
+      addOn?: PlacedElement;
       elementNumber: number;
       block: OfficialSheetBlockId;
       role?: RoutineElementRole;
@@ -75,6 +77,7 @@ function placeRoutineInColumns(routine: RoutineItem[]): SheetColumnSlot[] {
         kind: "element",
         routineItemId: row.item.id,
         element: row.item.element,
+        ...(row.item.addOn ? { addOn: row.item.addOn } : {}),
         elementNumber,
         block: row.item.block,
         role: row.item.role,

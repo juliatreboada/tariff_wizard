@@ -1,4 +1,13 @@
-# Element catalog (FGX — Balance v1)
+# Element catalogs (FGX, RFEG)
+
+| Catalog | Level | Built by |
+|---------|-------|----------|
+| `FGX` | ESCOLAR | `scripts/generate-fgx-manifest.mjs` |
+| `RFEG` | BASE (Alevín, Infantil, Cadete) | `scripts/cut-table-cells.mjs` + `scripts/generate-rfeg-base-manifest.mjs` |
+
+**RFEG Base** comes from the RFEG PDF "Tablas de dificultad Cto. Nacional Base Acro 2026". Each page is one table picture: render the pages (`pdftoppm -r 220 -png tables.pdf page`), cut each with `node scripts/cut-table-cells.mjs <page.png> public/catalog/RFEG/base/<age>/<pairs|trios|cuartetos>/<balance|dynamic>`, then run `node scripts/generate-rfeg-base-manifest.mjs`. Dynamic rotations and the Cuartetos ROW III add-on links are typed into the generator. Entries carry `filters.levelAges` because each Base age group has its own tables; `attachesTo` marks add-ons (see [RULESETS.md](RULESETS.md)).
+
+The FGX notes below are the original guide.
 
 How pictures and codes are stored **without a database**. The picker (Phase D) reads this data.
 

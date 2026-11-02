@@ -12,7 +12,8 @@ function matchesFilters(entry: CatalogEntry, header: StoredHeader): boolean {
   return (
     filters.levelSystems.includes(header.levelSystem) &&
     filters.categories.includes(header.category) &&
-    filters.exercises.includes(header.exercise)
+    filters.exercises.includes(header.exercise) &&
+    (!filters.levelAges || filters.levelAges.includes(header.levelAge))
   );
 }
 

@@ -19,4 +19,6 @@ export type RoutineItem = {
   /** @deprecated Use individual sets (groupId) instead of order. */
   individualOrder?: 1 | 2 | 3;
   element: PlacedElement;
+  /** Extra element performed with this one (Cuartetos ROW III on a pyramid): one cell, values added. */
+  addOn?: PlacedElement;
 };

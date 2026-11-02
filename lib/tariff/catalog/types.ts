@@ -1,7 +1,7 @@
 import type { Exercise, LevelSystem } from "../enums";
 
-/** Active element catalog (add more regions later if needed). */
-export const CATALOG_IDS = ["FGX"] as const;
+/** Element catalogs: FGX (ESCOLAR) and RFEG (Base). */
+export const CATALOG_IDS = ["FGX", "RFEG"] as const;
 export type CatalogId = (typeof CATALOG_IDS)[number];
 
 export const DEFAULT_CATALOG_ID: CatalogId = "FGX";
@@ -22,6 +22,8 @@ export type CatalogFilters = {
   levelSystems: LevelSystem[];
   categories: string[];
   exercises: Exercise[];
+  /** Age groups (header `levelAge`); omitted = every age of the level system. */
+  levelAges?: string[];
 };
 
 export type CatalogEntry = {
@@ -41,6 +43,11 @@ export type CatalogEntry = {
   /** Dynamic rotation for meta row (e.g. 1/4 BACK). */
   rotation?: string;
   filters: CatalogFilters;
+  /**
+   * An add-on, not an element of its own: it attaches to one of these entries
+   * (e.g. Cuartetos ROW III on a ROW I pyramid) and adds its value.
+   */
+  attachesTo?: string[];
 };
 
 export type CatalogManifest = {

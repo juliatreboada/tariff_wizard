@@ -46,6 +46,12 @@ function validateCatalog(catalogId) {
     }
   }
 
+  for (const entry of manifest.entries ?? []) {
+    for (const target of entry.attachesTo ?? []) {
+      if (!ids.has(target)) errors.push(`${entry.id}: attaches to unknown entry ${target}`);
+    }
+  }
+
   return errors;
 }
 

@@ -16,6 +16,7 @@ import {
   sheetImageCellRoleFooter,
   sheetSlotMetaDisplay,
   sheetValueInSubcell,
+  slotElements,
 } from "@/lib/tariff/element-display";
 import { rulesetFor } from "@/lib/tariff/rulesets";
 import { exerciseLabel } from "@/lib/tariff/exercise-display";
@@ -70,17 +71,21 @@ function ImageCell({
       ? sheetImageCellRoleFooter(slot.role, optionalLabel)
       : "";
 
+  // Individual sets and pyramids with an add-on stack their pictures in one cell.
+  const pictures =
+    slot.kind === "individual-group" ? slot.elements : slotElements(slot);
+
   const image =
-    slot.kind === "individual-group" ? (
+    pictures.length > 1 || slot.kind === "individual-group" ? (
       <div
         className="official-stacked-images"
         style={
           {
-            "--stack-count": slot.elements.length,
+            "--stack-count": pictures.length,
           } as React.CSSProperties
         }
       >
-        {slot.elements.map((el, index) => (
+        {pictures.map((el, index) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={`${el.catalogId}-${index}`}
@@ -93,8 +98,8 @@ function ImageCell({
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src={catalogImageUrl(slot.element.image, slot.element.catalog)}
-        alt={slot.element.coordinates}
+        src={catalogImageUrl(pictures[0].image, pictures[0].catalog)}
+        alt={pictures[0].coordinates}
         className="official-element-img"
       />
     );

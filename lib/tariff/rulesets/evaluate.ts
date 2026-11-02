@@ -2,6 +2,7 @@ import { gymnastCountForCategory } from "../level-category";
 import { countCompleteIndividualSets } from "../routine-groups";
 import type { RoutineItem } from "../routine-types";
 import type { StoredHeader } from "../types";
+import { blockSlots, optionalAvailable } from "./slots";
 import type { Ruleset } from "./types";
 
 type RequirementStatus = {
@@ -23,6 +24,8 @@ export type RuleStatus = {
   missingIndividuals: boolean;
   penaltyTotal: number;
   missingMessages: string[];
+  /** Requirements the catalog can't offer yet: listed, not penalised. */
+  pendingMessages: string[];
 };
 
 function status(expected: number, actual: number): RequirementStatus {
@@ -43,6 +46,7 @@ const disabled = (): RuleStatus => ({
   missingIndividuals: false,
   penaltyTotal: 0,
   missingMessages: [],
+  pendingMessages: [],
 });
 
 export function evaluateRules(
@@ -55,15 +59,31 @@ export function evaluateRules(
   const count = (role: "compulsory" | "optional", block: "balance" | "dynamic") =>
     routine.filter((item) => item.role === role && item.block === block).length;
 
-  const { compulsory, optional } = ruleset.blocks;
-  const compulsoryBalance = status(compulsory, count("compulsory", "balance"));
-  const compulsoryDynamic = status(compulsory, count("compulsory", "dynamic"));
-  const optionalBalance = status(optional, count("optional", "balance"));
-  const optionalDynamic = status(optional, count("optional", "dynamic"));
+  const balanceSlots = blockSlots(ruleset, "balance", header?.category);
+  const dynamicSlots = blockSlots(ruleset, "dynamic", header?.category);
+  const pendingMessages: string[] = [];
+
+  // Optional elements come from tables the catalog may not have yet (e.g. Nacional, FIG).
+  const optionalOffered = !header || optionalAvailable(ruleset, header.levelAge);
+  if (!optionalOffered && (balanceSlots.optional > 0 || dynamicSlots.optional > 0)) {
+    pendingMessages.push("Elementos opcionales: próximamente (tablas de nivel superior).");
+  }
+  const optionalExpected = (slots: { optional: number }) => (optionalOffered ? slots.optional : 0);
+
+  const compulsoryBalance = status(balanceSlots.compulsory, count("compulsory", "balance"));
+  const compulsoryDynamic = status(dynamicSlots.compulsory, count("compulsory", "dynamic"));
+  const optionalBalance = status(optionalExpected(balanceSlots), count("optional", "balance"));
+  const optionalDynamic = status(optionalExpected(dynamicSlots), count("optional", "dynamic"));
 
   const gymnastCount = header ? gymnastCountForCategory(header.category) : 2;
   const { complete } = countCompleteIndividualSets(routine, gymnastCount);
-  const individualPerGymnast = status(ruleset.individualSets, complete);
+  if (!ruleset.individuals.available) {
+    pendingMessages.push("Elementos individuales: próximamente.");
+  }
+  const individualPerGymnast = status(
+    ruleset.individuals.available ? ruleset.individuals.sets : 0,
+    complete,
+  );
 
   const shortBy = (s: RequirementStatus) => Math.max(0, s.expected - s.actual);
   const missingCompulsoryBalance = shortBy(compulsoryBalance) > 0;
@@ -87,7 +107,7 @@ export function evaluateRules(
   }
   if (missingIndividuals) {
     missingMessages.push(
-      `Faltan sets individuales (${complete}/${ruleset.individualSets} completos).`,
+      `Faltan sets individuales (${complete}/${ruleset.individuals.sets} completos).`,
     );
   }
 
@@ -114,5 +134,6 @@ export function evaluateRules(
     missingIndividuals,
     penaltyTotal,
     missingMessages,
+    pendingMessages,
   };
 }

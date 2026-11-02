@@ -44,25 +44,29 @@ function normalizeLegacyCatalogImage(image: string): string {
 }
 
 /**
- * Rehydrate placed elements if their catalog entry still exists. Elements
+ * Rehydrate a placed element if its catalog entry still exists. Elements
  * saved before `catalog` was recorded are FGX, the only catalog back then.
  */
+function refreshElement(element: PlacedElement): PlacedElement {
+  const saved = element.catalog as unknown;
+  const catalog = saved == null ? DEFAULT_CATALOG_ID : saved;
+  // A catalog this build doesn't know: keep the element as saved.
+  if (!isCatalogId(catalog)) return element;
+  const entry = getCatalogEntries(catalog).find((e) => e.id === element.catalogId);
+  if (entry) return catalogEntryToPlaced(entry);
+  const image = normalizeLegacyCatalogImage(element.image);
+  if (image === element.image && saved === catalog) return element;
+  return { ...element, image, catalog };
+}
+
+/** Rehydrate every placed element (and add-on) from the catalog. */
 export function refreshRoutineFromCatalog(
   routine: RoutineItem[],
 ): RoutineItem[] {
   return routine.map((item) => {
-    const saved = item.element.catalog as unknown;
-    const catalog = saved == null ? DEFAULT_CATALOG_ID : saved;
-    // A catalog this build doesn't know: keep the element as saved.
-    if (!isCatalogId(catalog)) return item;
-    const entry = getCatalogEntries(catalog).find(
-      (e) => e.id === item.element.catalogId,
-    );
-    if (entry) {
-      return { ...item, element: catalogEntryToPlaced(entry) };
-    }
-    const image = normalizeLegacyCatalogImage(item.element.image);
-    if (image === item.element.image && saved === catalog) return item;
-    return { ...item, element: { ...item.element, image, catalog } };
+    const element = refreshElement(item.element);
+    const addOn = item.addOn && refreshElement(item.addOn);
+    if (element === item.element && addOn === item.addOn) return item;
+    return { ...item, element, ...(addOn ? { addOn } : {}) };
   });
 }

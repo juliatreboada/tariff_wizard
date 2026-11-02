@@ -17,7 +17,15 @@ import { gymnastCountForCategory } from "@/lib/tariff/level-category";
 import { countCompleteIndividualSets, gymnastKeysForHeader } from "@/lib/tariff/routine-groups";
 import type { RoutineGymnastRole } from "@/lib/tariff/routine-types";
 import type { StoredHeader } from "@/lib/tariff/types";
-import { rulesetFor } from "@/lib/tariff/rulesets";
+import {
+  addProblem,
+  blockSlots,
+  optionalAvailable,
+  optionalLevelAges,
+  pyramidForAddOn,
+  roleForEntry,
+  rulesetFor,
+} from "@/lib/tariff/rulesets";
 import { useWizardStore } from "@/lib/tariff/store";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
 
@@ -160,12 +168,18 @@ function CatalogRowGrid({
   selectedCatalogId,
   selectedCatalogIds,
   selectedHint,
+  problemFor,
+  noteFor,
 }: {
   entries: CatalogEntry[];
   onSelect: (entry: CatalogEntry) => void;
   selectedCatalogId?: string;
   selectedCatalogIds?: Set<string>;
   selectedHint?: string;
+  /** Why this entry can't be picked now (shown under it), or null. */
+  problemFor?: (entry: CatalogEntry) => string | null;
+  /** Extra line under the entry (e.g. which pyramid an add-on attaches to). */
+  noteFor?: (entry: CatalogEntry) => string | null;
 }) {
   const rows = useMemo(() => groupCatalogEntriesByRow(entries), [entries]);
 
@@ -187,6 +201,8 @@ function CatalogRowGrid({
                     (selectedCatalogIds?.has(entry.id) ?? false);
                   // Already in the routine (and not the element being edited).
                   const isUsed = isSelected && selectedCatalogId !== entry.id;
+                  const problem = isSelected ? null : (problemFor?.(entry) ?? null);
+                  const note = noteFor?.(entry) ?? null;
                   return (
                 <li
                   key={entry.id}
@@ -194,12 +210,14 @@ function CatalogRowGrid({
                 >
                   <button
                     type="button"
-                    disabled={isUsed}
+                    disabled={isUsed || problem != null}
                     onClick={() => onSelect(entry)}
                     className={`flex h-full w-full flex-col items-center rounded-lg border p-2 sm:p-2.5 ${
                       isSelected
                         ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
-                        : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+                        : problem
+                          ? "cursor-not-allowed border-zinc-200 opacity-50"
+                          : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
                     }`}
                   >
                     <Image
@@ -218,6 +236,16 @@ function CatalogRowGrid({
                     {isSelected ? (
                       <span className="mt-0.5 text-[9px] font-medium text-zinc-800">
                         ✓ {selectedHint}
+                      </span>
+                    ) : null}
+                    {note ? (
+                      <span className="mt-0.5 text-center text-[9px] leading-tight text-zinc-600">
+                        {note}
+                      </span>
+                    ) : null}
+                    {problem ? (
+                      <span className="mt-0.5 text-center text-[9px] leading-tight text-amber-700">
+                        {problem}
                       </span>
                     ) : null}
                   </button>
@@ -274,8 +302,7 @@ export function ElementPickerPanel({
   const routine = useWizardStore((s) => s.routine);
 
   const editMode = editItemId != null && editBlock != null;
-  const maxPerBlock = ruleset?.blocks.maxElements ?? Infinity;
-  const maxIndividualSets = ruleset?.individualSets ?? Infinity;
+  const maxIndividualSets = ruleset?.individuals.sets ?? Infinity;
   const [elementType, setElementType] = useState<PickerElementType>(
     editBlock ?? "balance",
   );
@@ -341,10 +368,26 @@ export function ElementPickerPanel({
       ).length,
     [routineExcludingEditing],
   );
-  const balanceTotalCount = compulsoryBalanceCount + optionalBalanceCount;
-  const dynamicTotalCount = compulsoryDynamicCount + optionalDynamicCount;
-  const balanceBlockFull = balanceTotalCount >= maxPerBlock;
-  const dynamicBlockFull = dynamicTotalCount >= maxPerBlock;
+
+  /** No slot left that the catalog can fill. */
+  function isBlockFull(block: "balance" | "dynamic", compulsory: number, optional: number) {
+    if (!ruleset) return false;
+    const slots = blockSlots(ruleset, block, header.category);
+    if (ruleset.roleAssignment === "higher-value-compulsory") {
+      return compulsory + optional >= slots.compulsory + slots.optional;
+    }
+    // By-table blocks stay open while an add-on (Cuartetos ROW III) can still attach.
+    const addOnOpen = entriesForFamily(allEntries, header, block).some(
+      (entry) => entry.attachesTo && pyramidForAddOn(routineExcludingEditing, entry),
+    );
+    return (
+      !addOnOpen &&
+      compulsory >= slots.compulsory &&
+      (optional >= slots.optional || !optionalAvailable(ruleset, header.levelAge))
+    );
+  }
+  const balanceBlockFull = isBlockFull("balance", compulsoryBalanceCount, optionalBalanceCount);
+  const dynamicBlockFull = isBlockFull("dynamic", compulsoryDynamicCount, optionalDynamicCount);
   const individualGroupCount = useMemo(() => {
     const gymnastCount = gymnastCountForCategory(header.category);
     return countCompleteIndividualSets(routineExcludingEditing, gymnastCount).totalGroups;
@@ -416,6 +459,53 @@ export function ElementPickerPanel({
       : elementType === "dynamic"
         ? dynamicEntries
         : [];
+  /** By-table rules: own age group's table, then older ones' (optional only). */
+  function sectionsFor(family: "balance" | "dynamic") {
+    if (!ruleset || ruleset.roleAssignment !== "by-table") {
+      return [{ key: "all", title: null, entries: entriesForFamily(allEntries, header, family) }];
+    }
+    return [
+      {
+        key: header.levelAge,
+        title: t.sheet.picker.sectionCompulsory(header.levelAge),
+        entries: entriesForFamily(allEntries, header, family),
+      },
+      ...optionalLevelAges(ruleset, header.levelAge).map((age) => ({
+        key: age,
+        title: t.sheet.picker.sectionOptional(age),
+        entries: entriesForFamily(allEntries, { ...header, levelAge: age }, family),
+      })),
+    ];
+  }
+
+  const coordinatesOf = (ids: readonly string[]) =>
+    ids
+      .map((id) => allEntries.find((e) => e.id === id)?.coordinates ?? id)
+      .join(" / ");
+
+  function problemFor(entry: CatalogEntry): string | null {
+    if (elementType !== "balance" && elementType !== "dynamic") return null;
+    const problem = addProblem(ruleset, header, routine, entry, elementType, editItemId);
+    switch (problem) {
+      case null:
+      case "duplicate": // shown as already chosen
+        return null;
+      case "same-row":
+        return t.sheet.picker.problemSameRow;
+      case "full":
+        return ruleset && roleForEntry(ruleset, header, entry) === "optional"
+          ? t.sheet.picker.problemFullOptional
+          : t.sheet.picker.problemFullCompulsory;
+      case "no-pyramid":
+        return t.sheet.picker.problemNoPyramid(coordinatesOf(entry.attachesTo ?? []));
+      case "not-allowed":
+        return t.sheet.picker.problemNotAllowed;
+    }
+  }
+
+  const noteFor = (entry: CatalogEntry) =>
+    entry.attachesTo ? t.sheet.picker.addOnHint(coordinatesOf(entry.attachesTo)) : null;
+
   const selectedCatalogIds = useMemo(() => {
     if (elementType !== "balance" && elementType !== "dynamic") {
       return new Set<string>();
@@ -423,7 +513,9 @@ export function ElementPickerPanel({
     return new Set(
       routine
         .filter((item) => item.block === elementType)
-        .map((item) => item.element.catalogId),
+        .flatMap((item) =>
+          item.addOn ? [item.element.catalogId, item.addOn.catalogId] : [item.element.catalogId],
+        ),
     );
   }, [routine, elementType]);
   return (
@@ -431,7 +523,7 @@ export function ElementPickerPanel({
       <header
         className={`flex items-center justify-between border-b border-zinc-200 ${isPopover ? "px-3 py-2" : "px-4 py-3"}`}
       >
-        <p className="text-xs text-zinc-600">{t.routine.escolarTagTitle}</p>
+        <p className="text-xs text-zinc-600">{ruleset ? t.routine.tagTitle(ruleset.label) : t.sheet.picker.stepSubtype}</p>
         <button
           type="button"
           onClick={onClose}
@@ -512,18 +604,33 @@ export function ElementPickerPanel({
             ) : currentEntries.length === 0 ? (
               <p className="text-sm text-amber-700">{t.sheet.catalogEmpty}</p>
             ) : (
-              <CatalogRowGrid
-                entries={currentEntries}
-                selectedCatalogId={editingItem?.element.catalogId}
-                selectedCatalogIds={selectedCatalogIds}
-                selectedHint={t.routine.escolarDone}
-                onSelect={(entry) => {
-                  setPreviewEntry(entry);
-                  setDuplicateError(false);
-                  setLimitError(null);
-                }}
-              />
+              <div className="flex flex-col gap-4">
+                {sectionsFor(elementType).map((section) =>
+                  section.entries.length === 0 ? null : (
+                    <div key={section.key}>
+                      {section.title ? (
+                        <p className="mb-2 text-xs font-semibold text-zinc-800">{section.title}</p>
+                      ) : null}
+                      <CatalogRowGrid
+                        entries={section.entries}
+                        selectedCatalogId={editingItem?.element.catalogId}
+                        selectedCatalogIds={selectedCatalogIds}
+                        selectedHint={t.routine.escolarDone}
+                        problemFor={problemFor}
+                        noteFor={noteFor}
+                        onSelect={(entry) => {
+                          setPreviewEntry(entry);
+                          setDuplicateError(false);
+                          setLimitError(null);
+                        }}
+                      />
+                    </div>
+                  ),
+                )}
+              </div>
             )
+          ) : ruleset && !ruleset.individuals.available ? (
+            <p className="text-sm text-amber-700">{t.sheet.picker.individualsComingSoon}</p>
           ) : (
             <>
               <p className="text-xs text-zinc-600">{t.routine.escolarIndividualHint}</p>
@@ -623,7 +730,7 @@ export function ElementPickerPanel({
                 <p className="text-sm text-amber-700">{t.sheet.picker.duplicateElement}</p>
               ) : null}
               {limitError === "individuals" ? (
-                <p className="text-sm text-amber-700">{t.sheet.picker.limitIndividuals}</p>
+                <p className="text-sm text-amber-700">{t.sheet.picker.limitIndividuals(maxIndividualSets)}</p>
               ) : null}
               <div className="border-t border-zinc-200 pt-3">
                 <button

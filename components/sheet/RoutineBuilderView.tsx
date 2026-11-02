@@ -42,6 +42,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
   const addRoutineElement = useWizardStore((s) => s.addRoutineElement);
   const addIndividualGroup = useWizardStore((s) => s.addIndividualGroup);
   const removeRoutineItem = useWizardStore((s) => s.removeRoutineItem);
+  const removeAddOn = useWizardStore((s) => s.removeAddOn);
   const moveRoutineItem = useWizardStore((s) => s.moveRoutineItem);
   const setRoutineItemLinked = useWizardStore((s) => s.setRoutineItemLinked);
   const replaceRoutineElement = useWizardStore((s) => s.replaceRoutineElement);
@@ -52,7 +53,6 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
     block: "balance" | "dynamic";
   } | null>(null);
   const ruleset = rulesetFor(header);
-  const escolarMode = ruleset != null;
   const escolarStatus = evaluateRules(ruleset, header, routine);
 
   function savePickerSelection(selection: ElementPickerSelection): boolean {
@@ -97,46 +97,41 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
         </Link>
       </div>
 
-      {escolarMode ? (
+      {ruleset ? (
         <section className="rounded-xl border border-amber-200 bg-amber-50 p-3.5 sm:p-4">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between lg:gap-6">
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-amber-900">
-                {t.routine.escolarChecklistTitle}
+                {t.routine.checklistTitle(ruleset.label)}
               </p>
               <ul className="mt-2 grid gap-2 text-xs text-amber-900 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
-                <li className="rounded-md border border-amber-200/80 bg-white/60 px-2 py-1.5">
-                  <span className="font-medium">
-                    {escolarStatus.missingCompulsoryBalance ? "□" : "✓"}
-                  </span>{" "}
-                  {t.routine.escolarRuleCompBalance}
-                </li>
-                <li className="rounded-md border border-amber-200/80 bg-white/60 px-2 py-1.5">
-                  <span className="font-medium">
-                    {escolarStatus.missingCompulsoryDynamic ? "□" : "✓"}
-                  </span>{" "}
-                  {t.routine.escolarRuleCompDynamic}
-                </li>
-                <li className="rounded-md border border-amber-200/80 bg-white/60 px-2 py-1.5">
-                  <span className="font-medium">
-                    {escolarStatus.missingOptionalBalance ? "□" : "✓"}
-                  </span>{" "}
-                  {t.routine.escolarRuleOptBalance}
-                </li>
-                <li className="rounded-md border border-amber-200/80 bg-white/60 px-2 py-1.5">
-                  <span className="font-medium">
-                    {escolarStatus.missingOptionalDynamic ? "□" : "✓"}
-                  </span>{" "}
-                  {t.routine.escolarRuleOptDynamic}
-                </li>
-                <li className="rounded-md border border-amber-200/80 bg-white/60 px-2 py-1.5 sm:col-span-2 lg:col-span-1">
-                  <span className="font-medium">
-                    {escolarStatus.missingIndividuals ? "□" : "✓"}
-                  </span>{" "}
-                  {t.routine.escolarRuleIndividuals} (
-                  {escolarStatus.individualPerGymnast.actual}/
-                  {escolarStatus.individualPerGymnast.expected})
-                </li>
+                {(
+                  [
+                    [escolarStatus.compulsoryBalance, t.routine.escolarRuleCompBalance, false],
+                    [escolarStatus.compulsoryDynamic, t.routine.escolarRuleCompDynamic, false],
+                    [escolarStatus.optionalBalance, t.routine.escolarRuleOptBalance, false],
+                    [escolarStatus.optionalDynamic, t.routine.escolarRuleOptDynamic, false],
+                    [escolarStatus.individualPerGymnast, t.routine.escolarRuleIndividuals, true],
+                  ] as const
+                ).map(([req, label, alwaysCount]) => (
+                  <li
+                    key={label}
+                    className={`rounded-md border border-amber-200/80 bg-white/60 px-2 py-1.5 ${alwaysCount ? "sm:col-span-2 lg:col-span-1" : ""}`}
+                  >
+                    {req.expected === 0 ? (
+                      // Required by the rules but not in the catalog yet.
+                      <>
+                        <span className="font-medium">–</span> {label} ({t.wizard.comingSoon})
+                      </>
+                    ) : (
+                      <>
+                        <span className="font-medium">{req.actual >= req.expected ? "✓" : "□"}</span>{" "}
+                        {label}
+                        {alwaysCount || req.expected > 1 ? ` (${req.actual}/${req.expected})` : ""}
+                      </>
+                    )}
+                  </li>
+                ))}
               </ul>
             </div>
             <p className="shrink-0 text-xs font-semibold text-amber-900 lg:pt-6 lg:text-sm">
@@ -145,6 +140,15 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
               {escolarStatus.penaltyTotal.toFixed(1)}
             </p>
           </div>
+          {escolarStatus.pendingMessages.length > 0 ? (
+            <ul className="mt-2 text-xs text-amber-800">
+              {escolarStatus.pendingMessages.map((msg) => (
+                <li key={msg} className="list-none">
+                  · {msg}
+                </li>
+              ))}
+            </ul>
+          ) : null}
           {escolarStatus.missingMessages.length > 0 ? (
             <div className="mt-3 border-t border-amber-200/80 pt-3">
               <p className="text-xs font-medium text-amber-900">
@@ -197,10 +201,13 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                       <div className="min-w-0 flex-1">
                         <p className="truncate font-mono text-[15px] font-semibold leading-5 text-zinc-900 sm:text-sm">
                           {row.item.element.coordinates}
+                          {row.item.addOn ? ` + ${row.item.addOn.coordinates}` : ""}
                         </p>
                         <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[12px] text-zinc-700">
                           <span className="rounded bg-zinc-100 px-1.5 py-0.5 font-medium">
-                            {formatSheetValue(row.item.element.value)}
+                            {formatSheetValue(
+                              row.item.element.value + (row.item.addOn?.value ?? 0),
+                            )}
                           </span>
                           <span className="rounded bg-zinc-100 px-1.5 py-0.5">
                             {blockLabel(row.item.block, t)}
@@ -209,6 +216,24 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                               : ""}
                           </span>
                         </div>
+                        {row.item.addOn ? (
+                          <div className="mt-2 flex items-center gap-2">
+                            <Image
+                              src={catalogImageUrl(row.item.addOn.image, row.item.addOn.catalog)}
+                              alt={row.item.addOn.coordinates}
+                              width={56}
+                              height={42}
+                              className="h-10 w-14 rounded border border-zinc-100 bg-zinc-50 object-contain"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => removeAddOn(row.item.id)}
+                              className="rounded-md px-2 py-1 text-xs text-zinc-600 hover:bg-zinc-100"
+                            >
+                              {t.routine.removeAddOn(row.item.addOn.coordinates)}
+                            </button>
+                          </div>
+                        ) : null}
                       </div>
                     </>
                   ) : (

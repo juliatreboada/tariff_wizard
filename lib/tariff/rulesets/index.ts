@@ -1,8 +1,9 @@
 import type { LevelSystem } from "../enums";
 import { FGX_ESCOLAR } from "./fgx-escolar";
+import { RFEG_BASE } from "./rfeg-base";
 import type { Ruleset, RulesetTarget } from "./types";
 
-export const RULESETS: readonly Ruleset[] = [FGX_ESCOLAR];
+export const RULESETS: readonly Ruleset[] = [FGX_ESCOLAR, RFEG_BASE];
 
 /** The ruleset a sheet follows, or null when its level has no rules yet. */
 export function rulesetFor(target: RulesetTarget | null | undefined): Ruleset | null {
@@ -20,5 +21,13 @@ export function isLevelAgeReady(levelSystem: LevelSystem, levelAge: string): boo
 }
 
 export { applyRulesetRoles, applyRulesetRolesForBlock } from "./roles";
+export { addProblem, pyramidForAddOn, type AddProblem } from "./constraints";
 export { evaluateRules, type RuleStatus } from "./evaluate";
-export type { Ruleset, RulesetTarget } from "./types";
+export {
+  blockSlots,
+  optionalAvailable,
+  optionalLevelAges,
+  roleForEntry,
+  rowOf,
+} from "./slots";
+export type { BlockSlots, ElementBlock, Ruleset, RulesetTarget, RulesHeader } from "./types";

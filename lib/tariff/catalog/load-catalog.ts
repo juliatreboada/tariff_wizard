@@ -1,10 +1,12 @@
 import manifestFgx from "@/catalog/FGX/manifest.json";
+import manifestRfeg from "@/catalog/RFEG/manifest.json";
 import { catalogManifestSchema } from "./schema";
 import type { CatalogEntry, CatalogId, CatalogManifest } from "./types";
 import { DEFAULT_CATALOG_ID } from "./types";
 
 const manifests: Record<CatalogId, unknown> = {
   FGX: manifestFgx,
+  RFEG: manifestRfeg,
 };
 
 const cache = new Map<CatalogId, CatalogManifest>();

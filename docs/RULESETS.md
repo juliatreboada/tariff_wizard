@@ -6,11 +6,31 @@ Each competition's rules live in one `Ruleset` object in [`lib/tariff/rulesets/`
 |------|------|
 | [`types.ts`](../lib/tariff/rulesets/types.ts) | The `Ruleset` shape: limits, penalties, role assignment, display |
 | [`fgx-escolar.ts`](../lib/tariff/rulesets/fgx-escolar.ts) | FGX ESCOLAR (2027 rules) |
+| [`rfeg-base.ts`](../lib/tariff/rulesets/rfeg-base.ts) | RFEG Base — Alevín, Infantil, Cadete (Código 2026) |
+| [`slots.ts`](../lib/tariff/rulesets/slots.ts) | Slots per block and category, an element's role, its table row |
+| [`constraints.ts`](../lib/tariff/rulesets/constraints.ts) | Why an element can't be added (`addProblem`) — used by the store and the picker |
 | [`index.ts`](../lib/tariff/rulesets/index.ts) | Registry (`RULESETS`) and `rulesetFor(header)` |
 | [`roles.ts`](../lib/tariff/rulesets/roles.ts) | Compulsory / optional assignment |
 | [`evaluate.ts`](../lib/tariff/rulesets/evaluate.ts) | Checklist and penalties |
 
 A sheet follows the ruleset whose `levelSystem` matches its header. Levels without a ruleset have no limits or penalties, and the wizard shows them as "coming soon".
+
+## The two rulesets
+
+| | ESCOLAR | BASE |
+|--|--|--|
+| Balance, pairs | 1 compulsory + 1 optional | 2 compulsory + 1 optional |
+| Balance, groups | 1 + 1 | 1 + 1 |
+| Dynamic, pairs and groups | 1 + 1 | 2 + 1 |
+| Compulsory vs optional (`roleAssignment`) | `higher-value-compulsory`: any element of the table; the higher value is compulsory | `by-table`: the sheet's own age group's table is compulsory; an older age group's table (`optionalFromLevelAges`) is optional |
+| Compulsory from different rows | no | yes |
+| Difficulty | compulsory only | compulsory only |
+| Missing element | 0.5 each | 1 each |
+| Individuals | 3 sets; 1 point if any missing | 3 sets (≥1 tumbling); 1 point if any missing — **coming soon** (`individuals.available: false`) |
+
+BASE optionals should come from a higher level (Nacional, FIG). Until those catalogs exist, the older Base age groups are offered: Alevín → Infantil, Cadete; Infantil → Cadete; Cadete → none. A requirement the catalog can't offer yet (Cadete optionals, Base individuals) shows as "próximamente" in the checklist and is **not** penalised.
+
+**Add-ons.** In Base Cuartetos balance, ROW III is a plus value attached to a pyramid (black arrow in the tables), not an element of its own. The catalog entry lists the pyramids in `attachesTo`; in the routine it is stored on the pyramid (`RoutineItem.addOn`), shares its sheet cell, and adds its value. Removing or replacing the pyramid with one it can't attach to removes it.
 
 ## Changing a rule
 
@@ -27,4 +47,5 @@ Edit the numbers in the ruleset (e.g. `penalties.missingIndividuals`), then upda
 ## Known follow-ups
 
 - **Rulesets match on level system only.** If categories or ages within one level need different rules, extend `RulesetTarget` and `rulesetFor`.
-- **No same-row restriction option.** FGX 2027 allows two elements from one row; a ruleset that forbids it needs a new setting and picker support.
+- **Base tumbling requirement.** "At least 1 tumbling individual" is not checked yet; add it with the FIG individual pictures.
+- **Higher-level optionals.** When Nacional / FIG catalogs arrive, Base optionals should come from them (today: older Base age groups).
