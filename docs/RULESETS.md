@@ -18,7 +18,7 @@ Edit the numbers in the ruleset (e.g. `penalties.missingIndividuals`), then upda
 
 ## Adding a competition
 
-1. Add its catalog: `catalog/<CODE>/manifest.json` + images in `public/catalog/<CODE>/`, register the code in `CATALOG_IDS` and in `lib/tariff/catalog/load-catalog.ts`, run `npm run validate-catalog`.
+1. Add its catalog: `catalog/<CODE>/manifest.json` + images in `public/catalog/<CODE>/`, register the code in `CATALOG_IDS` and in `lib/tariff/catalog/load-catalog.ts`, run `npm run validate-catalog`. Entry ids must start with the code in lower case (`rfeg-…`) so they never clash with another catalog's.
 2. Write `lib/tariff/rulesets/<code>-<level>.ts` and add it to `RULESETS`.
 3. Add scenario tests for its rules. `rulesets.test.ts` checks every ruleset is consistent automatically.
 4. Update the wizard hint texts in `lib/i18n/messages/es.ts` (`levelSystemAvailability`, `levelAgeAvailability`).
@@ -26,6 +26,5 @@ Edit the numbers in the ruleset (e.g. `penalties.missingIndividuals`), then upda
 
 ## Known follow-ups
 
-- **Placed elements don't record their catalog.** Images and reloads assume the default catalog (FGX). Add a catalog code to `PlacedElement` (with a migration for saved sheets) when the second catalog arrives.
 - **Rulesets match on level system only.** If categories or ages within one level need different rules, extend `RulesetTarget` and `rulesetFor`.
 - **No same-row restriction option.** FGX 2027 allows two elements from one row; a ruleset that forbids it needs a new setting and picker support.

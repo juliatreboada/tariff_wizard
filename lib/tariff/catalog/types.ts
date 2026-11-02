@@ -6,6 +6,10 @@ export type CatalogId = (typeof CATALOG_IDS)[number];
 
 export const DEFAULT_CATALOG_ID: CatalogId = "FGX";
 
+export function isCatalogId(value: unknown): value is CatalogId {
+  return (CATALOG_IDS as readonly unknown[]).includes(value);
+}
+
 /** Catalog section: equilibrio grid, dinámico grid, or individual figures. */
 export const ELEMENT_FAMILIES = ["balance", "dynamic", "individual"] as const;
 export type ElementFamily = (typeof ELEMENT_FAMILIES)[number];

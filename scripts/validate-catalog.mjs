@@ -33,6 +33,10 @@ function validateCatalog(catalogId) {
     if (entry.code !== catalogId) {
       errors.push(`${entry.id}: entry.code must be ${catalogId}`);
     }
+    const prefix = `${catalogId.toLowerCase()}-`;
+    if (!String(entry.id).startsWith(prefix)) {
+      errors.push(`${entry.id}: id must start with "${prefix}"`);
+    }
 
     const imagePath = path.join(publicCatalog, entry.image);
     if (!fs.existsSync(imagePath)) {

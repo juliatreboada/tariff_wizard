@@ -33,7 +33,7 @@ export function getCatalogEntries(
 /** Public URL for an entry image (`public/catalog/<code>/…`). */
 export function catalogImageUrl(
   imagePath: string,
-  catalogId: CatalogId = DEFAULT_CATALOG_ID,
+  catalogId: CatalogId,
 ): string {
   return `/catalog/${catalogId}/${imagePath.replace(/^\//, "")}`;
 }

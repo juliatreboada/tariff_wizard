@@ -91,7 +91,7 @@ function ElementPickerPreview({
         <div className="flex shrink-0 items-start gap-3">
           <div className="w-full max-w-[220px] rounded-lg border border-zinc-200 bg-white p-3">
             <Image
-              src={catalogImageUrl(entry.image)}
+              src={catalogImageUrl(entry.image, entry.code)}
               alt={entry.coordinates}
               width={200}
               height={140}
@@ -203,7 +203,7 @@ function CatalogRowGrid({
                     }`}
                   >
                     <Image
-                      src={catalogImageUrl(entry.image)}
+                      src={catalogImageUrl(entry.image, entry.code)}
                       alt={entry.coordinates}
                       width={96}
                       height={68}
@@ -601,7 +601,7 @@ export function ElementPickerPanel({
                               }`}
                             >
                               <Image
-                                src={catalogImageUrl(entry.image)}
+                                src={catalogImageUrl(entry.image, entry.code)}
                                 alt={entry.coordinates}
                                 width={80}
                                 height={56}

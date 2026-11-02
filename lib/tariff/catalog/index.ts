@@ -17,6 +17,7 @@ export { catalogEntryToPlaced } from "./to-placed";
 export {
   CATALOG_IDS,
   DEFAULT_CATALOG_ID,
+  isCatalogId,
   ELEMENT_FAMILIES,
   ELEMENT_TYPES,
   type CatalogEntry,

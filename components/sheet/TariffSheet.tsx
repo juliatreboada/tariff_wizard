@@ -84,7 +84,7 @@ function ImageCell({
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={`${el.catalogId}-${index}`}
-            src={catalogImageUrl(el.image)}
+            src={catalogImageUrl(el.image, el.catalog)}
             alt={el.coordinates}
             className="official-stacked-img"
           />
@@ -93,7 +93,7 @@ function ImageCell({
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src={catalogImageUrl(slot.element.image)}
+        src={catalogImageUrl(slot.element.image, slot.element.catalog)}
         alt={slot.element.coordinates}
         className="official-element-img"
       />

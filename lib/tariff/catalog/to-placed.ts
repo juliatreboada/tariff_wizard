@@ -4,6 +4,7 @@ import type { CatalogEntry } from "./types";
 export function catalogEntryToPlaced(entry: CatalogEntry): PlacedElement {
   return {
     catalogId: entry.id,
+    catalog: entry.code,
     coordinates: entry.coordinates,
     value: entry.value,
     image: entry.image,

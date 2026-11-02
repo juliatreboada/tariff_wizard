@@ -18,6 +18,8 @@ public/catalog/FGX/individuals/      ← PNG files (individuales)
 
 **Rule:** `image` in the manifest is relative to `public/catalog/FGX/`.
 
+**Rule:** every `id` starts with the catalog code in lower case (`fgx-…`), so ids are unique across catalogs. A placed element stores both the entry id (`catalogId`) and its catalog (`catalog`); sheets saved before `catalog` existed load as FGX. Opening a sheet (current or saved) refreshes each element from its catalog entry, so a corrected value or image reaches old sheets too.
+
 ## Add a new element
 
 1. Add `public/catalog/FGX/pairs/balance/MY-ELEMENT.png`

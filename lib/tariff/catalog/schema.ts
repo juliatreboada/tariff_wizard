@@ -19,9 +19,33 @@ const catalogEntrySchema = z.object({
   }),
 });
 
-export const catalogManifestSchema = z.object({
-  version: z.literal(1),
-  code: z.enum(CATALOG_IDS),
-  description: z.string().optional(),
-  entries: z.array(catalogEntrySchema).min(1),
-});
+/** Entry ids start with their catalog's code (fgx-…) so they never clash across catalogs. */
+export function catalogIdPrefix(code: string): string {
+  return `${code.toLowerCase()}-`;
+}
+
+export const catalogManifestSchema = z
+  .object({
+    version: z.literal(1),
+    code: z.enum(CATALOG_IDS),
+    description: z.string().optional(),
+    entries: z.array(catalogEntrySchema).min(1),
+  })
+  .superRefine((manifest, ctx) => {
+    manifest.entries.forEach((entry, i) => {
+      if (entry.code !== manifest.code) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["entries", i, "code"],
+          message: `entry.code must be ${manifest.code}`,
+        });
+      }
+      if (!entry.id.startsWith(catalogIdPrefix(manifest.code))) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["entries", i, "id"],
+          message: `id must start with "${catalogIdPrefix(manifest.code)}"`,
+        });
+      }
+    });
+  });

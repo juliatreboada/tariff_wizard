@@ -481,7 +481,10 @@ export const useWizardStore = create<WizardStore>()(
       loadSavedSheet: (sheetId) => {
         const sheet = get().savedSheets.find((s) => s.id === sheetId);
         if (!sheet) return;
-        const routine = applyRulesetRoles(sheet.routine, rulesetFor(sheet.header));
+        const routine = applyRulesetRoles(
+          refreshRoutineFromCatalog(sheet.routine),
+          rulesetFor(sheet.header),
+        );
         set({
           header: sheet.header,
           routine,
@@ -576,11 +579,9 @@ export const useWizardStore = create<WizardStore>()(
         if (routine.length === 0 && p.elements) {
           routine = migrateElementsRecordToRoutine(p.elements);
         }
+        routine = refreshRoutineFromCatalog(routine);
         if (p.header) {
-          routine = applyRulesetRoles(
-            refreshRoutineFromCatalog(routine),
-            rulesetFor(p.header),
-          );
+          routine = applyRulesetRoles(routine, rulesetFor(p.header));
         }
         const valueBreakdown = p.header
           ? recalculateValueBreakdown(routine)

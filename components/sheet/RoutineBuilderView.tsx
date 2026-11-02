@@ -188,7 +188,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                   {row.kind === "single" ? (
                     <>
                       <Image
-                        src={catalogImageUrl(row.item.element.image)}
+                        src={catalogImageUrl(row.item.element.image, row.item.element.catalog)}
                         alt={row.item.element.coordinates}
                         width={96}
                         height={72}
@@ -229,7 +229,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                             className="flex min-w-0 flex-col items-center rounded-lg border border-zinc-100 bg-zinc-50 p-1 sm:p-1.5"
                           >
                             <Image
-                              src={catalogImageUrl(item.element.image)}
+                              src={catalogImageUrl(item.element.image, item.element.catalog)}
                               alt={item.element.coordinates}
                               width={56}
                               height={42}
