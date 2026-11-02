@@ -34,10 +34,12 @@ Put official PDFs and sample sheets in `reference/` on your machine (gitignored)
 
 ## Deploy
 
-1. Run `npm run build` locally.
-2. Push to GitHub and import the repo on [Vercel](https://vercel.com/new).
-3. Add secrets in the Vercel dashboard only (never commit `.env.local`).
+Hosted on [Vercel](https://vercel.com), connected to this GitHub repo: pushes to `main` deploy to production, other branches get preview URLs.
+
+- The build command lives in [`vercel.json`](vercel.json) and runs the tests and catalog check before `next build`, so a failing test blocks the deploy.
+- Run `npm test && npm run build` locally before pushing.
+- Add secrets in the Vercel dashboard only (never commit `.env.local`).
 
 ## Stack
 
-Next.js 16 (App Router), React 19, Tailwind CSS 4, TypeScript. Form/state libraries (`zod`, `react-hook-form`, `zustand`) are installed for Step 2 onward.
+Next.js 16 (App Router), React 19, Tailwind CSS 4, TypeScript, Vitest. Form/state libraries (`zod`, `react-hook-form`, `zustand`) are installed for Step 2 onward.
