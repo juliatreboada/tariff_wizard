@@ -208,6 +208,28 @@ describe("persisted data", () => {
     expect(store().valueBreakdown.balance).toBeCloseTo(0.3);
   });
 
+  it("renames ESCOLAR Absoluto to Absoluta everywhere it was saved", async () => {
+    const old = header({ levelAge: "Absoluto" });
+    localStorage.setItem(
+      "tariff-wizard-v1",
+      JSON.stringify({
+        state: {
+          header: old,
+          competition: { ...emptyCompetitionStep(), levelSystem: "Escolar", levelAge: "Absoluto" },
+          routine: [],
+          savedSheets: [
+            { id: "s", updatedAtIso: "2026-10-01T00:00:00.000Z", header: old, routine: [], valueBreakdown: store().valueBreakdown },
+          ],
+        },
+        version: 0,
+      }),
+    );
+    await useWizardStore.persist.rehydrate();
+    expect(store().header?.levelAge).toBe("Absoluta");
+    expect(store().competition.levelAge).toBe("Absoluta");
+    expect(store().savedSheets[0].header.levelAge).toBe("Absoluta");
+  });
+
   it("records the FGX catalog on a legacy routine saved without a header", async () => {
     localStorage.setItem(
       "tariff-wizard-v1",

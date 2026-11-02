@@ -10,6 +10,7 @@ import {
   findCategoryCodeForLabel,
   gymnastCountForCategory,
   normalizeBaseNames,
+  renameLegacyLevelAge,
 } from "./level-category";
 import {
   migrateElementsRecordToRoutine,
@@ -171,6 +172,13 @@ function emptyDefaultProfile(): DefaultProfile {
     contactName: "",
     contactPhone: "",
   };
+}
+
+function withRenamedLevelAge<T extends { levelSystem: StoredHeader["levelSystem"]; levelAge: string }>(
+  value: T,
+): T {
+  const levelAge = renameLegacyLevelAge(value.levelSystem, value.levelAge);
+  return levelAge === value.levelAge ? value : { ...value, levelAge };
 }
 
 function withCompetitionDefaults(
@@ -586,9 +594,8 @@ export const useWizardStore = create<WizardStore>()(
         const valueBreakdown = p.header
           ? recalculateValueBreakdown(routine)
           : emptyValueBreakdown();
-        const competition = withCompetitionDefaults(
-          p.competition ?? current.competition,
-          defaultProfile,
+        const competition = withRenamedLevelAge(
+          withCompetitionDefaults(p.competition ?? current.competition, defaultProfile),
         );
         const teamContact = normalizeTeamContact(
           withTeamContactDefaults(
@@ -597,7 +604,7 @@ export const useWizardStore = create<WizardStore>()(
           ),
           competition.category,
         );
-        let header = p.header ?? null;
+        let header = p.header ? withRenamedLevelAge(p.header) : null;
         if (header && header.baseNames.length !== baseCountForCategory(header.category)) {
           header = {
             ...header,
@@ -616,7 +623,11 @@ export const useWizardStore = create<WizardStore>()(
           routine,
           valueBreakdown,
           currentSheetId: p.currentSheetId ?? current.currentSheetId,
-          savedSheets: p.savedSheets ?? current.savedSheets,
+          savedSheets: (p.savedSheets ?? current.savedSheets).map((sheet) =>
+            sheet.header
+              ? { ...sheet, header: withRenamedLevelAge(sheet.header) }
+              : sheet,
+          ),
         };
       },
     },

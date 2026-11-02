@@ -70,7 +70,7 @@ export const es = {
     levelSystemAvailability:
       "Por ahora solo está disponible ESCOLAR. BASE, RFEG y FIG se habilitarán próximamente.",
     levelAgeAvailability:
-      "En ESCOLAR, la categoría de edad Absoluto se habilitará próximamente.",
+      "En ESCOLAR, la categoría de edad Absoluta se habilitará próximamente.",
   },
   sheet: {
     title: "Tariff Sheet",

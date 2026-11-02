@@ -35,9 +35,11 @@ describe("wizard availability", () => {
     expect(availableLevelSystems()).toEqual(["Escolar"]);
   });
 
-  it("marks ESCOLAR Absoluto as not ready yet", () => {
-    expect(isLevelAgeReady("Escolar", "Alevín")).toBe(true);
-    expect(isLevelAgeReady("Escolar", "Absoluto")).toBe(false);
+  it("offers every ESCOLAR age group but Absoluta", () => {
+    for (const age of ["Prebenxamín", "Benxamín", "Alevín", "Infantil"]) {
+      expect(isLevelAgeReady("Escolar", age)).toBe(true);
+    }
+    expect(isLevelAgeReady("Escolar", "Absoluta")).toBe(false);
     expect(isLevelAgeReady("RFEG", "Junior")).toBe(false);
   });
 });

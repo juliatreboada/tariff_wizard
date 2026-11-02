@@ -79,7 +79,7 @@ export function findCategoryCodeForLabel(
 
 /**
  * D-SCORE rule from competition sheet:
- * - DV/100 for: Absoluto Escolar, Junior Base, Senior Base,
+ * - DV/100 for: Absoluta Escolar, Junior Base, Senior Base,
  *   Pre-Junior, Junior, Senior, Youth
  * - otherwise: D-SCORE = DV
  */
@@ -87,7 +87,7 @@ export function usesDvOver100ForDScore(
   levelSystem: LevelSystem,
   levelAge: string,
 ): boolean {
-  if (levelSystem === "Escolar" && levelAge === "Absoluto") return true;
+  if (levelSystem === "Escolar" && levelAge === "Absoluta") return true;
   if (levelSystem === "Base" && (levelAge === "Junior" || levelAge === "Senior")) {
     return true;
   }
@@ -97,4 +97,13 @@ export function usesDvOver100ForDScore(
     levelAge === "Senior" ||
     levelAge === "Youth"
   );
+}
+
+/** Age groups renamed since sheets were first saved: ESCOLAR Absoluto → Absoluta. */
+export function renameLegacyLevelAge(
+  levelSystem: LevelSystem,
+  levelAge: string,
+): string {
+  if (levelSystem === "Escolar" && levelAge === "Absoluto") return "Absoluta";
+  return levelAge;
 }

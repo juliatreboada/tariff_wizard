@@ -5,7 +5,7 @@ export const FGX_ESCOLAR: Ruleset = {
   id: "fgx-escolar",
   catalogId: "FGX",
   levelSystem: "Escolar",
-  readyLevelAges: ["Benxamín", "Alevín", "Infantil"],
+  readyLevelAges: ["Prebenxamín", "Benxamín", "Alevín", "Infantil"],
   blocks: {
     maxElements: 2,
     compulsory: 1,
