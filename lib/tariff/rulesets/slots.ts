@@ -8,6 +8,7 @@ import type {
   Ruleset,
   RulesHeader,
   TableRef,
+  ValueRange,
 } from "./types";
 
 /** Slots for one block; pairs and groups (tríos, cuartetos) can differ. */
@@ -16,8 +17,20 @@ export function blockSlots(
   block: ElementBlock,
   category: string | undefined,
 ): BlockSlots {
-  const team = category && gymnastCountForCategory(category) > 2 ? "groups" : "pairs";
-  return ruleset.blocks[block][team];
+  return ruleset.blocks[block][teamOf(category)];
+}
+
+function teamOf(category: string | undefined): "pairs" | "groups" {
+  return category && gymnastCountForCategory(category) > 2 ? "groups" : "pairs";
+}
+
+/** The value an optional from TOD WG / Age Group 11-16 must have, or null for none. */
+export function optionalValueRange(
+  ruleset: Ruleset,
+  header: Pick<RulesHeader, "levelAge" | "category">,
+  block: ElementBlock,
+): ValueRange | null {
+  return ruleset.optionalValueRanges?.[header.levelAge]?.[teamOf(header.category)][block] ?? null;
 }
 
 /** Other tables that supply optional elements for this sheet's age group. */

@@ -2,12 +2,14 @@ import { gymnastCountForCategory } from "../level-category";
 import { countCompleteIndividualSets } from "../routine-groups";
 import type { RoutineItem } from "../routine-types";
 import type { StoredHeader } from "../types";
-import { blockSlots, optionalAvailable } from "./slots";
-import type { Ruleset } from "./types";
+import { blockSlots, optionalAvailable, optionalValueRange } from "./slots";
+import type { Ruleset, ValueRange } from "./types";
 
 type RequirementStatus = {
   expected: number;
   actual: number;
+  /** Optionals: the value an element from TOD WG / 11-16 must have. */
+  valueRange?: ValueRange;
 };
 
 export type RuleStatus = {
@@ -72,8 +74,18 @@ export function evaluateRules(
 
   const compulsoryBalance = status(balanceSlots.compulsory, count("compulsory", "balance"));
   const compulsoryDynamic = status(dynamicSlots.compulsory, count("compulsory", "dynamic"));
-  const optionalBalance = status(optionalExpected(balanceSlots), count("optional", "balance"));
-  const optionalDynamic = status(optionalExpected(dynamicSlots), count("optional", "dynamic"));
+  const withRange = (s: RequirementStatus, block: "balance" | "dynamic") => {
+    const valueRange = header ? optionalValueRange(ruleset, header, block) : null;
+    return valueRange ? { ...s, valueRange } : s;
+  };
+  const optionalBalance = withRange(
+    status(optionalExpected(balanceSlots), count("optional", "balance")),
+    "balance",
+  );
+  const optionalDynamic = withRange(
+    status(optionalExpected(dynamicSlots), count("optional", "dynamic")),
+    "dynamic",
+  );
 
   const gymnastCount = header ? gymnastCountForCategory(header.category) : 2;
   const { complete } = countCompleteIndividualSets(routine, gymnastCount);

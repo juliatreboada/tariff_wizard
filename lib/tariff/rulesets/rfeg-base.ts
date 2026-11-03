@@ -1,3 +1,4 @@
+import { RFEG_BASE_OPTIONAL_VALUE_RANGES } from "./optional-value-ranges";
 import type { Ruleset, TableRef } from "./types";
 
 const base = (levelAge: string): TableRef => ({
@@ -53,6 +54,7 @@ export const RFEG_BASE: Ruleset = {
     Cadete: [],
   },
   optionalNotInCompulsoryRow: true,
+  optionalValueRanges: RFEG_BASE_OPTIONAL_VALUE_RANGES,
   // 3 sets, at least one tumbling; difficulty not added. Pictures are FIG's: coming soon.
   individuals: { sets: 3, available: false },
   penalties: {

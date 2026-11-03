@@ -28,6 +28,7 @@ export {
   optionalAvailable,
   optionalCategoryTables,
   optionalTables,
+  optionalValueRange,
   entryInTable,
   tableKeyOf,
   roleForEntry,
@@ -41,4 +42,10 @@ export type {
   RulesetTarget,
   RulesHeader,
   TableRef,
+  TeamBlockRanges,
+  ValueRange,
 } from "./types";
+export {
+  RFEG_BASE_OPTIONAL_VALUE_RANGES,
+  RFEG_ESPANA_OPTIONAL_VALUE_RANGES,
+} from "./optional-value-ranges";

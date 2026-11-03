@@ -170,6 +170,7 @@ export const es = {
     escolarRuleCompDynamic: "Obligatorio dinámico",
     escolarRuleOptBalance: "Opcional equilibrio",
     escolarRuleOptDynamic: "Opcional dinámico",
+    optionalValueRange: (min: number, max: number) => `de TOD WG / 11-16: valor ${min}–${max}`,
     escolarRuleIndividuals: "Individuales",
     escolarIndividualHint:
       "Todos los gimnastas de este set van juntos en la misma fila y en la misma celda de la TS.",

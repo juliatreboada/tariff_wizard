@@ -130,6 +130,11 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                         {alwaysCount || req.expected > 1 ? ` (${req.actual}/${req.expected})` : ""}
                       </>
                     )}
+                    {req.valueRange ? (
+                      <span className="block text-[11px] text-amber-800">
+                        {t.routine.optionalValueRange(req.valueRange.min, req.valueRange.max)}
+                      </span>
+                    ) : null}
                   </li>
                 ))}
               </ul>
