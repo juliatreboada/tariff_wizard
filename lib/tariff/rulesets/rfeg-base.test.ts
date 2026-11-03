@@ -4,7 +4,7 @@ import type { CatalogEntry } from "../catalog/types";
 import { useWizardStore } from "../store";
 import { header } from "../test-fixtures";
 import type { StoredHeader } from "../types";
-import { availableLevelSystems, evaluateRules, isLevelAgeReady, rulesetFor } from ".";
+import { addProblem, availableLevelSystems, evaluateRules, isLevelAgeReady, rulesetFor } from ".";
 
 const rfeg = (id: string): CatalogEntry => {
   const found = getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-${id}`);
@@ -67,6 +67,18 @@ describe("Base pairs: 2 compulsory + 1 optional per block", () => {
     expect(add("alevin-pairs-balance-row-iii-b")).toBe(false);
     expect(add("infantil-pairs-balance-row-iv-a")).toBe(true);
     expect(add("infantil-pairs-balance-row-v-a")).toBe(false); // optional slot taken
+  });
+
+  it("requires different rows in Cadete Parejas too, with no optional tables yet", () => {
+    startSheet(base("Cadete"));
+    expect(add("cadete-pairs-balance-row-ii-a")).toBe(true);
+    const h = base("Cadete");
+    expect(
+      addProblem(rulesetFor(h), h, store().routine, rfeg("cadete-pairs-balance-row-ii-c"), "balance"),
+    ).toBe("same-row");
+    expect(add("cadete-pairs-balance-row-iii-c")).toBe(true);
+    // Optionals come from TOD Age Group 11-16 or TOD FIG, not in the catalog yet.
+    expect(rulesetFor(base("Cadete"))?.optionalTables.Cadete).toEqual([]);
   });
 
   it("refuses elements from the same or a younger age group's table as optional", () => {
