@@ -40,15 +40,19 @@ describe("availability", () => {
 });
 
 describe("Base pairs: 2 compulsory + 1 optional per block", () => {
-  it("makes own-table elements compulsory and older age groups' optional", () => {
+  it("makes own-table elements compulsory and Base Infantil's optional", () => {
     expect(add("alevin-pairs-balance-row-i-b")).toBe(true);
     expect(add("alevin-pairs-balance-row-iv-d")).toBe(true);
-    expect(add("cadete-pairs-balance-row-i-a")).toBe(true);
+    expect(add("infantil-pairs-balance-row-v-a")).toBe(true);
     expect(roles()).toEqual([
       ["alevin-pairs-balance-row-i-b", "compulsory"],
       ["alevin-pairs-balance-row-iv-d", "compulsory"],
-      ["cadete-pairs-balance-row-i-a", "optional"],
+      ["infantil-pairs-balance-row-v-a", "optional"],
     ]);
+  });
+
+  it("doesn't take Alevín optionals from Base Cadete", () => {
+    expect(add("cadete-pairs-balance-row-i-a")).toBe(false);
   });
 
   it("requires compulsory elements from different rows", () => {
@@ -62,7 +66,7 @@ describe("Base pairs: 2 compulsory + 1 optional per block", () => {
     add("alevin-pairs-balance-row-ii-b");
     expect(add("alevin-pairs-balance-row-iii-b")).toBe(false);
     expect(add("infantil-pairs-balance-row-iv-a")).toBe(true);
-    expect(add("cadete-pairs-balance-row-iv-a")).toBe(false);
+    expect(add("infantil-pairs-balance-row-v-a")).toBe(false); // optional slot taken
   });
 
   it("refuses elements from the same or a younger age group's table as optional", () => {

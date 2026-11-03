@@ -7,9 +7,10 @@ const base = (levelAge: string): TableRef => ({ catalogId: "RFEG", levelSystem: 
  *
  * Compulsory elements come from the sheet's own age-group table, from
  * different rows, and only they add difficulty. Optional elements come from a
- * higher level: for now the older Base age groups' tables (Nacional and FIG
- * tables aren't in the catalog yet, so Cadete has no optional to pick), and
- * never from a row holding the same element as a compulsory.
+ * higher level: Alevín from Base Infantil, Infantil from Base Cadete (their
+ * TOD Alevín / Infantil / 11-16 / FIG options aren't in the catalog yet, so
+ * Cadete has no optional to pick), and never from a row holding the same
+ * element as a compulsory.
  */
 export const RFEG_BASE: Ruleset = {
   id: "rfeg-base",
@@ -29,8 +30,10 @@ export const RFEG_BASE: Ruleset = {
   },
   roleAssignment: "by-table",
   compulsoryFromDifferentRows: true,
+  // RFEG Programa técnico Campeonato Nacional Base (aprobado 26-09-2025), Anexo tabla 1. Not in the catalog yet: TOD Alevín,
+  // TOD Infantil, TOD Age Group 11-16 and TOD FIG, so Cadete has no optional to pick.
   optionalTables: {
-    Alevín: [base("Infantil"), base("Cadete")],
+    Alevín: [base("Infantil")],
     Infantil: [base("Cadete")],
     Cadete: [],
   },

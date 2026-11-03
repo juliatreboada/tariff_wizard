@@ -23,14 +23,16 @@ A sheet follows the ruleset whose `levelSystem` matches its header. Levels witho
 | Balance, groups | 1 + 1 | 1 + 1 |
 | Dynamic, pairs and groups | 1 + 1 | 2 + 1 |
 | Compulsory vs optional (`roleAssignment`) | `higher-value-compulsory`: among the FGX table's elements the higher value is compulsory | `by-table`: the sheet's own age group's table is compulsory |
-| Optional from another table (`optionalTables`) | any Base age group (Alevín, Infantil, Cadete), same category — always optional | an older Base age group, same category — always optional |
+| Optional from another table (`optionalTables`) | any Base age group (Alevín, Infantil, Cadete), same category — always optional | Alevín → Base Infantil; Infantil → Base Cadete; Cadete → none yet — always optional |
 | Optional's row may not hold the same element as a compulsory (`optionalNotInCompulsoryRow`) | no | yes |
 | Compulsory from different rows | no | yes |
 | Difficulty | compulsory only | compulsory only |
 | Missing element | 0.5 each | 1 each |
 | Individuals | 3 sets; 1 point if any missing | 3 sets (≥1 tumbling); 1 point if any missing — **coming soon** (`individuals.available: false`) |
 
-Optionals should come from a higher level. For BASE that is Nacional / FIG; until those catalogs exist, the older Base age groups are offered: Alevín → Infantil, Cadete; Infantil → Cadete; Cadete → none. ESCOLAR may take its optional from any Base age group.
+Optionals should come from a higher level. For BASE, the RFEG *Programa técnico Campeonato Nacional Base y Clubes* (approved 26 Sept 2025; Anexo, tabla 1) allows: Alevín → TOD Base Infantil, TOD Alevín, TOD FIG; Infantil → TOD Base Cadete, TOD Infantil, TOD FIG; Cadete → TOD Age Group 11-16, TOD FIG. Only the Base tables are in the catalog so far. "TOD Alevín / Infantil" are the Campeonato de España tables, not the Base ones. The programme asks for optionals from rows "different from the compulsory ones"; across tables the coach reads that as "not a row holding the same element" (below). ESCOLAR may take its optional from any Base age group.
+
+Waiting for those tables (from the same programme): optional value ranges (Alevín pairs 0-4 / 0-4, groups 0-6 / 0-4; Infantil pairs 0-6 / 0-6, groups 0-10 / 0-6; Cadete pairs 1-8 / 1-8 — the Cadete text says balance 1-6 held 3" —, groups 1-12 / 1-8, in FIG points); horizontal 360º/540º/720º turns allowed as group optionals in Alevín and Infantil but not Cadete; the top standing on the base's hands or feet with the base on the floor only in Alevín and Infantil; individuals from TOD 11-16 / FIG with one tumbling; "no element above 4 / 6 / 8 difficulty values" (stated with the individuals).
 
 **Same element in another table.** In BASE an optional can't come from a row that holds the same element as one of the block's compulsory elements (e.g. Alevín Parejas dynamic ROW I C is Infantil ROW I B, so nothing from Infantil ROW I can be the optional). Which cells are the same element is in [`catalog/RFEG/same-elements.json`](../catalog/RFEG/same-elements.json), reviewed by the coach; the generator turns it into `sameAs` on each entry. A cell with two figures ("OR") can match two cells, so these are links between cells rather than one id per element. A requirement the catalog can't offer yet (Cadete optionals, Base individuals) shows as "próximamente" in the checklist and is **not** penalised.
 
