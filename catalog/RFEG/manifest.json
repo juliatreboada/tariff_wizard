@@ -1,7 +1,7 @@
 {
   "version": 1,
   "code": "RFEG",
-  "description": "Catálogo RFEG Base (Código 2026) — Alevín, Infantil, Cadete; Parejas, Tríos, Cuartetos. elementFamily: balance|dynamic.",
+  "description": "Catálogo RFEG (Código 2026) — Base: Alevín, Infantil, Cadete; Cto. España: Alevín, Infantil. elementFamily: balance|dynamic.",
   "entries": [
     {
       "id": "rfeg-base-alevin-pairs-balance-row-i-a",
@@ -6626,6 +6626,6571 @@
         ],
         "levelAges": [
           "Cadete"
+        ]
+      },
+      "rotation": "3/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/alevin/pf/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/pf/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/pf/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/pf/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "espana/alevin/pf/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/alevin/pf/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/pf/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/pf/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "espana/alevin/pf/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/alevin/pf/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/pf/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/pf/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-iv-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV A",
+      "image": "espana/alevin/pf/balance/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV B",
+      "image": "espana/alevin/pf/balance/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV C",
+      "image": "espana/alevin/pf/balance/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-balance-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV D",
+      "image": "espana/alevin/pf/balance/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/pf/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/pf/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/pf/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "espana/alevin/pf/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/pf/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/pf/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "espana/alevin/pf/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      }
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/pf/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      }
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/pf/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "espana/alevin/pf/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/alevin/pf/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pf-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/alevin/pf/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/alevin/pm/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/pm/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/pm/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/pm/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "espana/alevin/pm/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/alevin/pm/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/pm/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/pm/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "espana/alevin/pm/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/alevin/pm/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/pm/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/pm/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-iv-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV A",
+      "image": "espana/alevin/pm/balance/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV B",
+      "image": "espana/alevin/pm/balance/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV C",
+      "image": "espana/alevin/pm/balance/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-balance-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV D",
+      "image": "espana/alevin/pm/balance/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I A",
+      "image": "espana/alevin/pm/dynamic/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/pm/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/pm/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/pm/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "espana/alevin/pm/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/pm/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/pm/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "espana/alevin/pm/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/pm/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/pm/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-iv-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV A",
+      "image": "espana/alevin/pm/dynamic/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "espana/alevin/pm/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/alevin/pm/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-alevin-pm-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/alevin/pm/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 - 360º"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/alevin/pmx/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/pmx/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/pmx/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/pmx/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "espana/alevin/pmx/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/alevin/pmx/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/pmx/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/pmx/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "espana/alevin/pmx/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/alevin/pmx/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/pmx/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/pmx/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-iv-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV A",
+      "image": "espana/alevin/pmx/balance/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV B",
+      "image": "espana/alevin/pmx/balance/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV C",
+      "image": "espana/alevin/pmx/balance/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-balance-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV D",
+      "image": "espana/alevin/pmx/balance/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I A",
+      "image": "espana/alevin/pmx/dynamic/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/pmx/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/pmx/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/pmx/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/pmx/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/pmx/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "espana/alevin/pmx/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/pmx/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/pmx/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "espana/alevin/pmx/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/alevin/pmx/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-alevin-pmx-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/alevin/pmx/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/alevin/trios/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/trios/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/trios/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/trios/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "espana/alevin/trios/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/alevin/trios/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/trios/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/trios/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/alevin/trios/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/trios/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/trios/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/trios/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/trios/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/trios/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 - 360º"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II A",
+      "image": "espana/alevin/trios/dynamic/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "espana/alevin/trios/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/trios/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/trios/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "3/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III A",
+      "image": "espana/alevin/trios/dynamic/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "espana/alevin/trios/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/trios/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/trios/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/alevin/trios/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "2/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-alevin-trios-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/alevin/trios/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/alevin/cuartetos/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/cuartetos/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/cuartetos/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/cuartetos/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/alevin/cuartetos/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/cuartetos/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/cuartetos/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "espana/alevin/cuartetos/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "attachesTo": [
+        "rfeg-espana-alevin-cuartetos-balance-row-i-a"
+      ],
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/alevin/cuartetos/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "attachesTo": [
+        "rfeg-espana-alevin-cuartetos-balance-row-i-a"
+      ],
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/cuartetos/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "attachesTo": [
+        "rfeg-espana-alevin-cuartetos-balance-row-i-b",
+        "rfeg-espana-alevin-cuartetos-balance-row-i-d"
+      ],
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/cuartetos/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "attachesTo": [
+        "rfeg-espana-alevin-cuartetos-balance-row-i-b",
+        "rfeg-espana-alevin-cuartetos-balance-row-i-d"
+      ],
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-alevin-cuartetos-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/alevin/cuartetos/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Alevín"
+        ]
+      },
+      "rotation": "0/4 - 360º"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/infantil/pf/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/pf/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/pf/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/pf/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "espana/infantil/pf/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/pf/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/pf/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/pf/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "espana/infantil/pf/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/pf/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/pf/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/pf/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-iv-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV A",
+      "image": "espana/infantil/pf/balance/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV B",
+      "image": "espana/infantil/pf/balance/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV C",
+      "image": "espana/infantil/pf/balance/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV D",
+      "image": "espana/infantil/pf/balance/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-v-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-V B",
+      "image": "espana/infantil/pf/balance/ROW-V-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-v-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-V C",
+      "image": "espana/infantil/pf/balance/ROW-V-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-balance-row-v-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-V D",
+      "image": "espana/infantil/pf/balance/ROW-V-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I A",
+      "image": "espana/infantil/pf/dynamic/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/pf/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/pf/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/pf/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II A",
+      "image": "espana/infantil/pf/dynamic/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/pf/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/pf/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/pf/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 BACK - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III A",
+      "image": "espana/infantil/pf/dynamic/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/pf/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/pf/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/pf/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-iv-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV A",
+      "image": "espana/infantil/pf/dynamic/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "espana/infantil/pf/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/infantil/pf/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pf-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/infantil/pf/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/infantil/pm/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/pm/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/pm/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/pm/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "espana/infantil/pm/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/pm/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/pm/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/pm/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "espana/infantil/pm/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/pm/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/pm/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/pm/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV B",
+      "image": "espana/infantil/pm/balance/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV C",
+      "image": "espana/infantil/pm/balance/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-balance-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV D",
+      "image": "espana/infantil/pm/balance/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I A",
+      "image": "espana/infantil/pm/dynamic/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/pm/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/pm/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/pm/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II A",
+      "image": "espana/infantil/pm/dynamic/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/pm/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/pm/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/pm/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/pm/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/pm/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/pm/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-iv-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV A",
+      "image": "espana/infantil/pm/dynamic/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "espana/infantil/pm/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/infantil/pm/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pm-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/infantil/pm/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/infantil/pmx/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/pmx/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/pmx/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/pmx/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "espana/infantil/pmx/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/pmx/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/pmx/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/pmx/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "espana/infantil/pmx/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/pmx/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/pmx/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/pmx/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-iv-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV A",
+      "image": "espana/infantil/pmx/balance/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV B",
+      "image": "espana/infantil/pmx/balance/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV C",
+      "image": "espana/infantil/pmx/balance/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-balance-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV D",
+      "image": "espana/infantil/pmx/balance/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/pmx/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/pmx/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/pmx/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/pmx/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/pmx/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/pmx/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III A",
+      "image": "espana/infantil/pmx/dynamic/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/pmx/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/pmx/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/pmx/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "espana/infantil/pmx/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/infantil/pmx/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-pmx-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/infantil/pmx/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/infantil/trios/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/trios/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/trios/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/trios/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "espana/infantil/trios/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/trios/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/trios/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/trios/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/trios/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/trios/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/trios/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I A",
+      "image": "espana/infantil/trios/dynamic/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/trios/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/trios/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 360º"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/trios/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 540º"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II A",
+      "image": "espana/infantil/trios/dynamic/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/trios/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/trios/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "3/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/trios/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III A",
+      "image": "espana/infantil/trios/dynamic/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/trios/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/trios/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/trios/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "espana/infantil/trios/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "2/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/infantil/trios/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-trios-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/infantil/trios/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "3/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I A",
+      "image": "espana/infantil/cuartetos/balance/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/cuartetos/balance/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/cuartetos/balance/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/cuartetos/balance/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-ii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II A",
+      "image": "espana/infantil/cuartetos/balance/ROW-II-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/cuartetos/balance/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/cuartetos/balance/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/cuartetos/balance/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-iii-a",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III A",
+      "image": "espana/infantil/cuartetos/balance/ROW-III-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "attachesTo": [
+        "rfeg-espana-infantil-cuartetos-balance-row-i-a",
+        "rfeg-espana-infantil-cuartetos-balance-row-i-d"
+      ],
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/cuartetos/balance/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "attachesTo": [
+        "rfeg-espana-infantil-cuartetos-balance-row-i-a",
+        "rfeg-espana-infantil-cuartetos-balance-row-i-d"
+      ],
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/cuartetos/balance/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "attachesTo": [
+        "rfeg-espana-infantil-cuartetos-balance-row-i-d",
+        "rfeg-espana-infantil-cuartetos-balance-row-ii-d"
+      ],
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-balance-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/cuartetos/balance/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "attachesTo": [
+        "rfeg-espana-infantil-cuartetos-balance-row-i-d",
+        "rfeg-espana-infantil-cuartetos-balance-row-ii-d"
+      ],
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-i-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I A",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-I-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-i-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I B",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-I-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-i-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I C",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-I-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-i-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I D",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-I-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-ii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II B",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-II-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-ii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II C",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-II-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-ii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II D",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-II-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-iii-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III B",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-III-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-iii-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III C",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-III-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-iii-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III D",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-III-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "1/4 FRONT - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-iv-a",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV A",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-IV-A.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-iv-b",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV B",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-IV-B.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-iv-c",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV C",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-IV-C.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
+        ]
+      },
+      "rotation": "0/4 - 360º"
+    },
+    {
+      "id": "rfeg-espana-infantil-cuartetos-dynamic-row-iv-d",
+      "code": "RFEG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV D",
+      "image": "espana/infantil/cuartetos/dynamic/ROW-IV-D.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "RFEG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Infantil"
         ]
       },
       "rotation": "3/4 BACK"

@@ -5,6 +5,7 @@ import { header, item } from "../test-fixtures";
 import {
   applyRulesetRolesForBlock,
   availableLevelSystems,
+  entryInTable,
   evaluateRules,
   isLevelAgeReady,
   RULESETS,
@@ -30,6 +31,14 @@ describe("every ruleset", () => {
       for (const t of tables) {
         expect(LEVEL_AGE_BY_SYSTEM[t.levelSystem]).toContain(t.levelAge);
         expect(getCatalogEntries(t.catalogId).length).toBeGreaterThan(0);
+        // Every mapped category (e.g. Parejas → Pareja Femenina) has entries in that table.
+        for (const categories of Object.values(t.categories ?? {})) {
+          for (const category of categories) {
+            expect(
+              getCatalogEntries(t.catalogId).some((e) => entryInTable(e, t, category)),
+            ).toBe(true);
+          }
+        }
       }
     }
   });

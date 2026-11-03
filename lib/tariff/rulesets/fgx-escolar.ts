@@ -21,6 +21,7 @@ export const FGX_ESCOLAR: Ruleset = {
       catalogId: "RFEG" as const,
       levelSystem: "Base" as const,
       levelAge,
+      label: "BASE",
     })),
   },
   optionalNotInCompulsoryRow: false,

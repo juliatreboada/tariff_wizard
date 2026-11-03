@@ -33,7 +33,10 @@ describe("RFEG Base catalog", () => {
     }).length;
 
   it("has a table per age group, category and family", () => {
-    expect(rfeg).toHaveLength(253);
+    const bySystem = (system: string) =>
+      rfeg.filter((e) => e.filters.levelSystems.includes(system as never)).length;
+    expect(bySystem("Base")).toBe(253);
+    expect(bySystem("RFEG")).toBe(278); // Cto. España tables
     expect(count("Alevín", "Parejas", "balance")).toBe(19);
     expect(count("Infantil", "Tríos", "dynamic")).toBe(15);
     expect(count("Cadete", "Cuartetos", "dynamic")).toBe(15);

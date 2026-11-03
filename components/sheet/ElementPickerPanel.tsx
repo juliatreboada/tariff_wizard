@@ -22,7 +22,7 @@ import {
   addProblem,
   blockSlots,
   optionalAvailable,
-  optionalTables,
+  optionalCategoryTables,
   pyramidForAddOn,
   roleForEntry,
   rulesetFor,
@@ -481,13 +481,22 @@ export function ElementPickerPanel({
     if (!ruleset) return [own];
     return [
       own,
-      ...optionalTables(ruleset, header.levelAge).map((table) => ({
-        key: `${table.catalogId}-${table.levelSystem}-${table.levelAge}`,
-        label: t.sheet.picker.tableOptional(table.levelSystem, table.levelAge),
+      ...optionalCategoryTables(ruleset, header).map((table) => ({
+        key: `${table.catalogId}-${table.levelSystem}-${table.levelAge}-${table.category}`,
+        label: t.sheet.picker.tableOptional(
+          table.label,
+          table.levelAge,
+          table.category === header.category ? null : table.category,
+        ),
         optional: true,
         entries: entriesForFamily(
           getCatalogEntries(table.catalogId),
-          { ...header, levelSystem: table.levelSystem, levelAge: table.levelAge },
+          {
+            ...header,
+            levelSystem: table.levelSystem,
+            levelAge: table.levelAge,
+            category: table.category,
+          },
           family,
         ),
       })),

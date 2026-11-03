@@ -119,7 +119,8 @@ export const es = {
       individualsComingSoon: "Elementos individuales: próximamente.",
       tableChooser: "Tabla",
       tableOwn: (system: string, age: string) => `${age} ${system.toUpperCase()}`,
-      tableOptional: (system: string, age: string) => `${age} ${system.toUpperCase()} · opcional`,
+      tableOptional: (label: string, age: string, category: string | null) =>
+        `${age} ${label}${category ? ` · ${category}` : ""} · opcional`,
       optionalTableHint:
         "Tabla de nivel superior: el elemento cuenta como opcional y no suma dificultad.",
       problemSameElementRow: "Su fila tiene el mismo elemento que un obligatorio",

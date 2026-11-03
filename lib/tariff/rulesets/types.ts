@@ -8,7 +8,17 @@ export type TableRef = {
   catalogId: CatalogId;
   levelSystem: LevelSystem;
   levelAge: string;
+  /** Shown in the picker (e.g. "BASE", "Cto. España"). */
+  label: string;
+  /**
+   * The table's categories for a sheet category, when they differ
+   * (e.g. Parejas → Pareja Femenina, Masculina, Mixta). Default: the same category.
+   */
+  categories?: Readonly<Record<string, readonly string[]>>;
 };
+
+/** A table for one category: what the picker shows and entries are matched against. */
+export type CategoryTable = TableRef & { category: string };
 
 export type BlockSlots = {
   compulsory: number;
@@ -42,7 +52,7 @@ export type Ruleset = {
   compulsoryFromDifferentRows: boolean;
   /**
    * Sheet age group (or "*" for any) → other tables that supply optional elements,
-   * in the sheet's own category.
+   * in the sheet's own category (or the table's `categories` for it).
    */
   optionalTables: Readonly<Record<string, readonly TableRef[]>>;
   /**

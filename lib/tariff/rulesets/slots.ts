@@ -1,7 +1,14 @@
 import type { CatalogEntry } from "../catalog/types";
 import { gymnastCountForCategory } from "../level-category";
 import type { RoutineElementRole } from "../routine-types";
-import type { BlockSlots, ElementBlock, Ruleset, RulesHeader, TableRef } from "./types";
+import type {
+  BlockSlots,
+  CategoryTable,
+  ElementBlock,
+  Ruleset,
+  RulesHeader,
+  TableRef,
+} from "./types";
 
 /** Slots for one block; pairs and groups (tríos, cuartetos) can differ. */
 export function blockSlots(
@@ -16,6 +23,16 @@ export function blockSlots(
 /** Other tables that supply optional elements for this sheet's age group. */
 export function optionalTables(ruleset: Ruleset, levelAge: string): readonly TableRef[] {
   return ruleset.optionalTables[levelAge] ?? ruleset.optionalTables["*"] ?? [];
+}
+
+/** The optional tables for this sheet, one per table category (e.g. three pair tables). */
+export function optionalCategoryTables(ruleset: Ruleset, header: RulesHeader): CategoryTable[] {
+  return optionalTables(ruleset, header.levelAge).flatMap((table) =>
+    (table.categories?.[header.category] ?? [header.category]).map((category) => ({
+      ...table,
+      category,
+    })),
+  );
 }
 
 /** False when the rules ask for optional elements the catalog can't offer yet. */
@@ -37,8 +54,12 @@ export function tableKeyOf(entryId: string): string {
   return entryId.replace(/-row-[ivx]+-.*$/, "");
 }
 
-/** Does `entry` belong to this table, in the sheet's category? */
-export function entryInTable(entry: CatalogEntry, table: TableRef, category: string): boolean {
+/** Does `entry` belong to this table, in this category? */
+export function entryInTable(
+  entry: CatalogEntry,
+  table: Omit<TableRef, "label" | "categories">,
+  category: string,
+): boolean {
   const { filters } = entry;
   return (
     entry.code === table.catalogId &&
@@ -58,15 +79,13 @@ export function roleForEntry(
   header: RulesHeader,
   entry: CatalogEntry,
 ): Exclude<RoutineElementRole, "individual"> | null {
-  const own: TableRef = {
+  const own = {
     catalogId: ruleset.catalogId,
     levelSystem: header.levelSystem,
     levelAge: header.levelAge,
   };
   if (entryInTable(entry, own, header.category)) return "compulsory";
-  return optionalTables(ruleset, header.levelAge).some((t) =>
-    entryInTable(entry, t, header.category),
-  )
+  return optionalCategoryTables(ruleset, header).some((t) => entryInTable(entry, t, t.category))
     ? "optional"
     : null;
 }

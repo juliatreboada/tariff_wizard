@@ -26,6 +26,7 @@ export { evaluateRules, type RuleStatus } from "./evaluate";
 export {
   blockSlots,
   optionalAvailable,
+  optionalCategoryTables,
   optionalTables,
   entryInTable,
   tableKeyOf,
@@ -34,6 +35,7 @@ export {
 } from "./slots";
 export type {
   BlockSlots,
+  CategoryTable,
   ElementBlock,
   Ruleset,
   RulesetTarget,

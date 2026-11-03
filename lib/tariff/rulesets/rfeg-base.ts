@@ -1,6 +1,20 @@
 import type { Ruleset, TableRef } from "./types";
 
-const base = (levelAge: string): TableRef => ({ catalogId: "RFEG", levelSystem: "Base", levelAge });
+const base = (levelAge: string): TableRef => ({
+  catalogId: "RFEG",
+  levelSystem: "Base",
+  levelAge,
+  label: "BASE",
+});
+
+/** Campeonato de España tables: pairs are split into femenina, masculina, mixta. */
+const espana = (levelAge: string): TableRef => ({
+  catalogId: "RFEG",
+  levelSystem: "RFEG",
+  levelAge,
+  label: "Cto. España",
+  categories: { Parejas: ["Pareja Femenina", "Pareja Masculina", "Pareja Mixta"] },
+});
 
 /**
  * RFEG Base — Alevín, Infantil, Cadete; Parejas, Tríos, Cuartetos (Código 2026).
@@ -30,11 +44,12 @@ export const RFEG_BASE: Ruleset = {
   },
   roleAssignment: "by-table",
   compulsoryFromDifferentRows: true,
-  // RFEG Programa técnico Campeonato Nacional Base (aprobado 26-09-2025), Anexo tabla 1. Not in the catalog yet: TOD Alevín,
-  // TOD Infantil, TOD Age Group 11-16 and TOD FIG, so Cadete has no optional to pick.
+  // RFEG Programa técnico Campeonato Nacional Base (aprobado 26-09-2025), Anexo tabla 1.
+  // TOD Alevín / Infantil = the Cto. España tables. Not in the catalog yet: TOD Age
+  // Group 11-16 and TOD FIG, so Cadete has no optional to pick.
   optionalTables: {
-    Alevín: [base("Infantil")],
-    Infantil: [base("Cadete")],
+    Alevín: [base("Infantil"), espana("Alevín")],
+    Infantil: [base("Cadete"), espana("Infantil")],
     Cadete: [],
   },
   optionalNotInCompulsoryRow: true,

@@ -17,6 +17,9 @@ const base = (levelAge: string, category = "Parejas") =>
 
 const store = () => useWizardStore.getState();
 const add = (id: string) => store().addRoutineElement(rfeg(id));
+/** Any RFEG entry by its id without the "rfeg-" prefix (e.g. espana-alevin-…). */
+const rfegAdd = (id: string) =>
+  store().addRoutineElement(getCatalogEntries("RFEG").find((e) => e.id === `rfeg-${id}`)!);
 const roles = () =>
   store().routine.map((i) => [i.element.catalogId.replace("rfeg-base-", ""), i.role]);
 
@@ -145,6 +148,32 @@ describe("same element through Cuartetos add-ons", () => {
     add("infantil-cuartetos-balance-row-iii-a");
     add("alevin-cuartetos-balance-row-i-b");
     expect(add("alevin-cuartetos-balance-row-iii-b")).toBe(false);
+  });
+});
+
+describe("optionals from the Cto. España tables", () => {
+  it("offers the three España pair tables to a Base Parejas sheet", () => {
+    expect(add("alevin-pairs-balance-row-ii-b")).toBe(true);
+    expect(add("alevin-pairs-balance-row-iv-d")).toBe(true);
+    expect(rfegAdd("espana-alevin-pm-balance-row-i-a")).toBe(true);
+    expect(roles()[2]).toEqual(["rfeg-espana-alevin-pm-balance-row-i-a", "optional"]);
+    store().removeRoutineItem(store().routine[2].id);
+    expect(rfegAdd("espana-alevin-pf-balance-row-i-a")).toBe(true);
+  });
+
+  it("takes only the sheet's age group and category from España", () => {
+    expect(rfegAdd("espana-infantil-pf-balance-row-i-a")).toBe(false); // Alevín sheet
+    expect(rfegAdd("espana-alevin-trios-balance-row-i-a")).toBe(false); // Parejas sheet
+    startSheet(base("Infantil", "Tríos"));
+    expect(rfegAdd("espana-infantil-trios-dynamic-row-ii-a")).toBe(true);
+  });
+
+  it("attaches España Cuartetos ROW III add-ons to their own pyramids", () => {
+    startSheet(base("Alevín", "Cuartetos"));
+    expect(rfegAdd("espana-alevin-cuartetos-balance-row-i-d")).toBe(true); // optional pyramid
+    expect(rfegAdd("espana-alevin-cuartetos-balance-row-iii-a")).toBe(false); // I A only
+    expect(rfegAdd("espana-alevin-cuartetos-balance-row-iii-c")).toBe(true);
+    expect(store().routine[0].addOn?.coordinates).toBe("ROW-III C");
   });
 });
 
