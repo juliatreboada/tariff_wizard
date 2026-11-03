@@ -73,6 +73,9 @@ export function addProblem(
 
   const role = roleForEntry(ruleset, header, entry);
   if (!role) return "not-allowed";
+  if (role === "optional" && ruleset.notOptional?.[header.levelAge]?.includes(entry.id)) {
+    return "not-allowed";
+  }
   const slots = blockSlots(ruleset, block, header.category);
   const others = routine.filter(
     (item) => item.block === block && item.role !== "individual" && item.id !== exceptItemId,

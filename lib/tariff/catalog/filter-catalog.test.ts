@@ -46,3 +46,32 @@ describe("RFEG Base catalog", () => {
     expect(filterCatalogEntries(rfeg, { header: header({ levelAge: "Alevín" }) })).toEqual([]);
   });
 });
+
+describe("FIG catalog (Pre-Youth 11-16)", () => {
+  const fig = getCatalogEntries("FIG");
+  const count = (category: string, elementFamily: "balance" | "dynamic") =>
+    filterCatalogEntries(fig, {
+      header: header({ levelSystem: "FIG", levelAge: "Pre-Youth", category }),
+      elementFamily,
+    }).length;
+
+  it("has the five 11-16 tables, balance and dynamic", () => {
+    expect(fig).toHaveLength(193);
+    expect(count("Pareja Femenina", "balance")).toBe(23);
+    expect(count("Pareja Masculina", "dynamic")).toBe(17);
+    expect(count("Tríos", "dynamic")).toBe(19); // ROW I Box 4: 360º and 540º/720º
+    expect(count("Cuartetos", "balance")).toBe(29); // 11 structures + 18 tops
+  });
+
+  it("lets every Men's Group top attach to the ROW I and II structures", () => {
+    const top = fig.find((e) => e.id === "fig-pre-youth-cuartetos-balance-top-1")!;
+    expect(top.attachesTo).toHaveLength(11);
+    expect(top.attachesTo).toContain("fig-pre-youth-cuartetos-balance-row-ii-3b");
+  });
+
+  it("is only offered at its own level", () => {
+    expect(
+      filterCatalogEntries(fig, { header: header({ levelSystem: "Base", levelAge: "Cadete" }) }),
+    ).toEqual([]);
+  });
+});

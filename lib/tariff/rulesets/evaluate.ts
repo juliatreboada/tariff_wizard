@@ -8,7 +8,7 @@ import type { Ruleset, ValueRange } from "./types";
 type RequirementStatus = {
   expected: number;
   actual: number;
-  /** Optionals: the value an element from TOD WG / 11-16 must have. */
+  /** Optionals: the value an element from TOD WG must have. */
   valueRange?: ValueRange;
 };
 

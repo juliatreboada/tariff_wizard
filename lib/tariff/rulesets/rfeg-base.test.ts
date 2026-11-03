@@ -17,6 +17,13 @@ const base = (levelAge: string, category = "Parejas") =>
 
 const store = () => useWizardStore.getState();
 const add = (id: string) => store().addRoutineElement(rfeg(id));
+/** A FIG Pre-Youth (11-16) entry by its id without "fig-pre-youth-". */
+const fig = (id: string): CatalogEntry => {
+  const found = getCatalogEntries("FIG").find((e) => e.id === `fig-pre-youth-${id}`);
+  if (!found) throw new Error(`No FIG entry ${id}`);
+  return found;
+};
+const figAdd = (id: string) => store().addRoutineElement(fig(id));
 /** Any RFEG entry by its id without the "rfeg-" prefix (e.g. espana-alevin-…). */
 const rfegAdd = (id: string) =>
   store().addRoutineElement(getCatalogEntries("RFEG").find((e) => e.id === `rfeg-${id}`)!);
@@ -72,7 +79,7 @@ describe("Base pairs: 2 compulsory + 1 optional per block", () => {
     expect(add("infantil-pairs-balance-row-v-a")).toBe(false); // optional slot taken
   });
 
-  it("requires different rows in Cadete Parejas too, with no optional tables yet", () => {
+  it("requires different rows in Cadete Parejas too", () => {
     startSheet(base("Cadete"));
     expect(add("cadete-pairs-balance-row-ii-a")).toBe(true);
     const h = base("Cadete");
@@ -80,8 +87,6 @@ describe("Base pairs: 2 compulsory + 1 optional per block", () => {
       addProblem(rulesetFor(h), h, store().routine, rfeg("cadete-pairs-balance-row-ii-c"), "balance"),
     ).toBe("same-row");
     expect(add("cadete-pairs-balance-row-iii-c")).toBe(true);
-    // Optionals come from TOD Age Group 11-16 or TOD FIG, not in the catalog yet.
-    expect(rulesetFor(base("Cadete"))?.optionalTables.Cadete).toEqual([]);
   });
 
   it("refuses elements from the same or a younger age group's table as optional", () => {
@@ -189,6 +194,48 @@ describe("optionals from the Cto. España tables", () => {
   });
 });
 
+describe("Cadete optionals from the Age Group 11-16 tables", () => {
+  beforeEach(() => startSheet(base("Cadete")));
+
+  it("offers the three 11-16 pair tables to Base Cadete Parejas, as optional", () => {
+    expect(figAdd("pm-balance-row-ii-3")).toBe(true);
+    expect(store().routine[0].role).toBe("optional");
+    expect(figAdd("pf-balance-row-i-2")).toBe(false); // optional slot taken
+    expect(figAdd("pm-dynamic-row-iv-4")).toBe(true);
+  });
+
+  it("is only for Cadete, and only the sheet's category", () => {
+    expect(figAdd("trios-balance-row-i-3")).toBe(false); // Parejas sheet
+    startSheet(base("Infantil"));
+    expect(figAdd("pf-balance-row-i-2")).toBe(false);
+  });
+
+  it("maps Tríos to Women's Group and Cuartetos to Men's Group", () => {
+    startSheet(base("Cadete", "Tríos"));
+    expect(figAdd("trios-dynamic-row-ii-2")).toBe(true);
+    startSheet(base("Cadete", "Cuartetos"));
+    expect(figAdd("trios-dynamic-row-ii-2")).toBe(false);
+    expect(figAdd("cuartetos-dynamic-row-ii-2")).toBe(true);
+  });
+
+  it("refuses horizontal 360º/540º/720º twists as Cadete optionals", () => {
+    startSheet(base("Cadete", "Tríos"));
+    expect(figAdd("trios-dynamic-row-i-4-360")).toBe(false);
+    expect(figAdd("trios-dynamic-row-i-4-540")).toBe(false);
+    expect(figAdd("trios-dynamic-row-i-3")).toBe(true);
+  });
+
+  it("puts a Men's Group top on the optional structure and adds its value", () => {
+    startSheet(base("Cadete", "Cuartetos"));
+    expect(figAdd("cuartetos-balance-top-15")).toBe(false); // no structure yet
+    expect(figAdd("cuartetos-balance-row-ii-2")).toBe(true);
+    expect(figAdd("cuartetos-balance-top-15")).toBe(true);
+    const [structure] = store().routine;
+    expect(structure.role).toBe("optional");
+    expect(structure.addOn?.coordinates).toBe("T15");
+  });
+});
+
 describe("Base groups", () => {
   it("allows 1 compulsory + 1 optional balance, 2 + 1 dynamic", () => {
     startSheet(base("Infantil", "Tríos"));
@@ -255,11 +302,11 @@ describe("Base checklist and penalties", () => {
     expect(status.pendingMessages).toEqual(["Elementos individuales: próximamente."]);
   });
 
-  it("doesn't penalise Cadete's optional elements until higher tables exist", () => {
+  it("penalises Cadete's missing optionals now that 11-16 supplies them", () => {
     const status = evaluate(base("Cadete", "Cuartetos"));
-    // 1 balance + 2 dynamic compulsory missing.
-    expect(status.penaltyTotal).toBe(3);
-    expect(status.pendingMessages[0]).toMatch(/opcionales: próximamente/i);
+    // 1 + 2 compulsory and 1 + 1 optional missing.
+    expect(status.penaltyTotal).toBe(5);
+    expect(status.pendingMessages).toEqual(["Elementos individuales: próximamente."]);
   });
 
   it("doesn't offer individual sets yet", () => {

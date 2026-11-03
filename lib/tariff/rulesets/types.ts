@@ -25,7 +25,7 @@ export type BlockSlots = {
   optional: number;
 };
 
-/** Inclusive value range, in TOD WG (FIG) / Age Group 11-16 points. */
+/** Inclusive value range, in TOD WG (FIG) points. */
 export type ValueRange = { min: number; max: number };
 
 /** A range per team (pairs; tríos and cuartetos = groups) and block. */
@@ -67,11 +67,14 @@ export type Ruleset = {
    */
   optionalNotInCompulsoryRow: boolean;
   /**
-   * Sheet age group → the value an optional from TOD WG / Age Group 11-16 must
-   * have, in their points. Base and Cto. España tables print tenths (0–0,3),
-   * not points, so their elements aren't held to it. Absent: no range.
+   * Sheet age group → the value an optional from TOD WG (or the 11-16 optional
+   * elements appendix) must have, in their points. Base, Cto. España and 11-16
+   * compulsory tables print tenths, not points, so their elements aren't held
+   * to it. Absent: no range.
    */
   optionalValueRanges?: Readonly<Record<string, TeamBlockRanges>>;
+  /** Sheet age group → entries that can't be optional (e.g. horizontal 360º/540º/720º twists). */
+  notOptional?: Readonly<Record<string, readonly string[]>>;
   individuals: {
     /** Individual sets required — and the most allowed. */
     sets: number;

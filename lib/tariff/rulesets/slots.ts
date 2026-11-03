@@ -24,7 +24,7 @@ function teamOf(category: string | undefined): "pairs" | "groups" {
   return category && gymnastCountForCategory(category) > 2 ? "groups" : "pairs";
 }
 
-/** The value an optional from TOD WG / Age Group 11-16 must have, or null for none. */
+/** The value an optional from TOD WG must have (in its points), or null for none. */
 export function optionalValueRange(
   ruleset: Ruleset,
   header: Pick<RulesHeader, "levelAge" | "category">,
@@ -62,9 +62,9 @@ export function rowOf(coordinates: string): string | null {
   return coordinates.match(/^ROW-([IVX]+)\b/)?.[1] ?? null;
 }
 
-/** The table an entry id belongs to (its id up to the row): same table ⇔ same key. */
+/** The table an entry id belongs to (its id up to the row or top): same table ⇔ same key. */
 export function tableKeyOf(entryId: string): string {
-  return entryId.replace(/-row-[ivx]+-.*$/, "");
+  return entryId.replace(/-(row-[ivx]+|top)-.*$/, "");
 }
 
 /** Does `entry` belong to this table, in this category? */

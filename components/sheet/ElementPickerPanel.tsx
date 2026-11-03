@@ -185,11 +185,15 @@ function CatalogRowGrid({
   const rows = useMemo(() => groupCatalogEntriesByRow(entries), [entries]);
   const columnOf = (entry: CatalogEntry) =>
     parseRowColumnFromCoordinates(entry.coordinates)?.columnKey ?? "?";
-  // The table's columns (A–D or A–E), as on the official difficulty tables.
-  const columns = useMemo(
-    () => [...new Set(entries.map(columnOf))].sort(),
-    [entries],
-  );
+  // The table's columns (A–D or A–E, or box numbers), as on the official tables.
+  const columns = useMemo(() => {
+    const order = new Map<string, number>();
+    for (const entry of entries) {
+      const parsed = parseRowColumnFromCoordinates(entry.coordinates);
+      order.set(parsed?.columnKey ?? "?", parsed?.columnOrder ?? Infinity);
+    }
+    return [...order.keys()].sort((a, b) => order.get(a)! - order.get(b)!);
+  }, [entries]);
 
   if (rows.length === 0) return null;
 

@@ -23,16 +23,16 @@ A sheet follows the ruleset whose `levelSystem` matches its header. Levels witho
 | Balance, groups | 1 + 1 | 1 + 1 |
 | Dynamic, pairs and groups | 1 + 1 | 2 + 1 |
 | Compulsory vs optional (`roleAssignment`) | `higher-value-compulsory`: among the FGX table's elements the higher value is compulsory | `by-table`: the sheet's own age group's table is compulsory |
-| Optional from another table (`optionalTables`) | any Base age group (Alevín, Infantil, Cadete), same category — always optional | Alevín → Base Infantil, Cto. España Alevín; Infantil → Base Cadete, Cto. España Infantil; Cadete → none yet — always optional |
+| Optional from another table (`optionalTables`) | any Base age group (Alevín, Infantil, Cadete), same category — always optional | Alevín → Base Infantil, Cto. España Alevín; Infantil → Base Cadete, Cto. España Infantil; Cadete → FIG Age Group 11-16 — always optional |
 | Optional's row may not hold the same element as a compulsory (`optionalNotInCompulsoryRow`) | no | yes |
 | Compulsory from different rows | no | yes |
 | Difficulty | compulsory only | compulsory only |
 | Missing element | 0.5 each | 1 each |
 | Individuals | 3 sets; 1 point if any missing | 3 sets (≥1 tumbling); 1 point if any missing — **coming soon** (`individuals.available: false`) |
 
-Optionals should come from a higher level. For BASE, the RFEG *Programa técnico Campeonato Nacional Base y Clubes* (approved 26 Sept 2025; Anexo, tabla 1) allows: Alevín → TOD Base Infantil, TOD Alevín, TOD FIG; Infantil → TOD Base Cadete, TOD Infantil, TOD FIG; Cadete → TOD Age Group 11-16, TOD FIG. "TOD Alevín / Infantil" are the Campeonato de España tables, now in the catalog; a Base Parejas sheet sees their three pair tables (femenina, masculina, mixta) separately (`TableRef.categories`). TOD Age Group 11-16 and TOD FIG aren't in the catalog yet. The programme asks for optionals from rows "different from the compulsory ones"; across tables the coach reads that as "not a row holding the same element" (below). ESCOLAR may take its optional from any Base age group.
+Optionals should come from a higher level. For BASE, the RFEG *Programa técnico Campeonato Nacional Base y Clubes* (approved 26 Sept 2025; Anexo, tabla 1) allows: Alevín → TOD Base Infantil, TOD Alevín, TOD FIG; Infantil → TOD Base Cadete, TOD Infantil, TOD FIG; Cadete → TOD Age Group 11-16, TOD FIG (WG from 2027). "TOD Alevín / Infantil" are the Campeonato de España tables; "TOD Age Group 11-16" is the FIG Pre-Youth compulsory table (catalog `FIG`; Tríos = Women's Group, Cuartetos = Men's Group). A Base Parejas sheet sees their three pair tables (femenina, masculina, mixta) separately (`TableRef.categories`). TOD FIG isn't in the catalog yet. Base Cadete may not use horizontal 360º/540º/720º twists as optionals (`notOptional`: 11-16 Women's Group dynamic ROW I Box 4). The programme asks for optionals from rows "different from the compulsory ones"; across tables the coach reads that as "not a row holding the same element" (below). ESCOLAR may take its optional from any Base age group.
 
-**Optional value ranges** (`optionalValueRanges`, [`optional-value-ranges.ts`](../lib/tariff/rulesets/optional-value-ranges.ts)). The programmes give the value an optional must have, in TOD WG (FIG) / Age Group 11-16 points. Base and Cto. España tables print tenths (0 / 0,1 / 0,2 / 0,3), not points, so their elements aren't held to it; it applies to optionals from TOD WG / 11-16 once those catalogs exist. Until then the checklist shows it under each optional ("de TOD WG / 11-16: valor 0–4").
+**Optional value ranges** (`optionalValueRanges`, [`optional-value-ranges.ts`](../lib/tariff/rulesets/optional-value-ranges.ts)). The programmes give the value an optional must have, in TOD WG (FIG) points. Base, Cto. España and 11-16 compulsory tables print tenths (0 / 0,1 / … / 0,5), not points, so their elements aren't held to it; it applies to optionals from TOD WG (and the 11-16 optional elements appendix, valued in points) once those catalogs exist. Until then the checklist shows it under each optional ("de TOD WG: valor 0–4").
 
 | Optional (pairs bal. / dyn. · groups bal. / dyn.) | 2026 | 2027 |
 |--|--|--|
@@ -45,7 +45,7 @@ Optionals should come from a higher level. For BASE, the RFEG *Programa técnico
 
 The app uses 2027. Base Cadete pairs balance: the requirement text says 1–6 held 3", the summary table 1–8; we follow the text. The España ranges wait for an España ruleset (`RFEG_ESPANA_OPTIONAL_VALUE_RANGES`).
 
-Still to do (same programmes): horizontal 360º/540º/720º turns allowed as group optionals in Alevín and Infantil but not Cadete; the top standing on the base's hands or feet with the base on the floor only in Alevín and Infantil; individuals from TOD 11-16 / WG with one tumbling; "no element above 4 / 6 / 8 difficulty values" in Base (2027 España: 10 for every age).
+Still to do (same programmes): the top standing on the base's hands or feet with the base on the floor only in Alevín and Infantil; individuals from TOD 11-16 (Appendix 3, page 34) / WG with one tumbling; same-element links between Base Cadete and the 11-16 tables (they live in another catalog, so `sameAs` needs cross-catalog lookups first); "no element above 4 / 6 / 8 difficulty values" in Base (2027 España: 10 for every age).
 
 **2027 programmes.** Mostly "FIG" → "WG" (World Gymnastics). Base Alevín / Infantil / Cadete rules are unchanged; Cto. España optional ranges widened (above). The 2027 España summary table merges "Alevín e Infantil" (compulsory from TOD Infantil), which contradicts its own Alevín text (TOD Alevín) — we follow the text.
 

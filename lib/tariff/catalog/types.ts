@@ -1,7 +1,7 @@
 import type { Exercise, LevelSystem } from "../enums";
 
-/** Element catalogs: FGX (ESCOLAR) and RFEG (Base). */
-export const CATALOG_IDS = ["FGX", "RFEG"] as const;
+/** Element catalogs: FGX (ESCOLAR), RFEG (Base, Cto. España) and FIG (Pre-Youth 11-16). */
+export const CATALOG_IDS = ["FGX", "RFEG", "FIG"] as const;
 export type CatalogId = (typeof CATALOG_IDS)[number];
 
 export const DEFAULT_CATALOG_ID: CatalogId = "FGX";

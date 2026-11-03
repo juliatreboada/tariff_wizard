@@ -11,7 +11,7 @@ import { RFEG_BASE } from "./rfeg-base";
 
 const base = (levelAge: string, category: string) => ({ levelAge, category });
 
-describe("optional value ranges (TOD WG / 11-16 points)", () => {
+describe("optional value ranges (TOD WG points)", () => {
   it("follows the Base programme per age group, team and block", () => {
     expect(optionalValueRange(RFEG_BASE, base("Alevín", "Parejas"), "balance")).toEqual({ min: 0, max: 4 });
     expect(optionalValueRange(RFEG_BASE, base("Alevín", "Tríos"), "balance")).toEqual({ min: 0, max: 6 });

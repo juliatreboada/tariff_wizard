@@ -1,0 +1,4770 @@
+{
+  "version": 1,
+  "code": "FIG",
+  "description": "Catálogo FIG — Pre-Youth (11-16) Compulsory Elements Table 2025-2028: Pareja Femenina, Masculina, Mixta, Tríos (Women's Group), Cuartetos (Men's Group). elementFamily: balance|dynamic.",
+  "entries": [
+    {
+      "id": "fig-pre-youth-pf-balance-row-i-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/pf/balance/ROW-I-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-i-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/pf/balance/ROW-I-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-i-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/pf/balance/ROW-I-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-i-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 4",
+      "image": "pre-youth/pf/balance/ROW-I-4.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-i-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 5",
+      "image": "pre-youth/pf/balance/ROW-I-5.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-i-6",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 6",
+      "image": "pre-youth/pf/balance/ROW-I-6.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/pf/balance/ROW-II-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/pf/balance/ROW-II-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/pf/balance/ROW-II-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/pf/balance/ROW-II-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-ii-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 5",
+      "image": "pre-youth/pf/balance/ROW-II-5.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ"
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iii-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 1",
+      "image": "pre-youth/pf/balance/ROW-III-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iii-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 2",
+      "image": "pre-youth/pf/balance/ROW-III-2.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iii-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 3",
+      "image": "pre-youth/pf/balance/ROW-III-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iii-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 4",
+      "image": "pre-youth/pf/balance/ROW-III-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iii-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 5",
+      "image": "pre-youth/pf/balance/ROW-III-5.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iii-6",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 6",
+      "image": "pre-youth/pf/balance/ROW-III-6.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iii-7",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 7",
+      "image": "pre-youth/pf/balance/ROW-III-7.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iv-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 1",
+      "image": "pre-youth/pf/balance/ROW-IV-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iv-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 2",
+      "image": "pre-youth/pf/balance/ROW-IV-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iv-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 3",
+      "image": "pre-youth/pf/balance/ROW-IV-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iv-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 4",
+      "image": "pre-youth/pf/balance/ROW-IV-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-balance-row-iv-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 5",
+      "image": "pre-youth/pf/balance/ROW-IV-5.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-i-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/pf/dynamic/ROW-I-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-i-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/pf/dynamic/ROW-I-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-i-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/pf/dynamic/ROW-I-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/pf/dynamic/ROW-II-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/pf/dynamic/ROW-II-2.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/pf/dynamic/ROW-II-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/pf/dynamic/ROW-II-4.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-iii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 1",
+      "image": "pre-youth/pf/dynamic/ROW-III-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-iii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 2",
+      "image": "pre-youth/pf/dynamic/ROW-III-2.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-iii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 3",
+      "image": "pre-youth/pf/dynamic/ROW-III-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "1/4 - 180º"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-iii-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 4",
+      "image": "pre-youth/pf/dynamic/ROW-III-4.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "3/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-iv-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 1",
+      "image": "pre-youth/pf/dynamic/ROW-IV-1.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-iv-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 2",
+      "image": "pre-youth/pf/dynamic/ROW-IV-2.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pf-dynamic-row-iv-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 3",
+      "image": "pre-youth/pf/dynamic/ROW-IV-3.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Femenina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-i-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/pm/balance/ROW-I-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-i-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/pm/balance/ROW-I-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-i-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/pm/balance/ROW-I-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-i-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 4",
+      "image": "pre-youth/pm/balance/ROW-I-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/pm/balance/ROW-II-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/pm/balance/ROW-II-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/pm/balance/ROW-II-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/pm/balance/ROW-II-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-ii-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 5",
+      "image": "pre-youth/pm/balance/ROW-II-5.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-ii-6",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 6",
+      "image": "pre-youth/pm/balance/ROW-II-6.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-ii-7",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 7",
+      "image": "pre-youth/pm/balance/ROW-II-7.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iii-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 1",
+      "image": "pre-youth/pm/balance/ROW-III-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iii-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 2",
+      "image": "pre-youth/pm/balance/ROW-III-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iii-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 3",
+      "image": "pre-youth/pm/balance/ROW-III-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iii-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 4",
+      "image": "pre-youth/pm/balance/ROW-III-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iii-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 5",
+      "image": "pre-youth/pm/balance/ROW-III-5.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iv-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 1",
+      "image": "pre-youth/pm/balance/ROW-IV-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iv-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 2",
+      "image": "pre-youth/pm/balance/ROW-IV-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iv-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 3",
+      "image": "pre-youth/pm/balance/ROW-IV-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iv-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 4",
+      "image": "pre-youth/pm/balance/ROW-IV-4.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-balance-row-iv-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 5",
+      "image": "pre-youth/pm/balance/ROW-IV-5.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-i-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/pm/dynamic/ROW-I-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-i-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/pm/dynamic/ROW-I-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-i-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/pm/dynamic/ROW-I-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-i-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 4",
+      "image": "pre-youth/pm/dynamic/ROW-I-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-i-5",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 5",
+      "image": "pre-youth/pm/dynamic/ROW-I-5.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/pm/dynamic/ROW-II-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/pm/dynamic/ROW-II-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/pm/dynamic/ROW-II-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/pm/dynamic/ROW-II-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-iii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 1",
+      "image": "pre-youth/pm/dynamic/ROW-III-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-iii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 2",
+      "image": "pre-youth/pm/dynamic/ROW-III-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-iii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 3",
+      "image": "pre-youth/pm/dynamic/ROW-III-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-iii-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 4",
+      "image": "pre-youth/pm/dynamic/ROW-III-4.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-iv-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 1",
+      "image": "pre-youth/pm/dynamic/ROW-IV-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 BACK - 180º"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-iv-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 2",
+      "image": "pre-youth/pm/dynamic/ROW-IV-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-iv-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 3",
+      "image": "pre-youth/pm/dynamic/ROW-IV-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pm-dynamic-row-iv-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 4",
+      "image": "pre-youth/pm/dynamic/ROW-IV-4.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Masculina"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 FRONT - 180º"
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-i-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/pmx/balance/ROW-I-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-i-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/pmx/balance/ROW-I-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-i-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/pmx/balance/ROW-I-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-i-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 4",
+      "image": "pre-youth/pmx/balance/ROW-I-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-i-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 5",
+      "image": "pre-youth/pmx/balance/ROW-I-5.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-i-6",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 6",
+      "image": "pre-youth/pmx/balance/ROW-I-6.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-i-7",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 7",
+      "image": "pre-youth/pmx/balance/ROW-I-7.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-i-8",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 8",
+      "image": "pre-youth/pmx/balance/ROW-I-8.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/pmx/balance/ROW-II-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/pmx/balance/ROW-II-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/pmx/balance/ROW-II-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/pmx/balance/ROW-II-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-ii-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 5",
+      "image": "pre-youth/pmx/balance/ROW-II-5.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-iii-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 1",
+      "image": "pre-youth/pmx/balance/ROW-III-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-iii-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 2",
+      "image": "pre-youth/pmx/balance/ROW-III-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ"
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-iii-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 3",
+      "image": "pre-youth/pmx/balance/ROW-III-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-iii-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 4",
+      "image": "pre-youth/pmx/balance/ROW-III-4.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-iv-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 1",
+      "image": "pre-youth/pmx/balance/ROW-IV-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-iv-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 2",
+      "image": "pre-youth/pmx/balance/ROW-IV-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-iv-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 3",
+      "image": "pre-youth/pmx/balance/ROW-IV-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-iv-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 4",
+      "image": "pre-youth/pmx/balance/ROW-IV-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-balance-row-iv-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-IV 5",
+      "image": "pre-youth/pmx/balance/ROW-IV-5.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-i-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/pmx/dynamic/ROW-I-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-i-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/pmx/dynamic/ROW-I-2.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-i-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/pmx/dynamic/ROW-I-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-i-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 4",
+      "image": "pre-youth/pmx/dynamic/ROW-I-4.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/pmx/dynamic/ROW-II-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/pmx/dynamic/ROW-II-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/pmx/dynamic/ROW-II-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/pmx/dynamic/ROW-II-4.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-ii-5",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 5",
+      "image": "pre-youth/pmx/dynamic/ROW-II-5.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-iii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 1",
+      "image": "pre-youth/pmx/dynamic/ROW-III-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-iii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 2",
+      "image": "pre-youth/pmx/dynamic/ROW-III-2.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-iii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 3",
+      "image": "pre-youth/pmx/dynamic/ROW-III-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-iv-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 1",
+      "image": "pre-youth/pmx/dynamic/ROW-IV-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "1/4 FRONT OR BACK"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-iv-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 2",
+      "image": "pre-youth/pmx/dynamic/ROW-IV-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "3/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-iv-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 3",
+      "image": "pre-youth/pmx/dynamic/ROW-IV-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "3/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-iv-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 4",
+      "image": "pre-youth/pmx/dynamic/ROW-IV-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "5/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-pmx-dynamic-row-iv-5",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 5",
+      "image": "pre-youth/pmx/dynamic/ROW-IV-5.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "5/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-i-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/trios/balance/ROW-I-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-i-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/trios/balance/ROW-I-2.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-i-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/trios/balance/ROW-I-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-i-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 4",
+      "image": "pre-youth/trios/balance/ROW-I-4.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-i-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 5",
+      "image": "pre-youth/trios/balance/ROW-I-5.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-i-6",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 6",
+      "image": "pre-youth/trios/balance/ROW-I-6.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/trios/balance/ROW-II-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/trios/balance/ROW-II-2.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/trios/balance/ROW-II-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/trios/balance/ROW-II-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-ii-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 5",
+      "image": "pre-youth/trios/balance/ROW-II-5.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-iii-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 1",
+      "image": "pre-youth/trios/balance/ROW-III-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-iii-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 2",
+      "image": "pre-youth/trios/balance/ROW-III-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-iii-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 3",
+      "image": "pre-youth/trios/balance/ROW-III-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-balance-row-iii-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-III 4",
+      "image": "pre-youth/trios/balance/ROW-III-4.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-i-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/trios/dynamic/ROW-I-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-i-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/trios/dynamic/ROW-I-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "3/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-i-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/trios/dynamic/ROW-I-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "3/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-i-4-360",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 4 360º",
+      "image": "pre-youth/trios/dynamic/ROW-I-4.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4 - 360º"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-i-4-540",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 4 540º/720º",
+      "image": "pre-youth/trios/dynamic/ROW-I-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4 - 540º / 720º"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-i-5",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 5",
+      "image": "pre-youth/trios/dynamic/ROW-I-5.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "6/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/trios/dynamic/ROW-II-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "1/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/trios/dynamic/ROW-II-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "3/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/trios/dynamic/ROW-II-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/trios/dynamic/ROW-II-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-iii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 1",
+      "image": "pre-youth/trios/dynamic/ROW-III-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "1/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-iii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 2",
+      "image": "pre-youth/trios/dynamic/ROW-III-2.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "3/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-iii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 3",
+      "image": "pre-youth/trios/dynamic/ROW-III-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-iii-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 4",
+      "image": "pre-youth/trios/dynamic/ROW-III-4.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "5/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-iv-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 1",
+      "image": "pre-youth/trios/dynamic/ROW-IV-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-iv-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 2",
+      "image": "pre-youth/trios/dynamic/ROW-IV-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "3/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-iv-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 3",
+      "image": "pre-youth/trios/dynamic/ROW-IV-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-iv-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 4",
+      "image": "pre-youth/trios/dynamic/ROW-IV-4.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "6/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-trios-dynamic-row-iv-5",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 5",
+      "image": "pre-youth/trios/dynamic/ROW-IV-5.png",
+      "value": 0.4,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Tríos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-i-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/cuartetos/balance/ROW-I-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-i-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/cuartetos/balance/ROW-I-2.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-i-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/cuartetos/balance/ROW-I-3.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-i-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 4",
+      "image": "pre-youth/cuartetos/balance/ROW-I-4.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-i-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-I 5",
+      "image": "pre-youth/cuartetos/balance/ROW-I-5.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/cuartetos/balance/ROW-II-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/cuartetos/balance/ROW-II-2.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/cuartetos/balance/ROW-II-3.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-ii-3b",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 3b",
+      "image": "pre-youth/cuartetos/balance/ROW-II-3b.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/cuartetos/balance/ROW-II-4.png",
+      "value": 0.5,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-row-ii-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "coordinates": "ROW-II 5",
+      "image": "pre-youth/cuartetos/balance/ROW-II-5.png",
+      "value": 0.5,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "type": "EQ",
+      "holdDuration": "3\""
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-i-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 1",
+      "image": "pre-youth/cuartetos/dynamic/ROW-I-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-i-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 2",
+      "image": "pre-youth/cuartetos/dynamic/ROW-I-2.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-i-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 3",
+      "image": "pre-youth/cuartetos/dynamic/ROW-I-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-i-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 4",
+      "image": "pre-youth/cuartetos/dynamic/ROW-I-4.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4 - 180º"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-i-5",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-I 5",
+      "image": "pre-youth/cuartetos/dynamic/ROW-I-5.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-ii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 1",
+      "image": "pre-youth/cuartetos/dynamic/ROW-II-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-ii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 2",
+      "image": "pre-youth/cuartetos/dynamic/ROW-II-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-ii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 3",
+      "image": "pre-youth/cuartetos/dynamic/ROW-II-3.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "0/4"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-ii-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-II 4",
+      "image": "pre-youth/cuartetos/dynamic/ROW-II-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-iii-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 1",
+      "image": "pre-youth/cuartetos/dynamic/ROW-III-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-iii-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 2",
+      "image": "pre-youth/cuartetos/dynamic/ROW-III-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-iii-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 3",
+      "image": "pre-youth/cuartetos/dynamic/ROW-III-3.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 FRONT"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-iii-4",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-III 4",
+      "image": "pre-youth/cuartetos/dynamic/ROW-III-4.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "2/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-iv-1",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 1",
+      "image": "pre-youth/cuartetos/dynamic/ROW-IV-1.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "3/4 FRONT OR BACK - 360º / 720º"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-iv-2",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 2",
+      "image": "pre-youth/cuartetos/dynamic/ROW-IV-2.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "4/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-dynamic-row-iv-3",
+      "code": "FIG",
+      "elementFamily": "dynamic",
+      "coordinates": "ROW-IV 3",
+      "image": "pre-youth/cuartetos/dynamic/ROW-IV-3.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "rotation": "5/4 OR 3/4 BACK"
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-1",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T1",
+      "image": "pre-youth/cuartetos/tops/T-1.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-2",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T2",
+      "image": "pre-youth/cuartetos/tops/T-2.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-3",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T3",
+      "image": "pre-youth/cuartetos/tops/T-3.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-4",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T4",
+      "image": "pre-youth/cuartetos/tops/T-4.png",
+      "value": 0,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-5",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T5",
+      "image": "pre-youth/cuartetos/tops/T-5.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-6",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T6",
+      "image": "pre-youth/cuartetos/tops/T-6.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-7",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T7",
+      "image": "pre-youth/cuartetos/tops/T-7.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-8",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T8",
+      "image": "pre-youth/cuartetos/tops/T-8.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-9",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T9",
+      "image": "pre-youth/cuartetos/tops/T-9.png",
+      "value": 0.1,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-10",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T10",
+      "image": "pre-youth/cuartetos/tops/T-10.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-11",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T11",
+      "image": "pre-youth/cuartetos/tops/T-11.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-12",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T12",
+      "image": "pre-youth/cuartetos/tops/T-12.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-13",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T13",
+      "image": "pre-youth/cuartetos/tops/T-13.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-14",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T14",
+      "image": "pre-youth/cuartetos/tops/T-14.png",
+      "value": 0.2,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-15",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T15",
+      "image": "pre-youth/cuartetos/tops/T-15.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-16",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T16",
+      "image": "pre-youth/cuartetos/tops/T-16.png",
+      "value": 0.3,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-17",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T17",
+      "image": "pre-youth/cuartetos/tops/T-17.png",
+      "value": 0.5,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    },
+    {
+      "id": "fig-pre-youth-cuartetos-balance-top-18",
+      "code": "FIG",
+      "elementFamily": "balance",
+      "type": "EQ",
+      "coordinates": "T18",
+      "image": "pre-youth/cuartetos/tops/T-18.png",
+      "value": 0.5,
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Cuartetos"
+        ],
+        "exercises": [
+          "Combined"
+        ],
+        "levelAges": [
+          "Pre-Youth"
+        ]
+      },
+      "attachesTo": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
+        "fig-pre-youth-cuartetos-balance-row-i-2",
+        "fig-pre-youth-cuartetos-balance-row-i-3",
+        "fig-pre-youth-cuartetos-balance-row-i-4",
+        "fig-pre-youth-cuartetos-balance-row-i-5",
+        "fig-pre-youth-cuartetos-balance-row-ii-1",
+        "fig-pre-youth-cuartetos-balance-row-ii-2",
+        "fig-pre-youth-cuartetos-balance-row-ii-3",
+        "fig-pre-youth-cuartetos-balance-row-ii-3b",
+        "fig-pre-youth-cuartetos-balance-row-ii-4",
+        "fig-pre-youth-cuartetos-balance-row-ii-5"
+      ]
+    }
+  ]
+}
