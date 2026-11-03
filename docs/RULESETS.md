@@ -22,13 +22,17 @@ A sheet follows the ruleset whose `levelSystem` matches its header. Levels witho
 | Balance, pairs | 1 compulsory + 1 optional | 2 compulsory + 1 optional |
 | Balance, groups | 1 + 1 | 1 + 1 |
 | Dynamic, pairs and groups | 1 + 1 | 2 + 1 |
-| Compulsory vs optional (`roleAssignment`) | `higher-value-compulsory`: any element of the table; the higher value is compulsory | `by-table`: the sheet's own age group's table is compulsory; an older age group's table (`optionalFromLevelAges`) is optional |
+| Compulsory vs optional (`roleAssignment`) | `higher-value-compulsory`: among the FGX table's elements the higher value is compulsory | `by-table`: the sheet's own age group's table is compulsory |
+| Optional from another table (`optionalTables`) | any Base age group (Alevín, Infantil, Cadete), same category — always optional | an older Base age group, same category — always optional |
+| Optional's row may not hold the same element as a compulsory (`optionalNotInCompulsoryRow`) | no | yes |
 | Compulsory from different rows | no | yes |
 | Difficulty | compulsory only | compulsory only |
 | Missing element | 0.5 each | 1 each |
 | Individuals | 3 sets; 1 point if any missing | 3 sets (≥1 tumbling); 1 point if any missing — **coming soon** (`individuals.available: false`) |
 
-BASE optionals should come from a higher level (Nacional, FIG). Until those catalogs exist, the older Base age groups are offered: Alevín → Infantil, Cadete; Infantil → Cadete; Cadete → none. A requirement the catalog can't offer yet (Cadete optionals, Base individuals) shows as "próximamente" in the checklist and is **not** penalised.
+Optionals should come from a higher level. For BASE that is Nacional / FIG; until those catalogs exist, the older Base age groups are offered: Alevín → Infantil, Cadete; Infantil → Cadete; Cadete → none. ESCOLAR may take its optional from any Base age group.
+
+**Same element in another table.** In BASE an optional can't come from a row that holds the same element as one of the block's compulsory elements (e.g. Alevín Parejas dynamic ROW I C is Infantil ROW I B, so nothing from Infantil ROW I can be the optional). Which cells are the same element is in [`catalog/RFEG/same-elements.json`](../catalog/RFEG/same-elements.json), reviewed by the coach; the generator turns it into `sameAs` on each entry. A cell with two figures ("OR") can match two cells, so these are links between cells rather than one id per element. A requirement the catalog can't offer yet (Cadete optionals, Base individuals) shows as "próximamente" in the checklist and is **not** penalised.
 
 **Add-ons.** In Base Cuartetos balance, ROW III is a plus value attached to a pyramid (black arrow in the tables), not an element of its own. The catalog entry lists the pyramids in `attachesTo`; in the routine it is stored on the pyramid (`RoutineItem.addOn`), shares its sheet cell, and adds its value. Removing or replacing the pyramid with one it can't attach to removes it.
 

@@ -7,6 +7,7 @@ import {
   filterCatalogEntries,
   getCatalogEntries,
   groupCatalogEntriesByRow,
+  parseRowColumnFromCoordinates,
   type CatalogEntry,
   type ElementFamily,
   type ElementType,
@@ -21,7 +22,7 @@ import {
   addProblem,
   blockSlots,
   optionalAvailable,
-  optionalLevelAges,
+  optionalTables,
   pyramidForAddOn,
   roleForEntry,
   rulesetFor,
@@ -182,81 +183,98 @@ function CatalogRowGrid({
   noteFor?: (entry: CatalogEntry) => string | null;
 }) {
   const rows = useMemo(() => groupCatalogEntriesByRow(entries), [entries]);
+  const columnOf = (entry: CatalogEntry) =>
+    parseRowColumnFromCoordinates(entry.coordinates)?.columnKey ?? "?";
+  // The table's columns (A–D or A–E), as on the official difficulty tables.
+  const columns = useMemo(
+    () => [...new Set(entries.map(columnOf))].sort(),
+    [entries],
+  );
 
   if (rows.length === 0) return null;
 
+  function cell(entry: CatalogEntry) {
+    const isSelected =
+      selectedCatalogId === entry.id || (selectedCatalogIds?.has(entry.id) ?? false);
+    // Already in the routine (and not the element being edited).
+    const isUsed = isSelected && selectedCatalogId !== entry.id;
+    const problem = isSelected ? null : (problemFor?.(entry) ?? null);
+    const note = noteFor?.(entry) ?? null;
+    return (
+      <button
+        key={entry.id}
+        type="button"
+        disabled={isUsed || problem != null}
+        onClick={() => onSelect(entry)}
+        className={`flex h-full w-full flex-col items-center rounded-lg border p-1.5 sm:p-2 ${
+          isSelected
+            ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
+            : problem
+              ? "cursor-not-allowed border-zinc-200 opacity-50"
+              : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+        }`}
+      >
+        <Image
+          src={catalogImageUrl(entry.image, entry.code)}
+          alt={entry.coordinates}
+          width={96}
+          height={68}
+          className="h-14 w-full object-contain sm:h-16"
+        />
+        <span className="mt-0.5 text-[9px] text-zinc-600 sm:text-[10px]">
+          {formatSheetValue(entry.value)}
+        </span>
+        {isSelected ? (
+          <span className="mt-0.5 text-[9px] font-medium text-zinc-800">✓ {selectedHint}</span>
+        ) : null}
+        {note ? (
+          <span className="mt-0.5 text-center text-[9px] leading-tight text-zinc-600">{note}</span>
+        ) : null}
+        {problem ? (
+          <span className="mt-0.5 text-center text-[9px] leading-tight text-amber-700">
+            {problem}
+          </span>
+        ) : null}
+      </button>
+    );
+  }
+
   return (
-    <div className="flex flex-col gap-3">
-      {rows.map(({ rowKey, rowLabel, entries: rowEntries }) => {
-        return (
-          <div key={rowKey}>
-            <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-500">
-              {rowLabel}
-            </p>
-            <ul className="flex flex-nowrap gap-2 overflow-x-auto pb-0.5 sm:gap-2.5">
-              {rowEntries.map((entry) => (
-                (() => {
-                  const isSelected =
-                    selectedCatalogId === entry.id ||
-                    (selectedCatalogIds?.has(entry.id) ?? false);
-                  // Already in the routine (and not the element being edited).
-                  const isUsed = isSelected && selectedCatalogId !== entry.id;
-                  const problem = isSelected ? null : (problemFor?.(entry) ?? null);
-                  const note = noteFor?.(entry) ?? null;
-                  return (
-                <li
-                  key={entry.id}
-                  className="w-[5.75rem] shrink-0 sm:w-[6.5rem] lg:min-w-0 lg:flex-1"
-                >
-                  <button
-                    type="button"
-                    disabled={isUsed || problem != null}
-                    onClick={() => onSelect(entry)}
-                    className={`flex h-full w-full flex-col items-center rounded-lg border p-2 sm:p-2.5 ${
-                      isSelected
-                        ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
-                        : problem
-                          ? "cursor-not-allowed border-zinc-200 opacity-50"
-                          : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
-                    }`}
-                  >
-                    <Image
-                      src={catalogImageUrl(entry.image, entry.code)}
-                      alt={entry.coordinates}
-                      width={96}
-                      height={68}
-                      className="h-14 w-full object-contain sm:h-16"
-                    />
-                    <span className="mt-1 w-full truncate text-center text-[10px] font-medium sm:text-[11px]">
-                      {entry.coordinates.replace(/^ROW-[IVX]+\s+/i, "")}
-                    </span>
-                    <span className="text-[9px] text-zinc-600 sm:text-[10px]">
-                      {formatSheetValue(entry.value)}
-                    </span>
-                    {isSelected ? (
-                      <span className="mt-0.5 text-[9px] font-medium text-zinc-800">
-                        ✓ {selectedHint}
-                      </span>
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[22rem] table-fixed border-separate border-spacing-1">
+        <thead>
+          <tr>
+            <th className="w-12" />
+            {columns.map((col) => (
+              <th key={col} scope="col" className="text-[11px] font-semibold text-zinc-500">
+                {col}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(({ rowKey, rowLabel, entries: rowEntries }) => (
+            <tr key={rowKey}>
+              <th
+                scope="row"
+                className="text-left align-middle text-[10px] font-semibold uppercase tracking-wide text-zinc-500"
+              >
+                {rowLabel}
+              </th>
+              {columns.map((col) => {
+                const inCell = rowEntries.filter((e) => columnOf(e) === col);
+                return (
+                  <td key={col} className="align-top">
+                    {inCell.length > 0 ? (
+                      <div className="flex flex-col gap-1">{inCell.map(cell)}</div>
                     ) : null}
-                    {note ? (
-                      <span className="mt-0.5 text-center text-[9px] leading-tight text-zinc-600">
-                        {note}
-                      </span>
-                    ) : null}
-                    {problem ? (
-                      <span className="mt-0.5 text-center text-[9px] leading-tight text-amber-700">
-                        {problem}
-                      </span>
-                    ) : null}
-                  </button>
-                </li>
-                  );
-                })()
-              ))}
-            </ul>
-          </div>
-        );
-      })}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -307,6 +325,7 @@ export function ElementPickerPanel({
     editBlock ?? "balance",
   );
   const [previewEntry, setPreviewEntry] = useState<CatalogEntry | null>(null);
+  const [tableKey, setTableKey] = useState<string | null>(null);
   const [duplicateError, setDuplicateError] = useState(false);
   const [limitError, setLimitError] = useState<"roleBlock" | "individuals" | null>(
     null,
@@ -393,8 +412,6 @@ export function ElementPickerPanel({
     return countCompleteIndividualSets(routineExcludingEditing, gymnastCount).totalGroups;
   }, [routineExcludingEditing, header.category]);
 
-  const balanceEntries = entriesForFamily(allEntries, header, "balance");
-  const dynamicEntries = entriesForFamily(allEntries, header, "dynamic");
 
   const currentBlockIsFull =
     elementType === "balance"
@@ -453,30 +470,37 @@ export function ElementPickerPanel({
     ? "flex w-full min-w-0 max-w-5xl flex-col rounded-xl border border-zinc-300 bg-white shadow-lg"
     : "flex w-full min-w-0 max-w-5xl shrink-0 flex-col rounded-lg border border-zinc-200 bg-white shadow-sm";
 
-  const currentEntries =
-    elementType === "balance"
-      ? balanceEntries
-      : elementType === "dynamic"
-        ? dynamicEntries
-        : [];
-  /** By-table rules: own age group's table, then older ones' (optional only). */
-  function sectionsFor(family: "balance" | "dynamic") {
-    if (!ruleset || ruleset.roleAssignment !== "by-table") {
-      return [{ key: "all", title: null, entries: entriesForFamily(allEntries, header, family) }];
-    }
+  /** The sheet's own table, then the tables that supply optional elements. */
+  function tablesFor(family: "balance" | "dynamic") {
+    const own = {
+      key: "own",
+      label: t.sheet.picker.tableOwn(header.levelSystem, header.levelAge),
+      optional: false,
+      entries: entriesForFamily(allEntries, header, family),
+    };
+    if (!ruleset) return [own];
     return [
-      {
-        key: header.levelAge,
-        title: t.sheet.picker.sectionCompulsory(header.levelAge),
-        entries: entriesForFamily(allEntries, header, family),
-      },
-      ...optionalLevelAges(ruleset, header.levelAge).map((age) => ({
-        key: age,
-        title: t.sheet.picker.sectionOptional(age),
-        entries: entriesForFamily(allEntries, { ...header, levelAge: age }, family),
+      own,
+      ...optionalTables(ruleset, header.levelAge).map((table) => ({
+        key: `${table.catalogId}-${table.levelSystem}-${table.levelAge}`,
+        label: t.sheet.picker.tableOptional(table.levelSystem, table.levelAge),
+        optional: true,
+        entries: entriesForFamily(
+          getCatalogEntries(table.catalogId),
+          { ...header, levelSystem: table.levelSystem, levelAge: table.levelAge },
+          family,
+        ),
       })),
-    ];
+    ].filter((table) => table === own || table.entries.length > 0);
   }
+  const tables = elementType === "individual" ? [] : tablesFor(elementType);
+  // Until a table is chosen: the edited element's table, else the sheet's own.
+  const activeTable =
+    tables.find((table) => table.key === tableKey) ??
+    tables.find((table) =>
+      table.entries.some((entry) => entry.id === editingItem?.element.catalogId),
+    ) ??
+    tables[0];
 
   const coordinatesOf = (ids: readonly string[]) =>
     ids
@@ -500,6 +524,8 @@ export function ElementPickerPanel({
         return t.sheet.picker.problemNoPyramid(coordinatesOf(entry.attachesTo ?? []));
       case "not-allowed":
         return t.sheet.picker.problemNotAllowed;
+      case "same-element-row":
+        return t.sheet.picker.problemSameElementRow;
     }
   }
 
@@ -601,31 +627,57 @@ export function ElementPickerPanel({
                   <p className="text-sm text-amber-700">{t.sheet.picker.limitRoleBlock}</p>
                 ) : null}
               </>
-            ) : currentEntries.length === 0 ? (
+            ) : tables.every((table) => table.entries.length === 0) ? (
               <p className="text-sm text-amber-700">{t.sheet.catalogEmpty}</p>
             ) : (
-              <div className="flex flex-col gap-4">
-                {sectionsFor(elementType).map((section) =>
-                  section.entries.length === 0 ? null : (
-                    <div key={section.key}>
-                      {section.title ? (
-                        <p className="mb-2 text-xs font-semibold text-zinc-800">{section.title}</p>
-                      ) : null}
-                      <CatalogRowGrid
-                        entries={section.entries}
-                        selectedCatalogId={editingItem?.element.catalogId}
-                        selectedCatalogIds={selectedCatalogIds}
-                        selectedHint={t.routine.escolarDone}
-                        problemFor={problemFor}
-                        noteFor={noteFor}
-                        onSelect={(entry) => {
-                          setPreviewEntry(entry);
-                          setDuplicateError(false);
-                          setLimitError(null);
+              <div className="flex flex-col gap-3">
+                {tables.length > 1 ? (
+                  <div
+                    role="tablist"
+                    aria-label={t.sheet.picker.tableChooser}
+                    className="flex flex-wrap gap-1.5"
+                  >
+                    {tables.map((table) => (
+                      <button
+                        key={table.key}
+                        type="button"
+                        role="tab"
+                        aria-selected={table.key === activeTable?.key}
+                        onClick={() => {
+                          setTableKey(table.key);
+                          setPreviewEntry(null);
                         }}
-                      />
-                    </div>
-                  ),
+                        className={`rounded-full border px-3 py-1.5 text-xs ${
+                          table.key === activeTable?.key
+                            ? "border-zinc-900 bg-zinc-900 text-white"
+                            : "border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50"
+                        }`}
+                      >
+                        {table.label}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+                {activeTable?.optional ? (
+                  <p className="text-xs text-zinc-600">{t.sheet.picker.optionalTableHint}</p>
+                ) : null}
+                {activeTable && activeTable.entries.length > 0 ? (
+                  <CatalogRowGrid
+                    key={activeTable.key}
+                    entries={activeTable.entries}
+                    selectedCatalogId={editingItem?.element.catalogId}
+                    selectedCatalogIds={selectedCatalogIds}
+                    selectedHint={t.routine.escolarDone}
+                    problemFor={problemFor}
+                    noteFor={noteFor}
+                    onSelect={(entry) => {
+                      setPreviewEntry(entry);
+                      setDuplicateError(false);
+                      setLimitError(null);
+                    }}
+                  />
+                ) : (
+                  <p className="text-sm text-amber-700">{t.sheet.catalogEmpty}</p>
                 )}
               </div>
             )

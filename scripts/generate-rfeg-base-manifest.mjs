@@ -6,6 +6,9 @@
  * base/<age>/<pairs|trios|cuartetos>/<balance|dynamic>/ROW-<row>-<col>.png.
  * Column values: A=0, B=0.1, C=0.2, D=0.3. Every balance element holds 3".
  *
+ * Cells that are the same element across age groups come from
+ * catalog/RFEG/same-elements.json and become `sameAs` on both entries.
+ *
  * Usage: node scripts/generate-rfeg-base-manifest.mjs
  */
 import fs from "node:fs";
@@ -162,6 +165,22 @@ for (const age of AGES) {
         entries.push(entry);
       }
     }
+  }
+}
+
+// Same element in another age group's table (reviewed by the coach): links both ways.
+const sameElements = JSON.parse(
+  fs.readFileSync(path.join(root, "catalog/RFEG/same-elements.json"), "utf8"),
+);
+const byId = new Map(entries.map((e) => [e.id, e]));
+for (const [a, b] of sameElements.pairs) {
+  if (!byId.has(a) || !byId.has(b)) {
+    problems.push(`same-elements: unknown entry in ${a} / ${b}`);
+    continue;
+  }
+  for (const [from, to] of [[a, b], [b, a]]) {
+    const entry = byId.get(from);
+    entry.sameAs = [...new Set([...(entry.sameAs ?? []), to])].sort();
   }
 }
 

@@ -1,4 +1,6 @@
-import type { Ruleset } from "./types";
+import type { Ruleset, TableRef } from "./types";
+
+const base = (levelAge: string): TableRef => ({ catalogId: "RFEG", levelSystem: "Base", levelAge });
 
 /**
  * RFEG Base — Alevín, Infantil, Cadete; Parejas, Tríos, Cuartetos (Código 2026).
@@ -6,7 +8,8 @@ import type { Ruleset } from "./types";
  * Compulsory elements come from the sheet's own age-group table, from
  * different rows, and only they add difficulty. Optional elements come from a
  * higher level: for now the older Base age groups' tables (Nacional and FIG
- * tables aren't in the catalog yet, so Cadete has no optional to pick).
+ * tables aren't in the catalog yet, so Cadete has no optional to pick), and
+ * never from a row holding the same element as a compulsory.
  */
 export const RFEG_BASE: Ruleset = {
   id: "rfeg-base",
@@ -26,11 +29,12 @@ export const RFEG_BASE: Ruleset = {
   },
   roleAssignment: "by-table",
   compulsoryFromDifferentRows: true,
-  optionalFromLevelAges: {
-    Alevín: ["Infantil", "Cadete"],
-    Infantil: ["Cadete"],
+  optionalTables: {
+    Alevín: [base("Infantil"), base("Cadete")],
+    Infantil: [base("Cadete")],
     Cadete: [],
   },
+  optionalNotInCompulsoryRow: true,
   // 3 sets, at least one tumbling; difficulty not added. Pictures are FIG's: coming soon.
   individuals: { sets: 3, available: false },
   penalties: {

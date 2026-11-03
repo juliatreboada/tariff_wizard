@@ -26,8 +26,17 @@ export { evaluateRules, type RuleStatus } from "./evaluate";
 export {
   blockSlots,
   optionalAvailable,
-  optionalLevelAges,
+  optionalTables,
+  entryInTable,
+  tableKeyOf,
   roleForEntry,
   rowOf,
 } from "./slots";
-export type { BlockSlots, ElementBlock, Ruleset, RulesetTarget, RulesHeader } from "./types";
+export type {
+  BlockSlots,
+  ElementBlock,
+  Ruleset,
+  RulesetTarget,
+  RulesHeader,
+  TableRef,
+} from "./types";

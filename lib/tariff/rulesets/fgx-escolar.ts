@@ -15,7 +15,15 @@ export const FGX_ESCOLAR: Ruleset = {
   },
   roleAssignment: "higher-value-compulsory",
   compulsoryFromDifferentRows: false,
-  optionalFromLevelAges: {},
+  // A higher level: any RFEG Base age group.
+  optionalTables: {
+    "*": ["Alevín", "Infantil", "Cadete"].map((levelAge) => ({
+      catalogId: "RFEG" as const,
+      levelSystem: "Base" as const,
+      levelAge,
+    })),
+  },
+  optionalNotInCompulsoryRow: false,
   individuals: { sets: 3, available: true },
   penalties: {
     missingElement: 0.5,

@@ -1,5 +1,6 @@
 import { catalogEntryForElement } from "../catalog/lookup";
 import type { RoutineItem } from "../routine-types";
+import { fromOwnTable } from "./constraints";
 import { blockSlots, roleForEntry } from "./slots";
 import type { BlockSlots, ElementBlock, Ruleset, RulesHeader } from "./types";
 
@@ -13,11 +14,7 @@ export function applyRulesetRolesForBlock(
   if (!ruleset) return routine;
   switch (ruleset.roleAssignment) {
     case "higher-value-compulsory":
-      return higherValueCompulsory(
-        routine,
-        block,
-        blockSlots(ruleset, block, header?.category),
-      );
+      return higherValueCompulsory(routine, block, ruleset, header);
     case "by-table":
       return header ? byTable(routine, block, ruleset, header) : routine;
   }
@@ -36,21 +33,32 @@ export function applyRulesetRoles(
   );
 }
 
+
 /**
- * The highest values fill the compulsory slots first; the lowest become
- * optional, up to the ruleset's optional count.
+ * Elements from an optional table are optional. Among the sheet's own table's
+ * elements, the highest values fill the compulsory slots first; the lowest
+ * become optional, up to the optional slots left.
  */
 function higherValueCompulsory(
   routine: RoutineItem[],
   block: ElementBlock,
-  slots: BlockSlots,
+  ruleset: Ruleset,
+  header: RulesHeader | null,
 ): RoutineItem[] {
-  const indexes = routine
+  const slots: BlockSlots = blockSlots(ruleset, block, header?.category);
+  const inBlock = routine
     .map((item, index) => ({ item, index }))
     .filter(({ item }) => item.block === block && item.role !== "individual");
-  if (indexes.length === 0) return routine;
+  if (inBlock.length === 0) return routine;
+  const fixedOptional = new Set(
+    // Not from the sheet's own table (e.g. Base on an ESCOLAR sheet): always optional.
+    inBlock
+      .filter(({ item }) => header != null && !fromOwnTable(item, ruleset, header))
+      .map(({ index }) => index),
+  );
+  const indexes = inBlock.filter(({ index }) => !fixedOptional.has(index));
   const optionalCount = Math.min(
-    slots.optional,
+    Math.max(0, slots.optional - fixedOptional.size),
     Math.max(0, indexes.length - slots.compulsory),
   );
   // Lowest value first. On a tie keep whichever element is already optional
@@ -62,12 +70,14 @@ function higherValueCompulsory(
       Number(b.item.role === "optional") - Number(a.item.role === "optional") ||
       b.index - a.index,
   );
-  const optional = new Set(
-    byOptionalPreference.slice(0, optionalCount).map(({ index }) => index),
-  );
+  const optional = new Set([
+    ...fixedOptional,
+    ...byOptionalPreference.slice(0, optionalCount).map(({ index }) => index),
+  ]);
   return routine.map((item, i) => {
-    if (!indexes.some((x) => x.index === i)) return item;
-    return { ...item, role: optional.has(i) ? "optional" : "compulsory" };
+    if (!inBlock.some((x) => x.index === i)) return item;
+    const role = optional.has(i) ? "optional" : "compulsory";
+    return role === item.role ? item : { ...item, role };
   });
 }
 

@@ -61,8 +61,8 @@ describe("Base pairs: 2 compulsory + 1 optional per block", () => {
     add("alevin-pairs-balance-row-i-b");
     add("alevin-pairs-balance-row-ii-b");
     expect(add("alevin-pairs-balance-row-iii-b")).toBe(false);
-    expect(add("infantil-pairs-balance-row-i-a")).toBe(true);
-    expect(add("cadete-pairs-balance-row-i-a")).toBe(false);
+    expect(add("infantil-pairs-balance-row-iv-a")).toBe(true);
+    expect(add("cadete-pairs-balance-row-iv-a")).toBe(false);
   });
 
   it("refuses elements from the same or a younger age group's table as optional", () => {
@@ -95,6 +95,40 @@ describe("changing the header", () => {
       ["infantil-pairs-balance-row-i-d", "compulsory"],
     ]);
     expect(store().savedSheets[0].routine.map((i) => i.role)).toEqual(["optional", "compulsory"]);
+  });
+});
+
+describe("same element in an optional's row", () => {
+  // Alevín Parejas dynamic ROW I C is the same element as Infantil ROW I B.
+  it("refuses an optional from a row holding the same element as a compulsory", () => {
+    expect(add("alevin-pairs-dynamic-row-i-c")).toBe(true);
+    expect(add("infantil-pairs-dynamic-row-i-c")).toBe(false); // Infantil ROW I has I B
+    expect(add("infantil-pairs-dynamic-row-ii-b")).toBe(true);
+  });
+
+  it("refuses the compulsory too when the optional came first", () => {
+    expect(add("infantil-pairs-dynamic-row-i-d")).toBe(true);
+    expect(add("alevin-pairs-dynamic-row-i-c")).toBe(false);
+    expect(add("alevin-pairs-dynamic-row-ii-c")).toBe(true);
+  });
+});
+
+describe("same element through Cuartetos add-ons", () => {
+  // Alevín Cuartetos ROW III B is the same element as Infantil ROW III A.
+  beforeEach(() => startSheet(base("Alevín", "Cuartetos")));
+
+  it("refuses an optional add-on in the row of a compulsory add-on's same element", () => {
+    add("alevin-cuartetos-balance-row-i-b");
+    add("alevin-cuartetos-balance-row-iii-b");
+    add("infantil-cuartetos-balance-row-i-a"); // optional pyramid
+    expect(add("infantil-cuartetos-balance-row-iii-a")).toBe(false);
+  });
+
+  it("refuses the compulsory add-on when the optional one came first", () => {
+    add("infantil-cuartetos-balance-row-i-a");
+    add("infantil-cuartetos-balance-row-iii-a");
+    add("alevin-cuartetos-balance-row-i-b");
+    expect(add("alevin-cuartetos-balance-row-iii-b")).toBe(false);
   });
 });
 

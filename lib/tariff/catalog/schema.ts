@@ -13,6 +13,7 @@ const catalogEntrySchema = z.object({
   holdDuration: z.string().optional(),
   rotation: z.string().optional(),
   attachesTo: z.array(z.string().min(1)).min(1).optional(),
+  sameAs: z.array(z.string().min(1)).min(1).optional(),
   filters: z.object({
     levelSystems: z.array(z.enum(LEVEL_SYSTEMS)).min(1),
     categories: z.array(z.string().min(1)).min(1),
@@ -36,6 +37,15 @@ export const catalogManifestSchema = z
   .superRefine((manifest, ctx) => {
     const ids = new Set(manifest.entries.map((e) => e.id));
     manifest.entries.forEach((entry, i) => {
+      for (const target of entry.sameAs ?? []) {
+        if (!ids.has(target)) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["entries", i, "sameAs"],
+            message: `same as unknown entry ${target}`,
+          });
+        }
+      }
       for (const target of entry.attachesTo ?? []) {
         if (!ids.has(target)) {
           ctx.addIssue({

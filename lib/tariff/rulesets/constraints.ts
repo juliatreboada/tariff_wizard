@@ -1,6 +1,7 @@
+import { catalogEntryById, catalogEntryForElement } from "../catalog/lookup";
 import type { CatalogEntry } from "../catalog/types";
 import type { RoutineItem } from "../routine-types";
-import { blockSlots, roleForEntry, rowOf } from "./slots";
+import { blockSlots, roleForEntry, rowOf, tableKeyOf } from "./slots";
 import type { ElementBlock, Ruleset, RulesHeader } from "./types";
 
 /** Why an element can't go into the routine. */
@@ -9,7 +10,8 @@ export type AddProblem =
   | "full"
   | "same-row"
   | "not-allowed"
-  | "no-pyramid";
+  | "no-pyramid"
+  | "same-element-row";
 
 /** Elements already placed, add-ons included. */
 function usedCatalogIds(routine: RoutineItem[], exceptItemId?: string): Set<string> {
@@ -48,7 +50,24 @@ export function addProblem(
   if (usedCatalogIds(routine, exceptItemId).has(entry.id)) return "duplicate";
   if (entry.attachesTo) {
     if (exceptItemId) return "not-allowed"; // an add-on can't replace a pyramid
-    return pyramidForAddOn(routine, entry) ? null : "no-pyramid";
+    const pyramid = pyramidForAddOn(routine, entry);
+    if (!pyramid) return "no-pyramid";
+    // The add-on takes its pyramid's role for the row rule.
+    if (ruleset?.optionalNotInCompulsoryRow && pyramid.role !== "individual") {
+      const otherSide = elementsWithRole(
+        routine.filter((i) => i.block === block),
+        pyramid.role === "compulsory" ? "optional" : "compulsory",
+      );
+      const clash = otherSide.some(
+        (other) =>
+          other &&
+          (pyramid.role === "compulsory"
+            ? holdsSameElementInRow(entry, other)
+            : holdsSameElementInRow(other, entry)),
+      );
+      if (clash) return "same-element-row";
+    }
+    return null;
   }
   if (!ruleset || !header) return null;
 
@@ -61,6 +80,9 @@ export function addProblem(
 
   if (ruleset.roleAssignment === "higher-value-compulsory") {
     if (others.length >= slots.compulsory + slots.optional) return "full";
+    // An optional-table element needs a free optional slot of its own.
+    const fixedOptionals = others.filter((item) => !fromOwnTable(item, ruleset, header)).length;
+    if (role === "optional" && fixedOptionals >= slots.optional) return "full";
   } else if (others.filter((item) => item.role === role).length >= slots[role]) {
     return "full";
   }
@@ -72,5 +94,44 @@ export function addProblem(
     );
     if (clash) return "same-row";
   }
+
+  if (ruleset.optionalNotInCompulsoryRow) {
+    const entriesWith = (r: "compulsory" | "optional") =>
+      role === r ? [entry] : elementsWithRole(others, r);
+    const compulsory = entriesWith("compulsory");
+    const optional = entriesWith("optional");
+    for (const c of compulsory) {
+      for (const o of optional) {
+        if (c && o && holdsSameElementInRow(c, o)) return "same-element-row";
+      }
+    }
+  }
   return null;
+}
+
+/** Catalog entries of the items with this role, their add-ons included (same role). */
+function elementsWithRole(items: RoutineItem[], role: "compulsory" | "optional") {
+  return items
+    .filter((i) => i.role === role)
+    .flatMap((i) => [i.element, ...(i.addOn ? [i.addOn] : [])])
+    .map(catalogEntryForElement);
+}
+
+/**
+ * Is this element from the sheet's own table? Anything else (an optional
+ * table's, or one left over after the header changed) is always optional.
+ */
+export function fromOwnTable(item: RoutineItem, ruleset: Ruleset, header: RulesHeader): boolean {
+  const entry = catalogEntryForElement(item.element);
+  return entry ? roleForEntry(ruleset, header, entry) === "compulsory" : true;
+}
+
+/** Does the optional's row (in its table) hold the same element as the compulsory? */
+function holdsSameElementInRow(compulsory: CatalogEntry, optional: CatalogEntry): boolean {
+  const row = rowOf(optional.coordinates);
+  return (compulsory.sameAs ?? []).some((id) => {
+    if (tableKeyOf(id) !== tableKeyOf(optional.id)) return false;
+    const same = catalogEntryById(compulsory.code, id);
+    return same != null && row !== null && rowOf(same.coordinates) === row;
+  });
 }

@@ -48,6 +48,8 @@ export type CatalogEntry = {
    * (e.g. Cuartetos ROW III on a ROW I pyramid) and adds its value.
    */
   attachesTo?: string[];
+  /** The same element in other tables (e.g. an older age group's), for row rules. */
+  sameAs?: string[];
 };
 
 export type CatalogManifest = {

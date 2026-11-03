@@ -117,8 +117,12 @@ export const es = {
       limitIndividuals: (n: number) =>
         `Límite alcanzado: solo se permiten ${n} sets de individuales.`,
       individualsComingSoon: "Elementos individuales: próximamente.",
-      sectionCompulsory: (age: string) => `Obligatorios · ${age}`,
-      sectionOptional: (age: string) => `Opcionales · ${age} (no suman dificultad)`,
+      tableChooser: "Tabla",
+      tableOwn: (system: string, age: string) => `${age} ${system.toUpperCase()}`,
+      tableOptional: (system: string, age: string) => `${age} ${system.toUpperCase()} · opcional`,
+      optionalTableHint:
+        "Tabla de nivel superior: el elemento cuenta como opcional y no suma dificultad.",
+      problemSameElementRow: "Su fila tiene el mismo elemento que un obligatorio",
       problemSameRow: "Ya hay un obligatorio de esta fila",
       problemFullCompulsory: "Obligatorios completos",
       problemFullOptional: "Opcional ya elegido",

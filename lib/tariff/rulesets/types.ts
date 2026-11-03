@@ -3,6 +3,13 @@ import type { LevelSystem } from "../enums";
 
 export type ElementBlock = "balance" | "dynamic";
 
+/** One element table: a catalog, level system and age group (e.g. RFEG Base Infantil). */
+export type TableRef = {
+  catalogId: CatalogId;
+  levelSystem: LevelSystem;
+  levelAge: string;
+};
+
 export type BlockSlots = {
   compulsory: number;
   optional: number;
@@ -25,15 +32,24 @@ export type Ruleset = {
   blocks: Record<ElementBlock, { pairs: BlockSlots; groups: BlockSlots }>;
   /**
    * How compulsory/optional are chosen within a block:
-   * - higher-value-compulsory: any element of the sheet's table; the highest values are compulsory.
-   * - by-table: elements from the sheet's own age-group table are compulsory; elements
-   *   from an older age group's table (`optionalFromLevelAges`) are optional.
+   * - higher-value-compulsory: among elements of the sheet's own table, the highest
+   *   values are compulsory.
+   * - by-table: every element of the sheet's own table is compulsory.
+   * Either way, an element from an `optionalTables` table is always optional.
    */
   roleAssignment: "higher-value-compulsory" | "by-table";
   /** Compulsory elements of one block must come from different rows. */
   compulsoryFromDifferentRows: boolean;
-  /** by-table: sheet age group → age groups whose tables supply optional elements. */
-  optionalFromLevelAges: Readonly<Record<string, readonly string[]>>;
+  /**
+   * Sheet age group (or "*" for any) → other tables that supply optional elements,
+   * in the sheet's own category.
+   */
+  optionalTables: Readonly<Record<string, readonly TableRef[]>>;
+  /**
+   * An optional can't come from a row holding the same element (catalog `sameAs`)
+   * as one of the block's compulsory elements.
+   */
+  optionalNotInCompulsoryRow: boolean;
   individuals: {
     /** Individual sets required — and the most allowed. */
     sets: number;
@@ -56,4 +72,4 @@ export type Ruleset = {
 export type RulesetTarget = { levelSystem: LevelSystem };
 
 /** The header fields the rules depend on. */
-export type RulesHeader = { levelAge: string; category: string };
+export type RulesHeader = { levelSystem: LevelSystem; levelAge: string; category: string };

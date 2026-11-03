@@ -25,9 +25,12 @@ describe("every ruleset", () => {
       }
     }
     expect(r.individuals.sets).toBeGreaterThan(0);
-    for (const [age, older] of Object.entries(r.optionalFromLevelAges)) {
-      expect(r.readyLevelAges).toContain(age);
-      for (const o of older) expect(LEVEL_AGE_BY_SYSTEM[r.levelSystem]).toContain(o);
+    for (const [age, tables] of Object.entries(r.optionalTables)) {
+      if (age !== "*") expect(r.readyLevelAges).toContain(age);
+      for (const t of tables) {
+        expect(LEVEL_AGE_BY_SYSTEM[t.levelSystem]).toContain(t.levelAge);
+        expect(getCatalogEntries(t.catalogId).length).toBeGreaterThan(0);
+      }
     }
   });
 
