@@ -155,10 +155,22 @@ describe("optionals from the Cto. España tables", () => {
   it("offers the three España pair tables to a Base Parejas sheet", () => {
     expect(add("alevin-pairs-balance-row-ii-b")).toBe(true);
     expect(add("alevin-pairs-balance-row-iv-d")).toBe(true);
-    expect(rfegAdd("espana-alevin-pm-balance-row-i-a")).toBe(true);
-    expect(roles()[2]).toEqual(["rfeg-espana-alevin-pm-balance-row-i-a", "optional"]);
-    store().removeRoutineItem(store().routine[2].id);
     expect(rfegAdd("espana-alevin-pf-balance-row-i-a")).toBe(true);
+    expect(roles()[2]).toEqual(["rfeg-espana-alevin-pf-balance-row-i-a", "optional"]);
+    store().removeRoutineItem(store().routine[2].id);
+    expect(rfegAdd("espana-alevin-pmx-balance-row-i-a")).toBe(true);
+  });
+
+  it("refuses an España optional from a row holding a compulsory's same element", () => {
+    // Base Alevín ROW II B is España Pareja Masculina ROW I B.
+    add("alevin-pairs-balance-row-ii-b");
+    expect(rfegAdd("espana-alevin-pm-balance-row-i-a")).toBe(false);
+    expect(rfegAdd("espana-alevin-pm-balance-row-ii-a")).toBe(true);
+  });
+
+  it("refuses the compulsory when the España optional came first", () => {
+    rfegAdd("espana-alevin-pm-balance-row-i-a");
+    expect(add("alevin-pairs-balance-row-ii-b")).toBe(false);
   });
 
   it("takes only the sheet's age group and category from España", () => {
