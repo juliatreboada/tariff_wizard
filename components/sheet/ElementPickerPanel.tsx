@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
   catalogEntryByAnyId,
+  catalogEntryToPlaced,
   catalogImageUrl,
   filterCatalogEntries,
   getCatalogEntries,
@@ -17,7 +18,7 @@ import { getMessages } from "@/lib/i18n";
 import { isCatalogIdUsedInRoutine } from "@/lib/tariff/element-uniqueness";
 import { gymnastCountForCategory } from "@/lib/tariff/level-category";
 import { countCompleteIndividualSets, gymnastKeysForHeader } from "@/lib/tariff/routine-groups";
-import type { RoutineGymnastRole } from "@/lib/tariff/routine-types";
+import type { RoutineGymnastRole, RoutineItem } from "@/lib/tariff/routine-types";
 import type { StoredHeader } from "@/lib/tariff/types";
 import {
   addProblem,
@@ -35,6 +36,7 @@ import {
 } from "@/lib/tariff/rulesets";
 import { useWizardStore } from "@/lib/tariff/store";
 import { IndividualChoices } from "./IndividualChoices";
+import { PickerStep } from "./PickerStep";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
 
 type PickerElementType = "balance" | "dynamic" | "individual";
@@ -53,6 +55,8 @@ export type ElementPickerSelection =
       entry: CatalogEntry;
       block: "balance" | "dynamic";
       role: PickerRole;
+      /** For an add-on: the pyramid (catalog id) to put it on. */
+      attachTo?: string;
     }
   | {
       kind: "individual";
@@ -375,6 +379,7 @@ export function ElementPickerPanel({
   }, [gymnastKeys]);
 
   const [individualRefused, setIndividualRefused] = useState(false);
+  const [addOnFailed, setAddOnFailed] = useState(false);
   const [individualByGymnast, setIndividualByGymnast] =
     useState<Record<string, GymnastPickState>>(initialIndividualState);
 
@@ -460,6 +465,48 @@ export function ElementPickerPanel({
       setLimitError(null);
       return;
     }
+    setDuplicateError(false);
+    setLimitError(null);
+    setPreviewEntry(null);
+    onClose();
+  }
+
+  /** Add-ons that go on the black arrow of the pyramid being chosen (not when editing). */
+  const addOnChoices =
+    previewEntry && !editMode && ruleset && (elementType === "balance" || elementType === "dynamic")
+      ? addOnEntriesFor(ruleset, header).filter(
+          (e) => e.elementFamily === elementType && e.attachesTo?.includes(previewEntry.id),
+        )
+      : [];
+  /** The routine as if the chosen pyramid were already in it, to check its add-ons. */
+  const withPreviewPyramid: RoutineItem[] =
+    previewEntry && ruleset && addOnChoices.length > 0
+      ? [
+          ...routine,
+          {
+            id: "picker-preview",
+            block: elementType === "dynamic" ? "dynamic" : "balance",
+            linkedToPrevious: false,
+            role: roleForEntry(ruleset, header, previewEntry) ?? "optional",
+            element: catalogEntryToPlaced(previewEntry),
+          },
+        ]
+      : routine;
+
+  /** Save the pyramid, then its add-on on that pyramid (or none), and close. */
+  function saveWithAddOn(pyramid: CatalogEntry, addOn: CatalogEntry | null) {
+    const block = elementType === "dynamic" ? "dynamic" : "balance";
+    if (!onSave({ kind: "single", entry: pyramid, block, role: "compulsory" })) {
+      setDuplicateError(true);
+      return;
+    }
+    if (addOn && !onSave({ kind: "single", entry: addOn, block, role: "compulsory", attachTo: pyramid.id })) {
+      // The pyramid is saved; say the add-on wasn't, instead of closing silently.
+      setAddOnFailed(true);
+      setPreviewEntry(null);
+      return;
+    }
+    setAddOnFailed(false);
     setDuplicateError(false);
     setLimitError(null);
     setPreviewEntry(null);
@@ -566,13 +613,18 @@ export function ElementPickerPanel({
       .map((id) => catalogEntryByAnyId(id)?.coordinates ?? id)
       .join(" / ");
 
-  function problemFor(entry: CatalogEntry): string | null {
+  function problemFor(
+    entry: CatalogEntry,
+    against: RoutineItem[] = routine,
+    attachTo?: string,
+  ): string | null {
     if (elementType !== "balance" && elementType !== "dynamic") return null;
-    const problem = addProblem(ruleset, header, routine, entry, elementType, editItemId);
+    const problem = addProblem(ruleset, header, against, entry, elementType, editItemId, attachTo);
     switch (problem) {
       case null:
-      case "duplicate": // shown as already chosen
         return null;
+      case "duplicate": // in the grid it shows as already chosen
+        return attachTo ? t.sheet.picker.problemAddOnUsed : null;
       case "same-row":
         return t.sheet.picker.problemSameRow;
       case "full":
@@ -664,7 +716,69 @@ export function ElementPickerPanel({
             currentBlockIsFull ? (
               <p className="text-sm text-amber-700">{t.sheet.picker.limitRoleBlock}</p>
             ) :
-            previewEntry ? (
+            previewEntry && addOnChoices.length > 0 ? (
+              <PickerStep
+                title={t.sheet.picker.chooseAddOn}
+                onBack={() => {
+                  setPreviewEntry(null);
+                  setDuplicateError(false);
+                  setLimitError(null);
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <Image
+                    src={catalogImageUrl(previewEntry.image, previewEntry.code)}
+                    alt={previewEntry.coordinates}
+                    width={120}
+                    height={80}
+                    className="h-16 w-auto rounded border border-zinc-200 bg-white object-contain p-1"
+                  />
+                  <span className="text-xs text-zinc-600">{previewEntry.coordinates}</span>
+                </div>
+                <ul className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(7rem, 1fr))" }}>
+                  {addOnChoices.map((addOn) => {
+                    const problem = problemFor(addOn, withPreviewPyramid, previewEntry.id);
+                    return (
+                      <li key={addOn.id}>
+                        <button
+                          type="button"
+                          disabled={problem != null}
+                          title={problem ?? undefined}
+                          onClick={() => saveWithAddOn(previewEntry, addOn)}
+                          className={`flex h-full w-full flex-col items-center rounded-lg border bg-white p-2 ${
+                            problem
+                              ? "cursor-not-allowed border-zinc-200 opacity-40"
+                              : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+                          }`}
+                        >
+                          <Image
+                            src={catalogImageUrl(addOn.image, addOn.code)}
+                            alt={addOn.coordinates}
+                            width={96}
+                            height={64}
+                            className="h-20 w-full object-contain"
+                          />
+                          <span className="mt-1 text-xs font-medium text-zinc-800">{addOn.coordinates}</span>
+                          {problem ? <span className="text-[10px] text-amber-700">{problem}</span> : null}
+                        </button>
+                      </li>
+                    );
+                  })}
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => saveWithAddOn(previewEntry, null)}
+                      className="flex h-full min-h-24 w-full items-center justify-center rounded-lg border border-dashed border-zinc-300 bg-white p-2 text-sm text-zinc-700 hover:bg-zinc-50"
+                    >
+                      {t.sheet.picker.noAddOn}
+                    </button>
+                  </li>
+                </ul>
+                {duplicateError ? (
+                  <p className="text-sm text-amber-700">{t.sheet.picker.duplicateElement}</p>
+                ) : null}
+              </PickerStep>
+            ) : previewEntry ? (
               <>
                 <ElementPickerPreview
                   entry={previewEntry}
@@ -717,6 +831,9 @@ export function ElementPickerPanel({
                     ))}
                   </div>
                 ) : null}
+                {addOnFailed ? (
+                  <p className="text-sm text-amber-700">{t.sheet.picker.addOnFailed}</p>
+                ) : null}
                 {activeTable?.optional ? (
                   <p className="text-xs text-zinc-600">{t.sheet.picker.optionalTableHint}</p>
                 ) : null}
@@ -730,6 +847,7 @@ export function ElementPickerPanel({
                     problemFor={problemFor}
                     noteFor={noteFor}
                     onSelect={(entry) => {
+                      setAddOnFailed(false);
                       setPreviewEntry(entry);
                       setDuplicateError(false);
                       setLimitError(null);
@@ -766,8 +884,15 @@ export function ElementPickerPanel({
                       <p className="mb-2 text-xs font-semibold text-zinc-800">
                         {rowTitle}
                         {state.entry ? (
-                          <span className="ml-1 font-normal text-emerald-700">
-                            · {state.entry.coordinates}
+                          <span className="ml-2 inline-flex items-center gap-1 align-middle font-normal text-emerald-700">
+                            <span aria-hidden="true">✓</span>
+                            <Image
+                              src={catalogImageUrl(state.entry.image, state.entry.code)}
+                              alt={t.sheet.picker.individualChosen}
+                              width={48}
+                              height={32}
+                              className="h-6 w-auto object-contain"
+                            />
                           </span>
                         ) : null}
                       </p>

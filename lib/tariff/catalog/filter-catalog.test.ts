@@ -98,7 +98,7 @@ describe("FIG Table of Difficulty individuals", () => {
 
   it("has balance, flexibility, agility and tumbling, coded as on the sheet", () => {
     const count = (type: string) => ind.filter((e) => e.type === type).length;
-    expect([count("EQ"), count("FLEX"), count("AG"), count("TUM")]).toEqual([42, 20, 206, 91]);
+    expect([count("EQ"), count("FLEX"), count("AG"), count("TUM")]).toEqual([53, 25, 207, 92]);
     expect(byId("fig-tod-balance-018")).toMatchObject({ coordinates: "018", value: 10 });
     expect(byId("fig-tod-flex-078")).toMatchObject({ coordinates: "078", value: 4 });
     expect(byId("fig-tod-ag-101")).toMatchObject({ coordinates: "101", value: 8 });
@@ -110,6 +110,15 @@ describe("FIG Table of Difficulty individuals", () => {
     expect(byId("fig-tod-ag-124-f").variant).toMatchObject({ group: "124", label: "Recepción F" });
     // "116 OR 117" share one box and landing table.
     expect(byId("fig-tod-ag-117-d").value).toBe(byId("fig-tod-ag-116-d").value);
+  });
+
+  it("splits boxes with several pictures into options, each with its value", () => {
+    expect(byId("fig-tod-balance-014-a")).toMatchObject({ coordinates: "014", value: 4, number: "014" });
+    expect(byId("fig-tod-balance-014-b").value).toBe(3); // −1
+    expect(byId("fig-tod-balance-014-c").value).toBe(5); // +1
+    expect(byId("fig-tod-balance-014-c").variant).toMatchObject({ group: "014", groupImage: "tod/balance/014.png" });
+    expect(ind.some((e) => e.id === "fig-tod-ag-100-a")).toBe(false); // 100 is one element
+    expect(byId("fig-tod-tum-1-0-b")).toMatchObject({ coordinates: "119", number: "119:1:0°" });
   });
 
   it("writes tumbling as page 119, valued by column and twist", () => {

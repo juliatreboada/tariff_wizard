@@ -55,3 +55,19 @@ describe("the catalog an element comes from", () => {
     expect(catalogManifestSchema.safeParse(manifest("rfeg-x")).success).toBe(false);
   });
 });
+
+describe("elements of a box later split into options", () => {
+  it("become the box's first option", () => {
+    const [item] = refreshRoutineFromCatalog([
+      {
+        id: "x",
+        block: "combined",
+        linkedToPrevious: false,
+        role: "individual",
+        gymnastRole: "top",
+        element: { catalogId: "fig-tod-balance-001", catalog: "FIG", coordinates: "001", value: 1, image: "tod/balance/001.png", type: "EQ" },
+      },
+    ]);
+    expect(item.element).toMatchObject({ catalogId: "fig-tod-balance-001-a", image: "tod/balance/001-a.png" });
+  });
+});

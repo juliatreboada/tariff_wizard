@@ -4,7 +4,8 @@ import type { CatalogEntry } from "../catalog/types";
 import { useWizardStore } from "../store";
 import { header } from "../test-fixtures";
 import type { StoredHeader } from "../types";
-import { addProblem, availableLevelSystems, evaluateRules, isLevelAgeReady, rulesetFor } from ".";
+import { catalogEntryToPlaced } from "../catalog/to-placed";
+import { addProblem, availableLevelSystems, evaluateRules, isLevelAgeReady, pyramidForAddOn, rulesetFor } from ".";
 
 const rfeg = (id: string): CatalogEntry => {
   const found = getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-${id}`);
@@ -362,10 +363,10 @@ describe("Base individuals from the FIG Table of Difficulty", () => {
 
   it("offers the ToD elements and keeps each one within the age group's values", () => {
     // Alevín 1–4: 002 is V 4, 017 is V 8.
-    expect(set("balance-002", "balance-001")).toBe(true);
-    expect(set("balance-017", "balance-001")).toBe(false);
+    expect(set("balance-002", "balance-001-a")).toBe(true);
+    expect(set("balance-017", "balance-001-a")).toBe(false);
     startSheet(base("Cadete"));
-    expect(set("balance-017", "balance-001")).toBe(true); // Cadete 1–8
+    expect(set("balance-017", "balance-001-a")).toBe(true); // Cadete 1–8
   });
 
   it("asks every gymnast for a tumbling element", () => {
@@ -385,7 +386,7 @@ describe("Base individuals from the FIG Table of Difficulty", () => {
   it("penalises a missing tumbling on its own, 1 point", () => {
     startSheet(base("Infantil"));
     set("balance-002", "tum-4-0");
-    set("balance-001", "flex-061");
+    set("balance-001-a", "flex-061");
     set("flex-060", "ag-087");
     const status = evaluate(base("Infantil"));
     expect(status.missingIndividuals).toBe(false); // 3 complete sets
@@ -397,10 +398,16 @@ describe("Base individuals from the FIG Table of Difficulty", () => {
   it("lets a gymnast use an ID number only once, landing or not", () => {
     startSheet(base("Cadete"));
     expect(set("ag-118-a", "ag-118-a")).toBe(true); // top and base may share one
-    expect(set("ag-118-c", "balance-001")).toBe(false); // top already did 118
-    expect(set("balance-001", "ag-118-c")).toBe(false); // so did the base
+    expect(set("ag-118-c", "balance-001-a")).toBe(false); // top already did 118
+    expect(set("balance-001-a", "ag-118-c")).toBe(false); // so did the base
     expect(set("ag-120-c", "ag-119-b")).toBe(true);
     expect(set("ag-120-c", "balance-002")).toBe(false); // the very same element again
+  });
+
+  it("lets a gymnast do only one option of a box", () => {
+    startSheet(base("Cadete"));
+    expect(set("balance-014-a", "balance-014-c")).toBe(true); // different gymnasts
+    expect(set("balance-014-b", "balance-002")).toBe(false); // the top already did 014
   });
 
   it("checks the ID number per base in groups", () => {
@@ -411,8 +418,8 @@ describe("Base individuals from the FIG Table of Difficulty", () => {
         { entry: tod(b0), gymnastRole: "base", baseIndex: 0 },
         { entry: tod(b1), gymnastRole: "base", baseIndex: 1 },
       ]);
-    expect(trio("ag-118-a", "ag-118-a", "balance-001")).toBe(true);
-    expect(trio("balance-002", "balance-003", "ag-118-c")).toBe(true); // base 1 hadn't done 118
+    expect(trio("ag-118-a", "ag-118-a", "balance-001-a")).toBe(true);
+    expect(trio("balance-002", "balance-003-a", "ag-118-c")).toBe(true); // base 1 hadn't done 118
     expect(trio("balance-004", "ag-118-d", "flex-060")).toBe(false); // base 0 had
   });
 
@@ -430,5 +437,27 @@ describe("Base individuals from the FIG Table of Difficulty", () => {
     expect(evaluate(base("Infantil", "Tríos")).missingMessages).toContain(
       "Falta un elemento de tumbling: BASE 1.",
     );
+  });
+});
+
+describe("putting an add-on on the chosen pyramid", () => {
+  it("uses the pyramid the coach chose, not the first that fits", () => {
+    // Alevín Cuartetos ROW III B goes on ROW I A or ROW I B.
+    const routine = [
+      { id: "a", block: "balance" as const, linkedToPrevious: false, role: "compulsory" as const, element: catalogEntryToPlaced(rfeg("alevin-cuartetos-balance-row-i-a")) },
+      { id: "b", block: "balance" as const, linkedToPrevious: false, role: "optional" as const, element: catalogEntryToPlaced(rfeg("alevin-cuartetos-balance-row-i-b")) },
+    ];
+    const addOn = rfeg("alevin-cuartetos-balance-row-iii-b");
+    expect(pyramidForAddOn(routine, addOn)?.id).toBe("a");
+    expect(pyramidForAddOn(routine, addOn, "rfeg-base-alevin-cuartetos-balance-row-i-b")?.id).toBe("b");
+    expect(pyramidForAddOn(routine, addOn, "rfeg-base-alevin-cuartetos-balance-row-ii-b")).toBeUndefined();
+  });
+
+  it("saves the add-on on that pyramid through the store", () => {
+    startSheet(base("Cadete", "Cuartetos"));
+    expect(figAdd("cuartetos-balance-row-ii-2")).toBe(true);
+    const top = fig("cuartetos-balance-top-15");
+    expect(store().addRoutineElement(top, { block: "balance", attachTo: "fig-pre-youth-cuartetos-balance-row-ii-5" })).toBe(false);
+    expect(store().addRoutineElement(top, { block: "balance", attachTo: "fig-pre-youth-cuartetos-balance-row-ii-2" })).toBe(true);
   });
 });

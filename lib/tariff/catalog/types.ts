@@ -48,6 +48,8 @@ export type CatalogEntry = {
    * label "360°"). `groupImage` is the group's own picture.
    */
   variant?: { group: string; label: string; groupImage: string };
+  /** ID number a gymnast may use once (shared by a box's options and landings); default: the id. */
+  number?: string;
   filters: CatalogFilters;
   /**
    * An add-on, not an element of its own: it attaches to one of these entries

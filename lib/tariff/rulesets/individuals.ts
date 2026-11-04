@@ -63,11 +63,11 @@ export function gymnastsWithoutTumbling(
 }
 
 /**
- * The ID that may appear once per gymnast: an agility's number for all its
- * landings ("118 A" and "118 C" are both 118); any other element is its own.
+ * The ID number a gymnast may use once: shared by the options and landings of
+ * one box (118 A and 118 C are both 118); any other element is its own.
  */
 export function individualNumber(entry: CatalogEntry): string {
-  return entry.type === "AG" && entry.variant ? `${entry.code}:${entry.variant.group}` : entry.id;
+  return entry.number ? `${entry.code}:${entry.number}` : entry.id;
 }
 
 /** Does this gymnast already perform an element with the same ID number? */

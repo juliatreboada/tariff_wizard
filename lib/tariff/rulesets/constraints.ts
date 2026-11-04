@@ -24,14 +24,21 @@ function usedCatalogIds(routine: RoutineItem[], exceptItemId?: string): Set<stri
   return ids;
 }
 
-/** The first routine item this add-on can attach to (one add-on per pyramid). */
+/**
+ * The routine item this add-on goes on (one add-on per pyramid): the pyramid
+ * `attachTo` (its catalog id) when given, otherwise the first it fits.
+ */
 export function pyramidForAddOn(
   routine: RoutineItem[],
   entry: CatalogEntry,
+  attachTo?: string,
 ): RoutineItem | undefined {
   if (!entry.attachesTo) return undefined;
   return routine.find(
-    (item) => !item.addOn && entry.attachesTo!.includes(item.element.catalogId),
+    (item) =>
+      !item.addOn &&
+      entry.attachesTo!.includes(item.element.catalogId) &&
+      (attachTo === undefined || item.element.catalogId === attachTo),
   );
 }
 
@@ -46,11 +53,13 @@ export function addProblem(
   entry: CatalogEntry,
   block: ElementBlock,
   exceptItemId?: string,
+  /** For an add-on: the pyramid (catalog id) it must go on. */
+  attachTo?: string,
 ): AddProblem | null {
   if (usedCatalogIds(routine, exceptItemId).has(entry.id)) return "duplicate";
   if (entry.attachesTo) {
     if (exceptItemId) return "not-allowed"; // an add-on can't replace a pyramid
-    const pyramid = pyramidForAddOn(routine, entry);
+    const pyramid = pyramidForAddOn(routine, entry, attachTo);
     if (!pyramid) return "no-pyramid";
     // The add-on takes its pyramid's role for the row rule.
     if (ruleset?.optionalNotInCompulsoryRow && pyramid.role !== "individual") {

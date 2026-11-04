@@ -117,49 +117,62 @@ const individualFilters = {
   categories: ["Parejas", "Tríos", "Cuartetos", "Pareja Femenina", "Pareja Masculina", "Pareja Mixta"],
   exercises: ["Combined"],
 };
-const individual = (id, type, coordinates, image, value, variant) => {
+/**
+ * One individual element. `number` is its ID number for "once per gymnast":
+ * the options and landings of one box share it.
+ */
+const individual = (id, type, coordinates, image, value, extra = {}) => {
   if (!fs.existsSync(path.join(publicFig, image))) problems.push(`missing picture ${image}`);
-  entries.push({
-    id,
-    code: "FIG",
-    elementFamily: "individual",
-    type,
-    coordinates,
-    image,
-    value,
-    ...(variant ? { variant } : {}),
-    filters: individualFilters,
-  });
+  entries.push({ id, code: "FIG", elementFamily: "individual", type, coordinates, image, value, ...extra, filters: individualFilters });
 };
+const letter = (i) => String.fromCharCode(97 + i);
+/** A box with several pictures: one entry per option (picture and value), picked in two steps. */
+const options = (prefix, type, code, folder, cell) =>
+  cell.options.forEach((option, i) =>
+    individual(`${prefix}-${letter(i)}`, type, code, `tod/${folder}/${option.image}.png`, option.value, {
+      number: code,
+      variant: { group: code, label: `Opción ${letter(i).toUpperCase()}`, groupImage: `tod/${folder}/${code}.png` },
+    }),
+  );
 for (const [family, type, folder] of [["balance", "EQ", "balance"], ["flexibility", "FLEX", "flex"]]) {
   for (const [code, cell] of Object.entries(tod[family])) {
-    individual(`fig-tod-${folder}-${code}`, type, code, `tod/${folder}/${code}.png`, cell.value);
+    if (cell.options) options(`fig-tod-${folder}-${code}`, type, code, folder, cell);
+    else individual(`fig-tod-${folder}-${code}`, type, code, `tod/${folder}/${code}.png`, cell.value);
   }
 }
 for (const [code, cell] of Object.entries(tod.agility)) {
+  if (cell.options) {
+    options(`fig-tod-ag-${code}`, "AG", code, "agility", cell);
+    continue;
+  }
   if (!cell.landings) {
     individual(`fig-tod-ag-${code}`, "AG", code, `tod/agility/${code}.png`, cell.value);
     continue;
   }
-  for (const [letter, value] of Object.entries(cell.landings)) {
-    const image = `tod/agility/${cell.image}-${letter}.png`;
-    individual(`fig-tod-ag-${code}-${letter}`.toLowerCase(), "AG", `${code} ${letter}`, image, value, {
-      group: code,
-      label: `Recepción ${letter}`,
-      groupImage: `tod/agility/${cell.image}.png`,
+  for (const [landing, value] of Object.entries(cell.landings)) {
+    individual(`fig-tod-ag-${code}-${landing}`.toLowerCase(), "AG", `${code} ${landing}`, `tod/agility/${cell.image}-${landing}.png`, value, {
+      number: code,
+      variant: { group: code, label: `Recepción ${landing}`, groupImage: `tod/agility/${cell.image}.png` },
     });
   }
 }
 for (const [column, twists] of Object.entries(tod.tumbling.columns)) {
+  const pictures = tod.tumbling.options?.[column] ?? [{ image: `col-${column}` }];
   for (const [twist, value] of Object.entries(twists)) {
-    individual(
-      `fig-tod-tum-${column}-${twist.replace("°", "")}`,
-      "TUM",
-      String(tod.tumbling.page),
-      `tod/tumbling/col-${column}.png`,
-      value,
-      { group: `Col. ${column}`, label: twist, groupImage: `tod/tumbling/col-${column}.png` },
-    );
+    pictures.forEach((picture, i) => {
+      const suffix = pictures.length > 1 ? `-${letter(i)}` : "";
+      individual(
+        `fig-tod-tum-${column}-${twist.replace("°", "")}${suffix}`,
+        "TUM",
+        String(tod.tumbling.page),
+        `tod/tumbling/${picture.image}.png`,
+        value,
+        {
+          number: `${tod.tumbling.page}:${column}:${twist}`,
+          variant: { group: `Col. ${column}`, label: twist, groupImage: `tod/tumbling/col-${column}.png` },
+        },
+      );
+    });
   }
 }
 

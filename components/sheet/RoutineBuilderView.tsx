@@ -63,6 +63,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
       return addRoutineElement(selection.entry, {
         linkedToPrevious: linkNext && routine.length > 0,
         block: selection.block,
+        attachTo: selection.attachTo,
       });
     }
     return addIndividualGroup(

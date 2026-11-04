@@ -89,6 +89,8 @@ export type WizardStore = {
       gymnastRole?: RoutineGymnastRole;
       individualOrder?: 1 | 2 | 3;
       individualGroupId?: string;
+      /** For an add-on: the pyramid (catalog id) to put it on. */
+      attachTo?: string;
       baseIndex?: number;
     },
   ) => boolean;
@@ -314,7 +316,7 @@ export const useWizardStore = create<WizardStore>()(
         const block = options?.block ?? inferElementBlock(entry);
         if (
           (block === "balance" || block === "dynamic") &&
-          addProblem(activeRuleset(state), rulesHeader(state), routine, entry, block)
+          addProblem(activeRuleset(state), rulesHeader(state), routine, entry, block, undefined, options?.attachTo)
         ) {
           return false;
         }
@@ -322,7 +324,7 @@ export const useWizardStore = create<WizardStore>()(
           return false;
         }
         let next: RoutineItem[];
-        const pyramid = pyramidForAddOn(routine, entry);
+        const pyramid = pyramidForAddOn(routine, entry, options?.attachTo);
         if (entry.attachesTo) {
           if (!pyramid) return false;
           next = routine.map((item) =>

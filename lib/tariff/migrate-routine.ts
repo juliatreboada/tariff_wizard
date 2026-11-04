@@ -52,7 +52,11 @@ function refreshElement(element: PlacedElement): PlacedElement {
   const catalog = saved == null ? DEFAULT_CATALOG_ID : saved;
   // A catalog this build doesn't know: keep the element as saved.
   if (!isCatalogId(catalog)) return element;
-  const entry = getCatalogEntries(catalog).find((e) => e.id === element.catalogId);
+  const entries = getCatalogEntries(catalog);
+  // A box later split into options (fig-tod-balance-001 → -001-a): its first option.
+  const entry =
+    entries.find((e) => e.id === element.catalogId) ??
+    entries.find((e) => e.id === `${element.catalogId}-a`);
   if (entry) return catalogEntryToPlaced(entry);
   const image = normalizeLegacyCatalogImage(element.image);
   if (image === element.image && saved === catalog) return element;

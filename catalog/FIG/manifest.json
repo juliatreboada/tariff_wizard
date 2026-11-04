@@ -4773,13 +4773,50 @@
       ]
     },
     {
-      "id": "fig-tod-balance-001",
+      "id": "fig-tod-balance-001-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "EQ",
       "coordinates": "001",
-      "image": "tod/balance/001.png",
+      "image": "tod/balance/001-a.png",
       "value": 1,
+      "number": "001",
+      "variant": {
+        "group": "001",
+        "label": "Opción A",
+        "groupImage": "tod/balance/001.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-001-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "001",
+      "image": "tod/balance/001-b.png",
+      "value": 2,
+      "number": "001",
+      "variant": {
+        "group": "001",
+        "label": "Opción B",
+        "groupImage": "tod/balance/001.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -4823,13 +4860,81 @@
       }
     },
     {
-      "id": "fig-tod-balance-003",
+      "id": "fig-tod-balance-003-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "EQ",
       "coordinates": "003",
-      "image": "tod/balance/003.png",
+      "image": "tod/balance/003-a.png",
       "value": 2,
+      "number": "003",
+      "variant": {
+        "group": "003",
+        "label": "Opción A",
+        "groupImage": "tod/balance/003.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-003-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "003",
+      "image": "tod/balance/003-b.png",
+      "value": 2,
+      "number": "003",
+      "variant": {
+        "group": "003",
+        "label": "Opción B",
+        "groupImage": "tod/balance/003.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-003-c",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "003",
+      "image": "tod/balance/003-c.png",
+      "value": 2,
+      "number": "003",
+      "variant": {
+        "group": "003",
+        "label": "Opción C",
+        "groupImage": "tod/balance/003.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -5098,13 +5203,81 @@
       }
     },
     {
-      "id": "fig-tod-balance-014",
+      "id": "fig-tod-balance-014-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "EQ",
       "coordinates": "014",
-      "image": "tod/balance/014.png",
+      "image": "tod/balance/014-a.png",
       "value": 4,
+      "number": "014",
+      "variant": {
+        "group": "014",
+        "label": "Opción A",
+        "groupImage": "tod/balance/014.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-014-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "014",
+      "image": "tod/balance/014-b.png",
+      "value": 3,
+      "number": "014",
+      "variant": {
+        "group": "014",
+        "label": "Opción B",
+        "groupImage": "tod/balance/014.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-014-c",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "014",
+      "image": "tod/balance/014-c.png",
+      "value": 5,
+      "number": "014",
+      "variant": {
+        "group": "014",
+        "label": "Opción C",
+        "groupImage": "tod/balance/014.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -5148,13 +5321,50 @@
       }
     },
     {
-      "id": "fig-tod-balance-016",
+      "id": "fig-tod-balance-016-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "EQ",
       "coordinates": "016",
-      "image": "tod/balance/016.png",
+      "image": "tod/balance/016-a.png",
       "value": 3,
+      "number": "016",
+      "variant": {
+        "group": "016",
+        "label": "Opción A",
+        "groupImage": "tod/balance/016.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-016-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "016",
+      "image": "tod/balance/016-b.png",
+      "value": 3,
+      "number": "016",
+      "variant": {
+        "group": "016",
+        "label": "Opción B",
+        "groupImage": "tod/balance/016.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -5223,13 +5433,19 @@
       }
     },
     {
-      "id": "fig-tod-balance-019",
+      "id": "fig-tod-balance-019-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "EQ",
       "coordinates": "019",
-      "image": "tod/balance/019.png",
+      "image": "tod/balance/019-a.png",
       "value": 1,
+      "number": "019",
+      "variant": {
+        "group": "019",
+        "label": "Opción A",
+        "groupImage": "tod/balance/019.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -5248,13 +5464,50 @@
       }
     },
     {
-      "id": "fig-tod-balance-020",
+      "id": "fig-tod-balance-019-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "019",
+      "image": "tod/balance/019-b.png",
+      "value": 1,
+      "number": "019",
+      "variant": {
+        "group": "019",
+        "label": "Opción B",
+        "groupImage": "tod/balance/019.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-020-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "EQ",
       "coordinates": "020",
-      "image": "tod/balance/020.png",
+      "image": "tod/balance/020-a.png",
       "value": 2,
+      "number": "020",
+      "variant": {
+        "group": "020",
+        "label": "Opción A",
+        "groupImage": "tod/balance/020.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -5273,13 +5526,81 @@
       }
     },
     {
-      "id": "fig-tod-balance-021",
+      "id": "fig-tod-balance-020-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "020",
+      "image": "tod/balance/020-b.png",
+      "value": 2,
+      "number": "020",
+      "variant": {
+        "group": "020",
+        "label": "Opción B",
+        "groupImage": "tod/balance/020.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-021-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "EQ",
       "coordinates": "021",
-      "image": "tod/balance/021.png",
+      "image": "tod/balance/021-a.png",
       "value": 3,
+      "number": "021",
+      "variant": {
+        "group": "021",
+        "label": "Opción A",
+        "groupImage": "tod/balance/021.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-021-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "021",
+      "image": "tod/balance/021-b.png",
+      "value": 4,
+      "number": "021",
+      "variant": {
+        "group": "021",
+        "label": "Opción B",
+        "groupImage": "tod/balance/021.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -5448,13 +5769,50 @@
       }
     },
     {
-      "id": "fig-tod-balance-028",
+      "id": "fig-tod-balance-028-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "EQ",
       "coordinates": "028",
-      "image": "tod/balance/028.png",
+      "image": "tod/balance/028-a.png",
       "value": 6,
+      "number": "028",
+      "variant": {
+        "group": "028",
+        "label": "Opción A",
+        "groupImage": "tod/balance/028.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-028-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "028",
+      "image": "tod/balance/028-b.png",
+      "value": 4,
+      "number": "028",
+      "variant": {
+        "group": "028",
+        "label": "Opción B",
+        "groupImage": "tod/balance/028.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -5798,13 +6156,50 @@
       }
     },
     {
-      "id": "fig-tod-balance-042",
+      "id": "fig-tod-balance-042-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "EQ",
       "coordinates": "042",
-      "image": "tod/balance/042.png",
+      "image": "tod/balance/042-a.png",
       "value": 3,
+      "number": "042",
+      "variant": {
+        "group": "042",
+        "label": "Opción A",
+        "groupImage": "tod/balance/042.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-balance-042-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "EQ",
+      "coordinates": "042",
+      "image": "tod/balance/042-b.png",
+      "value": 4,
+      "number": "042",
+      "variant": {
+        "group": "042",
+        "label": "Opción B",
+        "groupImage": "tod/balance/042.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -5873,13 +6268,19 @@
       }
     },
     {
-      "id": "fig-tod-flex-062",
+      "id": "fig-tod-flex-062-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "FLEX",
       "coordinates": "062",
-      "image": "tod/flex/062.png",
+      "image": "tod/flex/062-a.png",
       "value": 1,
+      "number": "062",
+      "variant": {
+        "group": "062",
+        "label": "Opción A",
+        "groupImage": "tod/flex/062.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -5898,13 +6299,81 @@
       }
     },
     {
-      "id": "fig-tod-flex-063",
+      "id": "fig-tod-flex-062-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "FLEX",
+      "coordinates": "062",
+      "image": "tod/flex/062-b.png",
+      "value": 1,
+      "number": "062",
+      "variant": {
+        "group": "062",
+        "label": "Opción B",
+        "groupImage": "tod/flex/062.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-flex-063-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "FLEX",
       "coordinates": "063",
-      "image": "tod/flex/063.png",
+      "image": "tod/flex/063-a.png",
       "value": 1,
+      "number": "063",
+      "variant": {
+        "group": "063",
+        "label": "Opción A",
+        "groupImage": "tod/flex/063.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-flex-063-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "FLEX",
+      "coordinates": "063",
+      "image": "tod/flex/063-b.png",
+      "value": 1,
+      "number": "063",
+      "variant": {
+        "group": "063",
+        "label": "Opción B",
+        "groupImage": "tod/flex/063.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -6173,13 +6642,19 @@
       }
     },
     {
-      "id": "fig-tod-flex-074",
+      "id": "fig-tod-flex-074-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "FLEX",
       "coordinates": "074",
-      "image": "tod/flex/074.png",
+      "image": "tod/flex/074-a.png",
       "value": 2,
+      "number": "074",
+      "variant": {
+        "group": "074",
+        "label": "Opción A",
+        "groupImage": "tod/flex/074.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -6198,13 +6673,50 @@
       }
     },
     {
-      "id": "fig-tod-flex-075",
+      "id": "fig-tod-flex-074-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "FLEX",
+      "coordinates": "074",
+      "image": "tod/flex/074-b.png",
+      "value": 3,
+      "number": "074",
+      "variant": {
+        "group": "074",
+        "label": "Opción B",
+        "groupImage": "tod/flex/074.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-flex-075-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "FLEX",
       "coordinates": "075",
-      "image": "tod/flex/075.png",
+      "image": "tod/flex/075-a.png",
       "value": 2,
+      "number": "075",
+      "variant": {
+        "group": "075",
+        "label": "Opción A",
+        "groupImage": "tod/flex/075.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -6223,13 +6735,81 @@
       }
     },
     {
-      "id": "fig-tod-flex-076",
+      "id": "fig-tod-flex-075-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "FLEX",
+      "coordinates": "075",
+      "image": "tod/flex/075-b.png",
+      "value": 2,
+      "number": "075",
+      "variant": {
+        "group": "075",
+        "label": "Opción B",
+        "groupImage": "tod/flex/075.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-flex-076-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "FLEX",
       "coordinates": "076",
-      "image": "tod/flex/076.png",
+      "image": "tod/flex/076-a.png",
       "value": 3,
+      "number": "076",
+      "variant": {
+        "group": "076",
+        "label": "Opción A",
+        "groupImage": "tod/flex/076.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-flex-076-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "FLEX",
+      "coordinates": "076",
+      "image": "tod/flex/076-b.png",
+      "value": 3,
+      "number": "076",
+      "variant": {
+        "group": "076",
+        "label": "Opción B",
+        "groupImage": "tod/flex/076.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -6373,13 +6953,50 @@
       }
     },
     {
-      "id": "fig-tod-ag-102",
+      "id": "fig-tod-ag-102-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "AG",
       "coordinates": "102",
-      "image": "tod/agility/102.png",
+      "image": "tod/agility/102-a.png",
       "value": 3,
+      "number": "102",
+      "variant": {
+        "group": "102",
+        "label": "Opción A",
+        "groupImage": "tod/agility/102.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-ag-102-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "AG",
+      "coordinates": "102",
+      "image": "tod/agility/102-b.png",
+      "value": 2,
+      "number": "102",
+      "variant": {
+        "group": "102",
+        "label": "Opción B",
+        "groupImage": "tod/agility/102.png"
+      },
       "filters": {
         "levelSystems": [
           "FIG"
@@ -6555,6 +7172,7 @@
       "coordinates": "116 A",
       "image": "tod/agility/116-A.png",
       "value": 1,
+      "number": "116",
       "variant": {
         "group": "116",
         "label": "Recepción A",
@@ -6585,6 +7203,7 @@
       "coordinates": "116 B",
       "image": "tod/agility/116-B.png",
       "value": 1,
+      "number": "116",
       "variant": {
         "group": "116",
         "label": "Recepción B",
@@ -6615,6 +7234,7 @@
       "coordinates": "116 C",
       "image": "tod/agility/116-C.png",
       "value": 2,
+      "number": "116",
       "variant": {
         "group": "116",
         "label": "Recepción C",
@@ -6645,6 +7265,7 @@
       "coordinates": "116 D",
       "image": "tod/agility/116-D.png",
       "value": 3,
+      "number": "116",
       "variant": {
         "group": "116",
         "label": "Recepción D",
@@ -6675,6 +7296,7 @@
       "coordinates": "116 E",
       "image": "tod/agility/116-E.png",
       "value": 1,
+      "number": "116",
       "variant": {
         "group": "116",
         "label": "Recepción E",
@@ -6705,6 +7327,7 @@
       "coordinates": "116 F",
       "image": "tod/agility/116-F.png",
       "value": 2,
+      "number": "116",
       "variant": {
         "group": "116",
         "label": "Recepción F",
@@ -6735,6 +7358,7 @@
       "coordinates": "117 A",
       "image": "tod/agility/116-A.png",
       "value": 1,
+      "number": "117",
       "variant": {
         "group": "117",
         "label": "Recepción A",
@@ -6765,6 +7389,7 @@
       "coordinates": "117 B",
       "image": "tod/agility/116-B.png",
       "value": 1,
+      "number": "117",
       "variant": {
         "group": "117",
         "label": "Recepción B",
@@ -6795,6 +7420,7 @@
       "coordinates": "117 C",
       "image": "tod/agility/116-C.png",
       "value": 2,
+      "number": "117",
       "variant": {
         "group": "117",
         "label": "Recepción C",
@@ -6825,6 +7451,7 @@
       "coordinates": "117 D",
       "image": "tod/agility/116-D.png",
       "value": 3,
+      "number": "117",
       "variant": {
         "group": "117",
         "label": "Recepción D",
@@ -6855,6 +7482,7 @@
       "coordinates": "117 E",
       "image": "tod/agility/116-E.png",
       "value": 1,
+      "number": "117",
       "variant": {
         "group": "117",
         "label": "Recepción E",
@@ -6885,6 +7513,7 @@
       "coordinates": "117 F",
       "image": "tod/agility/116-F.png",
       "value": 2,
+      "number": "117",
       "variant": {
         "group": "117",
         "label": "Recepción F",
@@ -6915,6 +7544,7 @@
       "coordinates": "118 A",
       "image": "tod/agility/118-A.png",
       "value": 5,
+      "number": "118",
       "variant": {
         "group": "118",
         "label": "Recepción A",
@@ -6945,6 +7575,7 @@
       "coordinates": "118 B",
       "image": "tod/agility/118-B.png",
       "value": 5,
+      "number": "118",
       "variant": {
         "group": "118",
         "label": "Recepción B",
@@ -6975,6 +7606,7 @@
       "coordinates": "118 C",
       "image": "tod/agility/118-C.png",
       "value": 6,
+      "number": "118",
       "variant": {
         "group": "118",
         "label": "Recepción C",
@@ -7005,6 +7637,7 @@
       "coordinates": "118 D",
       "image": "tod/agility/118-D.png",
       "value": 7,
+      "number": "118",
       "variant": {
         "group": "118",
         "label": "Recepción D",
@@ -7035,6 +7668,7 @@
       "coordinates": "118 E",
       "image": "tod/agility/118-E.png",
       "value": 5,
+      "number": "118",
       "variant": {
         "group": "118",
         "label": "Recepción E",
@@ -7065,6 +7699,7 @@
       "coordinates": "118 F",
       "image": "tod/agility/118-F.png",
       "value": 7,
+      "number": "118",
       "variant": {
         "group": "118",
         "label": "Recepción F",
@@ -7095,6 +7730,7 @@
       "coordinates": "119 B",
       "image": "tod/agility/119-B.png",
       "value": 4,
+      "number": "119",
       "variant": {
         "group": "119",
         "label": "Recepción B",
@@ -7125,6 +7761,7 @@
       "coordinates": "119 C",
       "image": "tod/agility/119-C.png",
       "value": 6,
+      "number": "119",
       "variant": {
         "group": "119",
         "label": "Recepción C",
@@ -7155,6 +7792,7 @@
       "coordinates": "119 D",
       "image": "tod/agility/119-D.png",
       "value": 7,
+      "number": "119",
       "variant": {
         "group": "119",
         "label": "Recepción D",
@@ -7185,6 +7823,7 @@
       "coordinates": "119 E",
       "image": "tod/agility/119-E.png",
       "value": 4,
+      "number": "119",
       "variant": {
         "group": "119",
         "label": "Recepción E",
@@ -7215,6 +7854,7 @@
       "coordinates": "119 F",
       "image": "tod/agility/119-F.png",
       "value": 6,
+      "number": "119",
       "variant": {
         "group": "119",
         "label": "Recepción F",
@@ -7245,6 +7885,7 @@
       "coordinates": "120 A",
       "image": "tod/agility/120-A.png",
       "value": 3,
+      "number": "120",
       "variant": {
         "group": "120",
         "label": "Recepción A",
@@ -7275,6 +7916,7 @@
       "coordinates": "120 B",
       "image": "tod/agility/120-B.png",
       "value": 4,
+      "number": "120",
       "variant": {
         "group": "120",
         "label": "Recepción B",
@@ -7305,6 +7947,7 @@
       "coordinates": "120 C",
       "image": "tod/agility/120-C.png",
       "value": 6,
+      "number": "120",
       "variant": {
         "group": "120",
         "label": "Recepción C",
@@ -7335,6 +7978,7 @@
       "coordinates": "120 D",
       "image": "tod/agility/120-D.png",
       "value": 7,
+      "number": "120",
       "variant": {
         "group": "120",
         "label": "Recepción D",
@@ -7365,6 +8009,7 @@
       "coordinates": "120 E",
       "image": "tod/agility/120-E.png",
       "value": 4,
+      "number": "120",
       "variant": {
         "group": "120",
         "label": "Recepción E",
@@ -7395,6 +8040,7 @@
       "coordinates": "120 F",
       "image": "tod/agility/120-F.png",
       "value": 6,
+      "number": "120",
       "variant": {
         "group": "120",
         "label": "Recepción F",
@@ -7425,6 +8071,7 @@
       "coordinates": "121 A",
       "image": "tod/agility/121-A.png",
       "value": 4,
+      "number": "121",
       "variant": {
         "group": "121",
         "label": "Recepción A",
@@ -7455,6 +8102,7 @@
       "coordinates": "121 B",
       "image": "tod/agility/121-B.png",
       "value": 5,
+      "number": "121",
       "variant": {
         "group": "121",
         "label": "Recepción B",
@@ -7485,6 +8133,7 @@
       "coordinates": "121 C",
       "image": "tod/agility/121-C.png",
       "value": 7,
+      "number": "121",
       "variant": {
         "group": "121",
         "label": "Recepción C",
@@ -7515,6 +8164,7 @@
       "coordinates": "121 D",
       "image": "tod/agility/121-D.png",
       "value": 8,
+      "number": "121",
       "variant": {
         "group": "121",
         "label": "Recepción D",
@@ -7545,6 +8195,7 @@
       "coordinates": "121 E",
       "image": "tod/agility/121-E.png",
       "value": 5,
+      "number": "121",
       "variant": {
         "group": "121",
         "label": "Recepción E",
@@ -7575,6 +8226,7 @@
       "coordinates": "121 F",
       "image": "tod/agility/121-F.png",
       "value": 7,
+      "number": "121",
       "variant": {
         "group": "121",
         "label": "Recepción F",
@@ -7605,6 +8257,7 @@
       "coordinates": "122 A",
       "image": "tod/agility/122-A.png",
       "value": 2,
+      "number": "122",
       "variant": {
         "group": "122",
         "label": "Recepción A",
@@ -7635,6 +8288,7 @@
       "coordinates": "122 B",
       "image": "tod/agility/122-B.png",
       "value": 6,
+      "number": "122",
       "variant": {
         "group": "122",
         "label": "Recepción B",
@@ -7665,6 +8319,7 @@
       "coordinates": "122 C",
       "image": "tod/agility/122-C.png",
       "value": 8,
+      "number": "122",
       "variant": {
         "group": "122",
         "label": "Recepción C",
@@ -7695,6 +8350,7 @@
       "coordinates": "122 D",
       "image": "tod/agility/122-D.png",
       "value": 9,
+      "number": "122",
       "variant": {
         "group": "122",
         "label": "Recepción D",
@@ -7725,6 +8381,7 @@
       "coordinates": "122 E",
       "image": "tod/agility/122-E.png",
       "value": 6,
+      "number": "122",
       "variant": {
         "group": "122",
         "label": "Recepción E",
@@ -7755,6 +8412,7 @@
       "coordinates": "122 F",
       "image": "tod/agility/122-F.png",
       "value": 8,
+      "number": "122",
       "variant": {
         "group": "122",
         "label": "Recepción F",
@@ -7785,6 +8443,7 @@
       "coordinates": "123 A",
       "image": "tod/agility/123-A.png",
       "value": 12,
+      "number": "123",
       "variant": {
         "group": "123",
         "label": "Recepción A",
@@ -7815,6 +8474,7 @@
       "coordinates": "123 B",
       "image": "tod/agility/123-B.png",
       "value": 8,
+      "number": "123",
       "variant": {
         "group": "123",
         "label": "Recepción B",
@@ -7845,6 +8505,7 @@
       "coordinates": "123 C",
       "image": "tod/agility/123-C.png",
       "value": 10,
+      "number": "123",
       "variant": {
         "group": "123",
         "label": "Recepción C",
@@ -7875,6 +8536,7 @@
       "coordinates": "123 D",
       "image": "tod/agility/123-D.png",
       "value": 11,
+      "number": "123",
       "variant": {
         "group": "123",
         "label": "Recepción D",
@@ -7905,6 +8567,7 @@
       "coordinates": "123 E",
       "image": "tod/agility/123-E.png",
       "value": 8,
+      "number": "123",
       "variant": {
         "group": "123",
         "label": "Recepción E",
@@ -7935,6 +8598,7 @@
       "coordinates": "123 F",
       "image": "tod/agility/123-F.png",
       "value": 8,
+      "number": "123",
       "variant": {
         "group": "123",
         "label": "Recepción F",
@@ -7965,6 +8629,7 @@
       "coordinates": "124 A",
       "image": "tod/agility/124-A.png",
       "value": 5,
+      "number": "124",
       "variant": {
         "group": "124",
         "label": "Recepción A",
@@ -7995,6 +8660,7 @@
       "coordinates": "124 B",
       "image": "tod/agility/124-B.png",
       "value": 10,
+      "number": "124",
       "variant": {
         "group": "124",
         "label": "Recepción B",
@@ -8025,6 +8691,7 @@
       "coordinates": "124 C",
       "image": "tod/agility/124-C.png",
       "value": 12,
+      "number": "124",
       "variant": {
         "group": "124",
         "label": "Recepción C",
@@ -8055,6 +8722,7 @@
       "coordinates": "124 D",
       "image": "tod/agility/124-D.png",
       "value": 13,
+      "number": "124",
       "variant": {
         "group": "124",
         "label": "Recepción D",
@@ -8085,6 +8753,7 @@
       "coordinates": "124 E",
       "image": "tod/agility/124-E.png",
       "value": 10,
+      "number": "124",
       "variant": {
         "group": "124",
         "label": "Recepción E",
@@ -8115,6 +8784,7 @@
       "coordinates": "124 F",
       "image": "tod/agility/124-F.png",
       "value": 12,
+      "number": "124",
       "variant": {
         "group": "124",
         "label": "Recepción F",
@@ -8145,6 +8815,7 @@
       "coordinates": "125 A",
       "image": "tod/agility/125-A.png",
       "value": 16,
+      "number": "125",
       "variant": {
         "group": "125",
         "label": "Recepción A",
@@ -8175,6 +8846,7 @@
       "coordinates": "125 B",
       "image": "tod/agility/125-B.png",
       "value": 12,
+      "number": "125",
       "variant": {
         "group": "125",
         "label": "Recepción B",
@@ -8205,6 +8877,7 @@
       "coordinates": "125 C",
       "image": "tod/agility/125-C.png",
       "value": 14,
+      "number": "125",
       "variant": {
         "group": "125",
         "label": "Recepción C",
@@ -8235,6 +8908,7 @@
       "coordinates": "125 D",
       "image": "tod/agility/125-D.png",
       "value": 12,
+      "number": "125",
       "variant": {
         "group": "125",
         "label": "Recepción D",
@@ -8265,6 +8939,7 @@
       "coordinates": "126 A",
       "image": "tod/agility/126-A.png",
       "value": 10,
+      "number": "126",
       "variant": {
         "group": "126",
         "label": "Recepción A",
@@ -8295,6 +8970,7 @@
       "coordinates": "126 B",
       "image": "tod/agility/126-B.png",
       "value": 14,
+      "number": "126",
       "variant": {
         "group": "126",
         "label": "Recepción B",
@@ -8325,6 +9001,7 @@
       "coordinates": "126 C",
       "image": "tod/agility/126-C.png",
       "value": 16,
+      "number": "126",
       "variant": {
         "group": "126",
         "label": "Recepción C",
@@ -8355,6 +9032,7 @@
       "coordinates": "126 D",
       "image": "tod/agility/126-D.png",
       "value": 17,
+      "number": "126",
       "variant": {
         "group": "126",
         "label": "Recepción D",
@@ -8385,6 +9063,7 @@
       "coordinates": "126 E",
       "image": "tod/agility/126-E.png",
       "value": 14,
+      "number": "126",
       "variant": {
         "group": "126",
         "label": "Recepción E",
@@ -8415,6 +9094,7 @@
       "coordinates": "126 F",
       "image": "tod/agility/126-F.png",
       "value": 16,
+      "number": "126",
       "variant": {
         "group": "126",
         "label": "Recepción F",
@@ -8445,6 +9125,7 @@
       "coordinates": "127 A",
       "image": "tod/agility/127-A.png",
       "value": 1,
+      "number": "127",
       "variant": {
         "group": "127",
         "label": "Recepción A",
@@ -8475,6 +9156,7 @@
       "coordinates": "127 B",
       "image": "tod/agility/127-B.png",
       "value": 3,
+      "number": "127",
       "variant": {
         "group": "127",
         "label": "Recepción B",
@@ -8505,6 +9187,7 @@
       "coordinates": "127 C",
       "image": "tod/agility/127-C.png",
       "value": 4,
+      "number": "127",
       "variant": {
         "group": "127",
         "label": "Recepción C",
@@ -8535,6 +9218,7 @@
       "coordinates": "127 D",
       "image": "tod/agility/127-D.png",
       "value": 5,
+      "number": "127",
       "variant": {
         "group": "127",
         "label": "Recepción D",
@@ -8565,6 +9249,7 @@
       "coordinates": "127 E",
       "image": "tod/agility/127-E.png",
       "value": 3,
+      "number": "127",
       "variant": {
         "group": "127",
         "label": "Recepción E",
@@ -8595,6 +9280,7 @@
       "coordinates": "127 F",
       "image": "tod/agility/127-F.png",
       "value": 5,
+      "number": "127",
       "variant": {
         "group": "127",
         "label": "Recepción F",
@@ -8625,6 +9311,7 @@
       "coordinates": "128 A",
       "image": "tod/agility/128-A.png",
       "value": 3,
+      "number": "128",
       "variant": {
         "group": "128",
         "label": "Recepción A",
@@ -8655,6 +9342,7 @@
       "coordinates": "128 B",
       "image": "tod/agility/128-B.png",
       "value": 4,
+      "number": "128",
       "variant": {
         "group": "128",
         "label": "Recepción B",
@@ -8685,6 +9373,7 @@
       "coordinates": "128 C",
       "image": "tod/agility/128-C.png",
       "value": 6,
+      "number": "128",
       "variant": {
         "group": "128",
         "label": "Recepción C",
@@ -8715,6 +9404,7 @@
       "coordinates": "128 D",
       "image": "tod/agility/128-D.png",
       "value": 7,
+      "number": "128",
       "variant": {
         "group": "128",
         "label": "Recepción D",
@@ -8745,6 +9435,7 @@
       "coordinates": "128 E",
       "image": "tod/agility/128-E.png",
       "value": 5,
+      "number": "128",
       "variant": {
         "group": "128",
         "label": "Recepción E",
@@ -8775,6 +9466,7 @@
       "coordinates": "129 A",
       "image": "tod/agility/129-A.png",
       "value": 5,
+      "number": "129",
       "variant": {
         "group": "129",
         "label": "Recepción A",
@@ -8805,6 +9497,7 @@
       "coordinates": "130 A",
       "image": "tod/agility/130-A.png",
       "value": 3,
+      "number": "130",
       "variant": {
         "group": "130",
         "label": "Recepción A",
@@ -8835,6 +9528,7 @@
       "coordinates": "130 B",
       "image": "tod/agility/130-B.png",
       "value": 2,
+      "number": "130",
       "variant": {
         "group": "130",
         "label": "Recepción B",
@@ -8865,6 +9559,7 @@
       "coordinates": "130 C",
       "image": "tod/agility/130-C.png",
       "value": 3,
+      "number": "130",
       "variant": {
         "group": "130",
         "label": "Recepción C",
@@ -8895,6 +9590,7 @@
       "coordinates": "130 D",
       "image": "tod/agility/130-D.png",
       "value": 4,
+      "number": "130",
       "variant": {
         "group": "130",
         "label": "Recepción D",
@@ -8925,6 +9621,7 @@
       "coordinates": "130 E",
       "image": "tod/agility/130-E.png",
       "value": 3,
+      "number": "130",
       "variant": {
         "group": "130",
         "label": "Recepción E",
@@ -8955,6 +9652,7 @@
       "coordinates": "130 F",
       "image": "tod/agility/130-F.png",
       "value": 4,
+      "number": "130",
       "variant": {
         "group": "130",
         "label": "Recepción F",
@@ -8985,6 +9683,7 @@
       "coordinates": "131 A",
       "image": "tod/agility/131-A.png",
       "value": 2,
+      "number": "131",
       "variant": {
         "group": "131",
         "label": "Recepción A",
@@ -9015,6 +9714,7 @@
       "coordinates": "131 B",
       "image": "tod/agility/131-B.png",
       "value": 3,
+      "number": "131",
       "variant": {
         "group": "131",
         "label": "Recepción B",
@@ -9045,6 +9745,7 @@
       "coordinates": "131 C",
       "image": "tod/agility/131-C.png",
       "value": 5,
+      "number": "131",
       "variant": {
         "group": "131",
         "label": "Recepción C",
@@ -9075,6 +9776,7 @@
       "coordinates": "131 D",
       "image": "tod/agility/131-D.png",
       "value": 6,
+      "number": "131",
       "variant": {
         "group": "131",
         "label": "Recepción D",
@@ -9105,6 +9807,7 @@
       "coordinates": "131 E",
       "image": "tod/agility/131-E.png",
       "value": 4,
+      "number": "131",
       "variant": {
         "group": "131",
         "label": "Recepción E",
@@ -9135,6 +9838,7 @@
       "coordinates": "132 A",
       "image": "tod/agility/132-A.png",
       "value": 4,
+      "number": "132",
       "variant": {
         "group": "132",
         "label": "Recepción A",
@@ -9165,6 +9869,7 @@
       "coordinates": "132 C",
       "image": "tod/agility/132-C.png",
       "value": 4,
+      "number": "132",
       "variant": {
         "group": "132",
         "label": "Recepción C",
@@ -9195,6 +9900,7 @@
       "coordinates": "133 B",
       "image": "tod/agility/133-B.png",
       "value": 2,
+      "number": "133",
       "variant": {
         "group": "133",
         "label": "Recepción B",
@@ -9225,6 +9931,7 @@
       "coordinates": "134 A",
       "image": "tod/agility/134-A.png",
       "value": 3,
+      "number": "134",
       "variant": {
         "group": "134",
         "label": "Recepción A",
@@ -9255,6 +9962,7 @@
       "coordinates": "134 B",
       "image": "tod/agility/134-B.png",
       "value": 4,
+      "number": "134",
       "variant": {
         "group": "134",
         "label": "Recepción B",
@@ -9285,6 +9993,7 @@
       "coordinates": "134 C",
       "image": "tod/agility/134-C.png",
       "value": 6,
+      "number": "134",
       "variant": {
         "group": "134",
         "label": "Recepción C",
@@ -9315,6 +10024,7 @@
       "coordinates": "134 D",
       "image": "tod/agility/134-D.png",
       "value": 4,
+      "number": "134",
       "variant": {
         "group": "134",
         "label": "Recepción D",
@@ -9345,6 +10055,7 @@
       "coordinates": "136 A",
       "image": "tod/agility/136-A.png",
       "value": 2,
+      "number": "136",
       "variant": {
         "group": "136",
         "label": "Recepción A",
@@ -9375,6 +10086,7 @@
       "coordinates": "136 B",
       "image": "tod/agility/136-B.png",
       "value": 3,
+      "number": "136",
       "variant": {
         "group": "136",
         "label": "Recepción B",
@@ -9405,6 +10117,7 @@
       "coordinates": "136 C",
       "image": "tod/agility/136-C.png",
       "value": 4,
+      "number": "136",
       "variant": {
         "group": "136",
         "label": "Recepción C",
@@ -9435,6 +10148,7 @@
       "coordinates": "136 D",
       "image": "tod/agility/136-D.png",
       "value": 2,
+      "number": "136",
       "variant": {
         "group": "136",
         "label": "Recepción D",
@@ -9465,6 +10179,7 @@
       "coordinates": "136 E",
       "image": "tod/agility/136-E.png",
       "value": 4,
+      "number": "136",
       "variant": {
         "group": "136",
         "label": "Recepción E",
@@ -9495,6 +10210,7 @@
       "coordinates": "137 A",
       "image": "tod/agility/137-A.png",
       "value": 5,
+      "number": "137",
       "variant": {
         "group": "137",
         "label": "Recepción A",
@@ -9525,6 +10241,7 @@
       "coordinates": "137 B",
       "image": "tod/agility/137-B.png",
       "value": 4,
+      "number": "137",
       "variant": {
         "group": "137",
         "label": "Recepción B",
@@ -9555,6 +10272,7 @@
       "coordinates": "137 C",
       "image": "tod/agility/137-C.png",
       "value": 6,
+      "number": "137",
       "variant": {
         "group": "137",
         "label": "Recepción C",
@@ -9585,6 +10303,7 @@
       "coordinates": "137 D",
       "image": "tod/agility/137-D.png",
       "value": 7,
+      "number": "137",
       "variant": {
         "group": "137",
         "label": "Recepción D",
@@ -9615,6 +10334,7 @@
       "coordinates": "137 E",
       "image": "tod/agility/137-E.png",
       "value": 5,
+      "number": "137",
       "variant": {
         "group": "137",
         "label": "Recepción E",
@@ -9645,6 +10365,7 @@
       "coordinates": "137 G",
       "image": "tod/agility/137-G.png",
       "value": 6,
+      "number": "137",
       "variant": {
         "group": "137",
         "label": "Recepción G",
@@ -9675,6 +10396,7 @@
       "coordinates": "138 A",
       "image": "tod/agility/138-A.png",
       "value": 7,
+      "number": "138",
       "variant": {
         "group": "138",
         "label": "Recepción A",
@@ -9705,6 +10427,7 @@
       "coordinates": "138 B",
       "image": "tod/agility/138-B.png",
       "value": 7,
+      "number": "138",
       "variant": {
         "group": "138",
         "label": "Recepción B",
@@ -9735,6 +10458,7 @@
       "coordinates": "138 C",
       "image": "tod/agility/138-C.png",
       "value": 8,
+      "number": "138",
       "variant": {
         "group": "138",
         "label": "Recepción C",
@@ -9765,6 +10489,7 @@
       "coordinates": "138 D",
       "image": "tod/agility/138-D.png",
       "value": 9,
+      "number": "138",
       "variant": {
         "group": "138",
         "label": "Recepción D",
@@ -9795,6 +10520,7 @@
       "coordinates": "138 E",
       "image": "tod/agility/138-E.png",
       "value": 7,
+      "number": "138",
       "variant": {
         "group": "138",
         "label": "Recepción E",
@@ -9825,6 +10551,7 @@
       "coordinates": "138 G",
       "image": "tod/agility/138-G.png",
       "value": 8,
+      "number": "138",
       "variant": {
         "group": "138",
         "label": "Recepción G",
@@ -9855,6 +10582,7 @@
       "coordinates": "139 A",
       "image": "tod/agility/139-A.png",
       "value": 10,
+      "number": "139",
       "variant": {
         "group": "139",
         "label": "Recepción A",
@@ -9885,6 +10613,7 @@
       "coordinates": "139 B",
       "image": "tod/agility/139-B.png",
       "value": 7,
+      "number": "139",
       "variant": {
         "group": "139",
         "label": "Recepción B",
@@ -9915,6 +10644,7 @@
       "coordinates": "139 C",
       "image": "tod/agility/139-C.png",
       "value": 8,
+      "number": "139",
       "variant": {
         "group": "139",
         "label": "Recepción C",
@@ -9945,6 +10675,7 @@
       "coordinates": "139 D",
       "image": "tod/agility/139-D.png",
       "value": 9,
+      "number": "139",
       "variant": {
         "group": "139",
         "label": "Recepción D",
@@ -9975,6 +10706,7 @@
       "coordinates": "139 E",
       "image": "tod/agility/139-E.png",
       "value": 10,
+      "number": "139",
       "variant": {
         "group": "139",
         "label": "Recepción E",
@@ -10005,6 +10737,7 @@
       "coordinates": "139 G",
       "image": "tod/agility/139-G.png",
       "value": 10,
+      "number": "139",
       "variant": {
         "group": "139",
         "label": "Recepción G",
@@ -10035,6 +10768,7 @@
       "coordinates": "140 A",
       "image": "tod/agility/140-A.png",
       "value": 5,
+      "number": "140",
       "variant": {
         "group": "140",
         "label": "Recepción A",
@@ -10065,6 +10799,7 @@
       "coordinates": "140 B",
       "image": "tod/agility/140-B.png",
       "value": 6,
+      "number": "140",
       "variant": {
         "group": "140",
         "label": "Recepción B",
@@ -10095,6 +10830,7 @@
       "coordinates": "140 C",
       "image": "tod/agility/140-C.png",
       "value": 8,
+      "number": "140",
       "variant": {
         "group": "140",
         "label": "Recepción C",
@@ -10125,6 +10861,7 @@
       "coordinates": "140 D",
       "image": "tod/agility/140-D.png",
       "value": 9,
+      "number": "140",
       "variant": {
         "group": "140",
         "label": "Recepción D",
@@ -10155,6 +10892,7 @@
       "coordinates": "140 E",
       "image": "tod/agility/140-E.png",
       "value": 6,
+      "number": "140",
       "variant": {
         "group": "140",
         "label": "Recepción E",
@@ -10185,6 +10923,7 @@
       "coordinates": "140 F",
       "image": "tod/agility/140-F.png",
       "value": 8,
+      "number": "140",
       "variant": {
         "group": "140",
         "label": "Recepción F",
@@ -10215,6 +10954,7 @@
       "coordinates": "141 A",
       "image": "tod/agility/141-A.png",
       "value": 6,
+      "number": "141",
       "variant": {
         "group": "141",
         "label": "Recepción A",
@@ -10245,6 +10985,7 @@
       "coordinates": "141 B",
       "image": "tod/agility/141-B.png",
       "value": 7,
+      "number": "141",
       "variant": {
         "group": "141",
         "label": "Recepción B",
@@ -10275,6 +11016,7 @@
       "coordinates": "141 C",
       "image": "tod/agility/141-C.png",
       "value": 9,
+      "number": "141",
       "variant": {
         "group": "141",
         "label": "Recepción C",
@@ -10305,6 +11047,7 @@
       "coordinates": "141 D",
       "image": "tod/agility/141-D.png",
       "value": 10,
+      "number": "141",
       "variant": {
         "group": "141",
         "label": "Recepción D",
@@ -10335,6 +11078,7 @@
       "coordinates": "141 E",
       "image": "tod/agility/141-E.png",
       "value": 7,
+      "number": "141",
       "variant": {
         "group": "141",
         "label": "Recepción E",
@@ -10365,6 +11109,7 @@
       "coordinates": "141 F",
       "image": "tod/agility/141-F.png",
       "value": 10,
+      "number": "141",
       "variant": {
         "group": "141",
         "label": "Recepción F",
@@ -10395,6 +11140,7 @@
       "coordinates": "142 A",
       "image": "tod/agility/142-A.png",
       "value": 6,
+      "number": "142",
       "variant": {
         "group": "142",
         "label": "Recepción A",
@@ -10425,6 +11171,7 @@
       "coordinates": "142 B",
       "image": "tod/agility/142-B.png",
       "value": 8,
+      "number": "142",
       "variant": {
         "group": "142",
         "label": "Recepción B",
@@ -10455,6 +11202,7 @@
       "coordinates": "142 C",
       "image": "tod/agility/142-C.png",
       "value": 10,
+      "number": "142",
       "variant": {
         "group": "142",
         "label": "Recepción C",
@@ -10485,6 +11233,7 @@
       "coordinates": "142 D",
       "image": "tod/agility/142-D.png",
       "value": 11,
+      "number": "142",
       "variant": {
         "group": "142",
         "label": "Recepción D",
@@ -10515,6 +11264,7 @@
       "coordinates": "142 E",
       "image": "tod/agility/142-E.png",
       "value": 8,
+      "number": "142",
       "variant": {
         "group": "142",
         "label": "Recepción E",
@@ -10545,6 +11295,7 @@
       "coordinates": "142 F",
       "image": "tod/agility/142-F.png",
       "value": 10,
+      "number": "142",
       "variant": {
         "group": "142",
         "label": "Recepción F",
@@ -10575,6 +11326,7 @@
       "coordinates": "143 A",
       "image": "tod/agility/143-A.png",
       "value": 10,
+      "number": "143",
       "variant": {
         "group": "143",
         "label": "Recepción A",
@@ -10605,6 +11357,7 @@
       "coordinates": "143 B",
       "image": "tod/agility/143-B.png",
       "value": 8,
+      "number": "143",
       "variant": {
         "group": "143",
         "label": "Recepción B",
@@ -10635,6 +11388,7 @@
       "coordinates": "143 C",
       "image": "tod/agility/143-C.png",
       "value": 9,
+      "number": "143",
       "variant": {
         "group": "143",
         "label": "Recepción C",
@@ -10665,6 +11419,7 @@
       "coordinates": "143 D",
       "image": "tod/agility/143-D.png",
       "value": 10,
+      "number": "143",
       "variant": {
         "group": "143",
         "label": "Recepción D",
@@ -10695,6 +11450,7 @@
       "coordinates": "143 E",
       "image": "tod/agility/143-E.png",
       "value": 10,
+      "number": "143",
       "variant": {
         "group": "143",
         "label": "Recepción E",
@@ -10725,6 +11481,7 @@
       "coordinates": "143 G",
       "image": "tod/agility/143-G.png",
       "value": 10,
+      "number": "143",
       "variant": {
         "group": "143",
         "label": "Recepción G",
@@ -10755,6 +11512,7 @@
       "coordinates": "144 A",
       "image": "tod/agility/144-A.png",
       "value": 11,
+      "number": "144",
       "variant": {
         "group": "144",
         "label": "Recepción A",
@@ -10785,6 +11543,7 @@
       "coordinates": "144 B",
       "image": "tod/agility/144-B.png",
       "value": 9,
+      "number": "144",
       "variant": {
         "group": "144",
         "label": "Recepción B",
@@ -10815,6 +11574,7 @@
       "coordinates": "144 C",
       "image": "tod/agility/144-C.png",
       "value": 10,
+      "number": "144",
       "variant": {
         "group": "144",
         "label": "Recepción C",
@@ -10845,6 +11605,7 @@
       "coordinates": "144 D",
       "image": "tod/agility/144-D.png",
       "value": 11,
+      "number": "144",
       "variant": {
         "group": "144",
         "label": "Recepción D",
@@ -10875,6 +11636,7 @@
       "coordinates": "144 E",
       "image": "tod/agility/144-E.png",
       "value": 9,
+      "number": "144",
       "variant": {
         "group": "144",
         "label": "Recepción E",
@@ -10905,6 +11667,7 @@
       "coordinates": "144 G",
       "image": "tod/agility/144-G.png",
       "value": 12,
+      "number": "144",
       "variant": {
         "group": "144",
         "label": "Recepción G",
@@ -10935,6 +11698,7 @@
       "coordinates": "145 A",
       "image": "tod/agility/145-A.png",
       "value": 14,
+      "number": "145",
       "variant": {
         "group": "145",
         "label": "Recepción A",
@@ -10965,6 +11729,7 @@
       "coordinates": "145 B",
       "image": "tod/agility/145-B.png",
       "value": 11,
+      "number": "145",
       "variant": {
         "group": "145",
         "label": "Recepción B",
@@ -10995,6 +11760,7 @@
       "coordinates": "145 C",
       "image": "tod/agility/145-C.png",
       "value": 12,
+      "number": "145",
       "variant": {
         "group": "145",
         "label": "Recepción C",
@@ -11025,6 +11791,7 @@
       "coordinates": "145 D",
       "image": "tod/agility/145-D.png",
       "value": 13,
+      "number": "145",
       "variant": {
         "group": "145",
         "label": "Recepción D",
@@ -11055,6 +11822,7 @@
       "coordinates": "145 E",
       "image": "tod/agility/145-E.png",
       "value": 11,
+      "number": "145",
       "variant": {
         "group": "145",
         "label": "Recepción E",
@@ -11085,6 +11853,7 @@
       "coordinates": "145 G",
       "image": "tod/agility/145-G.png",
       "value": 14,
+      "number": "145",
       "variant": {
         "group": "145",
         "label": "Recepción G",
@@ -11115,6 +11884,7 @@
       "coordinates": "146 A",
       "image": "tod/agility/146-A.png",
       "value": 9,
+      "number": "146",
       "variant": {
         "group": "146",
         "label": "Recepción A",
@@ -11145,6 +11915,7 @@
       "coordinates": "146 B",
       "image": "tod/agility/146-B.png",
       "value": 10,
+      "number": "146",
       "variant": {
         "group": "146",
         "label": "Recepción B",
@@ -11175,6 +11946,7 @@
       "coordinates": "146 C",
       "image": "tod/agility/146-C.png",
       "value": 12,
+      "number": "146",
       "variant": {
         "group": "146",
         "label": "Recepción C",
@@ -11205,6 +11977,7 @@
       "coordinates": "146 D",
       "image": "tod/agility/146-D.png",
       "value": 13,
+      "number": "146",
       "variant": {
         "group": "146",
         "label": "Recepción D",
@@ -11235,6 +12008,7 @@
       "coordinates": "147 A",
       "image": "tod/agility/147-A.png",
       "value": 10,
+      "number": "147",
       "variant": {
         "group": "147",
         "label": "Recepción A",
@@ -11265,6 +12039,7 @@
       "coordinates": "147 B",
       "image": "tod/agility/147-B.png",
       "value": 11,
+      "number": "147",
       "variant": {
         "group": "147",
         "label": "Recepción B",
@@ -11295,6 +12070,7 @@
       "coordinates": "147 C",
       "image": "tod/agility/147-C.png",
       "value": 13,
+      "number": "147",
       "variant": {
         "group": "147",
         "label": "Recepción C",
@@ -11325,6 +12101,7 @@
       "coordinates": "147 D",
       "image": "tod/agility/147-D.png",
       "value": 14,
+      "number": "147",
       "variant": {
         "group": "147",
         "label": "Recepción D",
@@ -11355,6 +12132,7 @@
       "coordinates": "147 F",
       "image": "tod/agility/147-F.png",
       "value": 14,
+      "number": "147",
       "variant": {
         "group": "147",
         "label": "Recepción F",
@@ -11385,6 +12163,7 @@
       "coordinates": "148 A",
       "image": "tod/agility/148-A.png",
       "value": 10,
+      "number": "148",
       "variant": {
         "group": "148",
         "label": "Recepción A",
@@ -11415,6 +12194,7 @@
       "coordinates": "148 B",
       "image": "tod/agility/148-B.png",
       "value": 12,
+      "number": "148",
       "variant": {
         "group": "148",
         "label": "Recepción B",
@@ -11445,6 +12225,7 @@
       "coordinates": "148 C",
       "image": "tod/agility/148-C.png",
       "value": 14,
+      "number": "148",
       "variant": {
         "group": "148",
         "label": "Recepción C",
@@ -11475,6 +12256,7 @@
       "coordinates": "148 D",
       "image": "tod/agility/148-D.png",
       "value": 15,
+      "number": "148",
       "variant": {
         "group": "148",
         "label": "Recepción D",
@@ -11505,6 +12287,7 @@
       "coordinates": "148 F",
       "image": "tod/agility/148-F.png",
       "value": 15,
+      "number": "148",
       "variant": {
         "group": "148",
         "label": "Recepción F",
@@ -11535,6 +12318,7 @@
       "coordinates": "149 A",
       "image": "tod/agility/149-A.png",
       "value": 14,
+      "number": "149",
       "variant": {
         "group": "149",
         "label": "Recepción A",
@@ -11565,6 +12349,7 @@
       "coordinates": "149 B",
       "image": "tod/agility/149-B.png",
       "value": 12,
+      "number": "149",
       "variant": {
         "group": "149",
         "label": "Recepción B",
@@ -11595,6 +12380,7 @@
       "coordinates": "149 C",
       "image": "tod/agility/149-C.png",
       "value": 13,
+      "number": "149",
       "variant": {
         "group": "149",
         "label": "Recepción C",
@@ -11625,6 +12411,7 @@
       "coordinates": "149 D",
       "image": "tod/agility/149-D.png",
       "value": 14,
+      "number": "149",
       "variant": {
         "group": "149",
         "label": "Recepción D",
@@ -11655,6 +12442,7 @@
       "coordinates": "149 E",
       "image": "tod/agility/149-E.png",
       "value": 12,
+      "number": "149",
       "variant": {
         "group": "149",
         "label": "Recepción E",
@@ -11685,6 +12473,7 @@
       "coordinates": "149 G",
       "image": "tod/agility/149-G.png",
       "value": 14,
+      "number": "149",
       "variant": {
         "group": "149",
         "label": "Recepción G",
@@ -11715,6 +12504,7 @@
       "coordinates": "150 A",
       "image": "tod/agility/150-A.png",
       "value": 15,
+      "number": "150",
       "variant": {
         "group": "150",
         "label": "Recepción A",
@@ -11745,6 +12535,7 @@
       "coordinates": "150 B",
       "image": "tod/agility/150-B.png",
       "value": 13,
+      "number": "150",
       "variant": {
         "group": "150",
         "label": "Recepción B",
@@ -11775,6 +12566,7 @@
       "coordinates": "150 C",
       "image": "tod/agility/150-C.png",
       "value": 14,
+      "number": "150",
       "variant": {
         "group": "150",
         "label": "Recepción C",
@@ -11805,6 +12597,7 @@
       "coordinates": "150 D",
       "image": "tod/agility/150-D.png",
       "value": 15,
+      "number": "150",
       "variant": {
         "group": "150",
         "label": "Recepción D",
@@ -11835,6 +12628,7 @@
       "coordinates": "150 E",
       "image": "tod/agility/150-E.png",
       "value": 13,
+      "number": "150",
       "variant": {
         "group": "150",
         "label": "Recepción E",
@@ -11865,6 +12659,7 @@
       "coordinates": "150 G",
       "image": "tod/agility/150-G.png",
       "value": 16,
+      "number": "150",
       "variant": {
         "group": "150",
         "label": "Recepción G",
@@ -11895,6 +12690,7 @@
       "coordinates": "151 A",
       "image": "tod/agility/151-A.png",
       "value": 18,
+      "number": "151",
       "variant": {
         "group": "151",
         "label": "Recepción A",
@@ -11925,6 +12721,7 @@
       "coordinates": "151 B",
       "image": "tod/agility/151-B.png",
       "value": 15,
+      "number": "151",
       "variant": {
         "group": "151",
         "label": "Recepción B",
@@ -11955,6 +12752,7 @@
       "coordinates": "151 C",
       "image": "tod/agility/151-C.png",
       "value": 16,
+      "number": "151",
       "variant": {
         "group": "151",
         "label": "Recepción C",
@@ -11985,6 +12783,7 @@
       "coordinates": "151 D",
       "image": "tod/agility/151-D.png",
       "value": 17,
+      "number": "151",
       "variant": {
         "group": "151",
         "label": "Recepción D",
@@ -12015,6 +12814,7 @@
       "coordinates": "151 E",
       "image": "tod/agility/151-E.png",
       "value": 15,
+      "number": "151",
       "variant": {
         "group": "151",
         "label": "Recepción E",
@@ -12045,6 +12845,7 @@
       "coordinates": "151 G",
       "image": "tod/agility/151-G.png",
       "value": 18,
+      "number": "151",
       "variant": {
         "group": "151",
         "label": "Recepción G",
@@ -12075,6 +12876,7 @@
       "coordinates": "152 D",
       "image": "tod/agility/152-D.png",
       "value": 6,
+      "number": "152",
       "variant": {
         "group": "152",
         "label": "Recepción D",
@@ -12398,13 +13200,45 @@
       }
     },
     {
-      "id": "fig-tod-tum-1-0",
+      "id": "fig-tod-tum-1-0-a",
       "code": "FIG",
       "elementFamily": "individual",
       "type": "TUM",
       "coordinates": "119",
-      "image": "tod/tumbling/col-1.png",
+      "image": "tod/tumbling/col-1-a.png",
       "value": 1,
+      "number": "119:1:0°",
+      "variant": {
+        "group": "Col. 1",
+        "label": "0°",
+        "groupImage": "tod/tumbling/col-1.png"
+      },
+      "filters": {
+        "levelSystems": [
+          "FIG"
+        ],
+        "categories": [
+          "Parejas",
+          "Tríos",
+          "Cuartetos",
+          "Pareja Femenina",
+          "Pareja Masculina",
+          "Pareja Mixta"
+        ],
+        "exercises": [
+          "Combined"
+        ]
+      }
+    },
+    {
+      "id": "fig-tod-tum-1-0-b",
+      "code": "FIG",
+      "elementFamily": "individual",
+      "type": "TUM",
+      "coordinates": "119",
+      "image": "tod/tumbling/col-1-b.png",
+      "value": 1,
+      "number": "119:1:0°",
       "variant": {
         "group": "Col. 1",
         "label": "0°",
@@ -12435,6 +13269,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-2.png",
       "value": 2,
+      "number": "119:2:0°",
       "variant": {
         "group": "Col. 2",
         "label": "0°",
@@ -12465,6 +13300,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-2.png",
       "value": 4,
+      "number": "119:2:180°",
       "variant": {
         "group": "Col. 2",
         "label": "180°",
@@ -12495,6 +13331,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-2.png",
       "value": 6,
+      "number": "119:2:360°",
       "variant": {
         "group": "Col. 2",
         "label": "360°",
@@ -12525,6 +13362,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-2.png",
       "value": 8,
+      "number": "119:2:540°",
       "variant": {
         "group": "Col. 2",
         "label": "540°",
@@ -12555,6 +13393,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-3.png",
       "value": 4,
+      "number": "119:3:0°",
       "variant": {
         "group": "Col. 3",
         "label": "0°",
@@ -12585,6 +13424,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-4.png",
       "value": 4,
+      "number": "119:4:0°",
       "variant": {
         "group": "Col. 4",
         "label": "0°",
@@ -12615,6 +13455,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-4.png",
       "value": 6,
+      "number": "119:4:180°",
       "variant": {
         "group": "Col. 4",
         "label": "180°",
@@ -12645,6 +13486,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-4.png",
       "value": 10,
+      "number": "119:4:360°",
       "variant": {
         "group": "Col. 4",
         "label": "360°",
@@ -12675,6 +13517,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-4.png",
       "value": 12,
+      "number": "119:4:540°",
       "variant": {
         "group": "Col. 4",
         "label": "540°",
@@ -12705,6 +13548,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-4.png",
       "value": 14,
+      "number": "119:4:720°",
       "variant": {
         "group": "Col. 4",
         "label": "720°",
@@ -12735,6 +13579,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-4.png",
       "value": 16,
+      "number": "119:4:900°",
       "variant": {
         "group": "Col. 4",
         "label": "900°",
@@ -12765,6 +13610,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-4.png",
       "value": 18,
+      "number": "119:4:1080°",
       "variant": {
         "group": "Col. 4",
         "label": "1080°",
@@ -12795,6 +13641,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-5.png",
       "value": 5,
+      "number": "119:5:0°",
       "variant": {
         "group": "Col. 5",
         "label": "0°",
@@ -12825,6 +13672,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-5.png",
       "value": 7,
+      "number": "119:5:180°",
       "variant": {
         "group": "Col. 5",
         "label": "180°",
@@ -12855,6 +13703,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-5.png",
       "value": 11,
+      "number": "119:5:360°",
       "variant": {
         "group": "Col. 5",
         "label": "360°",
@@ -12885,6 +13734,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-5.png",
       "value": 14,
+      "number": "119:5:540°",
       "variant": {
         "group": "Col. 5",
         "label": "540°",
@@ -12915,6 +13765,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-5.png",
       "value": 15,
+      "number": "119:5:720°",
       "variant": {
         "group": "Col. 5",
         "label": "720°",
@@ -12945,6 +13796,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-5.png",
       "value": 17,
+      "number": "119:5:900°",
       "variant": {
         "group": "Col. 5",
         "label": "900°",
@@ -12975,6 +13827,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-5.png",
       "value": 19,
+      "number": "119:5:1080°",
       "variant": {
         "group": "Col. 5",
         "label": "1080°",
@@ -13005,6 +13858,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-6.png",
       "value": 6,
+      "number": "119:6:0°",
       "variant": {
         "group": "Col. 6",
         "label": "0°",
@@ -13035,6 +13889,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-6.png",
       "value": 8,
+      "number": "119:6:180°",
       "variant": {
         "group": "Col. 6",
         "label": "180°",
@@ -13065,6 +13920,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-6.png",
       "value": 12,
+      "number": "119:6:360°",
       "variant": {
         "group": "Col. 6",
         "label": "360°",
@@ -13095,6 +13951,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-6.png",
       "value": 16,
+      "number": "119:6:540°",
       "variant": {
         "group": "Col. 6",
         "label": "540°",
@@ -13125,6 +13982,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-6.png",
       "value": 16,
+      "number": "119:6:720°",
       "variant": {
         "group": "Col. 6",
         "label": "720°",
@@ -13155,6 +14013,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-6.png",
       "value": 18,
+      "number": "119:6:900°",
       "variant": {
         "group": "Col. 6",
         "label": "900°",
@@ -13185,6 +14044,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-6.png",
       "value": 20,
+      "number": "119:6:1080°",
       "variant": {
         "group": "Col. 6",
         "label": "1080°",
@@ -13215,6 +14075,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-7.png",
       "value": 20,
+      "number": "119:7:0°",
       "variant": {
         "group": "Col. 7",
         "label": "0°",
@@ -13245,6 +14106,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-7.png",
       "value": 24,
+      "number": "119:7:180°",
       "variant": {
         "group": "Col. 7",
         "label": "180°",
@@ -13275,6 +14137,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-7.png",
       "value": 28,
+      "number": "119:7:360°",
       "variant": {
         "group": "Col. 7",
         "label": "360°",
@@ -13305,6 +14168,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-7.png",
       "value": 32,
+      "number": "119:7:540°",
       "variant": {
         "group": "Col. 7",
         "label": "540°",
@@ -13335,6 +14199,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-7.png",
       "value": 36,
+      "number": "119:7:720°",
       "variant": {
         "group": "Col. 7",
         "label": "720°",
@@ -13365,6 +14230,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-7.png",
       "value": 40,
+      "number": "119:7:900°",
       "variant": {
         "group": "Col. 7",
         "label": "900°",
@@ -13395,6 +14261,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-7.png",
       "value": 44,
+      "number": "119:7:1080°",
       "variant": {
         "group": "Col. 7",
         "label": "1080°",
@@ -13425,6 +14292,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-8.png",
       "value": 22,
+      "number": "119:8:0°",
       "variant": {
         "group": "Col. 8",
         "label": "0°",
@@ -13455,6 +14323,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-8.png",
       "value": 26,
+      "number": "119:8:180°",
       "variant": {
         "group": "Col. 8",
         "label": "180°",
@@ -13485,6 +14354,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-8.png",
       "value": 30,
+      "number": "119:8:360°",
       "variant": {
         "group": "Col. 8",
         "label": "360°",
@@ -13515,6 +14385,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-8.png",
       "value": 34,
+      "number": "119:8:540°",
       "variant": {
         "group": "Col. 8",
         "label": "540°",
@@ -13545,6 +14416,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-8.png",
       "value": 38,
+      "number": "119:8:720°",
       "variant": {
         "group": "Col. 8",
         "label": "720°",
@@ -13575,6 +14447,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-8.png",
       "value": 42,
+      "number": "119:8:900°",
       "variant": {
         "group": "Col. 8",
         "label": "900°",
@@ -13605,6 +14478,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-8.png",
       "value": 46,
+      "number": "119:8:1080°",
       "variant": {
         "group": "Col. 8",
         "label": "1080°",
@@ -13635,6 +14509,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-9.png",
       "value": 22,
+      "number": "119:9:0°",
       "variant": {
         "group": "Col. 9",
         "label": "0°",
@@ -13665,6 +14540,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-9.png",
       "value": 26,
+      "number": "119:9:180°",
       "variant": {
         "group": "Col. 9",
         "label": "180°",
@@ -13695,6 +14571,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-9.png",
       "value": 30,
+      "number": "119:9:360°",
       "variant": {
         "group": "Col. 9",
         "label": "360°",
@@ -13725,6 +14602,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-9.png",
       "value": 34,
+      "number": "119:9:540°",
       "variant": {
         "group": "Col. 9",
         "label": "540°",
@@ -13755,6 +14633,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-9.png",
       "value": 38,
+      "number": "119:9:720°",
       "variant": {
         "group": "Col. 9",
         "label": "720°",
@@ -13785,6 +14664,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-9.png",
       "value": 42,
+      "number": "119:9:900°",
       "variant": {
         "group": "Col. 9",
         "label": "900°",
@@ -13815,6 +14695,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-9.png",
       "value": 46,
+      "number": "119:9:1080°",
       "variant": {
         "group": "Col. 9",
         "label": "1080°",
@@ -13845,6 +14726,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-10.png",
       "value": 24,
+      "number": "119:10:0°",
       "variant": {
         "group": "Col. 10",
         "label": "0°",
@@ -13875,6 +14757,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-10.png",
       "value": 28,
+      "number": "119:10:180°",
       "variant": {
         "group": "Col. 10",
         "label": "180°",
@@ -13905,6 +14788,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-10.png",
       "value": 32,
+      "number": "119:10:360°",
       "variant": {
         "group": "Col. 10",
         "label": "360°",
@@ -13935,6 +14819,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-10.png",
       "value": 36,
+      "number": "119:10:540°",
       "variant": {
         "group": "Col. 10",
         "label": "540°",
@@ -13965,6 +14850,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-10.png",
       "value": 40,
+      "number": "119:10:720°",
       "variant": {
         "group": "Col. 10",
         "label": "720°",
@@ -13995,6 +14881,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-10.png",
       "value": 44,
+      "number": "119:10:900°",
       "variant": {
         "group": "Col. 10",
         "label": "900°",
@@ -14025,6 +14912,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-10.png",
       "value": 48,
+      "number": "119:10:1080°",
       "variant": {
         "group": "Col. 10",
         "label": "1080°",
@@ -14055,6 +14943,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-11.png",
       "value": 28,
+      "number": "119:11:0°",
       "variant": {
         "group": "Col. 11",
         "label": "0°",
@@ -14085,6 +14974,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-11.png",
       "value": 32,
+      "number": "119:11:180°",
       "variant": {
         "group": "Col. 11",
         "label": "180°",
@@ -14115,6 +15005,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-11.png",
       "value": 36,
+      "number": "119:11:360°",
       "variant": {
         "group": "Col. 11",
         "label": "360°",
@@ -14145,6 +15036,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-11.png",
       "value": 40,
+      "number": "119:11:540°",
       "variant": {
         "group": "Col. 11",
         "label": "540°",
@@ -14175,6 +15067,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-11.png",
       "value": 44,
+      "number": "119:11:720°",
       "variant": {
         "group": "Col. 11",
         "label": "720°",
@@ -14205,6 +15098,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-11.png",
       "value": 48,
+      "number": "119:11:900°",
       "variant": {
         "group": "Col. 11",
         "label": "900°",
@@ -14235,6 +15129,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-11.png",
       "value": 52,
+      "number": "119:11:1080°",
       "variant": {
         "group": "Col. 11",
         "label": "1080°",
@@ -14265,6 +15160,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-12.png",
       "value": 52,
+      "number": "119:12:0°",
       "variant": {
         "group": "Col. 12",
         "label": "0°",
@@ -14295,6 +15191,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-13.png",
       "value": 2,
+      "number": "119:13:0°",
       "variant": {
         "group": "Col. 13",
         "label": "0°",
@@ -14325,6 +15222,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-14.png",
       "value": 4,
+      "number": "119:14:0°",
       "variant": {
         "group": "Col. 14",
         "label": "0°",
@@ -14355,6 +15253,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-14.png",
       "value": 6,
+      "number": "119:14:180°",
       "variant": {
         "group": "Col. 14",
         "label": "180°",
@@ -14385,6 +15284,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-14.png",
       "value": 8,
+      "number": "119:14:360°",
       "variant": {
         "group": "Col. 14",
         "label": "360°",
@@ -14415,6 +15315,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-14.png",
       "value": 10,
+      "number": "119:14:540°",
       "variant": {
         "group": "Col. 14",
         "label": "540°",
@@ -14445,6 +15346,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-15.png",
       "value": 5,
+      "number": "119:15:0°",
       "variant": {
         "group": "Col. 15",
         "label": "0°",
@@ -14475,6 +15377,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-15.png",
       "value": 7,
+      "number": "119:15:180°",
       "variant": {
         "group": "Col. 15",
         "label": "180°",
@@ -14505,6 +15408,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-15.png",
       "value": 9,
+      "number": "119:15:360°",
       "variant": {
         "group": "Col. 15",
         "label": "360°",
@@ -14535,6 +15439,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-15.png",
       "value": 11,
+      "number": "119:15:540°",
       "variant": {
         "group": "Col. 15",
         "label": "540°",
@@ -14565,6 +15470,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-15.png",
       "value": 13,
+      "number": "119:15:720°",
       "variant": {
         "group": "Col. 15",
         "label": "720°",
@@ -14595,6 +15501,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-15.png",
       "value": 15,
+      "number": "119:15:900°",
       "variant": {
         "group": "Col. 15",
         "label": "900°",
@@ -14625,6 +15532,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-15.png",
       "value": 17,
+      "number": "119:15:1080°",
       "variant": {
         "group": "Col. 15",
         "label": "1080°",
@@ -14655,6 +15563,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-16.png",
       "value": 7,
+      "number": "119:16:0°",
       "variant": {
         "group": "Col. 16",
         "label": "0°",
@@ -14685,6 +15594,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-16.png",
       "value": 9,
+      "number": "119:16:180°",
       "variant": {
         "group": "Col. 16",
         "label": "180°",
@@ -14715,6 +15625,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-16.png",
       "value": 11,
+      "number": "119:16:360°",
       "variant": {
         "group": "Col. 16",
         "label": "360°",
@@ -14745,6 +15656,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-16.png",
       "value": 13,
+      "number": "119:16:540°",
       "variant": {
         "group": "Col. 16",
         "label": "540°",
@@ -14775,6 +15687,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-16.png",
       "value": 15,
+      "number": "119:16:720°",
       "variant": {
         "group": "Col. 16",
         "label": "720°",
@@ -14805,6 +15718,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-16.png",
       "value": 17,
+      "number": "119:16:900°",
       "variant": {
         "group": "Col. 16",
         "label": "900°",
@@ -14835,6 +15749,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-16.png",
       "value": 19,
+      "number": "119:16:1080°",
       "variant": {
         "group": "Col. 16",
         "label": "1080°",
@@ -14865,6 +15780,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-17.png",
       "value": 24,
+      "number": "119:17:0°",
       "variant": {
         "group": "Col. 17",
         "label": "0°",
@@ -14895,6 +15811,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-17.png",
       "value": 28,
+      "number": "119:17:180°",
       "variant": {
         "group": "Col. 17",
         "label": "180°",
@@ -14925,6 +15842,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-17.png",
       "value": 32,
+      "number": "119:17:360°",
       "variant": {
         "group": "Col. 17",
         "label": "360°",
@@ -14955,6 +15873,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-18.png",
       "value": 28,
+      "number": "119:18:0°",
       "variant": {
         "group": "Col. 18",
         "label": "0°",
@@ -14985,6 +15904,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-18.png",
       "value": 33,
+      "number": "119:18:180°",
       "variant": {
         "group": "Col. 18",
         "label": "180°",
@@ -15015,6 +15935,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-18.png",
       "value": 36,
+      "number": "119:18:360°",
       "variant": {
         "group": "Col. 18",
         "label": "360°",
@@ -15045,6 +15966,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-19.png",
       "value": 4,
+      "number": "119:19:0°",
       "variant": {
         "group": "Col. 19",
         "label": "0°",
@@ -15075,6 +15997,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-20.png",
       "value": 5,
+      "number": "119:20:0°",
       "variant": {
         "group": "Col. 20",
         "label": "0°",
@@ -15105,6 +16028,7 @@
       "coordinates": "119",
       "image": "tod/tumbling/col-21.png",
       "value": 24,
+      "number": "119:21:0°",
       "variant": {
         "group": "Col. 21",
         "label": "0°",

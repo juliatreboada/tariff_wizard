@@ -152,3 +152,25 @@ body {
 .app-page:not(.print-sheet-root) .app-card .bg-white {
   background-color: var(--app-surface-soft) !important;
 }
+
+/* Picker step that replaces the grid (options of an element): slides in from the right. */
+@keyframes picker-step-in {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.picker-step {
+  animation: picker-step-in 0.2s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .picker-step {
+    animation: none;
+  }
+}

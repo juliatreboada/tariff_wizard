@@ -1,9 +1,22 @@
 {
-  "description": "FIG ACRO Table of Difficulty 2025-2028, individual elements (printed pages 111-119), transcribed from the PDF and checked against the pages. Balance, Flexibility and Agility elements by their ID with the value after V; agilities on pages 115-118 by ID and landing (A-I) with each landing's value (only landings with a picture); tumbling by column (1-21) and twist, written on the sheet as page 119.",
+  "description": "FIG ACRO Table of Difficulty 2025-2028, individual elements (printed pages 111-119), transcribed from the PDF and checked against the pages. Balance, Flexibility and Agility elements by their ID with the value after V; agilities on pages 115-118 by ID and landing (A-I) with each landing's value (only landings with a picture); tumbling by column (1-21) and twist, written on the sheet as page 119. Boxes with several pictures (reviewed by the coach 2026-11-04) list them as options, each with its own picture and value (+1/-1 marks applied); one gymnast can do only one option of a box.",
   "balance": {
-    "001": { "value": 1 },
+    "001": {
+      "value": 1,
+      "options": [
+        { "image": "001-a", "value": 1 },
+        { "image": "001-b", "value": 2 }
+      ]
+    },
     "002": { "value": 4 },
-    "003": { "value": 2 },
+    "003": {
+      "value": 2,
+      "options": [
+        { "image": "003-a", "value": 2 },
+        { "image": "003-b", "value": 2 },
+        { "image": "003-c", "value": 2 }
+      ]
+    },
     "004": { "value": 3 },
     "005": { "value": 1 },
     "006": { "value": 1 },
@@ -14,21 +27,58 @@
     "011": { "value": 2 },
     "012": { "value": 3 },
     "013": { "value": 3 },
-    "014": { "value": 4 },
+    "014": {
+      "value": 4,
+      "options": [
+        { "image": "014-a", "value": 4 },
+        { "image": "014-b", "value": 3 },
+        { "image": "014-c", "value": 5 }
+      ]
+    },
     "015": { "value": 3 },
-    "016": { "value": 3 },
+    "016": {
+      "value": 3,
+      "options": [
+        { "image": "016-a", "value": 3 },
+        { "image": "016-b", "value": 3 }
+      ]
+    },
     "017": { "value": 8 },
     "018": { "value": 10 },
-    "019": { "value": 1 },
-    "020": { "value": 2 },
-    "021": { "value": 3 },
+    "019": {
+      "value": 1,
+      "options": [
+        { "image": "019-a", "value": 1 },
+        { "image": "019-b", "value": 1 }
+      ]
+    },
+    "020": {
+      "value": 2,
+      "options": [
+        { "image": "020-a", "value": 2 },
+        { "image": "020-b", "value": 2 }
+      ]
+    },
+    "021": {
+      "value": 3,
+      "options": [
+        { "image": "021-a", "value": 3 },
+        { "image": "021-b", "value": 4 }
+      ]
+    },
     "022": { "value": 3 },
     "023": { "value": 4 },
     "024": { "value": 5 },
     "025": { "value": 4 },
     "026": { "value": 4 },
     "027": { "value": 5 },
-    "028": { "value": 6 },
+    "028": {
+      "value": 6,
+      "options": [
+        { "image": "028-a", "value": 6 },
+        { "image": "028-b", "value": 4 }
+      ]
+    },
     "029": { "value": 8 },
     "030": { "value": 8 },
     "031": { "value": 3 },
@@ -42,13 +92,31 @@
     "039": { "value": 8 },
     "040": { "value": 9 },
     "041": { "value": 1 },
-    "042": { "value": 3 }
+    "042": {
+      "value": 3,
+      "options": [
+        { "image": "042-a", "value": 3 },
+        { "image": "042-b", "value": 4 }
+      ]
+    }
   },
   "flexibility": {
     "060": { "value": 1 },
     "061": { "value": 2 },
-    "062": { "value": 1 },
-    "063": { "value": 1 },
+    "062": {
+      "value": 1,
+      "options": [
+        { "image": "062-a", "value": 1 },
+        { "image": "062-b", "value": 1 }
+      ]
+    },
+    "063": {
+      "value": 1,
+      "options": [
+        { "image": "063-a", "value": 1 },
+        { "image": "063-b", "value": 1 }
+      ]
+    },
     "064": { "value": 2 },
     "065": { "value": 1 },
     "066": { "value": 1 },
@@ -59,9 +127,27 @@
     "071": { "value": 1 },
     "072": { "value": 2 },
     "073": { "value": 3 },
-    "074": { "value": 2 },
-    "075": { "value": 2 },
-    "076": { "value": 3 },
+    "074": {
+      "value": 2,
+      "options": [
+        { "image": "074-a", "value": 2 },
+        { "image": "074-b", "value": 3 }
+      ]
+    },
+    "075": {
+      "value": 2,
+      "options": [
+        { "image": "075-a", "value": 2 },
+        { "image": "075-b", "value": 2 }
+      ]
+    },
+    "076": {
+      "value": 3,
+      "options": [
+        { "image": "076-a", "value": 3 },
+        { "image": "076-b", "value": 3 }
+      ]
+    },
     "077": { "value": 3 },
     "078": { "value": 4 },
     "079": { "value": 2 }
@@ -69,7 +155,13 @@
   "agility": {
     "100": { "value": 2 },
     "101": { "value": 8 },
-    "102": { "value": 3 },
+    "102": {
+      "value": 3,
+      "options": [
+        { "image": "102-a", "value": 3 },
+        { "image": "102-b", "value": 2 }
+      ]
+    },
     "103": { "value": 3 },
     "104": { "value": 5 },
     "105": { "value": 2 },
@@ -257,6 +349,12 @@
       "19": { "0°": 4 },
       "20": { "0°": 5 },
       "21": { "0°": 24 }
+    },
+    "options": {
+      "1": [
+        { "image": "col-1-a" },
+        { "image": "col-1-b" }
+      ]
     }
   }
 }
