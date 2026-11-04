@@ -47,6 +47,8 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
   const moveRoutineItem = useWizardStore((s) => s.moveRoutineItem);
   const setRoutineItemLinked = useWizardStore((s) => s.setRoutineItemLinked);
   const replaceRoutineElement = useWizardStore((s) => s.replaceRoutineElement);
+  const replaceIndividualGroup = useWizardStore((s) => s.replaceIndividualGroup);
+  const [editingGroupId, setEditingGroupId] = useState<string | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [linkNext, setLinkNext] = useState(false);
   const [editingSingle, setEditingSingle] = useState<{
@@ -66,6 +68,9 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
         block: selection.block,
         attachTo: selection.attachTo,
       });
+    }
+    if (selection.replaceGroupId) {
+      return replaceIndividualGroup(selection.replaceGroupId, selection.picks);
     }
     return addIndividualGroup(
       selection.picks.map((pick) => ({
@@ -316,10 +321,23 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                       <button
                         type="button"
                         onClick={() => {
+                          setEditingGroupId(null);
                           setEditingSingle({
                             itemId: row.item.id,
                             block: row.item.block === "dynamic" ? "dynamic" : "balance",
                           });
+                          setPickerOpen(true);
+                        }}
+                        className={iconButton}
+                      >
+                        {t.routine.edit}
+                      </button>
+                    ) : row.kind === "individual-group" ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setEditingSingle(null);
+                          setEditingGroupId(row.groupId);
                           setPickerOpen(true);
                         }}
                         className={iconButton}
@@ -364,6 +382,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
           type="button"
           onClick={() => {
             setEditingSingle(null);
+            setEditingGroupId(null);
             setPickerOpen(true);
           }}
           className="h-11 w-full rounded-full border border-zinc-300 px-4 text-sm font-medium hover:bg-zinc-50 sm:w-auto"
@@ -372,21 +391,24 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
         </button>
         {pickerOpen ? (
           <PickerModal
-            label={editingSingle ? t.routine.editElement : t.routine.addElement}
+            label={editingSingle || editingGroupId ? t.routine.editElement : t.routine.addElement}
             onClose={() => {
               setPickerOpen(false);
               setEditingSingle(null);
+              setEditingGroupId(null);
             }}
           >
             <ElementPickerPanel
-              key={editingSingle?.itemId ?? "add"}
+              key={editingSingle?.itemId ?? editingGroupId ?? "add"}
               variant="popover"
               header={header}
               editItemId={editingSingle?.itemId}
               editBlock={editingSingle?.block}
+              editGroupId={editingGroupId ?? undefined}
               onClose={() => {
                 setPickerOpen(false);
                 setEditingSingle(null);
+                setEditingGroupId(null);
               }}
               onSave={(selection) => {
                 const ok = savePickerSelection(selection);
@@ -394,6 +416,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                   setPickerOpen(false);
                   setLinkNext(false);
                   setEditingSingle(null);
+                  setEditingGroupId(null);
                 }
                 return ok;
               }}

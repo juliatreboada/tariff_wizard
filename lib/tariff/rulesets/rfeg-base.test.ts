@@ -404,6 +404,33 @@ describe("Base individuals from the FIG Table of Difficulty", () => {
     expect(set("ag-120-c", "balance-002")).toBe(false); // the very same element again
   });
 
+  it("replaces a set in place, checking it against the other sets only", () => {
+    startSheet(base("Cadete"));
+    set("balance-002", "tum-4-0");
+    set("ag-118-a", "flex-061");
+    const groupId = store().routine[0].individualGroupId!;
+    // The set's own 002 doesn't block it.
+    expect(
+      store().replaceIndividualGroup(groupId, [
+        { entry: tod("balance-002"), gymnastRole: "top" },
+        { entry: tod("tum-5-0"), gymnastRole: "base", baseIndex: 0 },
+      ]),
+    ).toBe(true);
+    expect(store().routine.slice(0, 2).map((i) => i.element.catalogId)).toEqual([
+      "fig-tod-balance-002",
+      "fig-tod-tum-5-0",
+    ]);
+    expect(store().routine[0].individualGroupId).toBe(groupId);
+    // The other set's 118 A does (same gymnast, same number).
+    expect(
+      store().replaceIndividualGroup(groupId, [
+        { entry: tod("ag-118-c"), gymnastRole: "top" },
+        { entry: tod("tum-5-0"), gymnastRole: "base", baseIndex: 0 },
+      ]),
+    ).toBe(false);
+    expect(store().routine).toHaveLength(4);
+  });
+
   it("lets a gymnast do only one option of a box", () => {
     startSheet(base("Cadete"));
     expect(set("balance-014-a", "balance-014-c")).toBe(true); // different gymnasts

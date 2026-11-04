@@ -102,6 +102,15 @@ export type WizardStore = {
     }>,
     options?: { linkedToPrevious?: boolean },
   ) => boolean;
+  /** Replace an individual set's elements, keeping its place in the routine. */
+  replaceIndividualGroup: (
+    groupId: string,
+    picks: Array<{
+      entry: CatalogEntry;
+      gymnastRole: RoutineGymnastRole;
+      baseIndex?: number;
+    }>,
+  ) => boolean;
   replaceRoutineElement: (
     itemId: string,
     entry: CatalogEntry,
@@ -237,6 +246,25 @@ function saveCurrentSnapshot(state: Pick<
   });
 }
 
+/**
+ * Can this set of individual picks join `routine` (the routine without any
+ * set being replaced)? Set count, element source and values, and an ID
+ * number once per gymnast (118 A and 118 C are both 118).
+ */
+function individualPicksAllowed(
+  state: Pick<WizardStore, "header" | "competition">,
+  routine: RoutineItem[],
+  picks: Array<{ entry: CatalogEntry; gymnastRole: RoutineGymnastRole; baseIndex?: number }>,
+): boolean {
+  const ruleset = activeRuleset(state);
+  if (!ruleset) return true;
+  const header = state.header ?? state.competition;
+  const { totalGroups } = countCompleteIndividualSets(routine, gymnastCountForCategory(header.category));
+  if (!ruleset.individuals.available || totalGroups >= ruleset.individuals.sets) return false;
+  if (picks.some((pick) => individualProblem(ruleset, header, pick.entry))) return false;
+  return !picks.some((pick) => repeatsIndividualNumber(routine, pick, pick.entry));
+}
+
 /** Prefer the committed header: loading a saved sheet does not update `competition`. */
 function activeRuleset(
   state: Pick<WizardStore, "header" | "competition">,
@@ -360,23 +388,7 @@ export const useWizardStore = create<WizardStore>()(
       addIndividualGroup: (picks, options) => {
         if (picks.length === 0) return false;
         const state = get();
-        const ruleset = activeRuleset(state);
-        if (ruleset) {
-          const gymnastCount = gymnastCountForCategory(
-            (state.header ?? state.competition).category,
-          );
-          const { totalGroups } = countCompleteIndividualSets(
-            state.routine,
-            gymnastCount,
-          );
-          if (!ruleset.individuals.available || totalGroups >= ruleset.individuals.sets) {
-            return false;
-          }
-          const header = state.header ?? state.competition;
-          if (picks.some((pick) => individualProblem(ruleset, header, pick.entry))) return false;
-          // An ID number once per gymnast (118 A and 118 C are both 118).
-          if (picks.some((pick) => repeatsIndividualNumber(state.routine, pick, pick.entry))) return false;
-        }
+        if (!individualPicksAllowed(state, state.routine, picks)) return false;
         const groupId = newRoutineItemId();
         const routine = state.routine;
         const newItems: RoutineItem[] = picks.map((pick, idx) => ({
@@ -400,6 +412,37 @@ export const useWizardStore = create<WizardStore>()(
             routine: next,
             valueBreakdown,
           }),
+        });
+        return true;
+      },
+
+      replaceIndividualGroup: (groupId, picks) => {
+        const state = get();
+        const inGroup = (item: RoutineItem) =>
+          item.role === "individual" && individualGroupId(item) === groupId;
+        const at = state.routine.findIndex(inGroup);
+        if (at < 0 || picks.length === 0) return false;
+        // The set's own elements don't count against the new picks.
+        const others = state.routine.filter((item) => !inGroup(item));
+        if (!individualPicksAllowed(state, others, picks)) return false;
+        const linked = state.routine[at].linkedToPrevious;
+        const items: RoutineItem[] = picks.map((pick, idx) => ({
+          id: newRoutineItemId(),
+          block: "combined",
+          role: "individual",
+          linkedToPrevious: idx === 0 ? linked : true,
+          gymnastRole: pick.gymnastRole,
+          baseIndex: pick.baseIndex,
+          individualGroupId: groupId,
+          element: catalogEntryToPlaced(pick.entry),
+        }));
+        // Same place in the routine as the set it replaces.
+        const next = [...others.slice(0, at), ...items, ...others.slice(at)];
+        const valueBreakdown = recalculateValueBreakdown(next);
+        set({
+          routine: next,
+          valueBreakdown,
+          savedSheets: saveCurrentSnapshot({ ...get(), routine: next, valueBreakdown }),
         });
         return true;
       },

@@ -133,6 +133,7 @@ export const es = {
       option: "Opción",
       individualElement: "Elemento individual",
       individualChosen: "Elemento elegido",
+      gymnasts: "Gimnastas",
       elementWithOptions: "Elemento con opciones",
       chooseAddOn: "Elige el elemento de la flecha",
       noAddOn: "Sin añadido",

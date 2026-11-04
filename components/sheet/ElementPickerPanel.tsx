@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
   catalogEntryByAnyId,
+  catalogEntryForElement,
   catalogEntryToPlaced,
   catalogImageUrl,
   filterCatalogEntries,
@@ -17,7 +18,11 @@ import {
 import { getMessages } from "@/lib/i18n";
 import { isCatalogIdUsedInRoutine } from "@/lib/tariff/element-uniqueness";
 import { gymnastCountForCategory } from "@/lib/tariff/level-category";
-import { countCompleteIndividualSets, gymnastKeysForHeader } from "@/lib/tariff/routine-groups";
+import {
+  countCompleteIndividualSets,
+  gymnastKeysForHeader,
+  individualGroupId,
+} from "@/lib/tariff/routine-groups";
 import type { RoutineGymnastRole, RoutineItem } from "@/lib/tariff/routine-types";
 import type { StoredHeader } from "@/lib/tariff/types";
 import {
@@ -65,6 +70,8 @@ export type ElementPickerSelection =
         baseIndex?: number;
         entry: CatalogEntry;
       }>;
+      /** Replace this set (its group id) instead of adding a new one. */
+      replaceGroupId?: string;
     };
 
 type ElementPickerPanelProps = {
@@ -74,6 +81,8 @@ type ElementPickerPanelProps = {
   variant?: "panel" | "popover";
   editItemId?: string;
   editBlock?: "balance" | "dynamic";
+  /** Edit this individual set (its group id) instead of adding one. */
+  editGroupId?: string;
 };
 
 function entriesForFamily(
@@ -322,18 +331,14 @@ function individualTypeLabel(type: ElementType, t: ReturnType<typeof getMessages
   }
 }
 
-function gymnastRowTitle(
-  row: { role: RoutineGymnastRole; baseIndex?: number; name: string },
+/** TOP, BASE (pairs), or BASE 1 / BASE 2… (groups), as on the checklist. */
+function gymnastRoleLabel(
+  row: { role: RoutineGymnastRole; baseIndex?: number },
+  bases: number,
   t: ReturnType<typeof getMessages>,
 ) {
-  const roleLabel =
-    row.role === "top"
-      ? t.routine.topRole
-      : row.baseIndex != null && row.baseIndex > 0
-        ? `${t.routine.baseRole} ${row.baseIndex + 1}`
-        : t.routine.baseRole;
-  const name = row.name || t.home.statusNoData;
-  return `${roleLabel} · ${name}`;
+  if (row.role === "top") return t.routine.topRole;
+  return bases > 1 ? `${t.routine.baseRole} ${(row.baseIndex ?? 0) + 1}` : t.routine.baseRole;
 }
 
 export function ElementPickerPanel({
@@ -343,6 +348,7 @@ export function ElementPickerPanel({
   variant = "panel",
   editItemId,
   editBlock,
+  editGroupId,
 }: ElementPickerPanelProps) {
   const t = getMessages();
   const ruleset = rulesetFor(header);
@@ -350,9 +356,18 @@ export function ElementPickerPanel({
   const routine = useWizardStore((s) => s.routine);
 
   const editMode = editItemId != null && editBlock != null;
+  const editingGroup = editGroupId != null;
   const maxIndividualSets = ruleset?.individuals.sets ?? Infinity;
   const [elementType, setElementType] = useState<PickerElementType>(
-    editBlock ?? "balance",
+    editingGroup ? "individual" : (editBlock ?? "balance"),
+  );
+  /** The routine without the set being edited: what new individual picks are checked against. */
+  const routineForSets = useMemo(
+    () =>
+      editingGroup
+        ? routine.filter((item) => !(item.role === "individual" && individualGroupId(item) === editGroupId))
+        : routine,
+    [routine, editingGroup, editGroupId],
   );
   const [previewEntry, setPreviewEntry] = useState<CatalogEntry | null>(null);
   const [tableKey, setTableKey] = useState<string | null>(null);
@@ -373,11 +388,25 @@ export function ElementPickerPanel({
   const initialIndividualState = useMemo(() => {
     const state: Record<string, GymnastPickState> = {};
     for (const g of gymnastKeys) {
-      state[g.key] = { type: "EQ" };
+      // Editing a set: start from its elements.
+      const item = editingGroup
+        ? routine.find(
+            (i) =>
+              i.role === "individual" &&
+              individualGroupId(i) === editGroupId &&
+              i.gymnastRole === g.role &&
+              (g.role === "top" || (i.baseIndex ?? 0) === g.baseIndex),
+          )
+        : undefined;
+      const found = item ? catalogEntryForElement(item.element) : undefined;
+      // Only if still allowed here (the sheet's age group may have changed since).
+      const entry = found && !individualProblem(ruleset, header, found) ? found : undefined;
+      state[g.key] = { type: found?.type ?? "EQ", entry };
     }
     return state;
-  }, [gymnastKeys]);
+  }, [gymnastKeys, editingGroup, editGroupId, routine, ruleset, header]);
 
+  const [activeGymnastKey, setActiveGymnastKey] = useState<string>();
   const [individualRefused, setIndividualRefused] = useState(false);
   const [addOnFailed, setAddOnFailed] = useState(false);
   const [individualByGymnast, setIndividualByGymnast] =
@@ -442,8 +471,8 @@ export function ElementPickerPanel({
   const dynamicBlockFull = isBlockFull("dynamic", compulsoryDynamicCount, optionalDynamicCount);
   const individualGroupCount = useMemo(() => {
     const gymnastCount = gymnastCountForCategory(header.category);
-    return countCompleteIndividualSets(routineExcludingEditing, gymnastCount).totalGroups;
-  }, [routineExcludingEditing, header.category]);
+    return countCompleteIndividualSets(routineForSets, gymnastCount).totalGroups;
+  }, [routineForSets, header.category]);
 
 
   const currentBlockIsFull =
@@ -513,6 +542,12 @@ export function ElementPickerPanel({
     onClose();
   }
 
+  // The gymnast tab shown: the chosen one, else the first still without an element.
+  const activeGymnast =
+    gymnastRows.find((g) => g.key === activeGymnastKey) ??
+    gymnastRows.find((g) => !individualByGymnast[g.key]?.entry) ??
+    gymnastRows[0];
+
   const allIndividualsPicked = gymnastRows.every(
     (g) => individualByGymnast[g.key]?.entry != null,
   );
@@ -529,13 +564,13 @@ export function ElementPickerPanel({
       baseIndex: g.baseIndex,
       entry: individualByGymnast[g.key]!.entry!,
     }));
-    const ok = onSave({ kind: "individual", picks });
+    const ok = onSave({ kind: "individual", picks, replaceGroupId: editGroupId });
     if (!ok) {
       // Refused for a rule (value, source, a repeated ID number) rather than a repeated element.
       const breaksRule = picks.some(
         (pick) =>
           individualProblem(ruleset, header, pick.entry) != null ||
-          repeatsIndividualNumber(routine, pick, pick.entry),
+          repeatsIndividualNumber(routineForSets, pick, pick.entry),
       );
       setDuplicateError(!breaksRule);
       setIndividualRefused(breaksRule);
@@ -680,7 +715,7 @@ export function ElementPickerPanel({
               key={type}
               type="button"
               onClick={() => {
-                if (editMode && type !== editBlock) return;
+                if ((editMode && type !== editBlock) || (editingGroup && type !== "individual")) return;
                 if ((type === "balance" && balanceBlockFull) || (type === "dynamic" && dynamicBlockFull)) {
                   return;
                 }
@@ -691,6 +726,7 @@ export function ElementPickerPanel({
               }}
               disabled={
                 (editMode && type !== editBlock) ||
+                (editingGroup && type !== "individual") ||
                 (type === "balance" && balanceBlockFull) ||
                 (type === "dynamic" && dynamicBlockFull)
               }
@@ -868,83 +904,102 @@ export function ElementPickerPanel({
                   {t.sheet.picker.individualValueRange(individualRange.min, individualRange.max)}
                 </p>
               ) : null}
-              <div className="flex flex-col gap-3">
+              {/* One tab per gymnast (name and TOP / BASE); the chosen picture shows on the tab. */}
+              <div role="tablist" aria-label={t.sheet.picker.gymnasts} className="flex flex-wrap gap-1.5">
                 {gymnastRows.map((row) => {
-                  const state = individualByGymnast[row.key] ?? { type: "EQ" as const };
-                  const choices = individualEntries(ruleset, header, state.type).filter(
-                    (entry) => !isCatalogIdUsedInRoutine(routine, entry.id),
-                  );
-                  const rowTitle = gymnastRowTitle(row, t);
-
+                  const picked = individualByGymnast[row.key]?.entry;
+                  const active = row.key === activeGymnast?.key;
                   return (
-                    <div
+                    <button
                       key={row.key}
-                      className="min-w-0 rounded-lg border border-zinc-200 p-2.5"
+                      type="button"
+                      role="tab"
+                      aria-selected={active}
+                      onClick={() => setActiveGymnastKey(row.key)}
+                      className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs ${
+                        active
+                          ? "border-zinc-900 bg-zinc-900 text-white"
+                          : "border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50"
+                      }`}
                     >
-                      <p className="mb-2 text-xs font-semibold text-zinc-800">
-                        {rowTitle}
-                        {state.entry ? (
-                          <span className="ml-2 inline-flex items-center gap-1 align-middle font-normal text-emerald-700">
-                            <span aria-hidden="true">✓</span>
-                            <Image
-                              src={catalogImageUrl(state.entry.image, state.entry.code)}
-                              alt={t.sheet.picker.individualChosen}
-                              width={48}
-                              height={32}
-                              className="h-6 w-auto object-contain"
-                            />
-                          </span>
-                        ) : null}
-                      </p>
-                      <label className="mb-2 flex flex-col gap-1 text-xs text-zinc-700">
-                        <span>{t.routine.escolarIndividualFamily}</span>
-                        <select
-                          value={state.type}
-                          onChange={(e) =>
-                            setIndividualByGymnast((prev) => ({
-                              ...prev,
-                              [row.key]: {
-                                type: e.target.value as ElementType,
-                                entry: undefined,
-                              },
-                            }))
-                          }
-                          className="rounded-md border border-zinc-300 bg-white px-2 py-2 text-sm"
-                        >
-                          {INDIVIDUAL_TYPES.map((type) => (
-                            <option key={type} value={type}>
-                              {individualTypeLabel(type, t)}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                      <IndividualChoices
-                        key={`${row.key}-${state.type}`}
-                        entries={choices}
-                        selectedId={state.entry?.id}
-                        onSelect={(entry) => {
-                          setIndividualByGymnast((prev) => ({
-                            ...prev,
-                            [row.key]: { type: state.type, entry },
-                          }));
-                          setDuplicateError(false);
-                          setLimitError(null);
-                        }}
-                        problemFor={(entry) =>
-                          individualProblemText(entry) ??
-                          (repeatsIndividualNumber(
-                            routine,
-                            { gymnastRole: row.role, baseIndex: row.baseIndex },
-                            entry,
-                          )
-                            ? t.sheet.picker.problemSameNumber(sameNumberLabel(entry))
-                            : null)
-                        }
-                      />
-                    </div>
+                      <span className="font-semibold">{gymnastRoleLabel(row, gymnastRows.length - 1, t)}</span>
+                      <span className="max-w-24 truncate">{row.name || t.home.statusNoData}</span>
+                      {picked ? (
+                        <span className="flex items-center gap-0.5 rounded-full bg-white px-1">
+                          <span aria-hidden="true" className="text-emerald-700">✓</span>
+                          <Image
+                            src={catalogImageUrl(picked.image, picked.code)}
+                            alt={t.sheet.picker.individualChosen}
+                            width={40}
+                            height={28}
+                            className="h-5 w-auto object-contain"
+                          />
+                        </span>
+                      ) : null}
+                    </button>
                   );
                 })}
               </div>
+              {activeGymnast
+                ? (() => {
+                    const row = activeGymnast;
+                    const state = individualByGymnast[row.key] ?? { type: "EQ" as const };
+                    const choices = individualEntries(ruleset, header, state.type).filter(
+                      (entry) => entry.id === state.entry?.id || !isCatalogIdUsedInRoutine(routineForSets, entry.id),
+                    );
+                    return (
+                      <div role="tabpanel" className="min-w-0 rounded-lg border border-zinc-200 p-2.5">
+                        <label className="mb-2 flex flex-col gap-1 text-xs text-zinc-700">
+                          <span>{t.routine.escolarIndividualFamily}</span>
+                          <select
+                            value={state.type}
+                            onChange={(e) =>
+                              setIndividualByGymnast((prev) => ({
+                                ...prev,
+                                [row.key]: { type: e.target.value as ElementType, entry: undefined },
+                              }))
+                            }
+                            className="rounded-md border border-zinc-300 bg-white px-2 py-2 text-sm"
+                          >
+                            {INDIVIDUAL_TYPES.map((type) => (
+                              <option key={type} value={type}>
+                                {individualTypeLabel(type, t)}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        <IndividualChoices
+                          key={`${row.key}-${state.type}`}
+                          entries={choices}
+                          selectedId={state.entry?.id}
+                          onSelect={(entry) => {
+                            setIndividualByGymnast((prev) => ({
+                              ...prev,
+                              [row.key]: { type: state.type, entry },
+                            }));
+                            setDuplicateError(false);
+                            setLimitError(null);
+                            // On to the next gymnast still without an element.
+                            const next = gymnastRows.find(
+                              (g) => g.key !== row.key && !individualByGymnast[g.key]?.entry,
+                            );
+                            if (next) setActiveGymnastKey(next.key);
+                          }}
+                          problemFor={(entry) =>
+                            individualProblemText(entry) ??
+                            (repeatsIndividualNumber(
+                              routineForSets,
+                              { gymnastRole: row.role, baseIndex: row.baseIndex },
+                              entry,
+                            )
+                              ? t.sheet.picker.problemSameNumber(sameNumberLabel(entry))
+                              : null)
+                          }
+                        />
+                      </div>
+                    );
+                  })()
+                : null}
               {duplicateError ? (
                 <p className="text-sm text-amber-700">{t.sheet.picker.duplicateElement}</p>
               ) : null}
