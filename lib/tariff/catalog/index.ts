@@ -13,6 +13,7 @@ export {
   groupCatalogEntriesByRow,
   parseRowColumnFromCoordinates,
 } from "./coordinates";
+export { catalogEntryByAnyId, catalogEntryById, catalogEntryForElement } from "./lookup";
 export { catalogEntryToPlaced } from "./to-placed";
 export {
   CATALOG_IDS,

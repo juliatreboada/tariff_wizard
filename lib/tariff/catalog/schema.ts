@@ -37,8 +37,9 @@ export const catalogManifestSchema = z
   .superRefine((manifest, ctx) => {
     const ids = new Set(manifest.entries.map((e) => e.id));
     manifest.entries.forEach((entry, i) => {
+      // Links into other catalogs are checked by scripts/validate-catalog.mjs.
       for (const target of entry.sameAs ?? []) {
-        if (!ids.has(target)) {
+        if (target.startsWith(catalogIdPrefix(manifest.code)) && !ids.has(target)) {
           ctx.addIssue({
             code: "custom",
             path: ["entries", i, "sameAs"],

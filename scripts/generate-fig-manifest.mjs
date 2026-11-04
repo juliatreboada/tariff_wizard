@@ -5,14 +5,16 @@
  * FIG Pre-Youth (11-16) Compulsory Elements Table 2025-2028 (ACRO Youth &
  * Junior Rules, Appendix 3): numbered boxes per row, cut with
  * scripts/cut-box-table.mjs. Level FIG, age Pre-Youth; Women's Group = Tríos,
- * Men's Group = Cuartetos. Men's Group tops (T1–T18) attach to a ROW I or II
- * structure and add their value, like the Base Cuartetos add-ons.
+ * Men's Group = Cuartetos. Men's Group tops (T1–T18) attach to the ROW I / II
+ * structures the coach marked for each and add their value, like the Base
+ * Cuartetos add-ons.
  *
  * Usage: node scripts/generate-fig-manifest.mjs
  */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { applySameElements } from "./same-elements.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicFig = path.join(root, "public/catalog/FIG");
@@ -72,13 +74,6 @@ for (const [team, table] of Object.entries(source.tables)) {
   }
 
   if (table.tops) {
-    const structures = entries
-      .filter(
-        (e) =>
-          e.id.startsWith(`fig-pre-youth-${team}-balance-`) &&
-          table.tops.attachTo.some((row) => e.coordinates.startsWith(`${row} `)),
-      )
-      .map((e) => e.id);
     const tops = Object.entries(table.tops.boxes).sort(
       ([a], [b]) => Number(a.slice(2)) - Number(b.slice(2)),
     );
@@ -86,6 +81,15 @@ for (const [team, table] of Object.entries(source.tables)) {
       const n = key.slice(2);
       const image = `pre-youth/${team}/tops/${key}.png`;
       if (!fs.existsSync(path.join(publicFig, image))) problems.push(`missing picture ${image}`);
+      // The structures the coach marked for this top.
+      if (!cell.attachTo?.length) {
+        problems.push(`${key}: no structures to attach to`);
+        continue;
+      }
+      const structures = cell.attachTo.map((box) => `fig-pre-youth-${team}-balance-${box}`.toLowerCase());
+      for (const id of structures) {
+        if (!entries.some((e) => e.id === id)) problems.push(`${key}: no structure ${id}`);
+      }
       entries.push({
         id: `fig-pre-youth-${team}-balance-top-${n}`,
         code: "FIG",
@@ -100,6 +104,9 @@ for (const [team, table] of Object.entries(source.tables)) {
     }
   }
 }
+
+// Same element in another table (e.g. Base Cadete), reviewed by the coach.
+applySameElements(root, "FIG", entries, problems);
 
 if (problems.length) {
   console.error(problems.join("\n"));

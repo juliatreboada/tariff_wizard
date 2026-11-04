@@ -15,6 +15,11 @@ export function catalogEntryById(catalog: unknown, id: string): CatalogEntry | u
   return entries.get(id);
 }
 
+/** An entry by id alone: ids start with their catalog's code ("fig-…" → FIG). */
+export function catalogEntryByAnyId(id: string): CatalogEntry | undefined {
+  return catalogEntryById(id.split("-")[0].toUpperCase(), id);
+}
+
 /** The catalog entry a placed element came from, if it still exists. */
 export function catalogEntryForElement(element: PlacedElement): CatalogEntry | undefined {
   return catalogEntryById(element.catalog, element.catalogId);

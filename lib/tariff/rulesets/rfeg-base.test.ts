@@ -225,6 +225,33 @@ describe("Cadete optionals from the Age Group 11-16 tables", () => {
     expect(figAdd("trios-dynamic-row-i-3")).toBe(true);
   });
 
+  it("refuses an 11-16 optional from a row holding a compulsory's same element", () => {
+    // Base Cadete Parejas ROW I B is 11-16 Pareja Femenina ROW I Box 4 / Box 5.
+    expect(add("cadete-pairs-balance-row-i-b")).toBe(true);
+    expect(figAdd("pf-balance-row-i-2")).toBe(false);
+    expect(figAdd("pm-balance-row-i-2")).toBe(true); // a different pair table
+  });
+
+  it("refuses the Base compulsory when the 11-16 optional came first", () => {
+    expect(figAdd("pf-balance-row-i-2")).toBe(true);
+    expect(add("cadete-pairs-balance-row-i-b")).toBe(false);
+    expect(add("cadete-pairs-balance-row-ii-b")).toBe(true);
+  });
+
+  it("still takes the top once the compulsory and the optional structure fill the block", () => {
+    startSheet(base("Cadete", "Cuartetos"));
+    expect(add("cadete-cuartetos-balance-row-ii-a")).toBe(true);
+    expect(figAdd("cuartetos-balance-row-ii-2")).toBe(true);
+    expect(figAdd("cuartetos-balance-top-15")).toBe(true);
+    expect(store().routine.find((i) => i.addOn)?.addOn?.coordinates).toBe("T15");
+  });
+
+  it("puts a top only on the structures it belongs to", () => {
+    startSheet(base("Cadete", "Cuartetos"));
+    expect(figAdd("cuartetos-balance-row-ii-2")).toBe(true);
+    expect(figAdd("cuartetos-balance-top-13")).toBe(false); // ROW I Box 1 only
+  });
+
   it("puts a Men's Group top on the optional structure and adds its value", () => {
     startSheet(base("Cadete", "Cuartetos"));
     expect(figAdd("cuartetos-balance-top-15")).toBe(false); // no structure yet

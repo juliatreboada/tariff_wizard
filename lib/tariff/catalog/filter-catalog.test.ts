@@ -63,10 +63,26 @@ describe("FIG catalog (Pre-Youth 11-16)", () => {
     expect(count("Cuartetos", "balance")).toBe(29); // 11 structures + 18 tops
   });
 
-  it("lets every Men's Group top attach to the ROW I and II structures", () => {
-    const top = fig.find((e) => e.id === "fig-pre-youth-cuartetos-balance-top-1")!;
-    expect(top.attachesTo).toHaveLength(11);
-    expect(top.attachesTo).toContain("fig-pre-youth-cuartetos-balance-row-ii-3b");
+  it("attaches each Men's Group top only to the structures the coach marked", () => {
+    const attach = (n: number) =>
+      fig
+        .find((e) => e.id === `fig-pre-youth-cuartetos-balance-top-${n}`)!
+        .attachesTo!.map((id) => id.replace("fig-pre-youth-cuartetos-balance-", ""));
+    expect(attach(13)).toEqual(["row-i-1"]);
+    expect(attach(18)).toEqual(["row-ii-3", "row-ii-3b"]);
+    expect(attach(1)).toHaveLength(7);
+  });
+
+  it("links Base Cadete cells to the same 11-16 element, both ways", () => {
+    const rfegCell = getCatalogEntries("RFEG").find(
+      (e) => e.id === "rfeg-base-cadete-pairs-balance-row-i-b",
+    )!;
+    expect(rfegCell.sameAs?.filter((id) => id.startsWith("fig-"))).toEqual([
+      "fig-pre-youth-pf-balance-row-i-4",
+      "fig-pre-youth-pf-balance-row-i-5",
+    ]);
+    const figCell = fig.find((e) => e.id === "fig-pre-youth-pf-balance-row-i-5")!;
+    expect(figCell.sameAs).toContain("rfeg-base-cadete-pairs-balance-row-i-b");
   });
 
   it("is only offered at its own level", () => {

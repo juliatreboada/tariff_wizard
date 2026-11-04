@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
+  catalogEntryByAnyId,
   catalogImageUrl,
   filterCatalogEntries,
   getCatalogEntries,
@@ -26,6 +27,7 @@ import {
   pyramidForAddOn,
   roleForEntry,
   rulesetFor,
+  type Ruleset,
 } from "@/lib/tariff/rulesets";
 import { useWizardStore } from "@/lib/tariff/store";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
@@ -161,6 +163,15 @@ function ElementPickerPreview({
       </div>
     </div>
   );
+}
+
+/** Add-ons of the sheet's own catalog and of its optional tables' catalogs. */
+function addOnEntriesFor(ruleset: Ruleset, header: StoredHeader): CatalogEntry[] {
+  const catalogs = new Set([
+    ruleset.catalogId,
+    ...optionalCategoryTables(ruleset, header).map((table) => table.catalogId),
+  ]);
+  return [...catalogs].flatMap((id) => getCatalogEntries(id).filter((e) => e.attachesTo));
 }
 
 function CatalogRowGrid({
@@ -399,9 +410,10 @@ export function ElementPickerPanel({
     if (ruleset.roleAssignment === "higher-value-compulsory") {
       return compulsory + optional >= slots.compulsory + slots.optional;
     }
-    // By-table blocks stay open while an add-on (Cuartetos ROW III) can still attach.
-    const addOnOpen = entriesForFamily(allEntries, header, block).some(
-      (entry) => entry.attachesTo && pyramidForAddOn(routineExcludingEditing, entry),
+    // By-table blocks stay open while an add-on (Cuartetos ROW III, an 11-16 top)
+    // can still attach to a pyramid in the routine, from any table the sheet uses.
+    const addOnOpen = addOnEntriesFor(ruleset, header).some(
+      (entry) => entry.elementFamily === block && pyramidForAddOn(routineExcludingEditing, entry),
     );
     return (
       !addOnOpen &&
@@ -517,7 +529,7 @@ export function ElementPickerPanel({
 
   const coordinatesOf = (ids: readonly string[]) =>
     ids
-      .map((id) => allEntries.find((e) => e.id === id)?.coordinates ?? id)
+      .map((id) => catalogEntryByAnyId(id)?.coordinates ?? id)
       .join(" / ");
 
   function problemFor(entry: CatalogEntry): string | null {

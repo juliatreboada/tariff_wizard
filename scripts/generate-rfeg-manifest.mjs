@@ -10,13 +10,14 @@
  * Column values: A=0, B=0.1, C=0.2, D=0.3. Every balance element holds 3".
  *
  * Cells that are the same element across tables come from
- * catalog/RFEG/same-elements.json and become `sameAs` on both entries.
+ * catalog/same-elements.json and become `sameAs` (scripts/same-elements.mjs).
  *
  * Usage: node scripts/generate-rfeg-manifest.mjs
  */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { applySameElements } from "./same-elements.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicRfeg = path.join(root, "public/catalog/RFEG");
@@ -280,20 +281,7 @@ for (const section of SECTIONS) {
 }
 
 // Same element in another table (reviewed by the coach): links both ways.
-const sameElements = JSON.parse(
-  fs.readFileSync(path.join(root, "catalog/RFEG/same-elements.json"), "utf8"),
-);
-const byId = new Map(entries.map((e) => [e.id, e]));
-for (const [a, b] of sameElements.pairs) {
-  if (!byId.has(a) || !byId.has(b)) {
-    problems.push(`same-elements: unknown entry in ${a} / ${b}`);
-    continue;
-  }
-  for (const [from, to] of [[a, b], [b, a]]) {
-    const entry = byId.get(from);
-    entry.sameAs = [...new Set([...(entry.sameAs ?? []), to])].sort();
-  }
-}
+applySameElements(root, "RFEG", entries, problems);
 
 if (problems.length) {
   console.error(problems.join("\n"));

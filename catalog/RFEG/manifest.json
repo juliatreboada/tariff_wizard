@@ -4507,6 +4507,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
+        "fig-pre-youth-pf-balance-row-i-4",
+        "fig-pre-youth-pf-balance-row-i-5",
         "rfeg-base-infantil-pairs-balance-row-i-c",
         "rfeg-base-infantil-pairs-balance-row-i-d"
       ]
@@ -4533,7 +4535,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-pf-balance-row-i-1"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-balance-row-i-d",
@@ -4557,7 +4562,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-pf-balance-row-i-2"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-balance-row-ii-a",
@@ -4583,6 +4591,9 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
+        "fig-pre-youth-pf-balance-row-ii-1",
+        "fig-pre-youth-pf-balance-row-ii-2",
+        "fig-pre-youth-pm-balance-row-i-1",
         "rfeg-base-alevin-pairs-balance-row-ii-d",
         "rfeg-base-infantil-pairs-balance-row-ii-b"
       ]
@@ -4611,6 +4622,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
+        "fig-pre-youth-pf-balance-row-ii-3",
+        "fig-pre-youth-pm-balance-row-i-3",
         "rfeg-base-infantil-pairs-balance-row-ii-d"
       ]
     },
@@ -4660,7 +4673,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-pf-balance-row-ii-4"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-balance-row-iii-a",
@@ -4735,7 +4751,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-pf-balance-row-iii-1"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-balance-row-iii-d",
@@ -4759,7 +4778,13 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-pf-balance-row-iii-3",
+        "fig-pre-youth-pm-balance-row-iii-1",
+        "fig-pre-youth-pmx-balance-row-ii-1",
+        "fig-pre-youth-pmx-balance-row-iii-1"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-balance-row-iv-a",
@@ -4855,7 +4880,12 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-pf-balance-row-iv-1",
+        "fig-pre-youth-pmx-balance-row-iv-1",
+        "fig-pre-youth-pmx-balance-row-iv-2"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-balance-row-v-a",
@@ -4908,6 +4938,7 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
+        "fig-pre-youth-pm-balance-row-ii-2",
         "rfeg-base-infantil-pairs-balance-row-v-d"
       ]
     },
@@ -4933,7 +4964,11 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-pf-balance-row-i-3",
+        "fig-pre-youth-pmx-balance-row-i-1"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-balance-row-v-d",
@@ -4957,7 +4992,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-pm-balance-row-ii-3"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-dynamic-row-i-a",
@@ -4982,6 +5020,7 @@
       },
       "rotation": "0/4",
       "sameAs": [
+        "fig-pre-youth-pf-dynamic-row-i-1",
         "rfeg-base-alevin-pairs-dynamic-row-i-d",
         "rfeg-base-infantil-pairs-dynamic-row-i-c"
       ]
@@ -5056,7 +5095,12 @@
           "Cadete"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "fig-pre-youth-pf-dynamic-row-i-2",
+        "fig-pre-youth-pm-dynamic-row-i-1",
+        "fig-pre-youth-pmx-dynamic-row-i-1"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-dynamic-row-ii-a",
@@ -5159,7 +5203,10 @@
           "Cadete"
         ]
       },
-      "rotation": "1/4 BACK"
+      "rotation": "1/4 BACK",
+      "sameAs": [
+        "fig-pre-youth-pf-dynamic-row-ii-1"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-dynamic-row-iii-a",
@@ -5262,7 +5309,12 @@
           "Cadete"
         ]
       },
-      "rotation": "4/4 BACK"
+      "rotation": "4/4 BACK",
+      "sameAs": [
+        "fig-pre-youth-pf-dynamic-row-iv-2",
+        "fig-pre-youth-pm-dynamic-row-ii-3",
+        "fig-pre-youth-pmx-dynamic-row-iii-1"
+      ]
     },
     {
       "id": "rfeg-base-cadete-pairs-dynamic-row-iv-a",
@@ -5390,6 +5442,7 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
+        "fig-pre-youth-trios-balance-row-i-2",
         "rfeg-base-infantil-trios-balance-row-i-b"
       ]
     },
@@ -5445,6 +5498,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
+        "fig-pre-youth-trios-balance-row-i-1",
+        "fig-pre-youth-trios-balance-row-i-3",
         "rfeg-base-infantil-trios-balance-row-i-d"
       ]
     },
@@ -5470,7 +5525,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-trios-balance-row-i-4"
+      ]
     },
     {
       "id": "rfeg-base-cadete-trios-balance-row-ii-a",
@@ -5496,6 +5554,7 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
+        "fig-pre-youth-trios-balance-row-ii-1",
         "rfeg-base-alevin-trios-balance-row-ii-d",
         "rfeg-base-infantil-trios-balance-row-ii-b"
       ]
@@ -5576,7 +5635,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-trios-balance-row-ii-2"
+      ]
     },
     {
       "id": "rfeg-base-cadete-trios-balance-row-iii-a",
@@ -5682,7 +5744,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-trios-balance-row-iii-2"
+      ]
     },
     {
       "id": "rfeg-base-cadete-trios-dynamic-row-i-a",
@@ -5761,6 +5826,7 @@
       },
       "rotation": "0/4 - 360º",
       "sameAs": [
+        "fig-pre-youth-trios-dynamic-row-i-4-360",
         "rfeg-base-infantil-trios-dynamic-row-i-d"
       ]
     },
@@ -5785,7 +5851,10 @@
           "Cadete"
         ]
       },
-      "rotation": "0/4 - 540º/720º"
+      "rotation": "0/4 - 540º/720º",
+      "sameAs": [
+        "fig-pre-youth-trios-dynamic-row-i-4-540"
+      ]
     },
     {
       "id": "rfeg-base-cadete-trios-dynamic-row-ii-a",
@@ -5837,6 +5906,7 @@
       },
       "rotation": "1/4 FRONT",
       "sameAs": [
+        "fig-pre-youth-trios-dynamic-row-ii-1",
         "rfeg-base-alevin-trios-dynamic-row-ii-d",
         "rfeg-base-infantil-trios-dynamic-row-ii-c"
       ]
@@ -5864,6 +5934,7 @@
       },
       "rotation": "3/4 FRONT",
       "sameAs": [
+        "fig-pre-youth-trios-dynamic-row-ii-2",
         "rfeg-base-infantil-trios-dynamic-row-ii-d"
       ]
     },
@@ -5888,7 +5959,10 @@
           "Cadete"
         ]
       },
-      "rotation": "4/4 FRONT"
+      "rotation": "4/4 FRONT",
+      "sameAs": [
+        "fig-pre-youth-trios-dynamic-row-ii-4"
+      ]
     },
     {
       "id": "rfeg-base-cadete-trios-dynamic-row-iii-a",
@@ -5966,6 +6040,7 @@
       },
       "rotation": "1/4 BACK",
       "sameAs": [
+        "fig-pre-youth-trios-dynamic-row-iii-1",
         "rfeg-base-infantil-trios-dynamic-row-iii-d"
       ]
     },
@@ -5990,7 +6065,10 @@
           "Cadete"
         ]
       },
-      "rotation": "4/4 BACK"
+      "rotation": "4/4 BACK",
+      "sameAs": [
+        "fig-pre-youth-trios-dynamic-row-iii-3"
+      ]
     },
     {
       "id": "rfeg-base-cadete-trios-dynamic-row-iv-b",
@@ -6042,6 +6120,7 @@
       },
       "rotation": "0/4",
       "sameAs": [
+        "fig-pre-youth-trios-dynamic-row-iv-1",
         "rfeg-base-infantil-trios-dynamic-row-iv-d"
       ]
     },
@@ -6066,7 +6145,10 @@
           "Cadete"
         ]
       },
-      "rotation": "3/4 BACK"
+      "rotation": "3/4 BACK",
+      "sameAs": [
+        "fig-pre-youth-trios-dynamic-row-iv-2"
+      ]
     },
     {
       "id": "rfeg-base-cadete-cuartetos-balance-row-i-a",
@@ -6148,6 +6230,7 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
+        "fig-pre-youth-cuartetos-balance-row-i-1",
         "rfeg-base-infantil-cuartetos-balance-row-i-d"
       ]
     },
@@ -6173,7 +6256,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-cuartetos-balance-row-i-5"
+      ]
     },
     {
       "id": "rfeg-base-cadete-cuartetos-balance-row-ii-a",
@@ -6280,7 +6366,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "fig-pre-youth-cuartetos-balance-row-ii-2"
+      ]
     },
     {
       "id": "rfeg-base-cadete-cuartetos-balance-row-iii-a",
@@ -6576,6 +6665,7 @@
       },
       "rotation": "0/4 BACK",
       "sameAs": [
+        "fig-pre-youth-cuartetos-dynamic-row-ii-2",
         "rfeg-base-infantil-cuartetos-dynamic-row-ii-d"
       ]
     },
@@ -6600,7 +6690,10 @@
           "Cadete"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "fig-pre-youth-cuartetos-dynamic-row-ii-1"
+      ]
     },
     {
       "id": "rfeg-base-cadete-cuartetos-dynamic-row-iii-b",
@@ -6755,6 +6848,7 @@
       },
       "rotation": "0/4 - 360º",
       "sameAs": [
+        "fig-pre-youth-cuartetos-dynamic-row-iv-1",
         "rfeg-base-infantil-cuartetos-dynamic-row-iv-d"
       ]
     },
@@ -6779,7 +6873,10 @@
           "Cadete"
         ]
       },
-      "rotation": "3/4 BACK"
+      "rotation": "3/4 BACK",
+      "sameAs": [
+        "fig-pre-youth-cuartetos-dynamic-row-iv-3"
+      ]
     },
     {
       "id": "rfeg-espana-alevin-pf-balance-row-i-a",

@@ -1,4 +1,4 @@
-import { catalogEntryById, catalogEntryForElement } from "../catalog/lookup";
+import { catalogEntryByAnyId, catalogEntryForElement } from "../catalog/lookup";
 import type { CatalogEntry } from "../catalog/types";
 import type { RoutineItem } from "../routine-types";
 import { blockSlots, roleForEntry, rowOf, tableKeyOf } from "./slots";
@@ -134,7 +134,7 @@ function holdsSameElementInRow(compulsory: CatalogEntry, optional: CatalogEntry)
   const row = rowOf(optional.coordinates);
   return (compulsory.sameAs ?? []).some((id) => {
     if (tableKeyOf(id) !== tableKeyOf(optional.id)) return false;
-    const same = catalogEntryById(compulsory.code, id);
+    const same = catalogEntryByAnyId(id); // may be in another catalog
     return same != null && row !== null && rowOf(same.coordinates) === row;
   });
 }

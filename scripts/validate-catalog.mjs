@@ -4,6 +4,9 @@ import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 
+/** Every catalog's entries by id, for links across catalogs (`sameAs`). */
+const allEntries = new Map();
+
 /** @param {string} catalogId e.g. FGX */
 function validateCatalog(catalogId) {
   const manifestPath = path.join(root, "catalog", catalogId, "manifest.json");
@@ -48,7 +51,9 @@ function validateCatalog(catalogId) {
 
   for (const entry of manifest.entries ?? []) {
     for (const target of entry.sameAs ?? []) {
-      if (!ids.has(target)) errors.push(`${entry.id}: same as unknown entry ${target}`);
+      const other = allEntries.get(target);
+      if (!other) errors.push(`${entry.id}: same as unknown entry ${target}`);
+      else if (!other.sameAs?.includes(entry.id)) errors.push(`${entry.id}: ${target} doesn't link back`);
     }
     for (const target of entry.attachesTo ?? []) {
       if (!ids.has(target)) errors.push(`${entry.id}: attaches to unknown entry ${target}`);
@@ -65,7 +70,24 @@ const catalogs = fs.existsSync(path.join(root, "catalog"))
       .map((d) => d.name)
   : [];
 
+for (const id of catalogs) {
+  const file = path.join(root, "catalog", id, "manifest.json");
+  if (!fs.existsSync(file)) continue;
+  for (const entry of JSON.parse(fs.readFileSync(file, "utf8")).entries ?? []) allEntries.set(entry.id, entry);
+}
+
 const allErrors = [];
+// Every reviewed pair must name real entries, and both must carry the link.
+const pairsFile = path.join(root, "catalog/same-elements.json");
+if (fs.existsSync(pairsFile)) {
+  for (const [a, b] of JSON.parse(fs.readFileSync(pairsFile, "utf8")).pairs) {
+    for (const [from, to] of [[a, b], [b, a]]) {
+      const entry = allEntries.get(from);
+      if (!entry) allErrors.push(`same-elements.json: unknown entry ${from}`);
+      else if (!entry.sameAs?.includes(to)) allErrors.push(`same-elements.json: ${from} is missing its link to ${to} (run the generators)`);
+    }
+  }
+}
 for (const id of catalogs) {
   allErrors.push(...validateCatalog(id));
 }

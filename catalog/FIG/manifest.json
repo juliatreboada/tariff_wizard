@@ -25,7 +25,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-i-c"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-i-2",
@@ -49,7 +52,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-i-3",
@@ -73,7 +79,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-v-c"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-i-4",
@@ -97,7 +106,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-i-b"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-i-5",
@@ -121,7 +133,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-i-b"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-i-6",
@@ -169,7 +184,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-ii-a"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-ii-2",
@@ -193,7 +211,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-ii-a"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-ii-3",
@@ -217,7 +238,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-ii-b"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-ii-4",
@@ -241,7 +265,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-ii-5",
@@ -288,7 +315,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-iii-c"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-iii-2",
@@ -336,7 +366,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-iii-4",
@@ -456,7 +489,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-iv-2",
@@ -575,7 +611,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-dynamic-row-i-a"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-dynamic-row-i-2",
@@ -598,7 +637,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-dynamic-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-dynamic-row-i-3",
@@ -644,7 +686,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "1/4 BACK"
+      "rotation": "1/4 BACK",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-dynamic-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-dynamic-row-ii-2",
@@ -851,7 +896,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "4/4 BACK"
+      "rotation": "4/4 BACK",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-dynamic-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-dynamic-row-iv-3",
@@ -898,7 +946,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-ii-a"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-i-2",
@@ -946,7 +997,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-ii-b"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-i-4",
@@ -1018,7 +1072,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-v-b"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-ii-3",
@@ -1042,7 +1099,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-v-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-ii-4",
@@ -1162,7 +1222,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-iii-2",
@@ -1401,7 +1464,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-dynamic-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-dynamic-row-i-2",
@@ -1562,7 +1628,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "4/4 BACK"
+      "rotation": "4/4 BACK",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-dynamic-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-dynamic-row-ii-4",
@@ -1793,7 +1862,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-v-c"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-balance-row-i-2",
@@ -1985,7 +2057,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-balance-row-ii-2",
@@ -2105,7 +2180,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-balance-row-iii-2",
@@ -2200,7 +2278,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-balance-row-iv-2",
@@ -2224,7 +2305,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-balance-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-balance-row-iv-3",
@@ -2319,7 +2403,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-dynamic-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-dynamic-row-i-2",
@@ -2526,7 +2613,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "4/4 BACK"
+      "rotation": "4/4 BACK",
+      "sameAs": [
+        "rfeg-base-cadete-pairs-dynamic-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-dynamic-row-iii-2",
@@ -2711,7 +2801,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-trios-balance-row-i-c"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-balance-row-i-2",
@@ -2735,7 +2828,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-trios-balance-row-i-a"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-balance-row-i-3",
@@ -2759,7 +2855,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-trios-balance-row-i-c"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-balance-row-i-4",
@@ -2783,7 +2882,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-trios-balance-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-balance-row-i-5",
@@ -2855,7 +2957,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-trios-balance-row-ii-a"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-balance-row-ii-2",
@@ -2879,7 +2984,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-trios-balance-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-balance-row-ii-3",
@@ -2999,7 +3107,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-trios-balance-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-balance-row-iii-3",
@@ -3139,7 +3250,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4 - 360º"
+      "rotation": "0/4 - 360º",
+      "sameAs": [
+        "rfeg-base-cadete-trios-dynamic-row-i-c"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-dynamic-row-i-4-540",
@@ -3162,7 +3276,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4 - 540º / 720º"
+      "rotation": "0/4 - 540º / 720º",
+      "sameAs": [
+        "rfeg-base-cadete-trios-dynamic-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-dynamic-row-i-5",
@@ -3208,7 +3325,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "1/4 FRONT"
+      "rotation": "1/4 FRONT",
+      "sameAs": [
+        "rfeg-base-cadete-trios-dynamic-row-ii-b"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-dynamic-row-ii-2",
@@ -3231,7 +3351,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "3/4 FRONT"
+      "rotation": "3/4 FRONT",
+      "sameAs": [
+        "rfeg-base-cadete-trios-dynamic-row-ii-c"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-dynamic-row-ii-3",
@@ -3277,7 +3400,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "4/4 FRONT"
+      "rotation": "4/4 FRONT",
+      "sameAs": [
+        "rfeg-base-cadete-trios-dynamic-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-dynamic-row-iii-1",
@@ -3300,7 +3426,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "1/4 BACK"
+      "rotation": "1/4 BACK",
+      "sameAs": [
+        "rfeg-base-cadete-trios-dynamic-row-iii-c"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-dynamic-row-iii-2",
@@ -3346,7 +3475,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "4/4 BACK"
+      "rotation": "4/4 BACK",
+      "sameAs": [
+        "rfeg-base-cadete-trios-dynamic-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-dynamic-row-iii-4",
@@ -3392,7 +3524,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "rfeg-base-cadete-trios-dynamic-row-iv-c"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-dynamic-row-iv-2",
@@ -3415,7 +3550,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "3/4 BACK"
+      "rotation": "3/4 BACK",
+      "sameAs": [
+        "rfeg-base-cadete-trios-dynamic-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-dynamic-row-iv-3",
@@ -3508,7 +3646,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-cuartetos-balance-row-i-c"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-balance-row-i-2",
@@ -3604,7 +3745,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-cuartetos-balance-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-balance-row-ii-1",
@@ -3652,7 +3796,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-base-cadete-cuartetos-balance-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-balance-row-ii-3",
@@ -3886,7 +4033,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "rfeg-base-cadete-cuartetos-dynamic-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-dynamic-row-ii-2",
@@ -3909,7 +4059,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "rfeg-base-cadete-cuartetos-dynamic-row-ii-c"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-dynamic-row-ii-3",
@@ -4070,7 +4223,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "3/4 FRONT OR BACK - 360º / 720º"
+      "rotation": "3/4 FRONT OR BACK - 360º / 720º",
+      "sameAs": [
+        "rfeg-base-cadete-cuartetos-dynamic-row-iv-c"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-dynamic-row-iv-2",
@@ -4116,7 +4272,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "5/4 OR 3/4 BACK"
+      "rotation": "5/4 OR 3/4 BACK",
+      "sameAs": [
+        "rfeg-base-cadete-cuartetos-dynamic-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-balance-top-1",
@@ -4146,11 +4305,7 @@
         "fig-pre-youth-cuartetos-balance-row-i-3",
         "fig-pre-youth-cuartetos-balance-row-i-4",
         "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
         "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
         "fig-pre-youth-cuartetos-balance-row-ii-5"
       ]
     },
@@ -4182,11 +4337,7 @@
         "fig-pre-youth-cuartetos-balance-row-i-3",
         "fig-pre-youth-cuartetos-balance-row-i-4",
         "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
         "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
         "fig-pre-youth-cuartetos-balance-row-ii-5"
       ]
     },
@@ -4213,17 +4364,8 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
         "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-ii-4"
       ]
     },
     {
@@ -4249,17 +4391,8 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
         "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-ii-4"
       ]
     },
     {
@@ -4285,17 +4418,8 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
         "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-ii-4"
       ]
     },
     {
@@ -4321,17 +4445,7 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-i-1"
       ]
     },
     {
@@ -4357,17 +4471,9 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
         "fig-pre-youth-cuartetos-balance-row-i-2",
         "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-i-4"
       ]
     },
     {
@@ -4393,17 +4499,7 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-i-5"
       ]
     },
     {
@@ -4429,17 +4525,9 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
         "fig-pre-youth-cuartetos-balance-row-i-2",
         "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-i-4"
       ]
     },
     {
@@ -4465,17 +4553,8 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
         "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-ii-3b"
       ]
     },
     {
@@ -4501,17 +4580,8 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
         "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-ii-4"
       ]
     },
     {
@@ -4537,17 +4607,8 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
         "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-ii-3b"
       ]
     },
     {
@@ -4573,17 +4634,7 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-i-1"
       ]
     },
     {
@@ -4609,17 +4660,8 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
         "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-ii-4"
       ]
     },
     {
@@ -4645,16 +4687,7 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
         "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
         "fig-pre-youth-cuartetos-balance-row-ii-5"
       ]
     },
@@ -4681,16 +4714,7 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
         "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
         "fig-pre-youth-cuartetos-balance-row-ii-5"
       ]
     },
@@ -4717,16 +4741,7 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
         "fig-pre-youth-cuartetos-balance-row-ii-2",
-        "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
         "fig-pre-youth-cuartetos-balance-row-ii-5"
       ]
     },
@@ -4753,17 +4768,8 @@
         ]
       },
       "attachesTo": [
-        "fig-pre-youth-cuartetos-balance-row-i-1",
-        "fig-pre-youth-cuartetos-balance-row-i-2",
-        "fig-pre-youth-cuartetos-balance-row-i-3",
-        "fig-pre-youth-cuartetos-balance-row-i-4",
-        "fig-pre-youth-cuartetos-balance-row-i-5",
-        "fig-pre-youth-cuartetos-balance-row-ii-1",
-        "fig-pre-youth-cuartetos-balance-row-ii-2",
         "fig-pre-youth-cuartetos-balance-row-ii-3",
-        "fig-pre-youth-cuartetos-balance-row-ii-3b",
-        "fig-pre-youth-cuartetos-balance-row-ii-4",
-        "fig-pre-youth-cuartetos-balance-row-ii-5"
+        "fig-pre-youth-cuartetos-balance-row-ii-3b"
       ]
     }
   ]
