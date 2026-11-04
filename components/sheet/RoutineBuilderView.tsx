@@ -7,6 +7,7 @@ import {
   ElementPickerPanel,
   type ElementPickerSelection,
 } from "@/components/sheet/ElementPickerPanel";
+import { PickerModal } from "@/components/sheet/PickerModal";
 import { catalogImageUrl } from "@/lib/tariff/catalog";
 import { getMessages } from "@/lib/i18n";
 import {
@@ -177,7 +178,9 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
           {t.routine.empty}
         </p>
       ) : (
-        <ol className="flex flex-col gap-3">
+        <>
+        <p className="text-xs text-zinc-500">{t.routine.linkedHint}</p>
+        <ol className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
           {displayRows.map((row) => {
             const controlId =
               row.kind === "single" ? row.item.id : row.items[0]?.id ?? row.groupId;
@@ -185,123 +188,129 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
               row.kind === "single"
                 ? row.item.linkedToPrevious
                 : row.items[0]?.linkedToPrevious ?? false;
+            const iconButton =
+              "flex h-8 min-w-8 items-center justify-center rounded border border-zinc-300 px-1.5 text-[13px] hover:bg-zinc-50 disabled:opacity-40";
 
             return (
               <li
                 key={row.kind === "single" ? row.item.id : row.groupId}
-                className="rounded-xl border border-zinc-200 bg-white p-3.5 sm:p-4"
+                className={`flex min-w-0 flex-col rounded-xl border bg-white p-2.5 ${
+                  linked ? "border-zinc-400" : "border-zinc-200"
+                }`}
               >
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-sm font-semibold tabular-nums">
+                <div className="flex items-center gap-1.5">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-xs font-semibold tabular-nums">
                     {row.index + 1}
                   </span>
-                  {row.kind === "single" ? (
-                    <>
+                  <span className="truncate text-[11px] text-zinc-600">
+                    {row.kind === "single"
+                      ? `${blockLabel(row.item.block, t)}${row.item.role ? ` · ${routineRoleLabel(row.item.role, t.routine)}` : ""}`
+                      : t.routine.escolarIndividual}
+                  </span>
+                  {linked ? (
+                    <span className="ml-auto text-[11px] text-zinc-500" title={t.routine.linked}>
+                      <span aria-hidden="true">🔗</span>
+                      <span className="sr-only">{t.routine.linked}</span>
+                    </span>
+                  ) : null}
+                </div>
+
+                {row.kind === "single" ? (
+                  <div className="mt-2 flex min-w-0 flex-1 flex-col items-center">
+                    <div className="flex w-full items-end justify-center gap-1">
                       <Image
                         src={catalogImageUrl(row.item.element.image, row.item.element.catalog)}
                         alt={row.item.element.coordinates}
-                        width={96}
-                        height={72}
-                        className="h-[4.5rem] w-24 shrink-0 rounded border border-zinc-100 bg-zinc-50 object-contain sm:h-20 sm:w-28"
+                        width={120}
+                        height={84}
+                        className="h-20 w-full min-w-0 object-contain"
                       />
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate font-mono text-[15px] font-semibold leading-5 text-zinc-900 sm:text-sm">
-                          {row.item.element.coordinates}
-                          {row.item.addOn ? ` + ${row.item.addOn.coordinates}` : ""}
-                        </p>
-                        <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[12px] text-zinc-700">
-                          <span className="rounded bg-zinc-100 px-1.5 py-0.5 font-medium">
-                            {formatSheetValue(
-                              row.item.element.value + (row.item.addOn?.value ?? 0),
-                            )}
-                          </span>
-                          <span className="rounded bg-zinc-100 px-1.5 py-0.5">
-                            {blockLabel(row.item.block, t)}
-                            {row.item.role
-                              ? ` · ${routineRoleLabel(row.item.role, t.routine)}`
-                              : ""}
-                          </span>
-                        </div>
-                        {row.item.addOn ? (
-                          <div className="mt-2 flex items-center gap-2">
-                            <Image
-                              src={catalogImageUrl(row.item.addOn.image, row.item.addOn.catalog)}
-                              alt={row.item.addOn.coordinates}
-                              width={56}
-                              height={42}
-                              className="h-10 w-14 rounded border border-zinc-100 bg-zinc-50 object-contain"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => removeAddOn(row.item.id)}
-                              className="rounded-md px-2 py-1 text-xs text-zinc-600 hover:bg-zinc-100"
-                            >
-                              {t.routine.removeAddOn(row.item.addOn.coordinates)}
-                            </button>
-                          </div>
-                        ) : null}
-                      </div>
-                    </>
-                  ) : (
-                    <div className="min-w-0 flex-1">
-                      <p className="text-[15px] font-semibold text-zinc-900 sm:text-sm">
-                        {t.routine.escolarIndividual} ({row.items.length}{" "}
-                        {t.routine.escolarGymnastsInSet})
-                      </p>
-                      <div
-                        className="mt-2 grid w-full min-w-0 gap-1 sm:gap-1.5"
-                        style={{
-                          gridTemplateColumns: `repeat(${row.items.length}, minmax(0, 1fr))`,
-                        }}
-                      >
-                        {sortIndividualGroupItems(row.items).map((item) => (
-                          <div
-                            key={item.id}
-                            className="flex min-w-0 flex-col items-center rounded-lg border border-zinc-100 bg-zinc-50 p-1 sm:p-1.5"
-                          >
-                            <Image
-                              src={catalogImageUrl(item.element.image, item.element.catalog)}
-                              alt={item.element.coordinates}
-                              width={56}
-                              height={42}
-                              className="h-10 w-full object-contain"
-                            />
-                            <p className="mt-1 w-full truncate text-center text-[10px] font-medium">
-                              {item.gymnastRole === "top"
-                                ? t.routine.topRole
-                                : t.routine.baseRole}
-                            </p>
-                            <p className="w-full truncate text-center font-mono text-[9px] text-zinc-600">
-                              {formatSheetValue(item.element.value)}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
+                      {row.item.addOn ? (
+                        <Image
+                          src={catalogImageUrl(row.item.addOn.image, row.item.addOn.catalog)}
+                          alt={row.item.addOn.coordinates}
+                          width={56}
+                          height={42}
+                          className="h-12 w-12 shrink-0 object-contain"
+                        />
+                      ) : null}
                     </div>
-                  )}
-                </div>
-
-                <div className="mt-3 flex flex-col gap-2 border-t border-zinc-100 pt-3 sm:flex-row sm:items-end sm:justify-between">
-                  <div className="flex flex-col gap-1">
-                    <label className="flex items-center gap-2 text-[13px] text-zinc-700">
-                      <input
-                        type="checkbox"
-                        checked={linked}
-                        disabled={row.index === 0}
-                        onChange={(e) =>
-                          setRoutineItemLinked(controlId, e.target.checked)
-                        }
-                        className="h-4 w-4 rounded border-zinc-300"
-                      />
-                      {t.routine.linked}
-                    </label>
-                    <p className="text-xs text-zinc-500">
-                      {row.index === 0
-                        ? t.routine.linkedHintFirst
-                        : t.routine.linkedHint}
+                    <p className="mt-1 w-full truncate text-center font-mono text-xs font-semibold text-zinc-900">
+                      {row.item.element.coordinates}
+                      {row.item.addOn ? ` + ${row.item.addOn.coordinates}` : ""}
+                      <span className="ml-1.5 rounded bg-zinc-100 px-1 font-medium">
+                        {formatSheetValue(row.item.element.value + (row.item.addOn?.value ?? 0))}
+                      </span>
                     </p>
+                    {row.item.addOn ? (
+                      <button
+                        type="button"
+                        onClick={() => removeAddOn(row.item.id)}
+                        className="mt-0.5 rounded px-1.5 text-[11px] text-zinc-600 hover:bg-zinc-100"
+                      >
+                        {t.routine.removeAddOn(row.item.addOn.coordinates)}
+                      </button>
+                    ) : null}
                   </div>
-                  <div className="grid grid-cols-4 gap-2 sm:flex sm:gap-1">
+                ) : (
+                  <div
+                    className="mt-2 grid min-w-0 flex-1 gap-1"
+                    style={{ gridTemplateColumns: `repeat(${row.items.length}, minmax(0, 1fr))` }}
+                  >
+                    {sortIndividualGroupItems(row.items).map((item) => (
+                      <div key={item.id} className="flex min-w-0 flex-col items-center">
+                        <Image
+                          src={catalogImageUrl(item.element.image, item.element.catalog)}
+                          alt={item.element.coordinates}
+                          width={56}
+                          height={42}
+                          className="h-14 w-full object-contain"
+                        />
+                        <p className="w-full truncate text-center text-[10px] font-medium text-zinc-700">
+                          {item.gymnastRole === "top"
+                            ? t.routine.topRole
+                            : `${t.routine.baseRole}${row.items.length > 2 ? ` ${(item.baseIndex ?? 0) + 1}` : ""}`}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="mt-2 flex flex-col gap-1.5 border-t border-zinc-100 pt-2">
+                  <label
+                    className="flex items-center gap-1.5 text-[12px] text-zinc-700"
+                    title={row.index === 0 ? t.routine.linkedHintFirst : t.routine.linkedHint}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={linked}
+                      disabled={row.index === 0}
+                      onChange={(e) => setRoutineItemLinked(controlId, e.target.checked)}
+                      className="h-4 w-4 rounded border-zinc-300"
+                    />
+                    {t.routine.linked}
+                  </label>
+                  <div className="flex flex-wrap gap-1">
+                    <button
+                      type="button"
+                      disabled={row.index === 0}
+                      onClick={() => moveRoutineItem(controlId, "up")}
+                      className={iconButton}
+                      aria-label={t.routine.moveUp}
+                      title={t.routine.moveUp}
+                    >
+                      ←
+                    </button>
+                    <button
+                      type="button"
+                      disabled={row.index === displayRows.length - 1}
+                      onClick={() => moveRoutineItem(controlId, "down")}
+                      className={iconButton}
+                      aria-label={t.routine.moveDown}
+                      title={t.routine.moveDown}
+                    >
+                      →
+                    </button>
                     {row.kind === "single" &&
                     (row.item.block === "balance" || row.item.block === "dynamic") ? (
                       <button
@@ -309,34 +318,15 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                         onClick={() => {
                           setEditingSingle({
                             itemId: row.item.id,
-                            block:
-                              row.item.block === "dynamic" ? "dynamic" : "balance",
+                            block: row.item.block === "dynamic" ? "dynamic" : "balance",
                           });
                           setPickerOpen(true);
                         }}
-                        className="rounded border border-zinc-300 px-3 py-2 text-[13px]"
+                        className={iconButton}
                       >
                         {t.routine.edit}
                       </button>
                     ) : null}
-                    <button
-                      type="button"
-                      disabled={row.index === 0}
-                      onClick={() => moveRoutineItem(controlId, "up")}
-                      className="rounded border border-zinc-300 px-3 py-2 text-[13px] disabled:opacity-40"
-                      aria-label={t.routine.moveUp}
-                    >
-                      ↑ {t.routine.moveUp}
-                    </button>
-                    <button
-                      type="button"
-                      disabled={row.index === displayRows.length - 1}
-                      onClick={() => moveRoutineItem(controlId, "down")}
-                      className="rounded border border-zinc-300 px-3 py-2 text-[13px] disabled:opacity-40"
-                      aria-label={t.routine.moveDown}
-                    >
-                      ↓ {t.routine.moveDown}
-                    </button>
                     <button
                       type="button"
                       onClick={() => {
@@ -346,7 +336,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                           setEditingSingle(null);
                         }
                       }}
-                      className="rounded border border-zinc-300 px-3 py-2 text-[13px] text-red-700 hover:bg-red-50"
+                      className={`${iconButton} ml-auto text-red-700 hover:bg-red-50`}
                     >
                       {t.routine.remove}
                     </button>
@@ -356,6 +346,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
             );
           })}
         </ol>
+        </>
       )}
 
       <div className="flex flex-col gap-3 border-t border-zinc-200 pt-4">
@@ -369,39 +360,46 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
           />
           {t.routine.linkNextAdd}
         </label>
-        {!pickerOpen ? (
-          <button
-            type="button"
-            onClick={() => {
-              setEditingSingle(null);
-              setPickerOpen(true);
-            }}
-            className="h-11 w-full rounded-full border border-zinc-300 px-4 text-sm font-medium hover:bg-zinc-50 sm:w-auto"
-          >
-            {t.routine.addElement}
-          </button>
-        ) : (
-          <ElementPickerPanel
-            key={editingSingle?.itemId ?? "add"}
-            variant="popover"
-            header={header}
-            editItemId={editingSingle?.itemId}
-            editBlock={editingSingle?.block}
+        <button
+          type="button"
+          onClick={() => {
+            setEditingSingle(null);
+            setPickerOpen(true);
+          }}
+          className="h-11 w-full rounded-full border border-zinc-300 px-4 text-sm font-medium hover:bg-zinc-50 sm:w-auto"
+        >
+          {t.routine.addElement}
+        </button>
+        {pickerOpen ? (
+          <PickerModal
+            label={editingSingle ? t.routine.editElement : t.routine.addElement}
             onClose={() => {
               setPickerOpen(false);
               setEditingSingle(null);
             }}
-            onSave={(selection) => {
-              const ok = savePickerSelection(selection);
-              if (ok) {
+          >
+            <ElementPickerPanel
+              key={editingSingle?.itemId ?? "add"}
+              variant="popover"
+              header={header}
+              editItemId={editingSingle?.itemId}
+              editBlock={editingSingle?.block}
+              onClose={() => {
                 setPickerOpen(false);
-                setLinkNext(false);
                 setEditingSingle(null);
-              }
-              return ok;
-            }}
-          />
-        )}
+              }}
+              onSave={(selection) => {
+                const ok = savePickerSelection(selection);
+                if (ok) {
+                  setPickerOpen(false);
+                  setLinkNext(false);
+                  setEditingSingle(null);
+                }
+                return ok;
+              }}
+            />
+          </PickerModal>
+        ) : null}
       </div>
     </div>
   );

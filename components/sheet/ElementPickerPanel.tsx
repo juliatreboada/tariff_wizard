@@ -672,7 +672,7 @@ export function ElementPickerPanel({
       </header>
 
       <div
-        className={`grid gap-3 ${isPopover ? "max-h-[min(70vh,520px)] overflow-y-auto p-3 md:grid-cols-[130px_1fr]" : "p-4 md:grid-cols-[130px_1fr]"}`}
+        className={`grid gap-3 ${isPopover ? "p-3 md:grid-cols-[130px_1fr]" : "p-4 md:grid-cols-[130px_1fr]"}`}
       >
         <div className="flex flex-row gap-2 md:flex-col">
           {(["balance", "dynamic", "individual"] as const).map((type) => (

@@ -20,6 +20,20 @@ export function PickerStep({
   const t = getMessages();
   const ref = useRef<HTMLDivElement>(null);
   const options = useRef<HTMLDivElement>(null);
+  const back = useRef(onBack);
+  useEffect(() => {
+    back.current = onBack;
+  });
+  // Esc goes back to the full list first (before the modal closes).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      e.stopImmediatePropagation();
+      back.current();
+    };
+    window.addEventListener("keydown", onKey, { capture: true });
+    return () => window.removeEventListener("keydown", onKey, { capture: true });
+  }, []);
   useEffect(() => {
     ref.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
     // Focus the first option the coach can choose, not the back button.
