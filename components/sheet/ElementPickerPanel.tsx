@@ -385,7 +385,8 @@ export function ElementPickerPanel({
         : header.baseNames[g.baseIndex ?? 0] ?? "",
   }));
 
-  const initialIndividualState = useMemo(() => {
+  /** Each gymnast's starting pick: empty, or the edited set's element. */
+  function initialIndividualState() {
     const state: Record<string, GymnastPickState> = {};
     for (const g of gymnastKeys) {
       // Editing a set: start from its elements.
@@ -404,7 +405,7 @@ export function ElementPickerPanel({
       state[g.key] = { type: found?.type ?? "EQ", entry };
     }
     return state;
-  }, [gymnastKeys, editingGroup, editGroupId, routine, ruleset, header]);
+  }
 
   const [activeGymnastKey, setActiveGymnastKey] = useState<string>();
   const [individualRefused, setIndividualRefused] = useState(false);
