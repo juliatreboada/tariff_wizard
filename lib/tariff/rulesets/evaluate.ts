@@ -25,6 +25,8 @@ export type RuleStatus = {
   missingOptionalBalance: boolean;
   missingOptionalDynamic: boolean;
   missingIndividuals: boolean;
+  /** A gymnast has no tumbling element (when the rules ask for one). */
+  missingTumbling: boolean;
   penaltyTotal: number;
   missingMessages: string[];
   /** Requirements the catalog can't offer yet: listed, not penalised. */
@@ -47,6 +49,7 @@ const disabled = (): RuleStatus => ({
   missingOptionalBalance: false,
   missingOptionalDynamic: false,
   missingIndividuals: false,
+  missingTumbling: false,
   penaltyTotal: 0,
   missingMessages: [],
   pendingMessages: [],
@@ -103,9 +106,10 @@ export function evaluateRules(
   const missingCompulsoryDynamic = shortBy(compulsoryDynamic) > 0;
   const missingOptionalBalance = shortBy(optionalBalance) > 0;
   const missingOptionalDynamic = shortBy(optionalDynamic) > 0;
-  // At least one tumbling element per gymnast (part of the individuals requirement).
+  const missingIndividuals = shortBy(individualPerGymnast) > 0;
+  // At least one tumbling element per gymnast: a requirement of its own.
   const withoutTumbling = gymnastsWithoutTumbling(ruleset, header, routine);
-  const missingIndividuals = shortBy(individualPerGymnast) > 0 || withoutTumbling.length > 0;
+  const missingTumbling = withoutTumbling.length > 0;
 
   const missingMessages: string[] = [];
   if (missingCompulsoryBalance) {
@@ -120,7 +124,7 @@ export function evaluateRules(
   if (missingOptionalDynamic) {
     missingMessages.push(`Falta ${shortBy(optionalDynamic)} opcional de dinámico.`);
   }
-  if (shortBy(individualPerGymnast) > 0) {
+  if (missingIndividuals) {
     missingMessages.push(
       `Faltan sets individuales (${complete}/${ruleset.individuals.sets} completos).`,
     );
@@ -141,7 +145,8 @@ export function evaluateRules(
     shortBy(optionalDynamic);
   const penaltyTotal =
     missingElements * ruleset.penalties.missingElement +
-    (missingIndividuals ? ruleset.penalties.missingIndividuals : 0);
+    (missingIndividuals ? ruleset.penalties.missingIndividuals : 0) +
+    (missingTumbling ? (ruleset.penalties.missingTumbling ?? 0) : 0);
 
   return {
     enabled: true,
@@ -155,6 +160,7 @@ export function evaluateRules(
     missingOptionalBalance,
     missingOptionalDynamic,
     missingIndividuals,
+    missingTumbling,
     penaltyTotal,
     missingMessages,
     pendingMessages,

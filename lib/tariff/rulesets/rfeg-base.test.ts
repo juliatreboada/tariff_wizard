@@ -321,18 +321,18 @@ describe("Cuartetos ROW III add-ons", () => {
 describe("Base checklist and penalties", () => {
   const evaluate = (h: StoredHeader) => evaluateRules(rulesetFor(h), h, []);
 
-  it("costs 1 point per missing element and 1 for missing individuals", () => {
+  it("costs 1 point per missing element, 1 for missing individuals and 1 for tumbling", () => {
     const status = evaluate(base("Alevín"));
-    // 2 + 2 compulsory and 1 + 1 optional missing, plus the individuals.
-    expect(status.penaltyTotal).toBe(7);
+    // 2 + 2 compulsory and 1 + 1 optional missing, plus the individuals and the tumbling.
+    expect(status.penaltyTotal).toBe(8);
     expect(status.missingIndividuals).toBe(true);
     expect(status.pendingMessages).toEqual([]);
   });
 
   it("penalises Cadete's missing optionals now that 11-16 supplies them", () => {
     const status = evaluate(base("Cadete", "Cuartetos"));
-    // 1 + 2 compulsory and 1 + 1 optional missing, plus the individuals.
-    expect(status.penaltyTotal).toBe(6);
+    // 1 + 2 compulsory and 1 + 1 optional missing, plus the individuals and the tumbling.
+    expect(status.penaltyTotal).toBe(7);
     expect(status.pendingMessages).toEqual([]);
   });
 
@@ -374,9 +374,50 @@ describe("Base individuals from the FIG Table of Difficulty", () => {
     set("ag-087", "tum-4-0");
     let status = evaluate(base("Infantil"));
     expect(status.missingMessages).toContain("Falta un elemento de tumbling: TOP.");
+    expect(status.missingTumbling).toBe(true);
+    expect(status.missingIndividuals).toBe(true); // 2 of 3 sets
     set("tum-5-0", "ag-088");
     status = evaluate(base("Infantil"));
     expect(status.missingIndividuals).toBe(false);
+    expect(status.missingTumbling).toBe(false);
+  });
+
+  it("penalises a missing tumbling on its own, 1 point", () => {
+    startSheet(base("Infantil"));
+    set("balance-002", "tum-4-0");
+    set("balance-001", "flex-061");
+    set("flex-060", "ag-087");
+    const status = evaluate(base("Infantil"));
+    expect(status.missingIndividuals).toBe(false); // 3 complete sets
+    expect(status.missingTumbling).toBe(true); // the top has none
+    // 2 + 2 compulsory and 1 + 1 optional missing, plus the tumbling.
+    expect(status.penaltyTotal).toBe(7);
+  });
+
+  it("lets a gymnast use an ID number only once, landing or not", () => {
+    startSheet(base("Cadete"));
+    expect(set("ag-118-a", "ag-118-a")).toBe(true); // top and base may share one
+    expect(set("ag-118-c", "balance-001")).toBe(false); // top already did 118
+    expect(set("balance-001", "ag-118-c")).toBe(false); // so did the base
+    expect(set("ag-120-c", "ag-119-b")).toBe(true);
+    expect(set("ag-120-c", "balance-002")).toBe(false); // the very same element again
+  });
+
+  it("checks the ID number per base in groups", () => {
+    startSheet(base("Cadete", "Tríos"));
+    const trio = (top: string, b0: string, b1: string) =>
+      store().addIndividualGroup([
+        { entry: tod(top), gymnastRole: "top" },
+        { entry: tod(b0), gymnastRole: "base", baseIndex: 0 },
+        { entry: tod(b1), gymnastRole: "base", baseIndex: 1 },
+      ]);
+    expect(trio("ag-118-a", "ag-118-a", "balance-001")).toBe(true);
+    expect(trio("balance-002", "balance-003", "ag-118-c")).toBe(true); // base 1 hadn't done 118
+    expect(trio("balance-004", "ag-118-d", "flex-060")).toBe(false); // base 0 had
+  });
+
+  it("drops landings without a picture in the ToD", () => {
+    expect(getCatalogEntries("FIG").some((e) => e.id === "fig-tod-ag-147-g")).toBe(false);
   });
 
   it("names the group bases that miss their tumbling", () => {

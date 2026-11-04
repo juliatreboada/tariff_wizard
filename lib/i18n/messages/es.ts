@@ -130,7 +130,9 @@ export const es = {
       problemNotAllowed: "No permitido",
       problemValueRange: (min: number, max: number) => `Valor fuera de ${min}–${max}`,
       chooseVariant: (group: string) => `${group}: elige la opción`,
-      individualRefused: "Este set tiene un elemento no permitido en esta categoría o fuera de su valor.",
+      problemSameNumber: (number: string) => `Ya hace el ${number}`,
+      individualRefused:
+        "Este set tiene un elemento no permitido: fuera de su valor o con un número que ese gimnasta ya hace.",
       individualValueRange: (min: number, max: number) =>
         `Cada elemento individual debe valer entre ${min} y ${max}.`,
       problemNoPyramid: (codes: string) => `Necesita ${codes}`,

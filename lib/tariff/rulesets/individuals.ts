@@ -1,5 +1,6 @@
 import { type CatalogFilterHeader, filterCatalogEntries } from "../catalog/filter-catalog";
 import { getCatalogEntries } from "../catalog/load-catalog";
+import { catalogEntryForElement } from "../catalog/lookup";
 import type { CatalogEntry, ElementType } from "../catalog/types";
 import { gymnastCountForCategory } from "../level-category";
 import { gymnastKeysForHeader } from "../routine-groups";
@@ -54,9 +55,32 @@ export function gymnastsWithoutTumbling(
           (item) =>
             item.role === "individual" &&
             item.gymnastRole === g.role &&
-            (g.role === "top" || item.baseIndex === g.baseIndex) &&
+            (g.role === "top" || (item.baseIndex ?? 0) === g.baseIndex) &&
             item.element.type === "TUM",
         ),
     )
     .map((g) => g.key);
+}
+
+/**
+ * The ID that may appear once per gymnast: an agility's number for all its
+ * landings ("118 A" and "118 C" are both 118); any other element is its own.
+ */
+export function individualNumber(entry: CatalogEntry): string {
+  return entry.type === "AG" && entry.variant ? `${entry.code}:${entry.variant.group}` : entry.id;
+}
+
+/** Does this gymnast already perform an element with the same ID number? */
+export function repeatsIndividualNumber(
+  routine: RoutineItem[],
+  gymnast: { gymnastRole: "top" | "base"; baseIndex?: number },
+  entry: CatalogEntry,
+): boolean {
+  const number = individualNumber(entry);
+  return routine.some((item) => {
+    if (item.role !== "individual" || item.gymnastRole !== gymnast.gymnastRole) return false;
+    if (gymnast.gymnastRole === "base" && (item.baseIndex ?? 0) !== (gymnast.baseIndex ?? 0)) return false;
+    const placed = catalogEntryForElement(item.element);
+    return placed != null && individualNumber(placed) === number;
+  });
 }

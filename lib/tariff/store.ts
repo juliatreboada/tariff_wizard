@@ -30,9 +30,10 @@ import { catalogEntryForElement } from "./catalog/lookup";
 import {
   addProblem,
   applyRulesetRoles,
-  individualProblem,
   applyRulesetRolesForBlock,
+  individualProblem,
   pyramidForAddOn,
+  repeatsIndividualNumber,
   type RulesHeader,
   rulesetFor,
   type Ruleset,
@@ -371,6 +372,8 @@ export const useWizardStore = create<WizardStore>()(
           }
           const header = state.header ?? state.competition;
           if (picks.some((pick) => individualProblem(ruleset, header, pick.entry))) return false;
+          // An ID number once per gymnast (118 A and 118 C are both 118).
+          if (picks.some((pick) => repeatsIndividualNumber(state.routine, pick, pick.entry))) return false;
         }
         const groupId = newRoutineItemId();
         const routine = state.routine;

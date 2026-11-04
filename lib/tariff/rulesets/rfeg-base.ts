@@ -67,8 +67,8 @@ export const RFEG_BASE: Ruleset = {
   notOptional: {
     Cadete: ["fig-pre-youth-trios-dynamic-row-i-4-360", "fig-pre-youth-trios-dynamic-row-i-4-540"],
   },
-  // 3 sets from the FIG Table of Difficulty, at least one tumbling per gymnast;
-  // difficulty not added. Programme Anexo tabla 1: "3 (1-4)", "3 (1-6)", "3 (1-8)".
+  // 3 sets from the FIG Table of Difficulty, at least one tumbling per gymnast
+  // (penalised on its own); difficulty not added. Programme Anexo tabla 1: "3 (1-4)", "3 (1-6)", "3 (1-8)".
   individuals: {
     sets: 3,
     available: true,
@@ -83,6 +83,8 @@ export const RFEG_BASE: Ruleset = {
   penalties: {
     missingElement: 1,
     missingIndividuals: 1,
+    // "Es obligatorio realizar un elemento de Tumbling": its own requirement.
+    missingTumbling: 1,
   },
   display: {
     hideIndividualValues: true,

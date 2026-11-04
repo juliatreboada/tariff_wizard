@@ -11378,36 +11378,6 @@
       }
     },
     {
-      "id": "fig-tod-ag-147-g",
-      "code": "FIG",
-      "elementFamily": "individual",
-      "type": "AG",
-      "coordinates": "147 G",
-      "image": "tod/agility/147-G.png",
-      "value": 6,
-      "variant": {
-        "group": "147",
-        "label": "Recepción G",
-        "groupImage": "tod/agility/147.png"
-      },
-      "filters": {
-        "levelSystems": [
-          "FIG"
-        ],
-        "categories": [
-          "Parejas",
-          "Tríos",
-          "Cuartetos",
-          "Pareja Femenina",
-          "Pareja Masculina",
-          "Pareja Mixta"
-        ],
-        "exercises": [
-          "Combined"
-        ]
-      }
-    },
-    {
       "id": "fig-tod-ag-148-a",
       "code": "FIG",
       "elementFamily": "individual",

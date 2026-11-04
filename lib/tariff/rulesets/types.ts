@@ -92,6 +92,8 @@ export type Ruleset = {
     missingElement: number;
     /** Flat, however many individual sets are missing. */
     missingIndividuals: number;
+    /** Flat, when a gymnast has no tumbling element (`individuals.requireTumbling`). */
+    missingTumbling?: number;
   };
   display: {
     /** Show "-" instead of individual element values on the sheet. */

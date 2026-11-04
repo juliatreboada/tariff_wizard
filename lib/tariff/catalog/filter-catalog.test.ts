@@ -98,7 +98,7 @@ describe("FIG Table of Difficulty individuals", () => {
 
   it("has balance, flexibility, agility and tumbling, coded as on the sheet", () => {
     const count = (type: string) => ind.filter((e) => e.type === type).length;
-    expect([count("EQ"), count("FLEX"), count("AG"), count("TUM")]).toEqual([42, 20, 207, 91]);
+    expect([count("EQ"), count("FLEX"), count("AG"), count("TUM")]).toEqual([42, 20, 206, 91]);
     expect(byId("fig-tod-balance-018")).toMatchObject({ coordinates: "018", value: 10 });
     expect(byId("fig-tod-flex-078")).toMatchObject({ coordinates: "078", value: 4 });
     expect(byId("fig-tod-ag-101")).toMatchObject({ coordinates: "101", value: 8 });

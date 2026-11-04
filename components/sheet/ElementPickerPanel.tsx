@@ -25,6 +25,7 @@ import {
   individualEntries,
   individualProblem,
   individualValueRange,
+  repeatsIndividualNumber,
   optionalAvailable,
   optionalCategoryTables,
   pyramidForAddOn,
@@ -167,6 +168,12 @@ function ElementPickerPreview({
       </div>
     </div>
   );
+}
+
+/** How a repeated ID number reads: "118" for an agility's landings, "Col. 4 · 0°" for tumbling. */
+function sameNumberLabel(entry: CatalogEntry): string {
+  if (!entry.variant) return entry.coordinates;
+  return entry.type === "AG" ? entry.variant.group : `${entry.variant.group} · ${entry.variant.label}`;
 }
 
 /** Add-ons of the sheet's own catalog and of its optional tables' catalogs. */
@@ -477,8 +484,12 @@ export function ElementPickerPanel({
     }));
     const ok = onSave({ kind: "individual", picks });
     if (!ok) {
-      // Refused for a rule (value, source) rather than a repeated element.
-      const breaksRule = picks.some((pick) => individualProblem(ruleset, header, pick.entry));
+      // Refused for a rule (value, source, a repeated ID number) rather than a repeated element.
+      const breaksRule = picks.some(
+        (pick) =>
+          individualProblem(ruleset, header, pick.entry) != null ||
+          repeatsIndividualNumber(routine, pick, pick.entry),
+      );
       setDuplicateError(!breaksRule);
       setIndividualRefused(breaksRule);
       setLimitError(null);
@@ -794,7 +805,16 @@ export function ElementPickerPanel({
                           setDuplicateError(false);
                           setLimitError(null);
                         }}
-                        problemFor={individualProblemText}
+                        problemFor={(entry) =>
+                          individualProblemText(entry) ??
+                          (repeatsIndividualNumber(
+                            routine,
+                            { gymnastRole: row.role, baseIndex: row.baseIndex },
+                            entry,
+                          )
+                            ? t.sheet.picker.problemSameNumber(sameNumberLabel(entry))
+                            : null)
+                        }
                       />
                     </div>
                   );

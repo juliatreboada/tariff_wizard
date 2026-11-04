@@ -26,7 +26,9 @@ export { evaluateRules, type RuleStatus } from "./evaluate";
 export {
   gymnastsWithoutTumbling,
   individualEntries,
+  individualNumber,
   individualProblem,
+  repeatsIndividualNumber,
   individualValueRange,
   type IndividualProblem,
 } from "./individuals";

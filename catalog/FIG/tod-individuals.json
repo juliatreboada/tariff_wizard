@@ -1,5 +1,5 @@
 {
-  "description": "FIG ACRO Table of Difficulty 2025-2028, individual elements (printed pages 111-119), transcribed from the PDF and checked against the pages. Balance, Flexibility and Agility elements by their ID with the value after V; agilities on pages 115-118 by ID and landing (A-I) with each landing's value; tumbling by column (1-21) and twist, written on the sheet as page 119.",
+  "description": "FIG ACRO Table of Difficulty 2025-2028, individual elements (printed pages 111-119), transcribed from the PDF and checked against the pages. Balance, Flexibility and Agility elements by their ID with the value after V; agilities on pages 115-118 by ID and landing (A-I) with each landing's value (only landings with a picture); tumbling by column (1-21) and twist, written on the sheet as page 119.",
   "balance": {
     "001": { "value": 1 },
     "002": { "value": 4 },
@@ -198,7 +198,7 @@
     },
     "147": {
       "image": "147",
-      "landings": { "A": 10, "B": 11, "C": 13, "D": 14, "F": 14, "G": 6 }
+      "landings": { "A": 10, "B": 11, "C": 13, "D": 14, "F": 14 }
     },
     "148": {
       "image": "148",
