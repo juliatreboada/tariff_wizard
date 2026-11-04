@@ -719,8 +719,10 @@ export function ElementPickerPanel({
     switch (problem) {
       case null:
         return null;
-      case "duplicate": // in the grid it shows as already chosen
-        return attachTo ? t.sheet.picker.problemAddOnUsed : null;
+      case "duplicate":
+        if (attachTo) return t.sheet.picker.problemAddOnUsed;
+        // The element itself shows as already chosen; another option of its cell is blocked.
+        return selectedCatalogIds.has(entry.id) ? null : t.sheet.picker.problemOtherOption;
       case "same-row":
         return t.sheet.picker.problemSameRow;
       case "full":

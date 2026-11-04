@@ -69,7 +69,7 @@ describe("FIG catalog (Pre-Youth 11-16)", () => {
     expect(fig.filter((e) => e.elementFamily !== "individual")).toHaveLength(232); // with cell options
     expect(count("Pareja Femenina", "balance")).toBe(23);
     expect(count("Pareja Masculina", "dynamic")).toBe(17);
-    expect(count("Tríos", "dynamic")).toBe(19); // ROW I Box 4: 360º and 540º/720º
+    expect(count("Tríos", "dynamic")).toBe(18); // ROW I Box 4 (360º / 540º-720º) is one cell
     expect(count("Cuartetos", "balance")).toBe(29); // 11 structures + 18 tops
   });
 

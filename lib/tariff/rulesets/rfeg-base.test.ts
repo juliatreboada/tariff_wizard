@@ -219,6 +219,15 @@ describe("Cadete optionals from the Age Group 11-16 tables", () => {
     expect(figAdd("cuartetos-dynamic-row-ii-2")).toBe(true);
   });
 
+  it("lets a Women's Group do only one of the two values of ROW I Box 4", () => {
+    const box = (v: string) => fig(`trios-dynamic-row-i-4-${v}`);
+    expect(box("360").number).toBe("fig-pre-youth-trios-dynamic-row-i-4");
+    expect(box("540").number).toBe(box("360").number);
+    expect(addProblem(rulesetFor(base("Cadete", "Tríos")), base("Cadete", "Tríos"), [
+      { id: "x", block: "dynamic", linkedToPrevious: false, role: "optional", element: catalogEntryToPlaced(box("360")) },
+    ], box("540"), "dynamic")).toBe("duplicate");
+  });
+
   it("refuses horizontal 360º/540º/720º twists as Cadete optionals", () => {
     startSheet(base("Cadete", "Tríos"));
     expect(figAdd("trios-dynamic-row-i-4-360")).toBe(false);

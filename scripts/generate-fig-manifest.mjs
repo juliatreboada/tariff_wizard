@@ -66,6 +66,8 @@ for (const [team, table] of Object.entries(source.tables)) {
         filters: filters(table.category),
       };
       if (variant && !cell.label) problems.push(`${key}: a variant needs a label`);
+      // Two values of one box (360º / 540º-720º) are one element: a routine does one of them.
+      if (variant) entry.number = `fig-pre-youth-${team}-${elementFamily}-ROW-${row}-${box}`.toLowerCase();
       if (elementFamily === "balance") {
         entry.type = "EQ";
         if (cell.hold !== null) entry.holdDuration = '3"';

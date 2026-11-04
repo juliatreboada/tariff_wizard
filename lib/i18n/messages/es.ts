@@ -138,6 +138,7 @@ export const es = {
       chooseAddOn: "Elige el elemento de la flecha",
       noAddOn: "Sin añadido",
       problemAddOnUsed: "Ya está en otra figura",
+      problemOtherOption: "Ya está la otra opción",
       addOnFailed: "La figura se guardó, pero el elemento de la flecha no se pudo añadir.",
       problemSameNumber: (number: string) => `Ya hace el ${number}`,
       individualRefused:
