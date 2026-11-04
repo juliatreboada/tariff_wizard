@@ -24,6 +24,13 @@ export { applyRulesetRoles, applyRulesetRolesForBlock } from "./roles";
 export { addProblem, pyramidForAddOn, type AddProblem } from "./constraints";
 export { evaluateRules, type RuleStatus } from "./evaluate";
 export {
+  gymnastsWithoutTumbling,
+  individualEntries,
+  individualProblem,
+  individualValueRange,
+  type IndividualProblem,
+} from "./individuals";
+export {
   blockSlots,
   optionalAvailable,
   optionalCategoryTables,

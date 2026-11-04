@@ -80,6 +80,12 @@ export type Ruleset = {
     sets: number;
     /** False while the catalog has no individual pictures: not offered, not penalised. */
     available: boolean;
+    /** Where the individual elements come from; default: the ruleset's own catalog and level. */
+    source?: { catalogId: CatalogId; levelSystem: LevelSystem };
+    /** Sheet age group → the value each individual element must have (e.g. 1–4). */
+    valueRange?: Readonly<Record<string, ValueRange>>;
+    /** Each gymnast must perform at least one tumbling element. */
+    requireTumbling?: boolean;
   };
   penalties: {
     /** Per missing compulsory or optional element. */

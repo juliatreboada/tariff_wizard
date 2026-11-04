@@ -67,8 +67,19 @@ export const RFEG_BASE: Ruleset = {
   notOptional: {
     Cadete: ["fig-pre-youth-trios-dynamic-row-i-4-360", "fig-pre-youth-trios-dynamic-row-i-4-540"],
   },
-  // 3 sets, at least one tumbling; difficulty not added. Pictures are FIG's: coming soon.
-  individuals: { sets: 3, available: false },
+  // 3 sets from the FIG Table of Difficulty, at least one tumbling per gymnast;
+  // difficulty not added. Programme Anexo tabla 1: "3 (1-4)", "3 (1-6)", "3 (1-8)".
+  individuals: {
+    sets: 3,
+    available: true,
+    source: { catalogId: "FIG", levelSystem: "FIG" },
+    valueRange: {
+      Alevín: { min: 1, max: 4 },
+      Infantil: { min: 1, max: 6 },
+      Cadete: { min: 1, max: 8 },
+    },
+    requireTumbling: true,
+  },
   penalties: {
     missingElement: 1,
     missingIndividuals: 1,

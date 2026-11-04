@@ -321,23 +321,22 @@ describe("Cuartetos ROW III add-ons", () => {
 describe("Base checklist and penalties", () => {
   const evaluate = (h: StoredHeader) => evaluateRules(rulesetFor(h), h, []);
 
-  it("costs 1 point per missing element; individuals are coming soon", () => {
+  it("costs 1 point per missing element and 1 for missing individuals", () => {
     const status = evaluate(base("Alevín"));
-    // 2 + 2 compulsory and 1 + 1 optional missing.
-    expect(status.penaltyTotal).toBe(6);
-    expect(status.missingIndividuals).toBe(false);
-    expect(status.pendingMessages).toEqual(["Elementos individuales: próximamente."]);
+    // 2 + 2 compulsory and 1 + 1 optional missing, plus the individuals.
+    expect(status.penaltyTotal).toBe(7);
+    expect(status.missingIndividuals).toBe(true);
+    expect(status.pendingMessages).toEqual([]);
   });
 
   it("penalises Cadete's missing optionals now that 11-16 supplies them", () => {
     const status = evaluate(base("Cadete", "Cuartetos"));
-    // 1 + 2 compulsory and 1 + 1 optional missing.
-    expect(status.penaltyTotal).toBe(5);
-    expect(status.pendingMessages).toEqual(["Elementos individuales: próximamente."]);
+    // 1 + 2 compulsory and 1 + 1 optional missing, plus the individuals.
+    expect(status.penaltyTotal).toBe(6);
+    expect(status.pendingMessages).toEqual([]);
   });
 
-  it("doesn't offer individual sets yet", () => {
-    expect(store().addIndividualGroup([])).toBe(false);
+  it("doesn't take ESCOLAR individuals", () => {
     const fgx = getCatalogEntries("FGX").find((e) => e.elementFamily === "individual")!;
     expect(
       store().addIndividualGroup([
@@ -345,5 +344,50 @@ describe("Base checklist and penalties", () => {
         { entry: fgx, gymnastRole: "base", baseIndex: 0 },
       ]),
     ).toBe(false);
+  });
+});
+
+describe("Base individuals from the FIG Table of Difficulty", () => {
+  const evaluate = (h: StoredHeader) => evaluateRules(rulesetFor(h), h, store().routine);
+  const tod = (id: string) => {
+    const found = getCatalogEntries("FIG").find((e) => e.id === `fig-tod-${id}`);
+    if (!found) throw new Error(`No ToD entry ${id}`);
+    return found;
+  };
+  const set = (top: string, base0: string) =>
+    store().addIndividualGroup([
+      { entry: tod(top), gymnastRole: "top" },
+      { entry: tod(base0), gymnastRole: "base", baseIndex: 0 },
+    ]);
+
+  it("offers the ToD elements and keeps each one within the age group's values", () => {
+    // Alevín 1–4: 002 is V 4, 017 is V 8.
+    expect(set("balance-002", "balance-001")).toBe(true);
+    expect(set("balance-017", "balance-001")).toBe(false);
+    startSheet(base("Cadete"));
+    expect(set("balance-017", "balance-001")).toBe(true); // Cadete 1–8
+  });
+
+  it("asks every gymnast for a tumbling element", () => {
+    startSheet(base("Infantil"));
+    set("balance-002", "flex-061");
+    set("ag-087", "tum-4-0");
+    let status = evaluate(base("Infantil"));
+    expect(status.missingMessages).toContain("Falta un elemento de tumbling: TOP.");
+    set("tum-5-0", "ag-088");
+    status = evaluate(base("Infantil"));
+    expect(status.missingIndividuals).toBe(false);
+  });
+
+  it("names the group bases that miss their tumbling", () => {
+    startSheet(base("Infantil", "Tríos"));
+    store().addIndividualGroup([
+      { entry: tod("tum-4-0"), gymnastRole: "top" },
+      { entry: tod("balance-002"), gymnastRole: "base", baseIndex: 0 },
+      { entry: tod("tum-5-0"), gymnastRole: "base", baseIndex: 1 },
+    ]);
+    expect(evaluate(base("Infantil", "Tríos")).missingMessages).toContain(
+      "Falta un elemento de tumbling: BASE 1.",
+    );
   });
 });

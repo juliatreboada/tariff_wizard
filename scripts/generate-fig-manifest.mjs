@@ -9,6 +9,9 @@
  * structures the coach marked for each and add their value, like the Base
  * Cuartetos add-ons.
  *
+ * Also the FIG ToD individual elements (catalog/FIG/tod-individuals.json,
+ * pictures in public/catalog/FIG/tod/), cut with scripts/cut-tod-individuals.mjs.
+ *
  * Usage: node scripts/generate-fig-manifest.mjs
  */
 import fs from "node:fs";
@@ -105,6 +108,61 @@ for (const [team, table] of Object.entries(source.tables)) {
   }
 }
 
+// FIG Table of Difficulty individual elements (catalog/FIG/tod-individuals.json):
+// written on the sheet by ID (agilities with a landing: ID + letter) and, for
+// tumbling, by the page. Offered to every category.
+const tod = JSON.parse(fs.readFileSync(path.join(root, "catalog/FIG/tod-individuals.json"), "utf8"));
+const individualFilters = {
+  levelSystems: ["FIG"],
+  categories: ["Parejas", "Tríos", "Cuartetos", "Pareja Femenina", "Pareja Masculina", "Pareja Mixta"],
+  exercises: ["Combined"],
+};
+const individual = (id, type, coordinates, image, value, variant) => {
+  if (!fs.existsSync(path.join(publicFig, image))) problems.push(`missing picture ${image}`);
+  entries.push({
+    id,
+    code: "FIG",
+    elementFamily: "individual",
+    type,
+    coordinates,
+    image,
+    value,
+    ...(variant ? { variant } : {}),
+    filters: individualFilters,
+  });
+};
+for (const [family, type, folder] of [["balance", "EQ", "balance"], ["flexibility", "FLEX", "flex"]]) {
+  for (const [code, cell] of Object.entries(tod[family])) {
+    individual(`fig-tod-${folder}-${code}`, type, code, `tod/${folder}/${code}.png`, cell.value);
+  }
+}
+for (const [code, cell] of Object.entries(tod.agility)) {
+  if (!cell.landings) {
+    individual(`fig-tod-ag-${code}`, "AG", code, `tod/agility/${code}.png`, cell.value);
+    continue;
+  }
+  for (const [letter, value] of Object.entries(cell.landings)) {
+    const image = `tod/agility/${cell.image}-${letter}.png`;
+    individual(`fig-tod-ag-${code}-${letter}`.toLowerCase(), "AG", `${code} ${letter}`, image, value, {
+      group: code,
+      label: `Recepción ${letter}`,
+      groupImage: `tod/agility/${cell.image}.png`,
+    });
+  }
+}
+for (const [column, twists] of Object.entries(tod.tumbling.columns)) {
+  for (const [twist, value] of Object.entries(twists)) {
+    individual(
+      `fig-tod-tum-${column}-${twist.replace("°", "")}`,
+      "TUM",
+      String(tod.tumbling.page),
+      `tod/tumbling/col-${column}.png`,
+      value,
+      { group: `Col. ${column}`, label: twist, groupImage: `tod/tumbling/col-${column}.png` },
+    );
+  }
+}
+
 // Same element in another table (e.g. Base Cadete), reviewed by the coach.
 applySameElements(root, "FIG", entries, problems);
 
@@ -117,7 +175,7 @@ const manifest = {
   version: 1,
   code: "FIG",
   description:
-    "Catálogo FIG — Pre-Youth (11-16) Compulsory Elements Table 2025-2028: Pareja Femenina, Masculina, Mixta, Tríos (Women's Group), Cuartetos (Men's Group). elementFamily: balance|dynamic.",
+    "Catálogo FIG — Pre-Youth (11-16) Compulsory Elements Table 2025-2028 (Pareja Femenina, Masculina, Mixta, Tríos = Women's Group, Cuartetos = Men's Group; elementFamily balance|dynamic) and the ACRO Table of Difficulty 2025-2028 individual elements (elementFamily individual: EQ, FLEX, AG, TUM).",
   entries,
 };
 fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);

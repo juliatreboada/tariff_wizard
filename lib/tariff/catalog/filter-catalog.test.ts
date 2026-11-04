@@ -56,7 +56,7 @@ describe("FIG catalog (Pre-Youth 11-16)", () => {
     }).length;
 
   it("has the five 11-16 tables, balance and dynamic", () => {
-    expect(fig).toHaveLength(193);
+    expect(fig.filter((e) => e.elementFamily !== "individual")).toHaveLength(193);
     expect(count("Pareja Femenina", "balance")).toBe(23);
     expect(count("Pareja Masculina", "dynamic")).toBe(17);
     expect(count("Tríos", "dynamic")).toBe(19); // ROW I Box 4: 360º and 540º/720º
@@ -89,5 +89,32 @@ describe("FIG catalog (Pre-Youth 11-16)", () => {
     expect(
       filterCatalogEntries(fig, { header: header({ levelSystem: "Base", levelAge: "Cadete" }) }),
     ).toEqual([]);
+  });
+});
+
+describe("FIG Table of Difficulty individuals", () => {
+  const ind = getCatalogEntries("FIG").filter((e) => e.elementFamily === "individual");
+  const byId = (id: string) => ind.find((e) => e.id === id)!;
+
+  it("has balance, flexibility, agility and tumbling, coded as on the sheet", () => {
+    const count = (type: string) => ind.filter((e) => e.type === type).length;
+    expect([count("EQ"), count("FLEX"), count("AG"), count("TUM")]).toEqual([42, 20, 207, 91]);
+    expect(byId("fig-tod-balance-018")).toMatchObject({ coordinates: "018", value: 10 });
+    expect(byId("fig-tod-flex-078")).toMatchObject({ coordinates: "078", value: 4 });
+    expect(byId("fig-tod-ag-101")).toMatchObject({ coordinates: "101", value: 8 });
+  });
+
+  it("gives each agility landing its own value", () => {
+    expect(byId("fig-tod-ag-124-a")).toMatchObject({ coordinates: "124 A", value: 5 });
+    expect(byId("fig-tod-ag-124-f")).toMatchObject({ coordinates: "124 F", value: 12 });
+    expect(byId("fig-tod-ag-124-f").variant).toMatchObject({ group: "124", label: "Recepción F" });
+    // "116 OR 117" share one box and landing table.
+    expect(byId("fig-tod-ag-117-d").value).toBe(byId("fig-tod-ag-116-d").value);
+  });
+
+  it("writes tumbling as page 119, valued by column and twist", () => {
+    const tum = byId("fig-tod-tum-18-180");
+    expect(tum).toMatchObject({ coordinates: "119", value: 33 });
+    expect(tum.variant).toMatchObject({ group: "Col. 18", label: "180°" });
   });
 });

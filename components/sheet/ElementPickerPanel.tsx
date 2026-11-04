@@ -22,6 +22,9 @@ import type { StoredHeader } from "@/lib/tariff/types";
 import {
   addProblem,
   blockSlots,
+  individualEntries,
+  individualProblem,
+  individualValueRange,
   optionalAvailable,
   optionalCategoryTables,
   pyramidForAddOn,
@@ -30,6 +33,7 @@ import {
   type Ruleset,
 } from "@/lib/tariff/rulesets";
 import { useWizardStore } from "@/lib/tariff/store";
+import { IndividualChoices } from "./IndividualChoices";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
 
 type PickerElementType = "balance" | "dynamic" | "individual";
@@ -363,6 +367,7 @@ export function ElementPickerPanel({
     return state;
   }, [gymnastKeys]);
 
+  const [individualRefused, setIndividualRefused] = useState(false);
   const [individualByGymnast, setIndividualByGymnast] =
     useState<Record<string, GymnastPickState>>(initialIndividualState);
 
@@ -472,10 +477,14 @@ export function ElementPickerPanel({
     }));
     const ok = onSave({ kind: "individual", picks });
     if (!ok) {
-      setDuplicateError(true);
+      // Refused for a rule (value, source) rather than a repeated element.
+      const breaksRule = picks.some((pick) => individualProblem(ruleset, header, pick.entry));
+      setDuplicateError(!breaksRule);
+      setIndividualRefused(breaksRule);
       setLimitError(null);
       return;
     }
+    setIndividualRefused(false);
     setDuplicateError(false);
     setLimitError(null);
     onClose();
@@ -526,6 +535,20 @@ export function ElementPickerPanel({
       table.entries.some((entry) => entry.id === editingItem?.element.catalogId),
     ) ??
     tables[0];
+
+  const individualRange = individualValueRange(ruleset, header.levelAge);
+  function individualProblemText(entry: CatalogEntry): string | null {
+    switch (individualProblem(ruleset, header, entry)) {
+      case "out-of-range":
+        return individualRange
+          ? t.sheet.picker.problemValueRange(individualRange.min, individualRange.max)
+          : null;
+      case "not-allowed":
+        return t.sheet.picker.problemNotAllowed;
+      default:
+        return null;
+    }
+  }
 
   const coordinatesOf = (ids: readonly string[]) =>
     ids
@@ -711,15 +734,17 @@ export function ElementPickerPanel({
           ) : (
             <>
               <p className="text-xs text-zinc-600">{t.routine.escolarIndividualHint}</p>
+              {individualRange ? (
+                <p className="text-xs text-zinc-600">
+                  {t.sheet.picker.individualValueRange(individualRange.min, individualRange.max)}
+                </p>
+              ) : null}
               <div className="flex flex-col gap-3">
                 {gymnastRows.map((row) => {
                   const state = individualByGymnast[row.key] ?? { type: "EQ" as const };
-                  const individualEntries = entriesForFamily(
-                    allEntries,
-                    header,
-                    "individual",
-                    state.type,
-                  ).filter((entry) => !isCatalogIdUsedInRoutine(routine, entry.id));
+                  const choices = individualEntries(ruleset, header, state.type).filter(
+                    (entry) => !isCatalogIdUsedInRoutine(routine, entry.id),
+                  );
                   const rowTitle = gymnastRowTitle(row, t);
 
                   return (
@@ -757,54 +782,29 @@ export function ElementPickerPanel({
                           ))}
                         </select>
                       </label>
-                      <ul
-                        className="grid w-full min-w-0 gap-0.5 sm:gap-1"
-                        style={{
-                          gridTemplateColumns: `repeat(${Math.max(individualEntries.length, 1)}, minmax(0, 1fr))`,
+                      <IndividualChoices
+                        key={`${row.key}-${state.type}`}
+                        entries={choices}
+                        selectedId={state.entry?.id}
+                        onSelect={(entry) => {
+                          setIndividualByGymnast((prev) => ({
+                            ...prev,
+                            [row.key]: { type: state.type, entry },
+                          }));
+                          setDuplicateError(false);
+                          setLimitError(null);
                         }}
-                      >
-                        {individualEntries.map((entry) => (
-                          <li key={`${row.key}-${entry.id}`} className="min-w-0">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setIndividualByGymnast((prev) => ({
-                                  ...prev,
-                                  [row.key]: {
-                                    type: state.type,
-                                    entry,
-                                  },
-                                }));
-                                setDuplicateError(false);
-                                setLimitError(null);
-                              }}
-                              className={`flex h-full w-full min-w-0 flex-col items-center rounded-lg border p-0.5 sm:p-1.5 ${
-                                state.entry?.id === entry.id
-                                  ? "border-zinc-900 bg-zinc-100"
-                                  : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
-                              }`}
-                            >
-                              <Image
-                                src={catalogImageUrl(entry.image, entry.code)}
-                                alt={entry.coordinates}
-                                width={80}
-                                height={56}
-                                className="h-8 w-full object-contain sm:h-12"
-                                sizes="(max-width: 640px) 20vw, 80px"
-                              />
-                              <span className="mt-0.5 w-full truncate text-center text-[8px] font-medium leading-tight sm:text-[10px]">
-                                {entry.coordinates}
-                              </span>
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
+                        problemFor={individualProblemText}
+                      />
                     </div>
                   );
                 })}
               </div>
               {duplicateError ? (
                 <p className="text-sm text-amber-700">{t.sheet.picker.duplicateElement}</p>
+              ) : null}
+              {individualRefused ? (
+                <p className="text-sm text-amber-700">{t.sheet.picker.individualRefused}</p>
               ) : null}
               {limitError === "individuals" ? (
                 <p className="text-sm text-amber-700">{t.sheet.picker.limitIndividuals(maxIndividualSets)}</p>

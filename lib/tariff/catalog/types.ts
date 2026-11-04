@@ -42,6 +42,12 @@ export type CatalogEntry = {
   holdDuration?: string;
   /** Dynamic rotation for meta row (e.g. 1/4 BACK). */
   rotation?: string;
+  /**
+   * One choice of a group picked in two steps: an agility's landing (group
+   * "118", label "Recepción C") or a tumbling column's twist (group "Col. 4",
+   * label "360°"). `groupImage` is the group's own picture.
+   */
+  variant?: { group: string; label: string; groupImage: string };
   filters: CatalogFilters;
   /**
    * An add-on, not an element of its own: it attaches to one of these entries

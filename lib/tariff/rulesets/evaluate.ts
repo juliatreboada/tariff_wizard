@@ -2,6 +2,7 @@ import { gymnastCountForCategory } from "../level-category";
 import { countCompleteIndividualSets } from "../routine-groups";
 import type { RoutineItem } from "../routine-types";
 import type { StoredHeader } from "../types";
+import { gymnastsWithoutTumbling } from "./individuals";
 import { blockSlots, optionalAvailable, optionalValueRange } from "./slots";
 import type { Ruleset, ValueRange } from "./types";
 
@@ -102,7 +103,9 @@ export function evaluateRules(
   const missingCompulsoryDynamic = shortBy(compulsoryDynamic) > 0;
   const missingOptionalBalance = shortBy(optionalBalance) > 0;
   const missingOptionalDynamic = shortBy(optionalDynamic) > 0;
-  const missingIndividuals = shortBy(individualPerGymnast) > 0;
+  // At least one tumbling element per gymnast (part of the individuals requirement).
+  const withoutTumbling = gymnastsWithoutTumbling(ruleset, header, routine);
+  const missingIndividuals = shortBy(individualPerGymnast) > 0 || withoutTumbling.length > 0;
 
   const missingMessages: string[] = [];
   if (missingCompulsoryBalance) {
@@ -117,10 +120,18 @@ export function evaluateRules(
   if (missingOptionalDynamic) {
     missingMessages.push(`Falta ${shortBy(optionalDynamic)} opcional de dinámico.`);
   }
-  if (missingIndividuals) {
+  if (shortBy(individualPerGymnast) > 0) {
     missingMessages.push(
       `Faltan sets individuales (${complete}/${ruleset.individuals.sets} completos).`,
     );
+  }
+  if (withoutTumbling.length > 0) {
+    // Same labels as the picker: TOP, BASE (pairs) or BASE 1, BASE 2… (groups).
+    const bases = gymnastCount - 1;
+    const names = withoutTumbling.map((key) =>
+      key === "top" ? "TOP" : bases > 1 ? `BASE ${Number(key.slice("base-".length)) + 1}` : "BASE",
+    );
+    missingMessages.push(`Falta un elemento de tumbling: ${names.join(", ")}.`);
   }
 
   const missingElements =

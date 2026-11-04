@@ -12,6 +12,9 @@ const catalogEntrySchema = z.object({
   value: z.number().min(0),
   holdDuration: z.string().optional(),
   rotation: z.string().optional(),
+  variant: z
+    .object({ group: z.string().min(1), label: z.string().min(1), groupImage: z.string().min(1) })
+    .optional(),
   attachesTo: z.array(z.string().min(1)).min(1).optional(),
   sameAs: z.array(z.string().min(1)).min(1).optional(),
   filters: z.object({

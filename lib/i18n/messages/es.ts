@@ -128,6 +128,11 @@ export const es = {
       problemFullCompulsory: "Obligatorios completos",
       problemFullOptional: "Opcional ya elegido",
       problemNotAllowed: "No permitido",
+      problemValueRange: (min: number, max: number) => `Valor fuera de ${min}–${max}`,
+      chooseVariant: (group: string) => `${group}: elige la opción`,
+      individualRefused: "Este set tiene un elemento no permitido en esta categoría o fuera de su valor.",
+      individualValueRange: (min: number, max: number) =>
+        `Cada elemento individual debe valer entre ${min} y ${max}.`,
       problemNoPyramid: (codes: string) => `Necesita ${codes}`,
       addOnHint: (codes: string) => `Se suma a ${codes}`,
       back: "Atrás",

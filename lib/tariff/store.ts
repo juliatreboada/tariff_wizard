@@ -30,6 +30,7 @@ import { catalogEntryForElement } from "./catalog/lookup";
 import {
   addProblem,
   applyRulesetRoles,
+  individualProblem,
   applyRulesetRolesForBlock,
   pyramidForAddOn,
   type RulesHeader,
@@ -368,6 +369,8 @@ export const useWizardStore = create<WizardStore>()(
           if (!ruleset.individuals.available || totalGroups >= ruleset.individuals.sets) {
             return false;
           }
+          const header = state.header ?? state.competition;
+          if (picks.some((pick) => individualProblem(ruleset, header, pick.entry))) return false;
         }
         const groupId = newRoutineItemId();
         const routine = state.routine;

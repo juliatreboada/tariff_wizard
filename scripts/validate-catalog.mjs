@@ -41,6 +41,10 @@ function validateCatalog(catalogId) {
       errors.push(`${entry.id}: id must start with "${prefix}"`);
     }
 
+    const groupImage = entry.variant?.groupImage;
+    if (groupImage && !fs.existsSync(path.join(publicCatalog, groupImage))) {
+      errors.push(`${entry.id}: missing group image ${groupImage}`);
+    }
     const imagePath = path.join(publicCatalog, entry.image);
     if (!fs.existsSync(imagePath)) {
       errors.push(
