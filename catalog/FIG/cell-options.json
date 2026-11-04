@@ -1,0 +1,149 @@
+{
+  "description": "Table cells with alternative pictures (\"OR\"), reviewed by the coach on 2026-11-04: cell picture → its option pictures. Each option is one element of its own picture, same value and cell; a routine can use only one option of a cell.",
+  "cells": {
+    "pre-youth/cuartetos/balance/ROW-II-1.png": [
+      "pre-youth/cuartetos/balance/ROW-II-1-a.png",
+      "pre-youth/cuartetos/balance/ROW-II-1-b.png"
+    ],
+    "pre-youth/cuartetos/balance/ROW-II-4.png": [
+      "pre-youth/cuartetos/balance/ROW-II-4-a.png",
+      "pre-youth/cuartetos/balance/ROW-II-4-b.png"
+    ],
+    "pre-youth/cuartetos/balance/ROW-II-5.png": [
+      "pre-youth/cuartetos/balance/ROW-II-5-a.png",
+      "pre-youth/cuartetos/balance/ROW-II-5-b.png"
+    ],
+    "pre-youth/cuartetos/dynamic/ROW-I-1.png": [
+      "pre-youth/cuartetos/dynamic/ROW-I-1-a.png",
+      "pre-youth/cuartetos/dynamic/ROW-I-1-b.png"
+    ],
+    "pre-youth/cuartetos/dynamic/ROW-I-4.png": [
+      "pre-youth/cuartetos/dynamic/ROW-I-4-a.png",
+      "pre-youth/cuartetos/dynamic/ROW-I-4-b.png"
+    ],
+    "pre-youth/cuartetos/dynamic/ROW-II-1.png": [
+      "pre-youth/cuartetos/dynamic/ROW-II-1-a.png",
+      "pre-youth/cuartetos/dynamic/ROW-II-1-b.png"
+    ],
+    "pre-youth/cuartetos/dynamic/ROW-II-4.png": [
+      "pre-youth/cuartetos/dynamic/ROW-II-4-a.png",
+      "pre-youth/cuartetos/dynamic/ROW-II-4-b.png"
+    ],
+    "pre-youth/cuartetos/dynamic/ROW-IV-3.png": [
+      "pre-youth/cuartetos/dynamic/ROW-IV-3-a.png",
+      "pre-youth/cuartetos/dynamic/ROW-IV-3-b.png"
+    ],
+    "pre-youth/pf/balance/ROW-II-3.png": [
+      "pre-youth/pf/balance/ROW-II-3-a.png",
+      "pre-youth/pf/balance/ROW-II-3-b.png"
+    ],
+    "pre-youth/pf/dynamic/ROW-II-3.png": [
+      "pre-youth/pf/dynamic/ROW-II-3-a.png",
+      "pre-youth/pf/dynamic/ROW-II-3-b.png"
+    ],
+    "pre-youth/pf/dynamic/ROW-IV-1.png": [
+      "pre-youth/pf/dynamic/ROW-IV-1-a.png",
+      "pre-youth/pf/dynamic/ROW-IV-1-b.png",
+      "pre-youth/pf/dynamic/ROW-IV-1-c.png"
+    ],
+    "pre-youth/pf/dynamic/ROW-IV-2.png": [
+      "pre-youth/pf/dynamic/ROW-IV-2-a.png",
+      "pre-youth/pf/dynamic/ROW-IV-2-b.png"
+    ],
+    "pre-youth/pm/balance/ROW-I-3.png": [
+      "pre-youth/pm/balance/ROW-I-3-a.png",
+      "pre-youth/pm/balance/ROW-I-3-b.png"
+    ],
+    "pre-youth/pm/dynamic/ROW-I-5.png": [
+      "pre-youth/pm/dynamic/ROW-I-5-a.png",
+      "pre-youth/pm/dynamic/ROW-I-5-b.png"
+    ],
+    "pre-youth/pm/dynamic/ROW-II-3.png": [
+      "pre-youth/pm/dynamic/ROW-II-3-a.png",
+      "pre-youth/pm/dynamic/ROW-II-3-b.png"
+    ],
+    "pre-youth/pm/dynamic/ROW-IV-3.png": [
+      "pre-youth/pm/dynamic/ROW-IV-3-a.png",
+      "pre-youth/pm/dynamic/ROW-IV-3-b.png"
+    ],
+    "pre-youth/pmx/balance/ROW-I-2.png": [
+      "pre-youth/pmx/balance/ROW-I-2-a.png",
+      "pre-youth/pmx/balance/ROW-I-2-b.png"
+    ],
+    "pre-youth/pmx/balance/ROW-I-5.png": [
+      "pre-youth/pmx/balance/ROW-I-5-a.png",
+      "pre-youth/pmx/balance/ROW-I-5-b.png"
+    ],
+    "pre-youth/pmx/balance/ROW-I-6.png": [
+      "pre-youth/pmx/balance/ROW-I-6-a.png",
+      "pre-youth/pmx/balance/ROW-I-6-b.png"
+    ],
+    "pre-youth/pmx/balance/ROW-II-3.png": [
+      "pre-youth/pmx/balance/ROW-II-3-a.png",
+      "pre-youth/pmx/balance/ROW-II-3-b.png"
+    ],
+    "pre-youth/pmx/balance/ROW-II-4.png": [
+      "pre-youth/pmx/balance/ROW-II-4-a.png",
+      "pre-youth/pmx/balance/ROW-II-4-b.png"
+    ],
+    "pre-youth/pmx/balance/ROW-II-5.png": [
+      "pre-youth/pmx/balance/ROW-II-5-a.png",
+      "pre-youth/pmx/balance/ROW-II-5-b.png"
+    ],
+    "pre-youth/pmx/dynamic/ROW-III-1.png": [
+      "pre-youth/pmx/dynamic/ROW-III-1-a.png",
+      "pre-youth/pmx/dynamic/ROW-III-1-b.png"
+    ],
+    "pre-youth/pmx/dynamic/ROW-III-2.png": [
+      "pre-youth/pmx/dynamic/ROW-III-2-a.png",
+      "pre-youth/pmx/dynamic/ROW-III-2-b.png"
+    ],
+    "pre-youth/pmx/dynamic/ROW-IV-1.png": [
+      "pre-youth/pmx/dynamic/ROW-IV-1-a.png",
+      "pre-youth/pmx/dynamic/ROW-IV-1-b.png"
+    ],
+    "pre-youth/pmx/dynamic/ROW-IV-3.png": [
+      "pre-youth/pmx/dynamic/ROW-IV-3-a.png",
+      "pre-youth/pmx/dynamic/ROW-IV-3-b.png"
+    ],
+    "pre-youth/pmx/dynamic/ROW-IV-5.png": [
+      "pre-youth/pmx/dynamic/ROW-IV-5-a.png",
+      "pre-youth/pmx/dynamic/ROW-IV-5-b.png"
+    ],
+    "pre-youth/trios/balance/ROW-II-2.png": [
+      "pre-youth/trios/balance/ROW-II-2-a.png",
+      "pre-youth/trios/balance/ROW-II-2-b.png",
+      "pre-youth/trios/balance/ROW-II-2-c.png"
+    ],
+    "pre-youth/trios/balance/ROW-II-3.png": [
+      "pre-youth/trios/balance/ROW-II-3-a.png",
+      "pre-youth/trios/balance/ROW-II-3-b.png",
+      "pre-youth/trios/balance/ROW-II-3-c.png"
+    ],
+    "pre-youth/trios/balance/ROW-II-4.png": [
+      "pre-youth/trios/balance/ROW-II-4-a.png",
+      "pre-youth/trios/balance/ROW-II-4-b.png",
+      "pre-youth/trios/balance/ROW-II-4-c.png"
+    ],
+    "pre-youth/trios/balance/ROW-III-1.png": [
+      "pre-youth/trios/balance/ROW-III-1-a.png",
+      "pre-youth/trios/balance/ROW-III-1-b.png"
+    ],
+    "pre-youth/trios/dynamic/ROW-I-2.png": [
+      "pre-youth/trios/dynamic/ROW-I-2-a.png",
+      "pre-youth/trios/dynamic/ROW-I-2-b.png"
+    ],
+    "pre-youth/trios/dynamic/ROW-I-3.png": [
+      "pre-youth/trios/dynamic/ROW-I-3-a.png",
+      "pre-youth/trios/dynamic/ROW-I-3-b.png"
+    ],
+    "pre-youth/trios/dynamic/ROW-II-2.png": [
+      "pre-youth/trios/dynamic/ROW-II-2-a.png",
+      "pre-youth/trios/dynamic/ROW-II-2-b.png"
+    ],
+    "pre-youth/trios/dynamic/ROW-III-1.png": [
+      "pre-youth/trios/dynamic/ROW-III-1-a.png",
+      "pre-youth/trios/dynamic/ROW-III-1-b.png"
+    ]
+  }
+}

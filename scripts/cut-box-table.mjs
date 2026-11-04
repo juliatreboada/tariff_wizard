@@ -132,7 +132,7 @@ export async function cutBoxTable(pagePath, wordsPath, dpi, outDir) {
         .extend({ top: 4, bottom: 4, left: 4, right: 4, background: "#ffffff" })
         .png({ compressionLevel: 9, palette: true })
         .toFile(path.join(dir, `${name}.png`));
-      summary.push({ family, name, values, text });
+      summary.push({ family, name, values, text, box: [x0, y0, x1, y1] });
     }
   }
   return summary;

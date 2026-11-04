@@ -67,7 +67,7 @@ describe("sidebar breakdown", () => {
 
 describe("a pyramid with an add-on (Cuartetos ROW III)", () => {
   const rfeg = (id: string) =>
-    catalogEntryToPlaced(getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-${id}`)!);
+    catalogEntryToPlaced(getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-${id}` || e.id === `rfeg-base-${id}` + "-a")!);
   const slot: SheetColumnSlot = {
     kind: "element",
     routineItemId: "x",

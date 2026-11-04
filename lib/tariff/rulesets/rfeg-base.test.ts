@@ -8,7 +8,7 @@ import { catalogEntryToPlaced } from "../catalog/to-placed";
 import { addProblem, availableLevelSystems, evaluateRules, isLevelAgeReady, pyramidForAddOn, rulesetFor } from ".";
 
 const rfeg = (id: string): CatalogEntry => {
-  const found = getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-${id}`);
+  const found = getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-${id}` || e.id === `rfeg-base-${id}` + "-a");
   if (!found) throw new Error(`No RFEG entry ${id}`);
   return found;
 };
@@ -20,14 +20,14 @@ const store = () => useWizardStore.getState();
 const add = (id: string) => store().addRoutineElement(rfeg(id));
 /** A FIG Pre-Youth (11-16) entry by its id without "fig-pre-youth-". */
 const fig = (id: string): CatalogEntry => {
-  const found = getCatalogEntries("FIG").find((e) => e.id === `fig-pre-youth-${id}`);
+  const found = getCatalogEntries("FIG").find((e) => e.id === `fig-pre-youth-${id}` || e.id === `fig-pre-youth-${id}` + "-a");
   if (!found) throw new Error(`No FIG entry ${id}`);
   return found;
 };
 const figAdd = (id: string) => store().addRoutineElement(fig(id));
 /** Any RFEG entry by its id without the "rfeg-" prefix (e.g. espana-alevin-…). */
 const rfegAdd = (id: string) =>
-  store().addRoutineElement(getCatalogEntries("RFEG").find((e) => e.id === `rfeg-${id}`)!);
+  store().addRoutineElement(getCatalogEntries("RFEG").find((e) => e.id === `rfeg-${id}` || e.id === `rfeg-${id}` + "-a")!);
 const roles = () =>
   store().routine.map((i) => [i.element.catalogId.replace("rfeg-base-", ""), i.role]);
 
@@ -264,6 +264,25 @@ describe("Cadete optionals from the Age Group 11-16 tables", () => {
   });
 });
 
+describe("cells with options (several pictures)", () => {
+  it("splits a cell into options with the cell's value, coordinates and rules", () => {
+    const options = getCatalogEntries("RFEG").filter((e) => e.number === "rfeg-base-cadete-pairs-balance-row-i-b");
+    expect(options.map((e) => e.id)).toEqual([
+      "rfeg-base-cadete-pairs-balance-row-i-b-a",
+      "rfeg-base-cadete-pairs-balance-row-i-b-b",
+    ]);
+    expect(new Set(options.map((e) => `${e.coordinates} ${e.value}`)).size).toBe(1);
+    expect(options[0].variant).toMatchObject({ group: "ROW-I B", label: "Opción A" });
+  });
+
+  it("lets a routine use only one option of a cell", () => {
+    startSheet(base("Cadete"));
+    const option = (l: string) => getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-cadete-pairs-balance-row-i-b-${l}`)!;
+    expect(store().addRoutineElement(option("a"))).toBe(true);
+    expect(store().addRoutineElement(option("b"))).toBe(false);
+  });
+});
+
 describe("Base groups", () => {
   it("allows 1 compulsory + 1 optional balance, 2 + 1 dynamic", () => {
     startSheet(base("Infantil", "Tríos"));
@@ -351,7 +370,7 @@ describe("Base checklist and penalties", () => {
 describe("Base individuals from the FIG Table of Difficulty", () => {
   const evaluate = (h: StoredHeader) => evaluateRules(rulesetFor(h), h, store().routine);
   const tod = (id: string) => {
-    const found = getCatalogEntries("FIG").find((e) => e.id === `fig-tod-${id}`);
+    const found = getCatalogEntries("FIG").find((e) => e.id === `fig-tod-${id}` || e.id === `fig-tod-${id}` + "-a");
     if (!found) throw new Error(`No ToD entry ${id}`);
     return found;
   };

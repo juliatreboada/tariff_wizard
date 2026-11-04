@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 import { entry, header } from "../test-fixtures";
 import { filterCatalogEntries } from "./filter-catalog";
 import { getCatalogEntries } from "./load-catalog";
+import type { CatalogEntry } from "./types";
+
+/** Distinct table cells: options of one cell share its number. */
+const cells = (entries: CatalogEntry[]) => new Set(entries.map((e) => e.number ?? e.id)).size;
 
 describe("catalog filters", () => {
   const fgx = entry("fgx-balance-row-i-b");
@@ -26,17 +30,20 @@ describe("catalog filters", () => {
 
 describe("RFEG Base catalog", () => {
   const rfeg = getCatalogEntries("RFEG");
+  /** Table cells (a cell's options count once). */
   const count = (levelAge: string, category: string, elementFamily: "balance" | "dynamic") =>
-    filterCatalogEntries(rfeg, {
-      header: header({ levelSystem: "Base", levelAge, category }),
-      elementFamily,
-    }).length;
+    cells(
+      filterCatalogEntries(rfeg, {
+        header: header({ levelSystem: "Base", levelAge, category }),
+        elementFamily,
+      }),
+    );
 
   it("has a table per age group, category and family", () => {
     const bySystem = (system: string) =>
       rfeg.filter((e) => e.filters.levelSystems.includes(system as never)).length;
-    expect(bySystem("Base")).toBe(253);
-    expect(bySystem("RFEG")).toBe(278); // Cto. España tables
+    expect(bySystem("Base")).toBe(277); // 253 cells, 24 more from cells with options
+    expect(bySystem("RFEG")).toBe(318); // Cto. España tables (278 cells, 40 more from cells with options)
     expect(count("Alevín", "Parejas", "balance")).toBe(19);
     expect(count("Infantil", "Tríos", "dynamic")).toBe(15);
     expect(count("Cadete", "Cuartetos", "dynamic")).toBe(15);
@@ -49,14 +56,17 @@ describe("RFEG Base catalog", () => {
 
 describe("FIG catalog (Pre-Youth 11-16)", () => {
   const fig = getCatalogEntries("FIG");
+  /** Table cells (a cell's options count once). */
   const count = (category: string, elementFamily: "balance" | "dynamic") =>
-    filterCatalogEntries(fig, {
-      header: header({ levelSystem: "FIG", levelAge: "Pre-Youth", category }),
-      elementFamily,
-    }).length;
+    cells(
+      filterCatalogEntries(fig, {
+        header: header({ levelSystem: "FIG", levelAge: "Pre-Youth", category }),
+        elementFamily,
+      }),
+    );
 
   it("has the five 11-16 tables, balance and dynamic", () => {
-    expect(fig.filter((e) => e.elementFamily !== "individual")).toHaveLength(193);
+    expect(fig.filter((e) => e.elementFamily !== "individual")).toHaveLength(232); // with cell options
     expect(count("Pareja Femenina", "balance")).toBe(23);
     expect(count("Pareja Masculina", "dynamic")).toBe(17);
     expect(count("Tríos", "dynamic")).toBe(19); // ROW I Box 4: 360º and 540º/720º
@@ -66,23 +76,26 @@ describe("FIG catalog (Pre-Youth 11-16)", () => {
   it("attaches each Men's Group top only to the structures the coach marked", () => {
     const attach = (n: number) =>
       fig
-        .find((e) => e.id === `fig-pre-youth-cuartetos-balance-top-${n}`)!
+        .find((e) => e.id === `fig-pre-youth-cuartetos-balance-top-${n}` || e.id === `fig-pre-youth-cuartetos-balance-top-${n}` + "-a")!
         .attachesTo!.map((id) => id.replace("fig-pre-youth-cuartetos-balance-", ""));
     expect(attach(13)).toEqual(["row-i-1"]);
     expect(attach(18)).toEqual(["row-ii-3", "row-ii-3b"]);
-    expect(attach(1)).toHaveLength(7);
+    expect(attach(1)).toHaveLength(8); // ROW II Box 5 has two options
   });
 
   it("links Base Cadete cells to the same 11-16 element, both ways", () => {
     const rfegCell = getCatalogEntries("RFEG").find(
-      (e) => e.id === "rfeg-base-cadete-pairs-balance-row-i-b",
+      (e) => e.id === "rfeg-base-cadete-pairs-balance-row-i-b-a",
     )!;
     expect(rfegCell.sameAs?.filter((id) => id.startsWith("fig-"))).toEqual([
       "fig-pre-youth-pf-balance-row-i-4",
       "fig-pre-youth-pf-balance-row-i-5",
     ]);
     const figCell = fig.find((e) => e.id === "fig-pre-youth-pf-balance-row-i-5")!;
-    expect(figCell.sameAs).toContain("rfeg-base-cadete-pairs-balance-row-i-b");
+    // The Base cell has options now: the link goes to each of them.
+    expect(figCell.sameAs).toEqual(
+      expect.arrayContaining(["rfeg-base-cadete-pairs-balance-row-i-b-a", "rfeg-base-cadete-pairs-balance-row-i-b-b"]),
+    );
   });
 
   it("is only offered at its own level", () => {

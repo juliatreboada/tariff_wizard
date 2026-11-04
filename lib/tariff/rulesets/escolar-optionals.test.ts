@@ -6,7 +6,7 @@ import { entry, header } from "../test-fixtures";
 
 /** ESCOLAR sheets may take their optional from the RFEG Base tables. */
 const rfeg = (id: string): CatalogEntry => {
-  const found = getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-${id}`);
+  const found = getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-${id}` || e.id === `rfeg-base-${id}` + "-a");
   if (!found) throw new Error(`No RFEG entry ${id}`);
   return found;
 };
@@ -64,7 +64,7 @@ describe("after the category changes", () => {
     store().commitHeader();
     expect(roles()).toEqual([
       ["fgx-balance-row-i-a", "optional"],
-      ["rfeg-base-infantil-pairs-balance-row-i-b", "optional"],
+      ["rfeg-base-infantil-pairs-balance-row-i-b-a", "optional"], // a cell with options: its first
     ]);
     expect(store().valueBreakdown.balance).toBe(0);
   });

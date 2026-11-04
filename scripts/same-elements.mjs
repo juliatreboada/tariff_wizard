@@ -6,6 +6,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { expandId } from "./cell-options.mjs";
 
 /** Catalog code of an entry id from its prefix ("fig-…" → FIG). */
 const codeOf = (id) => id.split("-")[0].toUpperCase();
@@ -18,30 +19,31 @@ export function applySameElements(root, code, entries, problems) {
   const { pairs } = JSON.parse(fs.readFileSync(path.join(root, "catalog/same-elements.json"), "utf8"));
   const own = new Map(entries.map((e) => [e.id, e]));
   const others = new Map();
-  const existsElsewhere = (id) => {
-    const other = codeOf(id);
+  const entriesOf = (other) => {
+    if (other === code) return entries;
     if (!others.has(other)) {
       const file = path.join(root, "catalog", other, "manifest.json");
-      const ids = fs.existsSync(file)
-        ? new Set(JSON.parse(fs.readFileSync(file, "utf8")).entries.map((e) => e.id))
-        : new Set();
-      others.set(other, ids);
+      others.set(other, fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")).entries : []);
     }
-    return others.get(other).has(id);
+    return others.get(other);
   };
-  const exists = (id) => (codeOf(id) === code ? own.has(id) : existsElsewhere(id));
+  // A reviewed cell later split into options stands for every option.
+  const expand = (id) => expandId(entriesOf(codeOf(id)), id);
 
   const known = (id) => fs.existsSync(path.join(root, "catalog", codeOf(id), "manifest.json")) || codeOf(id) === code;
   for (const [a, b] of pairs) {
     for (const id of [a, b]) if (!known(id)) problems.push(`same-elements: ${id} isn't in any catalog`);
     if (codeOf(a) !== code && codeOf(b) !== code) continue;
-    if (!exists(a) || !exists(b)) {
+    const [as, bs] = [expand(a), expand(b)];
+    if (!as.length || !bs.length) {
       problems.push(`same-elements: unknown entry in ${a} / ${b}`);
       continue;
     }
-    for (const [from, to] of [[a, b], [b, a]]) {
-      const entry = own.get(from);
-      if (entry) entry.sameAs = [...new Set([...(entry.sameAs ?? []), to])].sort();
-    }
+    for (const x of as)
+      for (const y of bs)
+        for (const [from, to] of [[x, y], [y, x]]) {
+          const entry = own.get(from);
+          if (entry) entry.sameAs = [...new Set([...(entry.sameAs ?? []), to])].sort();
+        }
   }
 }

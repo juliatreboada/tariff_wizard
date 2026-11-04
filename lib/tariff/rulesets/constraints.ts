@@ -13,15 +13,21 @@ export type AddProblem =
   | "no-pyramid"
   | "same-element-row";
 
-/** Elements already placed, add-ons included. */
-function usedCatalogIds(routine: RoutineItem[], exceptItemId?: string): Set<string> {
-  const ids = new Set<string>();
+/** What makes two elements "the same one": a cell's options share its number. */
+function elementKey(catalogId: string, entry?: CatalogEntry): string {
+  return entry?.number ?? catalogId;
+}
+
+/** Elements already placed, add-ons included (by element key). */
+function usedElementKeys(routine: RoutineItem[], exceptItemId?: string): Set<string> {
+  const keys = new Set<string>();
   for (const item of routine) {
     if (item.id === exceptItemId) continue;
-    ids.add(item.element.catalogId);
-    if (item.addOn) ids.add(item.addOn.catalogId);
+    for (const placed of item.addOn ? [item.element, item.addOn] : [item.element]) {
+      keys.add(elementKey(placed.catalogId, catalogEntryForElement(placed)));
+    }
   }
-  return ids;
+  return keys;
 }
 
 /**
@@ -56,7 +62,8 @@ export function addProblem(
   /** For an add-on: the pyramid (catalog id) it must go on. */
   attachTo?: string,
 ): AddProblem | null {
-  if (usedCatalogIds(routine, exceptItemId).has(entry.id)) return "duplicate";
+  // One option per cell: another option of the same cell counts as the same element.
+  if (usedElementKeys(routine, exceptItemId).has(elementKey(entry.id, entry))) return "duplicate";
   if (entry.attachesTo) {
     if (exceptItemId) return "not-allowed"; // an add-on can't replace a pyramid
     const pyramid = pyramidForAddOn(routine, entry, attachTo);
@@ -82,7 +89,8 @@ export function addProblem(
 
   const role = roleForEntry(ruleset, header, entry);
   if (!role) return "not-allowed";
-  if (role === "optional" && ruleset.notOptional?.[header.levelAge]?.includes(entry.id)) {
+  const notOptional = ruleset.notOptional?.[header.levelAge];
+  if (role === "optional" && (notOptional?.includes(entry.id) || (entry.number && notOptional?.includes(entry.number)))) {
     return "not-allowed";
   }
   const slots = blockSlots(ruleset, block, header.category);

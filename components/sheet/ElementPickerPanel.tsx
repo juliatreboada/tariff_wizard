@@ -133,7 +133,10 @@ function ElementPickerPreview({
             <dt className="text-[11px] font-medium uppercase tracking-wide text-zinc-500">
               {t.sheet.picker.previewCoordinates}
             </dt>
-            <dd className="font-medium text-zinc-900">{entry.coordinates}</dd>
+            <dd className="font-medium text-zinc-900">
+              {entry.coordinates}
+              {entry.variant ? ` · ${entry.variant.label}` : ""}
+            </dd>
           </div>
           <div>
             <dt className="text-[11px] font-medium uppercase tracking-wide text-zinc-500">
@@ -206,9 +209,12 @@ function CatalogRowGrid({
   selectedHint,
   problemFor,
   noteFor,
+  onSelectGroup,
 }: {
   entries: CatalogEntry[];
   onSelect: (entry: CatalogEntry) => void;
+  /** A cell with options (several pictures) was chosen: show its options. */
+  onSelectGroup?: (options: CatalogEntry[]) => void;
   selectedCatalogId?: string;
   selectedCatalogIds?: Set<string>;
   selectedHint?: string;
@@ -278,6 +284,52 @@ function CatalogRowGrid({
     );
   }
 
+  /** One tile for a cell with options: its own picture; choosing it shows the options. */
+  function groupCell(options: CatalogEntry[]) {
+    const first = options[0];
+    const chosen = options.some(
+      (e) => selectedCatalogId === e.id || (selectedCatalogIds?.has(e.id) ?? false),
+    );
+    const problems = options.map((e) => problemFor?.(e) ?? null);
+    const blocked = !chosen && problems.every((p) => p != null);
+    const note = noteFor?.(first) ?? null;
+    return (
+      <button
+        key={`group-${first.number}`}
+        type="button"
+        disabled={blocked}
+        onClick={() => onSelectGroup?.(options)}
+        className={`flex h-full w-full flex-col items-center rounded-lg border p-1.5 sm:p-2 ${
+          chosen
+            ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
+            : blocked
+              ? "cursor-not-allowed border-zinc-200 opacity-50"
+              : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+        }`}
+      >
+        <Image
+          src={catalogImageUrl(first.variant!.groupImage, first.code)}
+          alt={first.coordinates}
+          width={96}
+          height={68}
+          className="h-14 w-full object-contain sm:h-16"
+        />
+        <span className="mt-0.5 text-[9px] text-zinc-600 sm:text-[10px]">
+          {formatSheetValue(first.value)} · {options.length} ▸
+        </span>
+        {chosen ? (
+          <span className="mt-0.5 text-[9px] font-medium text-zinc-800">✓ {selectedHint}</span>
+        ) : null}
+        {note ? (
+          <span className="mt-0.5 text-center text-[9px] leading-tight text-zinc-600">{note}</span>
+        ) : null}
+        {blocked ? (
+          <span className="mt-0.5 text-center text-[9px] leading-tight text-amber-700">{problems[0]}</span>
+        ) : null}
+      </button>
+    );
+  }
+
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[22rem] table-fixed border-separate border-spacing-1">
@@ -302,10 +354,16 @@ function CatalogRowGrid({
               </th>
               {columns.map((col) => {
                 const inCell = rowEntries.filter((e) => columnOf(e) === col);
+                // A cell's options (same number) show as one tile.
+                const options = inCell.filter((e) => e.variant && e.number);
+                const singles = inCell.filter((e) => !(e.variant && e.number));
                 return (
                   <td key={col} className="align-top">
                     {inCell.length > 0 ? (
-                      <div className="flex flex-col gap-1">{inCell.map(cell)}</div>
+                      <div className="flex flex-col gap-1">
+                        {singles.map(cell)}
+                        {options.length > 0 ? groupCell(options) : null}
+                      </div>
                     ) : null}
                   </td>
                 );
@@ -370,6 +428,8 @@ export function ElementPickerPanel({
     [routine, editingGroup, editGroupId],
   );
   const [previewEntry, setPreviewEntry] = useState<CatalogEntry | null>(null);
+  /** The options of the cell being chosen (a cell with several pictures). */
+  const [optionGroup, setOptionGroup] = useState<CatalogEntry[] | null>(null);
   const [tableKey, setTableKey] = useState<string | null>(null);
   const [duplicateError, setDuplicateError] = useState(false);
   const [limitError, setLimitError] = useState<"roleBlock" | "individuals" | null>(
@@ -724,6 +784,7 @@ export function ElementPickerPanel({
                 setDuplicateError(false);
                 setLimitError(null);
                 setPreviewEntry(null);
+                setOptionGroup(null);
               }}
               disabled={
                 (editMode && type !== editBlock) ||
@@ -753,7 +814,46 @@ export function ElementPickerPanel({
             currentBlockIsFull ? (
               <p className="text-sm text-amber-700">{t.sheet.picker.limitRoleBlock}</p>
             ) :
-            previewEntry && addOnChoices.length > 0 ? (
+            optionGroup && !previewEntry ? (
+              <PickerStep title={t.sheet.picker.chooseVariant} onBack={() => setOptionGroup(null)}>
+                <ul className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))" }}>
+                  {optionGroup.map((option) => {
+                    const problem = problemFor(option);
+                    return (
+                      <li key={option.id}>
+                        <button
+                          type="button"
+                          disabled={problem != null}
+                          title={problem ?? undefined}
+                          onClick={() => {
+                            setOptionGroup(null);
+                            setPreviewEntry(option);
+                            setAddOnFailed(false);
+                            setDuplicateError(false);
+                            setLimitError(null);
+                          }}
+                          className={`flex h-full w-full flex-col items-center rounded-lg border bg-white p-2 ${
+                            problem
+                              ? "cursor-not-allowed border-zinc-200 opacity-40"
+                              : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+                          }`}
+                        >
+                          <Image
+                            src={catalogImageUrl(option.image, option.code)}
+                            alt={`${option.coordinates} · ${option.variant?.label ?? ""}`}
+                            width={140}
+                            height={96}
+                            className="h-24 w-full object-contain"
+                          />
+                          <span className="mt-1 text-xs font-medium text-zinc-800">{option.variant?.label}</span>
+                          {problem ? <span className="text-[10px] text-amber-700">{problem}</span> : null}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </PickerStep>
+            ) : previewEntry && addOnChoices.length > 0 ? (
               <PickerStep
                 title={t.sheet.picker.chooseAddOn}
                 onBack={() => {
@@ -770,7 +870,10 @@ export function ElementPickerPanel({
                     height={80}
                     className="h-16 w-auto rounded border border-zinc-200 bg-white object-contain p-1"
                   />
-                  <span className="text-xs text-zinc-600">{previewEntry.coordinates}</span>
+                  <span className="text-xs text-zinc-600">
+                    {previewEntry.coordinates}
+                    {previewEntry.variant ? ` · ${previewEntry.variant.label}` : ""}
+                  </span>
                 </div>
                 <ul className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(7rem, 1fr))" }}>
                   {addOnChoices.map((addOn) => {
@@ -795,7 +898,10 @@ export function ElementPickerPanel({
                             height={64}
                             className="h-20 w-full object-contain"
                           />
-                          <span className="mt-1 text-xs font-medium text-zinc-800">{addOn.coordinates}</span>
+                          <span className="mt-1 text-xs font-medium text-zinc-800">
+                            {addOn.coordinates}
+                            {addOn.variant ? ` · ${addOn.variant.label}` : ""}
+                          </span>
                           {problem ? <span className="text-[10px] text-amber-700">{problem}</span> : null}
                         </button>
                       </li>
@@ -856,6 +962,7 @@ export function ElementPickerPanel({
                         onClick={() => {
                           setTableKey(table.key);
                           setPreviewEntry(null);
+                          setOptionGroup(null);
                         }}
                         className={`rounded-full border px-3 py-1.5 text-xs ${
                           table.key === activeTable?.key
@@ -883,6 +990,10 @@ export function ElementPickerPanel({
                     selectedHint={t.routine.escolarDone}
                     problemFor={problemFor}
                     noteFor={noteFor}
+                    onSelectGroup={(options) => {
+                      setAddOnFailed(false);
+                      setOptionGroup(options);
+                    }}
                     onSelect={(entry) => {
                       setAddOnFailed(false);
                       setPreviewEntry(entry);

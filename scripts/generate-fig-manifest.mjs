@@ -17,6 +17,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { applyCellOptions } from "./cell-options.mjs";
 import { applySameElements } from "./same-elements.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -175,6 +176,10 @@ for (const [column, twists] of Object.entries(tod.tumbling.columns)) {
     });
   }
 }
+
+// Cells with alternative pictures ("OR"): one entry per option.
+const withOptions = applyCellOptions(root, "FIG", entries, problems);
+entries.splice(0, entries.length, ...withOptions);
 
 // Same element in another table (e.g. Base Cadete), reviewed by the coach.
 applySameElements(root, "FIG", entries, problems);
