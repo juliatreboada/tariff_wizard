@@ -741,18 +741,17 @@ export function ElementPickerPanel({
   const noteFor = (entry: CatalogEntry) =>
     entry.attachesTo ? t.sheet.picker.addOnHint(coordinatesOf(entry.attachesTo)) : null;
 
-  const selectedCatalogIds = useMemo(() => {
-    if (elementType !== "balance" && elementType !== "dynamic") {
-      return new Set<string>();
-    }
-    return new Set(
-      routine
-        .filter((item) => item.block === elementType)
-        .flatMap((item) =>
-          item.addOn ? [item.element.catalogId, item.addOn.catalogId] : [item.element.catalogId],
-        ),
-    );
-  }, [routine, elementType]);
+  /** Elements of this block already in the routine (add-ons included). */
+  const selectedCatalogIds =
+    elementType !== "balance" && elementType !== "dynamic"
+      ? new Set<string>()
+      : new Set(
+          routine
+            .filter((item) => item.block === elementType)
+            .flatMap((item) =>
+              item.addOn ? [item.element.catalogId, item.addOn.catalogId] : [item.element.catalogId],
+            ),
+        );
   return (
     <aside className={shellClass} aria-label={t.routine.addElement}>
       <header
