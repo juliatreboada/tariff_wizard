@@ -35,9 +35,9 @@ export function ClubLogoUpload({
     } catch (err) {
       const code = err instanceof Error ? err.message : "";
       if (code === "too-large") {
-        setError(t.sheetLabels.clubLogoTooLarge);
+        setError(t.fieldLabels.clubLogoTooLarge);
       } else {
-        setError(t.sheetLabels.clubLogoInvalid);
+        setError(t.fieldLabels.clubLogoInvalid);
       }
     }
   }
@@ -60,7 +60,7 @@ export function ClubLogoUpload({
                 setError(null);
               }}
               className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full border border-zinc-300 bg-white text-[10px] leading-none text-zinc-600 hover:bg-zinc-100"
-              aria-label={t.sheetLabels.clubLogoRemove}
+              aria-label={t.fieldLabels.clubLogoRemove}
             >
               ×
             </button>
@@ -74,7 +74,7 @@ export function ClubLogoUpload({
           className={`min-w-0 flex-1 ${fieldInputClass(hasError || !!error)}`}
         />
       </div>
-      <p className="text-xs text-zinc-500">{t.sheetLabels.clubLogoHint}</p>
+      <p className="text-xs text-zinc-500">{t.fieldLabels.clubLogoHint}</p>
       {error ? (
         <p className="text-sm text-red-600" role="alert">
           {error}

@@ -1,10 +1,13 @@
-import type { ElementType } from "./catalog/types";
+import type { CatalogId, ElementType } from "./catalog/types";
 
 export type ElementColumnId = `col-${number}`;
 
 /** One placed catalog element (fills VALUE + SH + image slots). */
 export type PlacedElement = {
+  /** The catalog entry's id (e.g. fgx-balance-row-i-a). */
   catalogId: string;
+  /** Which catalog the entry comes from (e.g. FGX); its images live under it. */
+  catalog: CatalogId;
   coordinates: string;
   value: number;
   image: string;

@@ -62,6 +62,13 @@ export function item(
   };
 }
 
+/** An item as saved before elements recorded their catalog. */
+export function withoutCatalog(it: RoutineItem): RoutineItem {
+  const element: Partial<RoutineItem["element"]> = { ...it.element };
+  delete element.catalog;
+  return { ...it, element: element as RoutineItem["element"] };
+}
+
 /** One complete individual set: top + every base, sharing a group id. */
 export function individualSet(
   groupId: string,

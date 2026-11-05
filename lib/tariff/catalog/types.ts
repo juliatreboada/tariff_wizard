@@ -1,10 +1,14 @@
 import type { Exercise, LevelSystem } from "../enums";
 
-/** Active element catalog (add more regions later if needed). */
-export const CATALOG_IDS = ["FGX"] as const;
+/** Element catalogs: FGX (ESCOLAR), RFEG (Base, Cto. España) and FIG (Pre-Youth 11-16). */
+export const CATALOG_IDS = ["FGX", "RFEG", "FIG"] as const;
 export type CatalogId = (typeof CATALOG_IDS)[number];
 
 export const DEFAULT_CATALOG_ID: CatalogId = "FGX";
+
+export function isCatalogId(value: unknown): value is CatalogId {
+  return (CATALOG_IDS as readonly unknown[]).includes(value);
+}
 
 /** Catalog section: equilibrio grid, dinámico grid, or individual figures. */
 export const ELEMENT_FAMILIES = ["balance", "dynamic", "individual"] as const;
@@ -18,6 +22,8 @@ export type CatalogFilters = {
   levelSystems: LevelSystem[];
   categories: string[];
   exercises: Exercise[];
+  /** Age groups (header `levelAge`); omitted = every age of the level system. */
+  levelAges?: string[];
 };
 
 export type CatalogEntry = {
@@ -36,7 +42,22 @@ export type CatalogEntry = {
   holdDuration?: string;
   /** Dynamic rotation for meta row (e.g. 1/4 BACK). */
   rotation?: string;
+  /**
+   * One choice of a group picked in two steps: an agility's landing (group
+   * "118", label "Recepción C") or a tumbling column's twist (group "Col. 4",
+   * label "360°"). `groupImage` is the group's own picture.
+   */
+  variant?: { group: string; label: string; groupImage: string };
+  /** ID number a gymnast may use once (shared by a box's options and landings); default: the id. */
+  number?: string;
   filters: CatalogFilters;
+  /**
+   * An add-on, not an element of its own: it attaches to one of these entries
+   * (e.g. Cuartetos ROW III on a ROW I pyramid) and adds its value.
+   */
+  attachesTo?: string[];
+  /** The same element in other tables (e.g. an older age group's), for row rules. */
+  sameAs?: string[];
 };
 
 export type CatalogManifest = {

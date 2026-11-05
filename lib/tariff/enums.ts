@@ -11,7 +11,7 @@ export type LevelSystem = (typeof LEVEL_SYSTEMS)[number];
 
 /** Second part of LEVEL — age band within the system */
 export const LEVEL_AGE_BY_SYSTEM = {
-  Escolar: ["Benxamín", "Alevín", "Infantil", "Absoluto"],
+  Escolar: ["Prebenxamín", "Benxamín", "Alevín", "Infantil", "Absoluta"],
   Base: ["Alevín", "Infantil", "Cadete", "Junior", "Senior"],
   RFEG: [
     "Alevín",

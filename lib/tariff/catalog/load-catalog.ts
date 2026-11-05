@@ -1,10 +1,14 @@
+import manifestFig from "@/catalog/FIG/manifest.json";
 import manifestFgx from "@/catalog/FGX/manifest.json";
+import manifestRfeg from "@/catalog/RFEG/manifest.json";
 import { catalogManifestSchema } from "./schema";
 import type { CatalogEntry, CatalogId, CatalogManifest } from "./types";
 import { DEFAULT_CATALOG_ID } from "./types";
 
 const manifests: Record<CatalogId, unknown> = {
   FGX: manifestFgx,
+  RFEG: manifestRfeg,
+  FIG: manifestFig,
 };
 
 const cache = new Map<CatalogId, CatalogManifest>();
@@ -33,7 +37,7 @@ export function getCatalogEntries(
 /** Public URL for an entry image (`public/catalog/<code>/…`). */
 export function catalogImageUrl(
   imagePath: string,
-  catalogId: CatalogId = DEFAULT_CATALOG_ID,
+  catalogId: CatalogId,
 ): string {
   return `/catalog/${catalogId}/${imagePath.replace(/^\//, "")}`;
 }

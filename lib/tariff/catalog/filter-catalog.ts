@@ -1,18 +1,22 @@
 import type { StoredHeader } from "../types";
 import type { CatalogEntry, ElementFamily, ElementType } from "./types";
 
+/** The header fields catalog filters read. */
+export type CatalogFilterHeader = Pick<StoredHeader, "levelSystem" | "levelAge" | "category" | "exercise">;
+
 export type CatalogFilterContext = {
-  header: StoredHeader;
+  header: CatalogFilterHeader;
   elementFamily?: ElementFamily;
   type?: ElementType;
 };
 
-function matchesFilters(entry: CatalogEntry, header: StoredHeader): boolean {
+function matchesFilters(entry: CatalogEntry, header: CatalogFilterHeader): boolean {
   const { filters } = entry;
   return (
     filters.levelSystems.includes(header.levelSystem) &&
     filters.categories.includes(header.category) &&
-    filters.exercises.includes(header.exercise)
+    filters.exercises.includes(header.exercise) &&
+    (!filters.levelAges || filters.levelAges.includes(header.levelAge))
   );
 }
 

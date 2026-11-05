@@ -1,7 +1,9 @@
 /**
  * Spanish UI strings.
  *
- * Sheet field labels (COUNTRY, CLUB, …) stay in English to match the PDF.
+ * Inputs and screens use `fieldLabels` (Spanish). The printed official sheet
+ * stays in English to match the federation form: its titles are written in
+ * TariffSheet.tsx, and its TOP/BASE rows use `sheetLabels`.
  */
 export const es = {
   meta: {
@@ -49,11 +51,12 @@ export const es = {
     hint: "Datos de la columna derecha de la hoja (como en el PDF).",
     step1: {
       title: "Club y Competición",
-      description: "PARTICIPATION NUMBER, COUNTRY, CLUB, COMPETITION, LEVEL, CATEGORY, EXERCISE",
+      description:
+        "Número de participación, país, club, competición, nivel, categoría y ejercicio",
     },
     step2: {
       title: "Equipo y Contacto",
-      description: "GYMNASTS (TOP, BASE) y CONTACT PERSON",
+      description: "Gimnastas (TOP, BASE) y persona de contacto",
     },
     step3: {
       title: "Resumen del encabezado",
@@ -65,9 +68,9 @@ export const es = {
     continueToSheet: "Continuar a la TS",
     comingSoon: "próximamente",
     levelSystemAvailability:
-      "Por ahora solo está disponible ESCOLAR. BASE, RFEG y FIG se habilitarán próximamente.",
+      "Por ahora están disponibles ESCOLAR y BASE. RFEG y FIG se habilitarán próximamente.",
     levelAgeAvailability:
-      "En ESCOLAR, la categoría de edad Absoluto se habilitará próximamente.",
+      "En ESCOLAR, Absoluta se habilitará próximamente; en BASE, Junior y Senior.",
   },
   sheet: {
     title: "Tariff Sheet",
@@ -110,9 +113,40 @@ export const es = {
       duplicateElement:
         "Este elemento ya está en otra columna. No puede repetirse en la rutina.",
       limitRoleBlock:
-        "Límite alcanzado para este bloque: máximo 2 elementos (en equilibrio o en dinámico).",
-      limitIndividuals:
-        "Límite alcanzado: solo se permiten 3 sets de individuales.",
+        "Bloque completo: ya tiene todos sus elementos obligatorios y opcionales.",
+      limitIndividuals: (n: number) =>
+        `Límite alcanzado: solo se permiten ${n} sets de individuales.`,
+      individualsComingSoon: "Elementos individuales: próximamente.",
+      tableChooser: "Tabla",
+      tableOwn: (system: string, age: string) => `${age} ${system.toUpperCase()}`,
+      tableOptional: (label: string, age: string, category: string | null) =>
+        `${age} ${label}${category ? ` · ${category}` : ""} · opcional`,
+      optionalTableHint:
+        "Tabla de nivel superior: el elemento cuenta como opcional y no suma dificultad.",
+      problemSameElementRow: "Su fila tiene el mismo elemento que un obligatorio",
+      problemSameRow: "Ya hay un obligatorio de esta fila",
+      problemFullCompulsory: "Obligatorios completos",
+      problemFullOptional: "Opcional ya elegido",
+      problemNotAllowed: "No permitido",
+      problemValueRange: (min: number, max: number) => `Valor fuera de ${min}–${max}`,
+      chooseVariant: "Elige la opción",
+      option: "Opción",
+      individualElement: "Elemento individual",
+      individualChosen: "Elemento elegido",
+      gymnasts: "Gimnastas",
+      elementWithOptions: "Elemento con opciones",
+      chooseAddOn: "Elige el elemento de la flecha",
+      noAddOn: "Sin añadido",
+      problemAddOnUsed: "Ya está en otra figura",
+      problemOtherOption: "Ya está la otra opción",
+      addOnFailed: "La figura se guardó, pero el elemento de la flecha no se pudo añadir.",
+      problemSameNumber: (number: string) => `Ya hace el ${number}`,
+      individualRefused:
+        "Este set tiene un elemento no permitido: fuera de su valor o con un número que ese gimnasta ya hace.",
+      individualValueRange: (min: number, max: number) =>
+        `Cada elemento individual debe valer entre ${min} y ${max}.`,
+      problemNoPyramid: (codes: string) => `Necesita ${codes}`,
+      addOnHint: (codes: string) => `Se suma a ${codes}`,
       back: "Atrás",
       close: "Cerrar",
     },
@@ -120,7 +154,7 @@ export const es = {
     catalogSummary: (count: number, subtypes: string) =>
       `Catálogo FGX: ${count} elemento(s) para tu hoja (tipos: ${subtypes}).`,
     catalogEmpty:
-      "Ningún elemento del catálogo coincide con LEVEL / CATEGORY / EXERCISE de esta hoja. Revisa manifest.json o los filtros.",
+      "Ningún elemento del catálogo coincide con el nivel, la categoría y el ejercicio de esta hoja. Revisa manifest.json o los filtros.",
     printSheet: "Imprimir / PDF",
   },
   routine: {
@@ -129,7 +163,7 @@ export const es = {
       "Añade los elementos en el orden de la rutina. Marca «Enlazado» si va en la columna siguiente sin hueco (p. ej. mount + static).",
     linkHint:
       "Sin enlazar: se deja una columna en blanco entre elementos. La hoja tiene 3 bloques × 9 columnas.",
-    escolarTagTitle: "Tipo de elemento (ESCOLAR)",
+    tagTitle: (label: string) => `Tipo de elemento (${label})`,
     escolarRole: "Rol",
     escolarBlock: "Bloque",
     escolarGymnast: "Gimnasta",
@@ -143,7 +177,8 @@ export const es = {
     escolarFamilyTumbling: "Tumbling",
     escolarFamilyAgility: "Agilidad",
     escolarStatusTitle: "Control ESCOLAR (guiado)",
-    escolarChecklistTitle: "Checklist ESCOLAR",
+    checklistTitle: (label: string) => `Checklist ${label}`,
+    removeAddOn: (code: string) => `Quitar ${code}`,
     escolarMissingTitle: "Pendientes para completar la estructura",
     escolarDone: "Completado",
     escolarMissing: "Falta",
@@ -152,10 +187,10 @@ export const es = {
     escolarRuleCompDynamic: "Obligatorio dinámico",
     escolarRuleOptBalance: "Opcional equilibrio",
     escolarRuleOptDynamic: "Opcional dinámico",
+    optionalValueRange: (min: number, max: number) => `de TOD WG: valor ${min}–${max}`,
     escolarRuleIndividuals: "Individuales",
     escolarIndividualHint:
       "Todos los gimnastas de este set van juntos en la misma fila y en la misma celda de la TS.",
-    escolarGymnastsInSet: "gimnastas",
     topRole: "TOP",
     baseRole: "BASE",
     empty: "Aún no hay elementos. Pulsa «Añadir elemento».",
@@ -163,12 +198,13 @@ export const es = {
     linkNextAdd: "Enlazar con el elemento anterior (sin columna en blanco)",
     linked: "Enlazado",
     linkedHintFirst: "El primer elemento no puede ir enlazado.",
-    linkedHint: "Activa solo si este elemento va pegado al anterior.",
+    linkedHint: "«Enlazado»: el elemento va pegado al anterior en la hoja, sin columna en blanco.",
+    editElement: "Editar elemento",
     linkNext: "Enlazar siguiente",
     remove: "Quitar",
     edit: "Editar",
-    moveUp: "Subir",
-    moveDown: "Bajar",
+    moveUp: "Mover antes",
+    moveDown: "Mover después",
     viewSheet: "Ver hoja TS",
     previewTitle: "Hoja de tarifa (TS)",
     previewSubtitle:
@@ -197,27 +233,34 @@ export const es = {
       "Aún no hay elementos en el primer bloque. La hoja se imprimirá con celdas vacías.",
     footer: "Tariff Wizard — vista para impresión",
   },
-  sheetLabels: {
-    country: "COUNTRY",
-    club: "CLUB",
-    clubLogo: "CLUB LOGO",
+  /** Labels for inputs and on-screen summaries. */
+  fieldLabels: {
+    country: "País",
+    club: "Club",
+    clubLogo: "Logo del club",
     clubLogoHint: "PNG o JPG, máx. 500 KB.",
     clubLogoRemove: "Quitar logo",
     clubLogoTooLarge: "La imagen es demasiado grande (máx. 500 KB).",
     clubLogoInvalid: "Selecciona un archivo de imagen válido.",
-    participationNumber: "PARTICIPATION NUMBER",
-    competition: "COMPETITION",
-    levelSystem: "LEVEL",
-    levelAge: "AGE-GROUP",
-    category: "CATEGORY",
-    exercise: "EXERCISE",
+    participationNumber: "Número de participación",
+    competition: "Competición",
+    levelSystem: "Nivel",
+    levelAge: "Categoría de edad",
+    category: "Categoría",
+    exercise: "Ejercicio",
     top: "TOP",
     base: "BASE",
     baseNumber: (n: number) => `BASE ${n}`,
-    contactName: "NAME",
-    contactPhone: "TEL",
-    contactSection: "CONTACT PERSON",
-    gymnastsSection: "GYMNASTS",
+    contactName: "Nombre",
+    contactPhone: "Teléfono",
+    contactSection: "Persona de contacto",
+    gymnastsSection: "Gimnastas",
+  },
+  /** Printed official sheet's TOP/BASE rows — English, as on the federation form. */
+  sheetLabels: {
+    top: "TOP",
+    base: "BASE",
+    baseNumber: (n: number) => `BASE ${n}`,
   },
   placeholders: {
     select: "Seleccionar…",

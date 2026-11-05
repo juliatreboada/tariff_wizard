@@ -3,10 +3,14 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
+  catalogEntryByAnyId,
+  catalogEntryForElement,
+  catalogEntryToPlaced,
   catalogImageUrl,
   filterCatalogEntries,
   getCatalogEntries,
   groupCatalogEntriesByRow,
+  parseRowColumnFromCoordinates,
   type CatalogEntry,
   type ElementFamily,
   type ElementType,
@@ -14,11 +18,30 @@ import {
 import { getMessages } from "@/lib/i18n";
 import { isCatalogIdUsedInRoutine } from "@/lib/tariff/element-uniqueness";
 import { gymnastCountForCategory } from "@/lib/tariff/level-category";
-import { countCompleteIndividualSets, gymnastKeysForHeader } from "@/lib/tariff/routine-groups";
-import type { RoutineGymnastRole } from "@/lib/tariff/routine-types";
+import {
+  countCompleteIndividualSets,
+  gymnastKeysForHeader,
+  individualGroupId,
+} from "@/lib/tariff/routine-groups";
+import type { RoutineGymnastRole, RoutineItem } from "@/lib/tariff/routine-types";
 import type { StoredHeader } from "@/lib/tariff/types";
-import { rulesetFor } from "@/lib/tariff/rulesets";
+import {
+  addProblem,
+  blockSlots,
+  individualEntries,
+  individualProblem,
+  individualValueRange,
+  repeatsIndividualNumber,
+  optionalAvailable,
+  optionalCategoryTables,
+  pyramidForAddOn,
+  roleForEntry,
+  rulesetFor,
+  type Ruleset,
+} from "@/lib/tariff/rulesets";
 import { useWizardStore } from "@/lib/tariff/store";
+import { IndividualChoices } from "./IndividualChoices";
+import { PickerStep } from "./PickerStep";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
 
 type PickerElementType = "balance" | "dynamic" | "individual";
@@ -37,6 +60,8 @@ export type ElementPickerSelection =
       entry: CatalogEntry;
       block: "balance" | "dynamic";
       role: PickerRole;
+      /** For an add-on: the pyramid (catalog id) to put it on. */
+      attachTo?: string;
     }
   | {
       kind: "individual";
@@ -45,6 +70,8 @@ export type ElementPickerSelection =
         baseIndex?: number;
         entry: CatalogEntry;
       }>;
+      /** Replace this set (its group id) instead of adding a new one. */
+      replaceGroupId?: string;
     };
 
 type ElementPickerPanelProps = {
@@ -54,6 +81,8 @@ type ElementPickerPanelProps = {
   variant?: "panel" | "popover";
   editItemId?: string;
   editBlock?: "balance" | "dynamic";
+  /** Edit this individual set (its group id) instead of adding one. */
+  editGroupId?: string;
 };
 
 function entriesForFamily(
@@ -91,7 +120,7 @@ function ElementPickerPreview({
         <div className="flex shrink-0 items-start gap-3">
           <div className="w-full max-w-[220px] rounded-lg border border-zinc-200 bg-white p-3">
             <Image
-              src={catalogImageUrl(entry.image)}
+              src={catalogImageUrl(entry.image, entry.code)}
               alt={entry.coordinates}
               width={200}
               height={140}
@@ -104,7 +133,10 @@ function ElementPickerPreview({
             <dt className="text-[11px] font-medium uppercase tracking-wide text-zinc-500">
               {t.sheet.picker.previewCoordinates}
             </dt>
-            <dd className="font-medium text-zinc-900">{entry.coordinates}</dd>
+            <dd className="font-medium text-zinc-900">
+              {entry.coordinates}
+              {entry.variant ? ` · ${entry.variant.label}` : ""}
+            </dd>
           </div>
           <div>
             <dt className="text-[11px] font-medium uppercase tracking-wide text-zinc-500">
@@ -154,81 +186,192 @@ function ElementPickerPreview({
   );
 }
 
+/** How a repeated ID number reads: "118" for an agility's landings, "Col. 4 · 0°" for tumbling. */
+function sameNumberLabel(entry: CatalogEntry): string {
+  if (!entry.variant) return entry.coordinates;
+  return entry.type === "AG" ? entry.variant.group : `${entry.variant.group} · ${entry.variant.label}`;
+}
+
+/** Add-ons of the sheet's own catalog and of its optional tables' catalogs. */
+function addOnEntriesFor(ruleset: Ruleset, header: StoredHeader): CatalogEntry[] {
+  const catalogs = new Set([
+    ruleset.catalogId,
+    ...optionalCategoryTables(ruleset, header).map((table) => table.catalogId),
+  ]);
+  return [...catalogs].flatMap((id) => getCatalogEntries(id).filter((e) => e.attachesTo));
+}
+
 function CatalogRowGrid({
   entries,
   onSelect,
   selectedCatalogId,
   selectedCatalogIds,
   selectedHint,
+  problemFor,
+  noteFor,
+  onSelectGroup,
 }: {
   entries: CatalogEntry[];
   onSelect: (entry: CatalogEntry) => void;
+  /** A cell with options (several pictures) was chosen: show its options. */
+  onSelectGroup?: (options: CatalogEntry[]) => void;
   selectedCatalogId?: string;
   selectedCatalogIds?: Set<string>;
   selectedHint?: string;
+  /** Why this entry can't be picked now (shown under it), or null. */
+  problemFor?: (entry: CatalogEntry) => string | null;
+  /** Extra line under the entry (e.g. which pyramid an add-on attaches to). */
+  noteFor?: (entry: CatalogEntry) => string | null;
 }) {
   const rows = useMemo(() => groupCatalogEntriesByRow(entries), [entries]);
+  const columnOf = (entry: CatalogEntry) =>
+    parseRowColumnFromCoordinates(entry.coordinates)?.columnKey ?? "?";
+  // The table's columns (A–D or A–E, or box numbers), as on the official tables.
+  const columns = useMemo(() => {
+    const order = new Map<string, number>();
+    for (const entry of entries) {
+      const parsed = parseRowColumnFromCoordinates(entry.coordinates);
+      order.set(parsed?.columnKey ?? "?", parsed?.columnOrder ?? Infinity);
+    }
+    return [...order.keys()].sort((a, b) => order.get(a)! - order.get(b)!);
+  }, [entries]);
 
   if (rows.length === 0) return null;
 
+  function cell(entry: CatalogEntry) {
+    const isSelected =
+      selectedCatalogId === entry.id || (selectedCatalogIds?.has(entry.id) ?? false);
+    // Already in the routine (and not the element being edited).
+    const isUsed = isSelected && selectedCatalogId !== entry.id;
+    const problem = isSelected ? null : (problemFor?.(entry) ?? null);
+    const note = noteFor?.(entry) ?? null;
+    return (
+      <button
+        key={entry.id}
+        type="button"
+        disabled={isUsed || problem != null}
+        onClick={() => onSelect(entry)}
+        className={`flex h-full w-full flex-col items-center rounded-lg border p-1.5 sm:p-2 ${
+          isSelected
+            ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
+            : problem
+              ? "cursor-not-allowed border-zinc-200 opacity-50"
+              : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+        }`}
+      >
+        <Image
+          src={catalogImageUrl(entry.image, entry.code)}
+          alt={entry.coordinates}
+          width={96}
+          height={68}
+          className="h-14 w-full object-contain sm:h-16"
+        />
+        <span className="mt-0.5 text-[9px] text-zinc-600 sm:text-[10px]">
+          {formatSheetValue(entry.value)}
+        </span>
+        {isSelected ? (
+          <span className="mt-0.5 text-[9px] font-medium text-zinc-800">✓ {selectedHint}</span>
+        ) : null}
+        {note ? (
+          <span className="mt-0.5 text-center text-[9px] leading-tight text-zinc-600">{note}</span>
+        ) : null}
+        {problem ? (
+          <span className="mt-0.5 text-center text-[9px] leading-tight text-amber-700">
+            {problem}
+          </span>
+        ) : null}
+      </button>
+    );
+  }
+
+  /** One tile for a cell with options: its own picture; choosing it shows the options. */
+  function groupCell(options: CatalogEntry[]) {
+    const first = options[0];
+    const chosen = options.some(
+      (e) => selectedCatalogId === e.id || (selectedCatalogIds?.has(e.id) ?? false),
+    );
+    const problems = options.map((e) => problemFor?.(e) ?? null);
+    const blocked = !chosen && problems.every((p) => p != null);
+    const note = noteFor?.(first) ?? null;
+    return (
+      <button
+        key={`group-${first.number}`}
+        type="button"
+        disabled={blocked}
+        onClick={() => onSelectGroup?.(options)}
+        className={`flex h-full w-full flex-col items-center rounded-lg border p-1.5 sm:p-2 ${
+          chosen
+            ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
+            : blocked
+              ? "cursor-not-allowed border-zinc-200 opacity-50"
+              : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+        }`}
+      >
+        <Image
+          src={catalogImageUrl(first.variant!.groupImage, first.code)}
+          alt={first.coordinates}
+          width={96}
+          height={68}
+          className="h-14 w-full object-contain sm:h-16"
+        />
+        <span className="mt-0.5 text-[9px] text-zinc-600 sm:text-[10px]">
+          {formatSheetValue(first.value)} · {options.length} ▸
+        </span>
+        {chosen ? (
+          <span className="mt-0.5 text-[9px] font-medium text-zinc-800">✓ {selectedHint}</span>
+        ) : null}
+        {note ? (
+          <span className="mt-0.5 text-center text-[9px] leading-tight text-zinc-600">{note}</span>
+        ) : null}
+        {blocked ? (
+          <span className="mt-0.5 text-center text-[9px] leading-tight text-amber-700">{problems[0]}</span>
+        ) : null}
+      </button>
+    );
+  }
+
   return (
-    <div className="flex flex-col gap-3">
-      {rows.map(({ rowKey, rowLabel, entries: rowEntries }) => {
-        return (
-          <div key={rowKey}>
-            <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-500">
-              {rowLabel}
-            </p>
-            <ul className="flex flex-nowrap gap-2 overflow-x-auto pb-0.5 sm:gap-2.5">
-              {rowEntries.map((entry) => (
-                (() => {
-                  const isSelected =
-                    selectedCatalogId === entry.id ||
-                    (selectedCatalogIds?.has(entry.id) ?? false);
-                  // Already in the routine (and not the element being edited).
-                  const isUsed = isSelected && selectedCatalogId !== entry.id;
-                  return (
-                <li
-                  key={entry.id}
-                  className="w-[5.75rem] shrink-0 sm:w-[6.5rem] lg:min-w-0 lg:flex-1"
-                >
-                  <button
-                    type="button"
-                    disabled={isUsed}
-                    onClick={() => onSelect(entry)}
-                    className={`flex h-full w-full flex-col items-center rounded-lg border p-2 sm:p-2.5 ${
-                      isSelected
-                        ? "border-zinc-900 bg-zinc-100 ring-1 ring-zinc-900/20"
-                        : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
-                    }`}
-                  >
-                    <Image
-                      src={catalogImageUrl(entry.image)}
-                      alt={entry.coordinates}
-                      width={96}
-                      height={68}
-                      className="h-14 w-full object-contain sm:h-16"
-                    />
-                    <span className="mt-1 w-full truncate text-center text-[10px] font-medium sm:text-[11px]">
-                      {entry.coordinates.replace(/^ROW-[IVX]+\s+/i, "")}
-                    </span>
-                    <span className="text-[9px] text-zinc-600 sm:text-[10px]">
-                      {formatSheetValue(entry.value)}
-                    </span>
-                    {isSelected ? (
-                      <span className="mt-0.5 text-[9px] font-medium text-zinc-800">
-                        ✓ {selectedHint}
-                      </span>
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[22rem] table-fixed border-separate border-spacing-1">
+        <thead>
+          <tr>
+            <th className="w-12" />
+            {columns.map((col) => (
+              <th key={col} scope="col" className="text-[11px] font-semibold text-zinc-500">
+                {col}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(({ rowKey, rowLabel, entries: rowEntries }) => (
+            <tr key={rowKey}>
+              <th
+                scope="row"
+                className="text-left align-middle text-[10px] font-semibold uppercase tracking-wide text-zinc-500"
+              >
+                {rowLabel}
+              </th>
+              {columns.map((col) => {
+                const inCell = rowEntries.filter((e) => columnOf(e) === col);
+                // A cell's options (same number) show as one tile.
+                const options = inCell.filter((e) => e.variant && e.number);
+                const singles = inCell.filter((e) => !(e.variant && e.number));
+                return (
+                  <td key={col} className="align-top">
+                    {inCell.length > 0 ? (
+                      <div className="flex flex-col gap-1">
+                        {singles.map(cell)}
+                        {options.length > 0 ? groupCell(options) : null}
+                      </div>
                     ) : null}
-                  </button>
-                </li>
-                  );
-                })()
-              ))}
-            </ul>
-          </div>
-        );
-      })}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -246,18 +389,14 @@ function individualTypeLabel(type: ElementType, t: ReturnType<typeof getMessages
   }
 }
 
-function gymnastRowTitle(
-  row: { role: RoutineGymnastRole; baseIndex?: number; name: string },
+/** TOP, BASE (pairs), or BASE 1 / BASE 2… (groups), as on the checklist. */
+function gymnastRoleLabel(
+  row: { role: RoutineGymnastRole; baseIndex?: number },
+  bases: number,
   t: ReturnType<typeof getMessages>,
 ) {
-  const roleLabel =
-    row.role === "top"
-      ? t.routine.topRole
-      : row.baseIndex != null && row.baseIndex > 0
-        ? `${t.routine.baseRole} ${row.baseIndex + 1}`
-        : t.routine.baseRole;
-  const name = row.name || t.home.statusNoData;
-  return `${roleLabel} · ${name}`;
+  if (row.role === "top") return t.routine.topRole;
+  return bases > 1 ? `${t.routine.baseRole} ${(row.baseIndex ?? 0) + 1}` : t.routine.baseRole;
 }
 
 export function ElementPickerPanel({
@@ -267,6 +406,7 @@ export function ElementPickerPanel({
   variant = "panel",
   editItemId,
   editBlock,
+  editGroupId,
 }: ElementPickerPanelProps) {
   const t = getMessages();
   const ruleset = rulesetFor(header);
@@ -274,12 +414,23 @@ export function ElementPickerPanel({
   const routine = useWizardStore((s) => s.routine);
 
   const editMode = editItemId != null && editBlock != null;
-  const maxPerBlock = ruleset?.blocks.maxElements ?? Infinity;
-  const maxIndividualSets = ruleset?.individualSets ?? Infinity;
+  const editingGroup = editGroupId != null;
+  const maxIndividualSets = ruleset?.individuals.sets ?? Infinity;
   const [elementType, setElementType] = useState<PickerElementType>(
-    editBlock ?? "balance",
+    editingGroup ? "individual" : (editBlock ?? "balance"),
+  );
+  /** The routine without the set being edited: what new individual picks are checked against. */
+  const routineForSets = useMemo(
+    () =>
+      editingGroup
+        ? routine.filter((item) => !(item.role === "individual" && individualGroupId(item) === editGroupId))
+        : routine,
+    [routine, editingGroup, editGroupId],
   );
   const [previewEntry, setPreviewEntry] = useState<CatalogEntry | null>(null);
+  /** The options of the cell being chosen (a cell with several pictures). */
+  const [optionGroup, setOptionGroup] = useState<CatalogEntry[] | null>(null);
+  const [tableKey, setTableKey] = useState<string | null>(null);
   const [duplicateError, setDuplicateError] = useState(false);
   const [limitError, setLimitError] = useState<"roleBlock" | "individuals" | null>(
     null,
@@ -294,14 +445,31 @@ export function ElementPickerPanel({
         : header.baseNames[g.baseIndex ?? 0] ?? "",
   }));
 
-  const initialIndividualState = useMemo(() => {
+  /** Each gymnast's starting pick: empty, or the edited set's element. */
+  function initialIndividualState() {
     const state: Record<string, GymnastPickState> = {};
     for (const g of gymnastKeys) {
-      state[g.key] = { type: "EQ" };
+      // Editing a set: start from its elements.
+      const item = editingGroup
+        ? routine.find(
+            (i) =>
+              i.role === "individual" &&
+              individualGroupId(i) === editGroupId &&
+              i.gymnastRole === g.role &&
+              (g.role === "top" || (i.baseIndex ?? 0) === g.baseIndex),
+          )
+        : undefined;
+      const found = item ? catalogEntryForElement(item.element) : undefined;
+      // Only if still allowed here (the sheet's age group may have changed since).
+      const entry = found && !individualProblem(ruleset, header, found) ? found : undefined;
+      state[g.key] = { type: found?.type ?? "EQ", entry };
     }
     return state;
-  }, [gymnastKeys]);
+  }
 
+  const [activeGymnastKey, setActiveGymnastKey] = useState<string>();
+  const [individualRefused, setIndividualRefused] = useState(false);
+  const [addOnFailed, setAddOnFailed] = useState(false);
   const [individualByGymnast, setIndividualByGymnast] =
     useState<Record<string, GymnastPickState>>(initialIndividualState);
 
@@ -341,17 +509,32 @@ export function ElementPickerPanel({
       ).length,
     [routineExcludingEditing],
   );
-  const balanceTotalCount = compulsoryBalanceCount + optionalBalanceCount;
-  const dynamicTotalCount = compulsoryDynamicCount + optionalDynamicCount;
-  const balanceBlockFull = balanceTotalCount >= maxPerBlock;
-  const dynamicBlockFull = dynamicTotalCount >= maxPerBlock;
+
+  /** No slot left that the catalog can fill. */
+  function isBlockFull(block: "balance" | "dynamic", compulsory: number, optional: number) {
+    if (!ruleset) return false;
+    const slots = blockSlots(ruleset, block, header.category);
+    if (ruleset.roleAssignment === "higher-value-compulsory") {
+      return compulsory + optional >= slots.compulsory + slots.optional;
+    }
+    // By-table blocks stay open while an add-on (Cuartetos ROW III, an 11-16 top)
+    // can still attach to a pyramid in the routine, from any table the sheet uses.
+    const addOnOpen = addOnEntriesFor(ruleset, header).some(
+      (entry) => entry.elementFamily === block && pyramidForAddOn(routineExcludingEditing, entry),
+    );
+    return (
+      !addOnOpen &&
+      compulsory >= slots.compulsory &&
+      (optional >= slots.optional || !optionalAvailable(ruleset, header.levelAge))
+    );
+  }
+  const balanceBlockFull = isBlockFull("balance", compulsoryBalanceCount, optionalBalanceCount);
+  const dynamicBlockFull = isBlockFull("dynamic", compulsoryDynamicCount, optionalDynamicCount);
   const individualGroupCount = useMemo(() => {
     const gymnastCount = gymnastCountForCategory(header.category);
-    return countCompleteIndividualSets(routineExcludingEditing, gymnastCount).totalGroups;
-  }, [routineExcludingEditing, header.category]);
+    return countCompleteIndividualSets(routineForSets, gymnastCount).totalGroups;
+  }, [routineForSets, header.category]);
 
-  const balanceEntries = entriesForFamily(allEntries, header, "balance");
-  const dynamicEntries = entriesForFamily(allEntries, header, "dynamic");
 
   const currentBlockIsFull =
     elementType === "balance"
@@ -378,6 +561,54 @@ export function ElementPickerPanel({
     onClose();
   }
 
+  /** Add-ons that go on the black arrow of the pyramid being chosen (not when editing). */
+  const addOnChoices =
+    previewEntry && !editMode && ruleset && (elementType === "balance" || elementType === "dynamic")
+      ? addOnEntriesFor(ruleset, header).filter(
+          (e) => e.elementFamily === elementType && e.attachesTo?.includes(previewEntry.id),
+        )
+      : [];
+  /** The routine as if the chosen pyramid were already in it, to check its add-ons. */
+  const withPreviewPyramid: RoutineItem[] =
+    previewEntry && ruleset && addOnChoices.length > 0
+      ? [
+          ...routine,
+          {
+            id: "picker-preview",
+            block: elementType === "dynamic" ? "dynamic" : "balance",
+            linkedToPrevious: false,
+            role: roleForEntry(ruleset, header, previewEntry) ?? "optional",
+            element: catalogEntryToPlaced(previewEntry),
+          },
+        ]
+      : routine;
+
+  /** Save the pyramid, then its add-on on that pyramid (or none), and close. */
+  function saveWithAddOn(pyramid: CatalogEntry, addOn: CatalogEntry | null) {
+    const block = elementType === "dynamic" ? "dynamic" : "balance";
+    if (!onSave({ kind: "single", entry: pyramid, block, role: "compulsory" })) {
+      setDuplicateError(true);
+      return;
+    }
+    if (addOn && !onSave({ kind: "single", entry: addOn, block, role: "compulsory", attachTo: pyramid.id })) {
+      // The pyramid is saved; say the add-on wasn't, instead of closing silently.
+      setAddOnFailed(true);
+      setPreviewEntry(null);
+      return;
+    }
+    setAddOnFailed(false);
+    setDuplicateError(false);
+    setLimitError(null);
+    setPreviewEntry(null);
+    onClose();
+  }
+
+  // The gymnast tab shown: the chosen one, else the first still without an element.
+  const activeGymnast =
+    gymnastRows.find((g) => g.key === activeGymnastKey) ??
+    gymnastRows.find((g) => !individualByGymnast[g.key]?.entry) ??
+    gymnastRows[0];
+
   const allIndividualsPicked = gymnastRows.every(
     (g) => individualByGymnast[g.key]?.entry != null,
   );
@@ -394,12 +625,20 @@ export function ElementPickerPanel({
       baseIndex: g.baseIndex,
       entry: individualByGymnast[g.key]!.entry!,
     }));
-    const ok = onSave({ kind: "individual", picks });
+    const ok = onSave({ kind: "individual", picks, replaceGroupId: editGroupId });
     if (!ok) {
-      setDuplicateError(true);
+      // Refused for a rule (value, source, a repeated ID number) rather than a repeated element.
+      const breaksRule = picks.some(
+        (pick) =>
+          individualProblem(ruleset, header, pick.entry) != null ||
+          repeatsIndividualNumber(routineForSets, pick, pick.entry),
+      );
+      setDuplicateError(!breaksRule);
+      setIndividualRefused(breaksRule);
       setLimitError(null);
       return;
     }
+    setIndividualRefused(false);
     setDuplicateError(false);
     setLimitError(null);
     onClose();
@@ -410,28 +649,115 @@ export function ElementPickerPanel({
     ? "flex w-full min-w-0 max-w-5xl flex-col rounded-xl border border-zinc-300 bg-white shadow-lg"
     : "flex w-full min-w-0 max-w-5xl shrink-0 flex-col rounded-lg border border-zinc-200 bg-white shadow-sm";
 
-  const currentEntries =
-    elementType === "balance"
-      ? balanceEntries
-      : elementType === "dynamic"
-        ? dynamicEntries
-        : [];
-  const selectedCatalogIds = useMemo(() => {
-    if (elementType !== "balance" && elementType !== "dynamic") {
-      return new Set<string>();
+  /** The sheet's own table, then the tables that supply optional elements. */
+  function tablesFor(family: "balance" | "dynamic") {
+    const own = {
+      key: "own",
+      label: t.sheet.picker.tableOwn(header.levelSystem, header.levelAge),
+      optional: false,
+      entries: entriesForFamily(allEntries, header, family),
+    };
+    if (!ruleset) return [own];
+    return [
+      own,
+      ...optionalCategoryTables(ruleset, header).map((table) => ({
+        key: `${table.catalogId}-${table.levelSystem}-${table.levelAge}-${table.category}`,
+        label: t.sheet.picker.tableOptional(
+          table.label,
+          table.levelAge,
+          table.category === header.category ? null : table.category,
+        ),
+        optional: true,
+        entries: entriesForFamily(
+          getCatalogEntries(table.catalogId),
+          {
+            ...header,
+            levelSystem: table.levelSystem,
+            levelAge: table.levelAge,
+            category: table.category,
+          },
+          family,
+        ),
+      })),
+    ].filter((table) => table === own || table.entries.length > 0);
+  }
+  const tables = elementType === "individual" ? [] : tablesFor(elementType);
+  // Until a table is chosen: the edited element's table, else the sheet's own.
+  const activeTable =
+    tables.find((table) => table.key === tableKey) ??
+    tables.find((table) =>
+      table.entries.some((entry) => entry.id === editingItem?.element.catalogId),
+    ) ??
+    tables[0];
+
+  const individualRange = individualValueRange(ruleset, header.levelAge);
+  function individualProblemText(entry: CatalogEntry): string | null {
+    switch (individualProblem(ruleset, header, entry)) {
+      case "out-of-range":
+        return individualRange
+          ? t.sheet.picker.problemValueRange(individualRange.min, individualRange.max)
+          : null;
+      case "not-allowed":
+        return t.sheet.picker.problemNotAllowed;
+      default:
+        return null;
     }
-    return new Set(
-      routine
-        .filter((item) => item.block === elementType)
-        .map((item) => item.element.catalogId),
-    );
-  }, [routine, elementType]);
+  }
+
+  const coordinatesOf = (ids: readonly string[]) =>
+    ids
+      .map((id) => catalogEntryByAnyId(id)?.coordinates ?? id)
+      .join(" / ");
+
+  function problemFor(
+    entry: CatalogEntry,
+    against: RoutineItem[] = routine,
+    attachTo?: string,
+  ): string | null {
+    if (elementType !== "balance" && elementType !== "dynamic") return null;
+    const problem = addProblem(ruleset, header, against, entry, elementType, editItemId, attachTo);
+    switch (problem) {
+      case null:
+        return null;
+      case "duplicate":
+        if (attachTo) return t.sheet.picker.problemAddOnUsed;
+        // The element itself shows as already chosen; another option of its cell is blocked.
+        return selectedCatalogIds.has(entry.id) ? null : t.sheet.picker.problemOtherOption;
+      case "same-row":
+        return t.sheet.picker.problemSameRow;
+      case "full":
+        return ruleset && roleForEntry(ruleset, header, entry) === "optional"
+          ? t.sheet.picker.problemFullOptional
+          : t.sheet.picker.problemFullCompulsory;
+      case "no-pyramid":
+        return t.sheet.picker.problemNoPyramid(coordinatesOf(entry.attachesTo ?? []));
+      case "not-allowed":
+        return t.sheet.picker.problemNotAllowed;
+      case "same-element-row":
+        return t.sheet.picker.problemSameElementRow;
+    }
+  }
+
+  const noteFor = (entry: CatalogEntry) =>
+    entry.attachesTo ? t.sheet.picker.addOnHint(coordinatesOf(entry.attachesTo)) : null;
+
+  /** Elements of this block already in the routine (add-ons included). */
+  const selectedCatalogIds =
+    elementType !== "balance" && elementType !== "dynamic"
+      ? new Set<string>()
+      : new Set(
+          routine
+            .filter((item) => item.block === elementType)
+            .flatMap((item) =>
+              item.addOn ? [item.element.catalogId, item.addOn.catalogId] : [item.element.catalogId],
+            ),
+        );
   return (
     <aside className={shellClass} aria-label={t.routine.addElement}>
       <header
         className={`flex items-center justify-between border-b border-zinc-200 ${isPopover ? "px-3 py-2" : "px-4 py-3"}`}
       >
-        <p className="text-xs text-zinc-600">{t.routine.escolarTagTitle}</p>
+        <p className="text-xs text-zinc-600">{ruleset ? t.routine.tagTitle(ruleset.label) : t.sheet.picker.stepSubtype}</p>
         <button
           type="button"
           onClick={onClose}
@@ -443,7 +769,7 @@ export function ElementPickerPanel({
       </header>
 
       <div
-        className={`grid gap-3 ${isPopover ? "max-h-[min(70vh,520px)] overflow-y-auto p-3 md:grid-cols-[130px_1fr]" : "p-4 md:grid-cols-[130px_1fr]"}`}
+        className={`grid gap-3 ${isPopover ? "p-3 md:grid-cols-[130px_1fr]" : "p-4 md:grid-cols-[130px_1fr]"}`}
       >
         <div className="flex flex-row gap-2 md:flex-col">
           {(["balance", "dynamic", "individual"] as const).map((type) => (
@@ -451,7 +777,7 @@ export function ElementPickerPanel({
               key={type}
               type="button"
               onClick={() => {
-                if (editMode && type !== editBlock) return;
+                if ((editMode && type !== editBlock) || (editingGroup && type !== "individual")) return;
                 if ((type === "balance" && balanceBlockFull) || (type === "dynamic" && dynamicBlockFull)) {
                   return;
                 }
@@ -459,9 +785,11 @@ export function ElementPickerPanel({
                 setDuplicateError(false);
                 setLimitError(null);
                 setPreviewEntry(null);
+                setOptionGroup(null);
               }}
               disabled={
                 (editMode && type !== editBlock) ||
+                (editingGroup && type !== "individual") ||
                 (type === "balance" && balanceBlockFull) ||
                 (type === "dynamic" && dynamicBlockFull)
               }
@@ -487,7 +815,114 @@ export function ElementPickerPanel({
             currentBlockIsFull ? (
               <p className="text-sm text-amber-700">{t.sheet.picker.limitRoleBlock}</p>
             ) :
-            previewEntry ? (
+            optionGroup && !previewEntry ? (
+              <PickerStep title={t.sheet.picker.chooseVariant} onBack={() => setOptionGroup(null)}>
+                <ul className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))" }}>
+                  {optionGroup.map((option) => {
+                    const problem = problemFor(option);
+                    return (
+                      <li key={option.id}>
+                        <button
+                          type="button"
+                          disabled={problem != null}
+                          title={problem ?? undefined}
+                          onClick={() => {
+                            setOptionGroup(null);
+                            setPreviewEntry(option);
+                            setAddOnFailed(false);
+                            setDuplicateError(false);
+                            setLimitError(null);
+                          }}
+                          className={`flex h-full w-full flex-col items-center rounded-lg border bg-white p-2 ${
+                            problem
+                              ? "cursor-not-allowed border-zinc-200 opacity-40"
+                              : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+                          }`}
+                        >
+                          <Image
+                            src={catalogImageUrl(option.image, option.code)}
+                            alt={`${option.coordinates} · ${option.variant?.label ?? ""}`}
+                            width={140}
+                            height={96}
+                            className="h-24 w-full object-contain"
+                          />
+                          <span className="mt-1 text-xs font-medium text-zinc-800">{option.variant?.label}</span>
+                          {problem ? <span className="text-[10px] text-amber-700">{problem}</span> : null}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </PickerStep>
+            ) : previewEntry && addOnChoices.length > 0 ? (
+              <PickerStep
+                title={t.sheet.picker.chooseAddOn}
+                onBack={() => {
+                  setPreviewEntry(null);
+                  setDuplicateError(false);
+                  setLimitError(null);
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <Image
+                    src={catalogImageUrl(previewEntry.image, previewEntry.code)}
+                    alt={previewEntry.coordinates}
+                    width={120}
+                    height={80}
+                    className="h-16 w-auto rounded border border-zinc-200 bg-white object-contain p-1"
+                  />
+                  <span className="text-xs text-zinc-600">
+                    {previewEntry.coordinates}
+                    {previewEntry.variant ? ` · ${previewEntry.variant.label}` : ""}
+                  </span>
+                </div>
+                <ul className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(7rem, 1fr))" }}>
+                  {addOnChoices.map((addOn) => {
+                    const problem = problemFor(addOn, withPreviewPyramid, previewEntry.id);
+                    return (
+                      <li key={addOn.id}>
+                        <button
+                          type="button"
+                          disabled={problem != null}
+                          title={problem ?? undefined}
+                          onClick={() => saveWithAddOn(previewEntry, addOn)}
+                          className={`flex h-full w-full flex-col items-center rounded-lg border bg-white p-2 ${
+                            problem
+                              ? "cursor-not-allowed border-zinc-200 opacity-40"
+                              : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
+                          }`}
+                        >
+                          <Image
+                            src={catalogImageUrl(addOn.image, addOn.code)}
+                            alt={addOn.coordinates}
+                            width={96}
+                            height={64}
+                            className="h-20 w-full object-contain"
+                          />
+                          <span className="mt-1 text-xs font-medium text-zinc-800">
+                            {addOn.coordinates}
+                            {addOn.variant ? ` · ${addOn.variant.label}` : ""}
+                          </span>
+                          {problem ? <span className="text-[10px] text-amber-700">{problem}</span> : null}
+                        </button>
+                      </li>
+                    );
+                  })}
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => saveWithAddOn(previewEntry, null)}
+                      className="flex h-full min-h-24 w-full items-center justify-center rounded-lg border border-dashed border-zinc-300 bg-white p-2 text-sm text-zinc-700 hover:bg-zinc-50"
+                    >
+                      {t.sheet.picker.noAddOn}
+                    </button>
+                  </li>
+                </ul>
+                {duplicateError ? (
+                  <p className="text-sm text-amber-700">{t.sheet.picker.duplicateElement}</p>
+                ) : null}
+              </PickerStep>
+            ) : previewEntry ? (
               <>
                 <ElementPickerPreview
                   entry={previewEntry}
@@ -509,121 +944,183 @@ export function ElementPickerPanel({
                   <p className="text-sm text-amber-700">{t.sheet.picker.limitRoleBlock}</p>
                 ) : null}
               </>
-            ) : currentEntries.length === 0 ? (
+            ) : tables.every((table) => table.entries.length === 0) ? (
               <p className="text-sm text-amber-700">{t.sheet.catalogEmpty}</p>
             ) : (
-              <CatalogRowGrid
-                entries={currentEntries}
-                selectedCatalogId={editingItem?.element.catalogId}
-                selectedCatalogIds={selectedCatalogIds}
-                selectedHint={t.routine.escolarDone}
-                onSelect={(entry) => {
-                  setPreviewEntry(entry);
-                  setDuplicateError(false);
-                  setLimitError(null);
-                }}
-              />
+              <div className="flex flex-col gap-3">
+                {tables.length > 1 ? (
+                  <div
+                    role="tablist"
+                    aria-label={t.sheet.picker.tableChooser}
+                    className="flex flex-wrap gap-1.5"
+                  >
+                    {tables.map((table) => (
+                      <button
+                        key={table.key}
+                        type="button"
+                        role="tab"
+                        aria-selected={table.key === activeTable?.key}
+                        onClick={() => {
+                          setTableKey(table.key);
+                          setPreviewEntry(null);
+                          setOptionGroup(null);
+                        }}
+                        className={`rounded-full border px-3 py-1.5 text-xs ${
+                          table.key === activeTable?.key
+                            ? "border-zinc-900 bg-zinc-900 text-white"
+                            : "border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50"
+                        }`}
+                      >
+                        {table.label}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+                {addOnFailed ? (
+                  <p className="text-sm text-amber-700">{t.sheet.picker.addOnFailed}</p>
+                ) : null}
+                {activeTable?.optional ? (
+                  <p className="text-xs text-zinc-600">{t.sheet.picker.optionalTableHint}</p>
+                ) : null}
+                {activeTable && activeTable.entries.length > 0 ? (
+                  <CatalogRowGrid
+                    key={activeTable.key}
+                    entries={activeTable.entries}
+                    selectedCatalogId={editingItem?.element.catalogId}
+                    selectedCatalogIds={selectedCatalogIds}
+                    selectedHint={t.routine.escolarDone}
+                    problemFor={problemFor}
+                    noteFor={noteFor}
+                    onSelectGroup={(options) => {
+                      setAddOnFailed(false);
+                      setOptionGroup(options);
+                    }}
+                    onSelect={(entry) => {
+                      setAddOnFailed(false);
+                      setPreviewEntry(entry);
+                      setDuplicateError(false);
+                      setLimitError(null);
+                    }}
+                  />
+                ) : (
+                  <p className="text-sm text-amber-700">{t.sheet.catalogEmpty}</p>
+                )}
+              </div>
             )
+          ) : ruleset && !ruleset.individuals.available ? (
+            <p className="text-sm text-amber-700">{t.sheet.picker.individualsComingSoon}</p>
           ) : (
             <>
               <p className="text-xs text-zinc-600">{t.routine.escolarIndividualHint}</p>
-              <div className="flex flex-col gap-3">
+              {individualRange ? (
+                <p className="text-xs text-zinc-600">
+                  {t.sheet.picker.individualValueRange(individualRange.min, individualRange.max)}
+                </p>
+              ) : null}
+              {/* One tab per gymnast (name and TOP / BASE); the chosen picture shows on the tab. */}
+              <div role="tablist" aria-label={t.sheet.picker.gymnasts} className="flex flex-wrap gap-1.5">
                 {gymnastRows.map((row) => {
-                  const state = individualByGymnast[row.key] ?? { type: "EQ" as const };
-                  const individualEntries = entriesForFamily(
-                    allEntries,
-                    header,
-                    "individual",
-                    state.type,
-                  ).filter((entry) => !isCatalogIdUsedInRoutine(routine, entry.id));
-                  const rowTitle = gymnastRowTitle(row, t);
-
+                  const picked = individualByGymnast[row.key]?.entry;
+                  const active = row.key === activeGymnast?.key;
                   return (
-                    <div
+                    <button
                       key={row.key}
-                      className="min-w-0 rounded-lg border border-zinc-200 p-2.5"
+                      type="button"
+                      role="tab"
+                      aria-selected={active}
+                      onClick={() => setActiveGymnastKey(row.key)}
+                      className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs ${
+                        active
+                          ? "border-zinc-900 bg-zinc-900 text-white"
+                          : "border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50"
+                      }`}
                     >
-                      <p className="mb-2 text-xs font-semibold text-zinc-800">
-                        {rowTitle}
-                        {state.entry ? (
-                          <span className="ml-1 font-normal text-emerald-700">
-                            · {state.entry.coordinates}
-                          </span>
-                        ) : null}
-                      </p>
-                      <label className="mb-2 flex flex-col gap-1 text-xs text-zinc-700">
-                        <span>{t.routine.escolarIndividualFamily}</span>
-                        <select
-                          value={state.type}
-                          onChange={(e) =>
-                            setIndividualByGymnast((prev) => ({
-                              ...prev,
-                              [row.key]: {
-                                type: e.target.value as ElementType,
-                                entry: undefined,
-                              },
-                            }))
-                          }
-                          className="rounded-md border border-zinc-300 bg-white px-2 py-2 text-sm"
-                        >
-                          {INDIVIDUAL_TYPES.map((type) => (
-                            <option key={type} value={type}>
-                              {individualTypeLabel(type, t)}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                      <ul
-                        className="grid w-full min-w-0 gap-0.5 sm:gap-1"
-                        style={{
-                          gridTemplateColumns: `repeat(${Math.max(individualEntries.length, 1)}, minmax(0, 1fr))`,
-                        }}
-                      >
-                        {individualEntries.map((entry) => (
-                          <li key={`${row.key}-${entry.id}`} className="min-w-0">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setIndividualByGymnast((prev) => ({
-                                  ...prev,
-                                  [row.key]: {
-                                    type: state.type,
-                                    entry,
-                                  },
-                                }));
-                                setDuplicateError(false);
-                                setLimitError(null);
-                              }}
-                              className={`flex h-full w-full min-w-0 flex-col items-center rounded-lg border p-0.5 sm:p-1.5 ${
-                                state.entry?.id === entry.id
-                                  ? "border-zinc-900 bg-zinc-100"
-                                  : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50"
-                              }`}
-                            >
-                              <Image
-                                src={catalogImageUrl(entry.image)}
-                                alt={entry.coordinates}
-                                width={80}
-                                height={56}
-                                className="h-8 w-full object-contain sm:h-12"
-                                sizes="(max-width: 640px) 20vw, 80px"
-                              />
-                              <span className="mt-0.5 w-full truncate text-center text-[8px] font-medium leading-tight sm:text-[10px]">
-                                {entry.coordinates}
-                              </span>
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                      <span className="font-semibold">{gymnastRoleLabel(row, gymnastRows.length - 1, t)}</span>
+                      <span className="max-w-24 truncate">{row.name || t.home.statusNoData}</span>
+                      {picked ? (
+                        <span className="flex items-center gap-0.5 rounded-full bg-white px-1">
+                          <span aria-hidden="true" className="text-emerald-700">✓</span>
+                          <Image
+                            src={catalogImageUrl(picked.image, picked.code)}
+                            alt={t.sheet.picker.individualChosen}
+                            width={40}
+                            height={28}
+                            className="h-5 w-auto object-contain"
+                          />
+                        </span>
+                      ) : null}
+                    </button>
                   );
                 })}
               </div>
+              {activeGymnast
+                ? (() => {
+                    const row = activeGymnast;
+                    const state = individualByGymnast[row.key] ?? { type: "EQ" as const };
+                    const choices = individualEntries(ruleset, header, state.type).filter(
+                      (entry) => entry.id === state.entry?.id || !isCatalogIdUsedInRoutine(routineForSets, entry.id),
+                    );
+                    return (
+                      <div role="tabpanel" className="min-w-0 rounded-lg border border-zinc-200 p-2.5">
+                        <label className="mb-2 flex flex-col gap-1 text-xs text-zinc-700">
+                          <span>{t.routine.escolarIndividualFamily}</span>
+                          <select
+                            value={state.type}
+                            onChange={(e) =>
+                              setIndividualByGymnast((prev) => ({
+                                ...prev,
+                                [row.key]: { type: e.target.value as ElementType, entry: undefined },
+                              }))
+                            }
+                            className="rounded-md border border-zinc-300 bg-white px-2 py-2 text-sm"
+                          >
+                            {INDIVIDUAL_TYPES.map((type) => (
+                              <option key={type} value={type}>
+                                {individualTypeLabel(type, t)}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        <IndividualChoices
+                          key={`${row.key}-${state.type}`}
+                          entries={choices}
+                          selectedId={state.entry?.id}
+                          onSelect={(entry) => {
+                            setIndividualByGymnast((prev) => ({
+                              ...prev,
+                              [row.key]: { type: state.type, entry },
+                            }));
+                            setDuplicateError(false);
+                            setLimitError(null);
+                            // On to the next gymnast still without an element.
+                            const next = gymnastRows.find(
+                              (g) => g.key !== row.key && !individualByGymnast[g.key]?.entry,
+                            );
+                            if (next) setActiveGymnastKey(next.key);
+                          }}
+                          problemFor={(entry) =>
+                            individualProblemText(entry) ??
+                            (repeatsIndividualNumber(
+                              routineForSets,
+                              { gymnastRole: row.role, baseIndex: row.baseIndex },
+                              entry,
+                            )
+                              ? t.sheet.picker.problemSameNumber(sameNumberLabel(entry))
+                              : null)
+                          }
+                        />
+                      </div>
+                    );
+                  })()
+                : null}
               {duplicateError ? (
                 <p className="text-sm text-amber-700">{t.sheet.picker.duplicateElement}</p>
               ) : null}
+              {individualRefused ? (
+                <p className="text-sm text-amber-700">{t.sheet.picker.individualRefused}</p>
+              ) : null}
               {limitError === "individuals" ? (
-                <p className="text-sm text-amber-700">{t.sheet.picker.limitIndividuals}</p>
+                <p className="text-sm text-amber-700">{t.sheet.picker.limitIndividuals(maxIndividualSets)}</p>
               ) : null}
               <div className="border-t border-zinc-200 pt-3">
                 <button

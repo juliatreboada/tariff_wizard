@@ -12,16 +12,67 @@ const catalogEntrySchema = z.object({
   value: z.number().min(0),
   holdDuration: z.string().optional(),
   rotation: z.string().optional(),
+  variant: z
+    .object({ group: z.string().min(1), label: z.string().min(1), groupImage: z.string().min(1) })
+    .optional(),
+  number: z.string().min(1).optional(),
+  attachesTo: z.array(z.string().min(1)).min(1).optional(),
+  sameAs: z.array(z.string().min(1)).min(1).optional(),
   filters: z.object({
     levelSystems: z.array(z.enum(LEVEL_SYSTEMS)).min(1),
     categories: z.array(z.string().min(1)).min(1),
     exercises: z.array(z.enum(EXERCISES)).min(1),
+    levelAges: z.array(z.string().min(1)).min(1).optional(),
   }),
 });
 
-export const catalogManifestSchema = z.object({
-  version: z.literal(1),
-  code: z.enum(CATALOG_IDS),
-  description: z.string().optional(),
-  entries: z.array(catalogEntrySchema).min(1),
-});
+/** Entry ids start with their catalog's code (fgx-…) so they never clash across catalogs. */
+export function catalogIdPrefix(code: string): string {
+  return `${code.toLowerCase()}-`;
+}
+
+export const catalogManifestSchema = z
+  .object({
+    version: z.literal(1),
+    code: z.enum(CATALOG_IDS),
+    description: z.string().optional(),
+    entries: z.array(catalogEntrySchema).min(1),
+  })
+  .superRefine((manifest, ctx) => {
+    const ids = new Set(manifest.entries.map((e) => e.id));
+    manifest.entries.forEach((entry, i) => {
+      // Links into other catalogs are checked by scripts/validate-catalog.mjs.
+      for (const target of entry.sameAs ?? []) {
+        if (target.startsWith(catalogIdPrefix(manifest.code)) && !ids.has(target)) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["entries", i, "sameAs"],
+            message: `same as unknown entry ${target}`,
+          });
+        }
+      }
+      for (const target of entry.attachesTo ?? []) {
+        if (!ids.has(target)) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["entries", i, "attachesTo"],
+            message: `attaches to unknown entry ${target}`,
+          });
+        }
+      }
+      if (entry.code !== manifest.code) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["entries", i, "code"],
+          message: `entry.code must be ${manifest.code}`,
+        });
+      }
+      if (!entry.id.startsWith(catalogIdPrefix(manifest.code))) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["entries", i, "id"],
+          message: `id must start with "${catalogIdPrefix(manifest.code)}"`,
+        });
+      }
+    });
+  });

@@ -124,7 +124,7 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
       <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
         <div className="grid gap-5 sm:grid-cols-2 lg:col-span-2">
           <FormField
-            label={t.sheetLabels.competition}
+            label={t.fieldLabels.competition}
             htmlFor="competition"
             error={errors.competition?.message}
           >
@@ -136,7 +136,7 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
           </FormField>
 
           <FormField
-            label={t.sheetLabels.participationNumber}
+            label={t.fieldLabels.participationNumber}
             htmlFor="participationNumber"
             optional
             error={errors.participationNumber?.message}
@@ -151,7 +151,7 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
 
         <div className="flex flex-col gap-5">
           <FormField
-            label={t.sheetLabels.club}
+            label={t.fieldLabels.club}
             htmlFor="clubName"
             error={errors.clubName?.message}
           >
@@ -163,7 +163,7 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
           </FormField>
 
           <FormField
-            label={t.sheetLabels.clubLogo}
+            label={t.fieldLabels.clubLogo}
             htmlFor="clubLogo"
             optional
             error={errors.clubLogo?.message}
@@ -179,7 +179,7 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
           </FormField>
 
           <FormField
-            label={t.sheetLabels.country}
+            label={t.fieldLabels.country}
             htmlFor="country"
             optional
             error={errors.country?.message}
@@ -195,7 +195,7 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
         <div className="flex flex-col gap-5">
           <div className="grid gap-5 sm:grid-cols-2">
             <FormField
-              label={t.sheetLabels.levelSystem}
+              label={t.fieldLabels.levelSystem}
               htmlFor="levelSystem"
               error={errors.levelSystem?.message}
             >
@@ -223,7 +223,7 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
             </FormField>
 
             <FormField
-              label={t.sheetLabels.levelAge}
+              label={t.fieldLabels.levelAge}
               htmlFor="levelAge"
               error={errors.levelAge?.message}
             >
@@ -253,7 +253,7 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
 
           <div className="grid gap-5 sm:grid-cols-2">
             <FormField
-              label={t.sheetLabels.category}
+              label={t.fieldLabels.category}
               htmlFor="category"
               error={errors.category?.message}
             >
@@ -271,7 +271,7 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
             </FormField>
 
             <FormField
-              label={t.sheetLabels.exercise}
+              label={t.fieldLabels.exercise}
               htmlFor="exercise"
               error={errors.exercise?.message}
             >

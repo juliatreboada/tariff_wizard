@@ -2,11 +2,15 @@ import { gymnastCountForCategory } from "../level-category";
 import { countCompleteIndividualSets } from "../routine-groups";
 import type { RoutineItem } from "../routine-types";
 import type { StoredHeader } from "../types";
-import type { Ruleset } from "./types";
+import { gymnastsWithoutTumbling } from "./individuals";
+import { blockSlots, optionalAvailable, optionalValueRange } from "./slots";
+import type { Ruleset, ValueRange } from "./types";
 
 type RequirementStatus = {
   expected: number;
   actual: number;
+  /** Optionals: the value an element from TOD WG must have. */
+  valueRange?: ValueRange;
 };
 
 export type RuleStatus = {
@@ -21,8 +25,12 @@ export type RuleStatus = {
   missingOptionalBalance: boolean;
   missingOptionalDynamic: boolean;
   missingIndividuals: boolean;
+  /** A gymnast has no tumbling element (when the rules ask for one). */
+  missingTumbling: boolean;
   penaltyTotal: number;
   missingMessages: string[];
+  /** Requirements the catalog can't offer yet: listed, not penalised. */
+  pendingMessages: string[];
 };
 
 function status(expected: number, actual: number): RequirementStatus {
@@ -41,8 +49,10 @@ const disabled = (): RuleStatus => ({
   missingOptionalBalance: false,
   missingOptionalDynamic: false,
   missingIndividuals: false,
+  missingTumbling: false,
   penaltyTotal: 0,
   missingMessages: [],
+  pendingMessages: [],
 });
 
 export function evaluateRules(
@@ -55,15 +65,41 @@ export function evaluateRules(
   const count = (role: "compulsory" | "optional", block: "balance" | "dynamic") =>
     routine.filter((item) => item.role === role && item.block === block).length;
 
-  const { compulsory, optional } = ruleset.blocks;
-  const compulsoryBalance = status(compulsory, count("compulsory", "balance"));
-  const compulsoryDynamic = status(compulsory, count("compulsory", "dynamic"));
-  const optionalBalance = status(optional, count("optional", "balance"));
-  const optionalDynamic = status(optional, count("optional", "dynamic"));
+  const balanceSlots = blockSlots(ruleset, "balance", header?.category);
+  const dynamicSlots = blockSlots(ruleset, "dynamic", header?.category);
+  const pendingMessages: string[] = [];
+
+  // Optional elements come from tables the catalog may not have yet (e.g. Nacional, FIG).
+  const optionalOffered = !header || optionalAvailable(ruleset, header.levelAge);
+  if (!optionalOffered && (balanceSlots.optional > 0 || dynamicSlots.optional > 0)) {
+    pendingMessages.push("Elementos opcionales: próximamente (tablas de nivel superior).");
+  }
+  const optionalExpected = (slots: { optional: number }) => (optionalOffered ? slots.optional : 0);
+
+  const compulsoryBalance = status(balanceSlots.compulsory, count("compulsory", "balance"));
+  const compulsoryDynamic = status(dynamicSlots.compulsory, count("compulsory", "dynamic"));
+  const withRange = (s: RequirementStatus, block: "balance" | "dynamic") => {
+    const valueRange = header ? optionalValueRange(ruleset, header, block) : null;
+    return valueRange ? { ...s, valueRange } : s;
+  };
+  const optionalBalance = withRange(
+    status(optionalExpected(balanceSlots), count("optional", "balance")),
+    "balance",
+  );
+  const optionalDynamic = withRange(
+    status(optionalExpected(dynamicSlots), count("optional", "dynamic")),
+    "dynamic",
+  );
 
   const gymnastCount = header ? gymnastCountForCategory(header.category) : 2;
   const { complete } = countCompleteIndividualSets(routine, gymnastCount);
-  const individualPerGymnast = status(ruleset.individualSets, complete);
+  if (!ruleset.individuals.available) {
+    pendingMessages.push("Elementos individuales: próximamente.");
+  }
+  const individualPerGymnast = status(
+    ruleset.individuals.available ? ruleset.individuals.sets : 0,
+    complete,
+  );
 
   const shortBy = (s: RequirementStatus) => Math.max(0, s.expected - s.actual);
   const missingCompulsoryBalance = shortBy(compulsoryBalance) > 0;
@@ -71,6 +107,9 @@ export function evaluateRules(
   const missingOptionalBalance = shortBy(optionalBalance) > 0;
   const missingOptionalDynamic = shortBy(optionalDynamic) > 0;
   const missingIndividuals = shortBy(individualPerGymnast) > 0;
+  // At least one tumbling element per gymnast: a requirement of its own.
+  const withoutTumbling = gymnastsWithoutTumbling(ruleset, header, routine);
+  const missingTumbling = withoutTumbling.length > 0;
 
   const missingMessages: string[] = [];
   if (missingCompulsoryBalance) {
@@ -87,8 +126,16 @@ export function evaluateRules(
   }
   if (missingIndividuals) {
     missingMessages.push(
-      `Faltan sets individuales (${complete}/${ruleset.individualSets} completos).`,
+      `Faltan sets individuales (${complete}/${ruleset.individuals.sets} completos).`,
     );
+  }
+  if (withoutTumbling.length > 0) {
+    // Same labels as the picker: TOP, BASE (pairs) or BASE 1, BASE 2… (groups).
+    const bases = gymnastCount - 1;
+    const names = withoutTumbling.map((key) =>
+      key === "top" ? "TOP" : bases > 1 ? `BASE ${Number(key.slice("base-".length)) + 1}` : "BASE",
+    );
+    missingMessages.push(`Falta un elemento de tumbling: ${names.join(", ")}.`);
   }
 
   const missingElements =
@@ -98,7 +145,8 @@ export function evaluateRules(
     shortBy(optionalDynamic);
   const penaltyTotal =
     missingElements * ruleset.penalties.missingElement +
-    (missingIndividuals ? ruleset.penalties.missingIndividuals : 0);
+    (missingIndividuals ? ruleset.penalties.missingIndividuals : 0) +
+    (missingTumbling ? (ruleset.penalties.missingTumbling ?? 0) : 0);
 
   return {
     enabled: true,
@@ -112,7 +160,9 @@ export function evaluateRules(
     missingOptionalBalance,
     missingOptionalDynamic,
     missingIndividuals,
+    missingTumbling,
     penaltyTotal,
     missingMessages,
+    pendingMessages,
   };
 }

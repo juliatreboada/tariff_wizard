@@ -1,5 +1,6 @@
 import { catalogEntryToPlaced } from "./catalog/to-placed";
 import { getCatalogEntries } from "./catalog/load-catalog";
+import { DEFAULT_CATALOG_ID, isCatalogId } from "./catalog/types";
 import { newRoutineItemId } from "./routine-id";
 import type { RoutineItem } from "./routine-types";
 import type { ElementColumnId, PlacedElement } from "./sheet-types";
@@ -42,18 +43,34 @@ function normalizeLegacyCatalogImage(image: string): string {
   return image;
 }
 
-/** Rehydrate placed elements if catalogId still exists. */
+/**
+ * Rehydrate a placed element if its catalog entry still exists. Elements
+ * saved before `catalog` was recorded are FGX, the only catalog back then.
+ */
+function refreshElement(element: PlacedElement): PlacedElement {
+  const saved = element.catalog as unknown;
+  const catalog = saved == null ? DEFAULT_CATALOG_ID : saved;
+  // A catalog this build doesn't know: keep the element as saved.
+  if (!isCatalogId(catalog)) return element;
+  const entries = getCatalogEntries(catalog);
+  // A box later split into options (fig-tod-balance-001 → -001-a): its first option.
+  const entry =
+    entries.find((e) => e.id === element.catalogId) ??
+    entries.find((e) => e.id === `${element.catalogId}-a`);
+  if (entry) return catalogEntryToPlaced(entry);
+  const image = normalizeLegacyCatalogImage(element.image);
+  if (image === element.image && saved === catalog) return element;
+  return { ...element, image, catalog };
+}
+
+/** Rehydrate every placed element (and add-on) from the catalog. */
 export function refreshRoutineFromCatalog(
   routine: RoutineItem[],
 ): RoutineItem[] {
-  const entries = getCatalogEntries();
   return routine.map((item) => {
-    const entry = entries.find((e) => e.id === item.element.catalogId);
-    if (entry) {
-      return { ...item, element: catalogEntryToPlaced(entry) };
-    }
-    const image = normalizeLegacyCatalogImage(item.element.image);
-    if (image === item.element.image) return item;
-    return { ...item, element: { ...item.element, image } };
+    const element = refreshElement(item.element);
+    const addOn = item.addOn && refreshElement(item.addOn);
+    if (element === item.element && addOn === item.addOn) return item;
+    return { ...item, element, ...(addOn ? { addOn } : {}) };
   });
 }

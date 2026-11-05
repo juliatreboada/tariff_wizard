@@ -14,6 +14,23 @@ import { formatSheetValue } from "./value-breakdown";
 
 export const SHEET_NO_VALUE = "-";
 
+/** The pictures in an element cell: the element, then its add-on. */
+export function slotElements(
+  slot: Extract<SheetColumnSlot, { kind: "element" }>,
+): PlacedElement[] {
+  return slot.addOn ? [slot.element, slot.addOn] : [slot.element];
+}
+
+/** Value of an element cell: the element plus its add-on. */
+function slotValue(slot: Extract<SheetColumnSlot, { kind: "element" }>): number {
+  return slot.element.value + (slot.addOn?.value ?? 0);
+}
+
+/** Codes of an element cell ("ROW-I D + ROW-III C"). */
+function slotCoordinates(slot: Extract<SheetColumnSlot, { kind: "element" }>): string {
+  return slotElements(slot).map((el) => el.coordinates).join(" + ");
+}
+
 /** Meta row (top): rotation (dynamic) or hold time (balance / individual EQ static). */
 export function elementMetaDisplay(element: PlacedElement | undefined): string {
   if (!element) return "";
@@ -25,7 +42,7 @@ export function elementMetaDisplay(element: PlacedElement | undefined): string {
 export function sheetSlotMetaDisplay(slot: SheetColumnSlot): string {
   const elements =
     slot.kind === "element"
-      ? [slot.element]
+      ? slotElements(slot)
       : slot.kind === "individual-group"
         ? slot.elements
         : [];
@@ -80,7 +97,7 @@ export function sheetValueInSubcell(
 
   if (slot.block === "balance" && subcellIndex === OFFICIAL_BALANCE_VALUE_SUBCELL) {
     return elementValueText(
-      slot.element.value,
+      slotValue(slot),
       slot.role,
       hideIndividualValues,
       slot.block,
@@ -89,7 +106,7 @@ export function sheetValueInSubcell(
 
   if (slot.block === "dynamic" && subcellIndex === OFFICIAL_DYNAMIC_VALUE_SUBCELL) {
     return elementValueText(
-      slot.element.value,
+      slotValue(slot),
       slot.role,
       hideIndividualValues,
       slot.block,
@@ -115,10 +132,10 @@ export function sheetCoordinatesInRow(
   }
 
   if (row === "sh" && slot.block === "balance") {
-    return slot.element.coordinates;
+    return slotCoordinates(slot);
   }
   if (row === "top" && slot.block === "dynamic") {
-    return slot.element.coordinates;
+    return slotCoordinates(slot);
   }
 
   return "";

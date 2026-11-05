@@ -5,6 +5,7 @@ import { header, item } from "../test-fixtures";
 import {
   applyRulesetRolesForBlock,
   availableLevelSystems,
+  entryInTable,
   evaluateRules,
   isLevelAgeReady,
   RULESETS,
@@ -18,10 +19,28 @@ describe("every ruleset", () => {
     for (const age of r.readyLevelAges) {
       expect(LEVEL_AGE_BY_SYSTEM[r.levelSystem]).toContain(age);
     }
-    expect(r.blocks.maxElements).toBeGreaterThanOrEqual(
-      r.blocks.compulsory + r.blocks.optional,
-    );
-    expect(r.individualSets).toBeGreaterThan(0);
+    for (const block of [r.blocks.balance, r.blocks.dynamic]) {
+      for (const slots of [block.pairs, block.groups]) {
+        expect(slots.compulsory).toBeGreaterThan(0);
+        expect(slots.optional).toBeGreaterThanOrEqual(0);
+      }
+    }
+    expect(r.individuals.sets).toBeGreaterThan(0);
+    for (const [age, tables] of Object.entries(r.optionalTables)) {
+      if (age !== "*") expect(r.readyLevelAges).toContain(age);
+      for (const t of tables) {
+        expect(LEVEL_AGE_BY_SYSTEM[t.levelSystem]).toContain(t.levelAge);
+        expect(getCatalogEntries(t.catalogId).length).toBeGreaterThan(0);
+        // Every mapped category (e.g. Parejas → Pareja Femenina) has entries in that table.
+        for (const categories of Object.values(t.categories ?? {})) {
+          for (const category of categories) {
+            expect(
+              getCatalogEntries(t.catalogId).some((e) => entryInTable(e, t, category)),
+            ).toBe(true);
+          }
+        }
+      }
+    }
   });
 
   it("claims a level system no other ruleset claims", () => {
@@ -32,12 +51,14 @@ describe("every ruleset", () => {
 
 describe("wizard availability", () => {
   it("offers only level systems with a ruleset", () => {
-    expect(availableLevelSystems()).toEqual(["Escolar"]);
+    expect(availableLevelSystems()).toEqual(["Escolar", "Base"]);
   });
 
-  it("marks ESCOLAR Absoluto as not ready yet", () => {
-    expect(isLevelAgeReady("Escolar", "Alevín")).toBe(true);
-    expect(isLevelAgeReady("Escolar", "Absoluto")).toBe(false);
+  it("offers every ESCOLAR age group but Absoluta", () => {
+    for (const age of ["Prebenxamín", "Benxamín", "Alevín", "Infantil"]) {
+      expect(isLevelAgeReady("Escolar", age)).toBe(true);
+    }
+    expect(isLevelAgeReady("Escolar", "Absoluta")).toBe(false);
     expect(isLevelAgeReady("RFEG", "Junior")).toBe(false);
   });
 });
@@ -46,8 +67,11 @@ describe("rules come from the config", () => {
   const custom: Ruleset = {
     ...FGX_ESCOLAR,
     id: "custom",
-    blocks: { maxElements: 3, compulsory: 2, optional: 1 },
-    individualSets: 2,
+    blocks: {
+      balance: { pairs: { compulsory: 2, optional: 1 }, groups: { compulsory: 2, optional: 1 } },
+      dynamic: { pairs: { compulsory: 2, optional: 1 }, groups: { compulsory: 2, optional: 1 } },
+    },
+    individuals: { sets: 2, available: true },
     penalties: { missingElement: 0.3, missingIndividuals: 2 },
   };
 
@@ -69,10 +93,13 @@ describe("role assignment follows the ruleset's slots", () => {
   const twoAndTwo: Ruleset = {
     ...FGX_ESCOLAR,
     id: "two-and-two",
-    blocks: { maxElements: 4, compulsory: 2, optional: 2 },
+    blocks: {
+      ...FGX_ESCOLAR.blocks,
+      balance: { pairs: { compulsory: 2, optional: 2 }, groups: { compulsory: 2, optional: 2 } },
+    },
   };
   const roleOf = (routine: ReturnType<typeof item>[]) =>
-    applyRulesetRolesForBlock(routine, "balance", twoAndTwo).map((i) => [
+    applyRulesetRolesForBlock(routine, "balance", twoAndTwo, header()).map((i) => [
       i.element.value,
       i.role,
     ]);

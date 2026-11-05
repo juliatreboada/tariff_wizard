@@ -118,7 +118,7 @@ export default function Home() {
         <p className="mt-2 text-sm text-zinc-700">{t.home.defaultsHint}</p>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
-            <span>{t.sheetLabels.club}</span>
+            <span>{t.fieldLabels.club}</span>
             <input
               value={defaultsDraft.clubName}
               onChange={(e) =>
@@ -128,7 +128,7 @@ export default function Home() {
             />
           </label>
           <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
-            <span>{t.sheetLabels.clubLogo}</span>
+            <span>{t.fieldLabels.clubLogo}</span>
             <ClubLogoUpload
               value={defaultsDraft.clubLogo}
               onChange={(clubLogo) =>
@@ -137,7 +137,7 @@ export default function Home() {
             />
           </label>
           <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
-            <span>{t.sheetLabels.competition}</span>
+            <span>{t.fieldLabels.competition}</span>
             <input
               value={defaultsDraft.competition}
               onChange={(e) =>
@@ -150,7 +150,7 @@ export default function Home() {
             />
           </label>
           <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
-            <span>{t.sheetLabels.contactName}</span>
+            <span>{t.fieldLabels.contactName}</span>
             <input
               value={defaultsDraft.contactName}
               onChange={(e) =>
@@ -160,7 +160,7 @@ export default function Home() {
             />
           </label>
           <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
-            <span>{t.sheetLabels.country}</span>
+            <span>{t.fieldLabels.country}</span>
             <input
               value={defaultsDraft.country}
               onChange={(e) =>
@@ -170,7 +170,7 @@ export default function Home() {
             />
           </label>
           <label className="flex flex-col gap-1.5 text-sm text-zinc-700">
-            <span>{t.sheetLabels.contactPhone}</span>
+            <span>{t.fieldLabels.contactPhone}</span>
             <input
               type="tel"
               inputMode="tel"

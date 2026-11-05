@@ -67,28 +67,28 @@ export function HeaderPanel({ header }: HeaderPanelProps) {
         {t.sheet.headerTitle}
       </h2>
       <dl>
-        <Row label={t.sheetLabels.country} value={header.country} />
+        <Row label={t.fieldLabels.country} value={header.country} />
         <ClubRow
-          label={t.sheetLabels.club}
+          label={t.fieldLabels.club}
           name={header.clubName}
           logo={header.clubLogo}
         />
         <Row
-          label={t.sheetLabels.participationNumber}
+          label={t.fieldLabels.participationNumber}
           value={header.participationNumber}
         />
-        <Row label={t.sheetLabels.competition} value={header.competition} />
-        <Row label="LEVEL" value={levelDisplay} />
-        <Row label={t.sheetLabels.category} value={categoryDisplay} />
+        <Row label={t.fieldLabels.competition} value={header.competition} />
+        <Row label={t.fieldLabels.levelSystem} value={levelDisplay} />
+        <Row label={t.fieldLabels.category} value={categoryDisplay} />
         <Row
-          label={t.sheetLabels.exercise}
+          label={t.fieldLabels.exercise}
           value={exerciseLabel(header.exercise, t.exercises)}
         />
-        {gymnastSidebarRows(header, t.sheetLabels).map((row) => (
+        {gymnastSidebarRows(header, t.fieldLabels).map((row) => (
           <Row key={row.role} label={row.role} value={row.name} />
         ))}
-        <Row label={t.sheetLabels.contactName} value={header.contactName} />
-        <Row label={t.sheetLabels.contactPhone} value={header.contactPhone} />
+        <Row label={t.fieldLabels.contactName} value={header.contactName} />
+        <Row label={t.fieldLabels.contactPhone} value={header.contactPhone} />
       </dl>
     </aside>
   );

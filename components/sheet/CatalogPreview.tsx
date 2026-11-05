@@ -39,7 +39,7 @@ export function CatalogPreview({ header }: CatalogPreviewProps) {
               className="flex flex-col items-center rounded border border-zinc-200 bg-white p-1"
             >
               <Image
-                src={catalogImageUrl(entry.image)}
+                src={catalogImageUrl(entry.image, entry.code)}
                 alt={entry.coordinates}
                 width={64}
                 height={48}

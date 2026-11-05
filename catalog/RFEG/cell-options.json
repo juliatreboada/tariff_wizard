@@ -1,0 +1,261 @@
+{
+  "description": "Table cells with alternative pictures (\"OR\"), reviewed by the coach on 2026-11-04: cell picture → its option pictures. Each option is one element of its own picture, same value and cell; a routine can use only one option of a cell.",
+  "cells": {
+    "base/alevin/cuartetos/dynamic/ROW-III-B.png": [
+      "base/alevin/cuartetos/dynamic/ROW-III-B-a.png",
+      "base/alevin/cuartetos/dynamic/ROW-III-B-b.png"
+    ],
+    "base/alevin/cuartetos/dynamic/ROW-III-C.png": [
+      "base/alevin/cuartetos/dynamic/ROW-III-C-a.png",
+      "base/alevin/cuartetos/dynamic/ROW-III-C-b.png"
+    ],
+    "base/alevin/cuartetos/dynamic/ROW-III-D.png": [
+      "base/alevin/cuartetos/dynamic/ROW-III-D-a.png",
+      "base/alevin/cuartetos/dynamic/ROW-III-D-b.png"
+    ],
+    "base/alevin/trios/dynamic/ROW-III-C.png": [
+      "base/alevin/trios/dynamic/ROW-III-C-a.png",
+      "base/alevin/trios/dynamic/ROW-III-C-b.png"
+    ],
+    "base/alevin/trios/dynamic/ROW-III-D.png": [
+      "base/alevin/trios/dynamic/ROW-III-D-a.png",
+      "base/alevin/trios/dynamic/ROW-III-D-b.png"
+    ],
+    "base/cadete/cuartetos/dynamic/ROW-III-C.png": [
+      "base/cadete/cuartetos/dynamic/ROW-III-C-a.png",
+      "base/cadete/cuartetos/dynamic/ROW-III-C-b.png"
+    ],
+    "base/cadete/pairs/balance/ROW-I-B.png": [
+      "base/cadete/pairs/balance/ROW-I-B-a.png",
+      "base/cadete/pairs/balance/ROW-I-B-b.png"
+    ],
+    "base/cadete/pairs/balance/ROW-IV-C.png": [
+      "base/cadete/pairs/balance/ROW-IV-C-a.png",
+      "base/cadete/pairs/balance/ROW-IV-C-b.png"
+    ],
+    "base/cadete/pairs/balance/ROW-IV-D.png": [
+      "base/cadete/pairs/balance/ROW-IV-D-a.png",
+      "base/cadete/pairs/balance/ROW-IV-D-b.png"
+    ],
+    "base/cadete/trios/balance/ROW-I-C.png": [
+      "base/cadete/trios/balance/ROW-I-C-a.png",
+      "base/cadete/trios/balance/ROW-I-C-b.png"
+    ],
+    "base/cadete/trios/dynamic/ROW-I-D.png": [
+      "base/cadete/trios/dynamic/ROW-I-D-a.png",
+      "base/cadete/trios/dynamic/ROW-I-D-b.png"
+    ],
+    "base/cadete/trios/dynamic/ROW-III-A.png": [
+      "base/cadete/trios/dynamic/ROW-III-A-a.png",
+      "base/cadete/trios/dynamic/ROW-III-A-b.png"
+    ],
+    "base/cadete/trios/dynamic/ROW-III-C.png": [
+      "base/cadete/trios/dynamic/ROW-III-C-a.png",
+      "base/cadete/trios/dynamic/ROW-III-C-b.png"
+    ],
+    "base/cadete/trios/dynamic/ROW-III-D.png": [
+      "base/cadete/trios/dynamic/ROW-III-D-a.png",
+      "base/cadete/trios/dynamic/ROW-III-D-b.png"
+    ],
+    "base/infantil/cuartetos/dynamic/ROW-III-B.png": [
+      "base/infantil/cuartetos/dynamic/ROW-III-B-a.png",
+      "base/infantil/cuartetos/dynamic/ROW-III-B-b.png"
+    ],
+    "base/infantil/cuartetos/dynamic/ROW-III-C.png": [
+      "base/infantil/cuartetos/dynamic/ROW-III-C-a.png",
+      "base/infantil/cuartetos/dynamic/ROW-III-C-b.png"
+    ],
+    "base/infantil/cuartetos/dynamic/ROW-III-D.png": [
+      "base/infantil/cuartetos/dynamic/ROW-III-D-a.png",
+      "base/infantil/cuartetos/dynamic/ROW-III-D-b.png"
+    ],
+    "base/infantil/pairs/balance/ROW-I-B.png": [
+      "base/infantil/pairs/balance/ROW-I-B-a.png",
+      "base/infantil/pairs/balance/ROW-I-B-b.png"
+    ],
+    "base/infantil/pairs/balance/ROW-I-C.png": [
+      "base/infantil/pairs/balance/ROW-I-C-a.png",
+      "base/infantil/pairs/balance/ROW-I-C-b.png"
+    ],
+    "base/infantil/trios/balance/ROW-I-D.png": [
+      "base/infantil/trios/balance/ROW-I-D-a.png",
+      "base/infantil/trios/balance/ROW-I-D-b.png"
+    ],
+    "base/infantil/trios/dynamic/ROW-III-A.png": [
+      "base/infantil/trios/dynamic/ROW-III-A-a.png",
+      "base/infantil/trios/dynamic/ROW-III-A-b.png"
+    ],
+    "base/infantil/trios/dynamic/ROW-III-B.png": [
+      "base/infantil/trios/dynamic/ROW-III-B-a.png",
+      "base/infantil/trios/dynamic/ROW-III-B-b.png"
+    ],
+    "base/infantil/trios/dynamic/ROW-III-C.png": [
+      "base/infantil/trios/dynamic/ROW-III-C-a.png",
+      "base/infantil/trios/dynamic/ROW-III-C-b.png"
+    ],
+    "base/infantil/trios/dynamic/ROW-III-D.png": [
+      "base/infantil/trios/dynamic/ROW-III-D-a.png",
+      "base/infantil/trios/dynamic/ROW-III-D-b.png"
+    ],
+    "espana/alevin/cuartetos/balance/ROW-I-B.png": [
+      "espana/alevin/cuartetos/balance/ROW-I-B-a.png",
+      "espana/alevin/cuartetos/balance/ROW-I-B-b.png"
+    ],
+    "espana/alevin/cuartetos/balance/ROW-III-B.png": [
+      "espana/alevin/cuartetos/balance/ROW-III-B-a.png",
+      "espana/alevin/cuartetos/balance/ROW-III-B-b.png"
+    ],
+    "espana/alevin/cuartetos/dynamic/ROW-III-C.png": [
+      "espana/alevin/cuartetos/dynamic/ROW-III-C-a.png",
+      "espana/alevin/cuartetos/dynamic/ROW-III-C-b.png"
+    ],
+    "espana/alevin/cuartetos/dynamic/ROW-III-D.png": [
+      "espana/alevin/cuartetos/dynamic/ROW-III-D-a.png",
+      "espana/alevin/cuartetos/dynamic/ROW-III-D-b.png"
+    ],
+    "espana/alevin/pf/balance/ROW-I-B.png": [
+      "espana/alevin/pf/balance/ROW-I-B-a.png",
+      "espana/alevin/pf/balance/ROW-I-B-b.png"
+    ],
+    "espana/alevin/pf/balance/ROW-I-D.png": [
+      "espana/alevin/pf/balance/ROW-I-D-a.png",
+      "espana/alevin/pf/balance/ROW-I-D-b.png"
+    ],
+    "espana/alevin/pf/balance/ROW-II-A.png": [
+      "espana/alevin/pf/balance/ROW-II-A-a.png",
+      "espana/alevin/pf/balance/ROW-II-A-b.png"
+    ],
+    "espana/alevin/pf/balance/ROW-II-B.png": [
+      "espana/alevin/pf/balance/ROW-II-B-a.png",
+      "espana/alevin/pf/balance/ROW-II-B-b.png"
+    ],
+    "espana/alevin/pf/balance/ROW-II-C.png": [
+      "espana/alevin/pf/balance/ROW-II-C-a.png",
+      "espana/alevin/pf/balance/ROW-II-C-b.png"
+    ],
+    "espana/alevin/pf/balance/ROW-II-D.png": [
+      "espana/alevin/pf/balance/ROW-II-D-a.png",
+      "espana/alevin/pf/balance/ROW-II-D-b.png"
+    ],
+    "espana/alevin/trios/balance/ROW-I-D.png": [
+      "espana/alevin/trios/balance/ROW-I-D-a.png",
+      "espana/alevin/trios/balance/ROW-I-D-b.png"
+    ],
+    "espana/alevin/trios/balance/ROW-II-B.png": [
+      "espana/alevin/trios/balance/ROW-II-B-a.png",
+      "espana/alevin/trios/balance/ROW-II-B-b.png"
+    ],
+    "espana/alevin/trios/balance/ROW-II-C.png": [
+      "espana/alevin/trios/balance/ROW-II-C-a.png",
+      "espana/alevin/trios/balance/ROW-II-C-b.png"
+    ],
+    "espana/alevin/trios/balance/ROW-II-D.png": [
+      "espana/alevin/trios/balance/ROW-II-D-a.png",
+      "espana/alevin/trios/balance/ROW-II-D-b.png"
+    ],
+    "espana/alevin/trios/dynamic/ROW-III-B.png": [
+      "espana/alevin/trios/dynamic/ROW-III-B-a.png",
+      "espana/alevin/trios/dynamic/ROW-III-B-b.png"
+    ],
+    "espana/alevin/trios/dynamic/ROW-III-C.png": [
+      "espana/alevin/trios/dynamic/ROW-III-C-a.png",
+      "espana/alevin/trios/dynamic/ROW-III-C-b.png"
+    ],
+    "espana/alevin/trios/dynamic/ROW-III-D.png": [
+      "espana/alevin/trios/dynamic/ROW-III-D-a.png",
+      "espana/alevin/trios/dynamic/ROW-III-D-b.png"
+    ],
+    "espana/infantil/cuartetos/balance/ROW-III-C.png": [
+      "espana/infantil/cuartetos/balance/ROW-III-C-a.png",
+      "espana/infantil/cuartetos/balance/ROW-III-C-b.png"
+    ],
+    "espana/infantil/cuartetos/balance/ROW-III-D.png": [
+      "espana/infantil/cuartetos/balance/ROW-III-D-a.png",
+      "espana/infantil/cuartetos/balance/ROW-III-D-b.png"
+    ],
+    "espana/infantil/cuartetos/dynamic/ROW-I-A.png": [
+      "espana/infantil/cuartetos/dynamic/ROW-I-A-a.png",
+      "espana/infantil/cuartetos/dynamic/ROW-I-A-b.png"
+    ],
+    "espana/infantil/cuartetos/dynamic/ROW-I-B.png": [
+      "espana/infantil/cuartetos/dynamic/ROW-I-B-a.png",
+      "espana/infantil/cuartetos/dynamic/ROW-I-B-b.png"
+    ],
+    "espana/infantil/cuartetos/dynamic/ROW-I-C.png": [
+      "espana/infantil/cuartetos/dynamic/ROW-I-C-a.png",
+      "espana/infantil/cuartetos/dynamic/ROW-I-C-b.png"
+    ],
+    "espana/infantil/cuartetos/dynamic/ROW-I-D.png": [
+      "espana/infantil/cuartetos/dynamic/ROW-I-D-a.png",
+      "espana/infantil/cuartetos/dynamic/ROW-I-D-b.png"
+    ],
+    "espana/infantil/cuartetos/dynamic/ROW-III-B.png": [
+      "espana/infantil/cuartetos/dynamic/ROW-III-B-a.png",
+      "espana/infantil/cuartetos/dynamic/ROW-III-B-b.png"
+    ],
+    "espana/infantil/cuartetos/dynamic/ROW-III-C.png": [
+      "espana/infantil/cuartetos/dynamic/ROW-III-C-a.png",
+      "espana/infantil/cuartetos/dynamic/ROW-III-C-b.png"
+    ],
+    "espana/infantil/cuartetos/dynamic/ROW-III-D.png": [
+      "espana/infantil/cuartetos/dynamic/ROW-III-D-a.png",
+      "espana/infantil/cuartetos/dynamic/ROW-III-D-b.png"
+    ],
+    "espana/infantil/pf/balance/ROW-II-C.png": [
+      "espana/infantil/pf/balance/ROW-II-C-a.png",
+      "espana/infantil/pf/balance/ROW-II-C-b.png"
+    ],
+    "espana/infantil/pm/balance/ROW-I-C.png": [
+      "espana/infantil/pm/balance/ROW-I-C-a.png",
+      "espana/infantil/pm/balance/ROW-I-C-b.png"
+    ],
+    "espana/infantil/pm/balance/ROW-II-C.png": [
+      "espana/infantil/pm/balance/ROW-II-C-a.png",
+      "espana/infantil/pm/balance/ROW-II-C-b.png"
+    ],
+    "espana/infantil/pm/balance/ROW-II-D.png": [
+      "espana/infantil/pm/balance/ROW-II-D-a.png",
+      "espana/infantil/pm/balance/ROW-II-D-b.png"
+    ],
+    "espana/infantil/pm/balance/ROW-III-C.png": [
+      "espana/infantil/pm/balance/ROW-III-C-a.png",
+      "espana/infantil/pm/balance/ROW-III-C-b.png"
+    ],
+    "espana/infantil/pmx/balance/ROW-III-B.png": [
+      "espana/infantil/pmx/balance/ROW-III-B-a.png",
+      "espana/infantil/pmx/balance/ROW-III-B-b.png"
+    ],
+    "espana/infantil/trios/balance/ROW-I-B.png": [
+      "espana/infantil/trios/balance/ROW-I-B-a.png",
+      "espana/infantil/trios/balance/ROW-I-B-b.png"
+    ],
+    "espana/infantil/trios/balance/ROW-I-C.png": [
+      "espana/infantil/trios/balance/ROW-I-C-a.png",
+      "espana/infantil/trios/balance/ROW-I-C-b.png"
+    ],
+    "espana/infantil/trios/balance/ROW-II-C.png": [
+      "espana/infantil/trios/balance/ROW-II-C-a.png",
+      "espana/infantil/trios/balance/ROW-II-C-b.png"
+    ],
+    "espana/infantil/trios/balance/ROW-II-D.png": [
+      "espana/infantil/trios/balance/ROW-II-D-a.png",
+      "espana/infantil/trios/balance/ROW-II-D-b.png"
+    ],
+    "espana/infantil/trios/dynamic/ROW-III-A.png": [
+      "espana/infantil/trios/dynamic/ROW-III-A-a.png",
+      "espana/infantil/trios/dynamic/ROW-III-A-b.png"
+    ],
+    "espana/infantil/trios/dynamic/ROW-III-B.png": [
+      "espana/infantil/trios/dynamic/ROW-III-B-a.png",
+      "espana/infantil/trios/dynamic/ROW-III-B-b.png"
+    ],
+    "espana/infantil/trios/dynamic/ROW-III-C.png": [
+      "espana/infantil/trios/dynamic/ROW-III-C-a.png",
+      "espana/infantil/trios/dynamic/ROW-III-C-b.png"
+    ],
+    "espana/infantil/trios/dynamic/ROW-III-D.png": [
+      "espana/infantil/trios/dynamic/ROW-III-D-a.png",
+      "espana/infantil/trios/dynamic/ROW-III-D-b.png"
+    ]
+  }
+}

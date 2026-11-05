@@ -1,8 +1,12 @@
 import { describe, expect, it } from "vitest";
 import type { SheetColumnSlot } from "./compute-sheet-layout";
+import { getCatalogEntries } from "./catalog/load-catalog";
+import { catalogEntryToPlaced } from "./catalog/to-placed";
 import {
   formatSidebarBreakdownValue,
   SHEET_NO_VALUE,
+  sheetCoordinatesInRow,
+  sheetSlotMetaDisplay,
   sheetValueInSubcell,
 } from "./element-display";
 import { item } from "./test-fixtures";
@@ -58,5 +62,25 @@ describe("sidebar breakdown", () => {
     expect(formatSidebarBreakdownValue("individual", breakdown, true)).toBe(SHEET_NO_VALUE);
     expect(formatSidebarBreakdownValue("individual", breakdown, false)).toBe("0.4");
     expect(formatSidebarBreakdownValue("balance", breakdown, true)).toBe("0.3");
+  });
+});
+
+describe("a pyramid with an add-on (Cuartetos ROW III)", () => {
+  const rfeg = (id: string) =>
+    catalogEntryToPlaced(getCatalogEntries("RFEG").find((e) => e.id === `rfeg-base-${id}` || e.id === `rfeg-base-${id}` + "-a")!);
+  const slot: SheetColumnSlot = {
+    kind: "element",
+    routineItemId: "x",
+    element: rfeg("cadete-cuartetos-balance-row-ii-d"), // 0.3
+    addOn: rfeg("cadete-cuartetos-balance-row-iii-c"), // 0.2
+    elementNumber: 1,
+    block: "balance",
+    role: "compulsory",
+  };
+
+  it("adds the values and lists both codes in one cell", () => {
+    expect(sheetValueInSubcell(slot, 0, true)).toBe("0.5");
+    expect(sheetCoordinatesInRow(slot, "sh")).toBe("ROW-II D + ROW-III C");
+    expect(sheetSlotMetaDisplay(slot)).toBe('3"');
   });
 });

@@ -1,10 +1,16 @@
-import type { Messages } from "@/lib/i18n/messages/es";
 import type { StoredHeader } from "./types";
+
+/** Role labels for the gymnast rows (Spanish screens or the printed sheet). */
+export type GymnastLabels = {
+  top: string;
+  base: string;
+  baseNumber: (n: number) => string;
+};
 
 export function baseSidebarLabel(
   index: number,
   baseCount: number,
-  labels: Messages["sheetLabels"],
+  labels: GymnastLabels,
   options?: { numberedBases?: boolean },
 ): string {
   if (options?.numberedBases === false || baseCount <= 1) {
@@ -15,7 +21,7 @@ export function baseSidebarLabel(
 
 export function gymnastSidebarRows(
   header: StoredHeader,
-  labels: Messages["sheetLabels"],
+  labels: GymnastLabels,
   options?: { numberedBases?: boolean },
 ): Array<{ role: string; name: string }> {
   const rows: Array<{ role: string; name: string }> = [

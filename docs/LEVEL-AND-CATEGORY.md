@@ -32,12 +32,22 @@ Depends on system:
 
 | System | Options |
 |--------|---------|
-| **Escolar** | Benxamín, Alevín, Infantil, Absoluto |
+| **Escolar** | Prebenxamín, Benxamín, Alevín, Infantil, Absoluta |
 | **Base** | Alevín, Infantil, Cadete, Junior, Senior |
 | **RFEG** | Alevín, Infantil, Cadete, Juvenil, Pre-Junior, Junior, Senior |
 | **FIG** | Cadete, Pre-Youth, Youth, Junior, Senior |
 
 In the form: pick system → second dropdown only shows valid ages for that system.
+
+ESCOLAR age groups from the new season (the dropdown shows only the name; Galician spellings are kept). Absoluta is "coming soon"; the rest use the FGX ESCOLAR rules. Sheets saved as "Absoluto" are renamed to "Absoluta" when the app loads them.
+
+| Age group | Level | Ages | Born |
+|-----------|-------|------|------|
+| Prebenxamín | Nivel 1 | 6 – 9 | 2021 – 2018 |
+| Benxamín | Nivel 1 | 6 – 11 | 2021 – 2016 |
+| Alevín | Nivel 2 | 6 – 13 | 2021 – 2014 |
+| Infantil | Nivel 3 | 7 – 15 | 2020 – 2012 |
+| Absoluta | Nivel 4 | 8 minimum | 2019 and earlier |
 
 Stored as:
 

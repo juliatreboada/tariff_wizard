@@ -10,6 +10,7 @@ import {
   findCategoryCodeForLabel,
   gymnastCountForCategory,
   normalizeBaseNames,
+  renameLegacyLevelAge,
 } from "./level-category";
 import {
   migrateElementsRecordToRoutine,
@@ -25,9 +26,15 @@ import {
   moveDisplayRow,
 } from "./routine-groups";
 import { newRoutineItemId } from "./routine-id";
+import { catalogEntryForElement } from "./catalog/lookup";
 import {
+  addProblem,
   applyRulesetRoles,
   applyRulesetRolesForBlock,
+  individualProblem,
+  pyramidForAddOn,
+  repeatsIndividualNumber,
+  type RulesHeader,
   rulesetFor,
   type Ruleset,
 } from "./rulesets";
@@ -81,8 +88,9 @@ export type WizardStore = {
       role?: RoutineElementRole;
       gymnastRole?: RoutineGymnastRole;
       individualOrder?: 1 | 2 | 3;
-      allowDuplicate?: boolean;
       individualGroupId?: string;
+      /** For an add-on: the pyramid (catalog id) to put it on. */
+      attachTo?: string;
       baseIndex?: number;
     },
   ) => boolean;
@@ -94,6 +102,15 @@ export type WizardStore = {
     }>,
     options?: { linkedToPrevious?: boolean },
   ) => boolean;
+  /** Replace an individual set's elements, keeping its place in the routine. */
+  replaceIndividualGroup: (
+    groupId: string,
+    picks: Array<{
+      entry: CatalogEntry;
+      gymnastRole: RoutineGymnastRole;
+      baseIndex?: number;
+    }>,
+  ) => boolean;
   replaceRoutineElement: (
     itemId: string,
     entry: CatalogEntry,
@@ -102,6 +119,8 @@ export type WizardStore = {
     },
   ) => boolean;
   removeRoutineItem: (itemId: string) => void;
+  /** Detach the add-on (Cuartetos ROW III) from a pyramid. */
+  removeAddOn: (itemId: string) => void;
   moveRoutineItem: (itemId: string, direction: "up" | "down") => void;
   setRoutineItemLinked: (itemId: string, linked: boolean) => void;
   loadSavedSheet: (sheetId: string) => void;
@@ -173,6 +192,13 @@ function emptyDefaultProfile(): DefaultProfile {
   };
 }
 
+function withRenamedLevelAge<T extends { levelSystem: StoredHeader["levelSystem"]; levelAge: string }>(
+  value: T,
+): T {
+  const levelAge = renameLegacyLevelAge(value.levelSystem, value.levelAge);
+  return levelAge === value.levelAge ? value : { ...value, levelAge };
+}
+
 function withCompetitionDefaults(
   values: CompetitionStepFormValues,
   defaults: DefaultProfile,
@@ -220,11 +246,44 @@ function saveCurrentSnapshot(state: Pick<
   });
 }
 
+/**
+ * Can this set of individual picks join `routine` (the routine without any
+ * set being replaced)? Set count, element source and values, and an ID
+ * number once per gymnast (118 A and 118 C are both 118).
+ */
+function individualPicksAllowed(
+  state: Pick<WizardStore, "header" | "competition">,
+  routine: RoutineItem[],
+  picks: Array<{ entry: CatalogEntry; gymnastRole: RoutineGymnastRole; baseIndex?: number }>,
+): boolean {
+  const ruleset = activeRuleset(state);
+  if (!ruleset) return true;
+  const header = state.header ?? state.competition;
+  const { totalGroups } = countCompleteIndividualSets(routine, gymnastCountForCategory(header.category));
+  if (!ruleset.individuals.available || totalGroups >= ruleset.individuals.sets) return false;
+  if (picks.some((pick) => individualProblem(ruleset, header, pick.entry))) return false;
+  return !picks.some((pick) => repeatsIndividualNumber(routine, pick, pick.entry));
+}
+
 /** Prefer the committed header: loading a saved sheet does not update `competition`. */
 function activeRuleset(
   state: Pick<WizardStore, "header" | "competition">,
 ): Ruleset | null {
   return rulesetFor(state.header ?? state.competition);
+}
+
+function rulesHeader(state: Pick<WizardStore, "header" | "competition">): RulesHeader {
+  return state.header ?? state.competition;
+}
+
+/** Re-derive roles for one block from the state's ruleset and header. */
+function withBlockRoles(
+  state: Pick<WizardStore, "header" | "competition">,
+  routine: RoutineItem[],
+  block: RoutineItem["block"],
+): RoutineItem[] {
+  if (block !== "balance" && block !== "dynamic") return routine;
+  return applyRulesetRolesForBlock(routine, block, activeRuleset(state), rulesHeader(state));
 }
 
 export const useWizardStore = create<WizardStore>()(
@@ -261,17 +320,19 @@ export const useWizardStore = create<WizardStore>()(
         const { competition, teamContact } = previous;
         const header = buildHeader(competition, teamContact);
         const currentSheetId = previous.currentSheetId ?? newRoutineItemId();
-        const valueBreakdown = recalculateValueBreakdown(previous.routine);
+        // The level, age group or category may have changed: re-derive roles.
+        const routine = applyRulesetRoles(previous.routine, rulesetFor(header), header);
+        const valueBreakdown = recalculateValueBreakdown(routine);
         set({
           header,
           valueBreakdown,
-          routine: previous.routine,
+          routine,
           currentSheetId,
           savedSheets: upsertSavedSheet(previous.savedSheets, {
             id: currentSheetId,
             updatedAtIso: new Date().toISOString(),
             header,
-            routine: previous.routine,
+            routine,
             valueBreakdown,
           }),
         });
@@ -280,31 +341,36 @@ export const useWizardStore = create<WizardStore>()(
       addRoutineElement: (entry, options) => {
         const state = get();
         const routine = state.routine;
-        if (!options?.allowDuplicate && isCatalogIdUsedInRoutine(routine, entry.id)) {
+        const block = options?.block ?? inferElementBlock(entry);
+        if (
+          (block === "balance" || block === "dynamic") &&
+          addProblem(activeRuleset(state), rulesHeader(state), routine, entry, block, undefined, options?.attachTo)
+        ) {
           return false;
         }
-        const block = options?.block ?? inferElementBlock(entry);
-        const ruleset = activeRuleset(state);
-        if (ruleset && (block === "balance" || block === "dynamic")) {
-          const existing = routine.filter((item) => item.block === block).length;
-          if (existing >= ruleset.blocks.maxElements) {
-            return false;
-          }
+        if (block !== "balance" && block !== "dynamic" && isCatalogIdUsedInRoutine(routine, entry.id)) {
+          return false;
         }
-        const item: RoutineItem = {
-          id: newRoutineItemId(),
-          block,
-          linkedToPrevious: options?.linkedToPrevious ?? false,
-          role: options?.role ?? "compulsory",
-          gymnastRole: options?.gymnastRole,
-          baseIndex: options?.baseIndex,
-          individualGroupId: options?.individualGroupId,
-          individualOrder: options?.individualOrder,
-          element: catalogEntryToPlaced(entry),
-        };
-        let next = [...routine, item];
-        if (block === "balance" || block === "dynamic") {
-          next = applyRulesetRolesForBlock(next, block, ruleset);
+        let next: RoutineItem[];
+        const pyramid = pyramidForAddOn(routine, entry, options?.attachTo);
+        if (entry.attachesTo) {
+          if (!pyramid) return false;
+          next = routine.map((item) =>
+            item.id === pyramid.id ? { ...item, addOn: catalogEntryToPlaced(entry) } : item,
+          );
+        } else {
+          const item: RoutineItem = {
+            id: newRoutineItemId(),
+            block,
+            linkedToPrevious: options?.linkedToPrevious ?? false,
+            role: options?.role ?? "compulsory",
+            gymnastRole: options?.gymnastRole,
+            baseIndex: options?.baseIndex,
+            individualGroupId: options?.individualGroupId,
+            individualOrder: options?.individualOrder,
+            element: catalogEntryToPlaced(entry),
+          };
+          next = withBlockRoles(state, [...routine, item], block);
         }
         const valueBreakdown = recalculateValueBreakdown(next);
         set({
@@ -322,19 +388,7 @@ export const useWizardStore = create<WizardStore>()(
       addIndividualGroup: (picks, options) => {
         if (picks.length === 0) return false;
         const state = get();
-        const ruleset = activeRuleset(state);
-        if (ruleset) {
-          const gymnastCount = gymnastCountForCategory(
-            (state.header ?? state.competition).category,
-          );
-          const { totalGroups } = countCompleteIndividualSets(
-            state.routine,
-            gymnastCount,
-          );
-          if (totalGroups >= ruleset.individualSets) {
-            return false;
-          }
-        }
+        if (!individualPicksAllowed(state, state.routine, picks)) return false;
         const groupId = newRoutineItemId();
         const routine = state.routine;
         const newItems: RoutineItem[] = picks.map((pick, idx) => ({
@@ -362,33 +416,63 @@ export const useWizardStore = create<WizardStore>()(
         return true;
       },
 
+      replaceIndividualGroup: (groupId, picks) => {
+        const state = get();
+        const inGroup = (item: RoutineItem) =>
+          item.role === "individual" && individualGroupId(item) === groupId;
+        const at = state.routine.findIndex(inGroup);
+        if (at < 0 || picks.length === 0) return false;
+        // The set's own elements don't count against the new picks.
+        const others = state.routine.filter((item) => !inGroup(item));
+        if (!individualPicksAllowed(state, others, picks)) return false;
+        const linked = state.routine[at].linkedToPrevious;
+        const items: RoutineItem[] = picks.map((pick, idx) => ({
+          id: newRoutineItemId(),
+          block: "combined",
+          role: "individual",
+          linkedToPrevious: idx === 0 ? linked : true,
+          gymnastRole: pick.gymnastRole,
+          baseIndex: pick.baseIndex,
+          individualGroupId: groupId,
+          element: catalogEntryToPlaced(pick.entry),
+        }));
+        // Same place in the routine as the set it replaces.
+        const next = [...others.slice(0, at), ...items, ...others.slice(at)];
+        const valueBreakdown = recalculateValueBreakdown(next);
+        set({
+          routine: next,
+          valueBreakdown,
+          savedSheets: saveCurrentSnapshot({ ...get(), routine: next, valueBreakdown }),
+        });
+        return true;
+      },
+
       replaceRoutineElement: (itemId, entry, options) => {
         const state = get();
         const target = state.routine.find((item) => item.id === itemId);
         if (!target || target.role === "individual") return false;
         const nextBlock = target.block;
         if (inferElementBlock(entry) !== nextBlock) return false;
-
         if (
-          state.routine.some(
-            (item) => item.id !== itemId && item.element.catalogId === entry.id,
-          )
+          (nextBlock !== "balance" && nextBlock !== "dynamic") ||
+          addProblem(activeRuleset(state), rulesHeader(state), state.routine, entry, nextBlock, itemId)
         ) {
           return false;
         }
 
-        let next = state.routine.map((item) =>
-          item.id === itemId
-            ? {
-                ...item,
-                role: options?.role ?? item.role ?? "compulsory",
-                element: catalogEntryToPlaced(entry),
-              }
-            : item,
-        );
-        if (nextBlock === "balance" || nextBlock === "dynamic") {
-          next = applyRulesetRolesForBlock(next, nextBlock, activeRuleset(state));
-        }
+        let next = state.routine.map((item) => {
+          if (item.id !== itemId) return item;
+          // Keep the add-on only if it can still attach to the new pyramid.
+          const addOnEntry = item.addOn && catalogEntryForElement(item.addOn);
+          const keepAddOn = addOnEntry?.attachesTo?.includes(entry.id) ?? false;
+          return {
+            ...item,
+            role: options?.role ?? item.role ?? "compulsory",
+            element: catalogEntryToPlaced(entry),
+            addOn: keepAddOn ? item.addOn : undefined,
+          };
+        });
+        next = withBlockRoles(state, next, nextBlock);
         const valueBreakdown = recalculateValueBreakdown(next);
         set({
           routine: next,
@@ -415,9 +499,23 @@ export const useWizardStore = create<WizardStore>()(
           }
           return true;
         });
-        if (target?.block === "balance" || target?.block === "dynamic") {
-          next = applyRulesetRolesForBlock(next, target.block, activeRuleset(get()));
-        }
+        if (target) next = withBlockRoles(get(), next, target.block);
+        const valueBreakdown = recalculateValueBreakdown(next);
+        set({
+          routine: next,
+          valueBreakdown,
+          savedSheets: saveCurrentSnapshot({
+            ...get(),
+            routine: next,
+            valueBreakdown,
+          }),
+        });
+      },
+
+      removeAddOn: (itemId) => {
+        const next = get().routine.map((item) =>
+          item.id === itemId && item.addOn ? { ...item, addOn: undefined } : item,
+        );
         const valueBreakdown = recalculateValueBreakdown(next);
         set({
           routine: next,
@@ -481,7 +579,11 @@ export const useWizardStore = create<WizardStore>()(
       loadSavedSheet: (sheetId) => {
         const sheet = get().savedSheets.find((s) => s.id === sheetId);
         if (!sheet) return;
-        const routine = applyRulesetRoles(sheet.routine, rulesetFor(sheet.header));
+        const routine = applyRulesetRoles(
+          refreshRoutineFromCatalog(sheet.routine),
+          rulesetFor(sheet.header),
+          sheet.header,
+        );
         set({
           header: sheet.header,
           routine,
@@ -576,18 +678,15 @@ export const useWizardStore = create<WizardStore>()(
         if (routine.length === 0 && p.elements) {
           routine = migrateElementsRecordToRoutine(p.elements);
         }
+        routine = refreshRoutineFromCatalog(routine);
         if (p.header) {
-          routine = applyRulesetRoles(
-            refreshRoutineFromCatalog(routine),
-            rulesetFor(p.header),
-          );
+          routine = applyRulesetRoles(routine, rulesetFor(p.header), p.header);
         }
         const valueBreakdown = p.header
           ? recalculateValueBreakdown(routine)
           : emptyValueBreakdown();
-        const competition = withCompetitionDefaults(
-          p.competition ?? current.competition,
-          defaultProfile,
+        const competition = withRenamedLevelAge(
+          withCompetitionDefaults(p.competition ?? current.competition, defaultProfile),
         );
         const teamContact = normalizeTeamContact(
           withTeamContactDefaults(
@@ -596,7 +695,7 @@ export const useWizardStore = create<WizardStore>()(
           ),
           competition.category,
         );
-        let header = p.header ?? null;
+        let header = p.header ? withRenamedLevelAge(p.header) : null;
         if (header && header.baseNames.length !== baseCountForCategory(header.category)) {
           header = {
             ...header,
@@ -615,7 +714,11 @@ export const useWizardStore = create<WizardStore>()(
           routine,
           valueBreakdown,
           currentSheetId: p.currentSheetId ?? current.currentSheetId,
-          savedSheets: p.savedSheets ?? current.savedSheets,
+          savedSheets: (p.savedSheets ?? current.savedSheets).map((sheet) =>
+            sheet.header
+              ? { ...sheet, header: withRenamedLevelAge(sheet.header) }
+              : sheet,
+          ),
         };
       },
     },

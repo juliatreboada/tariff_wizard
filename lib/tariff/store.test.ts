@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { emptyCompetitionStep } from "./schema";
 import { useWizardStore } from "./store";
-import { entry, header, item } from "./test-fixtures";
+import { entry, header, item, withoutCatalog } from "./test-fixtures";
 import type { StoredHeader } from "./types";
 
 const initialState = useWizardStore.getState();
@@ -181,6 +181,12 @@ describe("level system source", () => {
   });
 });
 
+/** A pre-`catalog` element whose entry is gone, so only the FGX default can fill it in. */
+function removedEntry() {
+  const legacy = withoutCatalog(item("fgx-balance-row-i-b"));
+  return { ...legacy, element: { ...legacy.element, catalogId: "fgx-removed" } };
+}
+
 describe("persisted data", () => {
   it("assigns ESCOLAR roles to legacy routines on rehydrate", async () => {
     const legacy = [
@@ -200,5 +206,55 @@ describe("persisted data", () => {
       ["fgx-balance-row-i-d", "compulsory"],
     ]);
     expect(store().valueBreakdown.balance).toBeCloseTo(0.3);
+  });
+
+  it("renames ESCOLAR Absoluto to Absoluta everywhere it was saved", async () => {
+    const old = header({ levelAge: "Absoluto" });
+    localStorage.setItem(
+      "tariff-wizard-v1",
+      JSON.stringify({
+        state: {
+          header: old,
+          competition: { ...emptyCompetitionStep(), levelSystem: "Escolar", levelAge: "Absoluto" },
+          routine: [],
+          savedSheets: [
+            { id: "s", updatedAtIso: "2026-10-01T00:00:00.000Z", header: old, routine: [], valueBreakdown: store().valueBreakdown },
+          ],
+        },
+        version: 0,
+      }),
+    );
+    await useWizardStore.persist.rehydrate();
+    expect(store().header?.levelAge).toBe("Absoluta");
+    expect(store().competition.levelAge).toBe("Absoluta");
+    expect(store().savedSheets[0].header.levelAge).toBe("Absoluta");
+  });
+
+  it("records the FGX catalog on a legacy routine saved without a header", async () => {
+    localStorage.setItem(
+      "tariff-wizard-v1",
+      JSON.stringify({
+        state: { header: null, routine: [removedEntry()] },
+        version: 0,
+      }),
+    );
+    await useWizardStore.persist.rehydrate();
+    expect(store().routine[0].element.catalog).toBe("FGX");
+  });
+
+  it("records the FGX catalog on saved sheets from before it was tracked", () => {
+    useWizardStore.setState({
+      savedSheets: [
+        {
+          id: "old",
+          updatedAtIso: "2026-10-01T00:00:00.000Z",
+          header: header(),
+          routine: [removedEntry()],
+          valueBreakdown: store().valueBreakdown,
+        },
+      ],
+    });
+    store().loadSavedSheet("old");
+    expect(store().routine[0].element.catalog).toBe("FGX");
   });
 });

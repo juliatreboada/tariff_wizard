@@ -1,8 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { expandId } from "./cell-options.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+/** Every catalog's entries by id, for links across catalogs (`sameAs`). */
+const allEntries = new Map();
 
 /** @param {string} catalogId e.g. FGX */
 function validateCatalog(catalogId) {
@@ -33,12 +37,31 @@ function validateCatalog(catalogId) {
     if (entry.code !== catalogId) {
       errors.push(`${entry.id}: entry.code must be ${catalogId}`);
     }
+    const prefix = `${catalogId.toLowerCase()}-`;
+    if (!String(entry.id).startsWith(prefix)) {
+      errors.push(`${entry.id}: id must start with "${prefix}"`);
+    }
 
+    const groupImage = entry.variant?.groupImage;
+    if (groupImage && !fs.existsSync(path.join(publicCatalog, groupImage))) {
+      errors.push(`${entry.id}: missing group image ${groupImage}`);
+    }
     const imagePath = path.join(publicCatalog, entry.image);
     if (!fs.existsSync(imagePath)) {
       errors.push(
         `missing image: ${entry.image}\n    → put file at public/catalog/${catalogId}/${entry.image}`,
       );
+    }
+  }
+
+  for (const entry of manifest.entries ?? []) {
+    for (const target of entry.sameAs ?? []) {
+      const other = allEntries.get(target);
+      if (!other) errors.push(`${entry.id}: same as unknown entry ${target}`);
+      else if (!other.sameAs?.includes(entry.id)) errors.push(`${entry.id}: ${target} doesn't link back`);
+    }
+    for (const target of entry.attachesTo ?? []) {
+      if (!ids.has(target)) errors.push(`${entry.id}: attaches to unknown entry ${target}`);
     }
   }
 
@@ -52,7 +75,28 @@ const catalogs = fs.existsSync(path.join(root, "catalog"))
       .map((d) => d.name)
   : [];
 
+for (const id of catalogs) {
+  const file = path.join(root, "catalog", id, "manifest.json");
+  if (!fs.existsSync(file)) continue;
+  for (const entry of JSON.parse(fs.readFileSync(file, "utf8")).entries ?? []) allEntries.set(entry.id, entry);
+}
+
 const allErrors = [];
+// Every reviewed pair must name real entries, and both must carry the link.
+const pairsFile = path.join(root, "catalog/same-elements.json");
+if (fs.existsSync(pairsFile)) {
+  // A reviewed cell later split into options (catalog/<CODE>/cell-options.json) stands for every option.
+  const everything = [...allEntries.values()];
+  for (const [a, b] of JSON.parse(fs.readFileSync(pairsFile, "utf8")).pairs) {
+    const [as, bs] = [expandId(everything, a), expandId(everything, b)];
+    for (const [id, list] of [[a, as], [b, bs]]) if (!list.length) allErrors.push(`same-elements.json: unknown entry ${id}`);
+    for (const x of as)
+      for (const y of bs)
+        for (const [from, to] of [[x, y], [y, x]]) {
+          if (!allEntries.get(from)?.sameAs?.includes(to)) allErrors.push(`same-elements.json: ${from} is missing its link to ${to} (run the generators)`);
+        }
+  }
+}
 for (const id of catalogs) {
   allErrors.push(...validateCatalog(id));
 }
