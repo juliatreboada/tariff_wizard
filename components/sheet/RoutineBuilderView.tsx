@@ -114,13 +114,20 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
               <ul className="mt-2 grid gap-2 text-xs text-amber-900 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
                 {(
                   [
-                    [escolarStatus.compulsoryBalance, t.routine.escolarRuleCompBalance, false],
-                    [escolarStatus.compulsoryDynamic, t.routine.escolarRuleCompDynamic, false],
-                    [escolarStatus.optionalBalance, t.routine.escolarRuleOptBalance, false],
-                    [escolarStatus.optionalDynamic, t.routine.escolarRuleOptDynamic, false],
-                    [escolarStatus.individualPerGymnast, t.routine.escolarRuleIndividuals, true],
+                    [escolarStatus.compulsoryBalance, t.routine.escolarRuleCompBalance, false, "balance"],
+                    [escolarStatus.compulsoryDynamic, t.routine.escolarRuleCompDynamic, false, "dynamic"],
+                    [escolarStatus.optionalBalance, t.routine.escolarRuleOptBalance, false, "balance"],
+                    [escolarStatus.optionalDynamic, t.routine.escolarRuleOptDynamic, false, "dynamic"],
+                    [escolarStatus.individualPerGymnast, t.routine.escolarRuleIndividuals, true, null],
                   ] as const
-                ).map(([req, label, alwaysCount]) => (
+                )
+                  // A Balance routine has no dynamic requirements, and vice versa.
+                  .filter(
+                    ([, , , block]) =>
+                      !(header?.exercise === "Balance" && block === "dynamic") &&
+                      !(header?.exercise === "Dynamic" && block === "balance"),
+                  )
+                  .map(([req, label, alwaysCount]) => (
                   <li
                     key={label}
                     className={`rounded-md border border-amber-200/80 bg-white/60 px-2 py-1.5 ${alwaysCount ? "sm:col-span-2 lg:col-span-1" : ""}`}

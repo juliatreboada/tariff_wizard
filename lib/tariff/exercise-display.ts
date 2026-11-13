@@ -1,6 +1,7 @@
 import type { Messages } from "@/lib/i18n/messages/es";
 import type { Exercise, LevelSystem } from "./enums";
 import { usesDvOver100ForDScore } from "./level-category";
+import { rulesetFor } from "./rulesets";
 
 /** When true, sidebar shows D-SCORE = DV (combined routine scoring). */
 export function dvEqualsDScore(
@@ -31,10 +32,13 @@ export function exerciseLabel(
   }
 }
 
+/** Routines a sheet of this level can be: the ruleset's, else by the D-SCORE rule. */
 export function exerciseOptionsForLevel(
   levelSystem: LevelSystem,
   levelAge: string,
 ): readonly Exercise[] {
+  const fromRules = rulesetFor({ levelSystem, levelAge })?.exercises;
+  if (fromRules) return fromRules;
   if (isCombinedRoutineLevel(levelSystem, levelAge)) {
     return ["Combined"];
   }

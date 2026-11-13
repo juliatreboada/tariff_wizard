@@ -2,23 +2,39 @@ import type { LevelSystem } from "../enums";
 import { FGX_ESCOLAR } from "./fgx-escolar";
 import { RFEG_BASE } from "./rfeg-base";
 import { RFEG_ESPANA } from "./rfeg-espana";
+import { FIG_PRE_YOUTH, RFEG_JUVENIL } from "./fig-pre-youth";
 import type { Ruleset, RulesetTarget } from "./types";
 
-export const RULESETS: readonly Ruleset[] = [FGX_ESCOLAR, RFEG_BASE, RFEG_ESPANA];
+export const RULESETS: readonly Ruleset[] = [
+  FGX_ESCOLAR,
+  RFEG_BASE,
+  RFEG_ESPANA,
+  RFEG_JUVENIL,
+  FIG_PRE_YOUTH,
+];
 
-/** The ruleset a sheet follows, or null when its level has no rules yet. */
+/**
+ * The ruleset a sheet follows, or null when its level and age group have no
+ * rules yet. Without an age group: the level's first ruleset.
+ */
 export function rulesetFor(target: RulesetTarget | null | undefined): Ruleset | null {
   if (!target) return null;
-  return RULESETS.find((r) => r.levelSystem === target.levelSystem) ?? null;
+  return (
+    RULESETS.find(
+      (r) =>
+        r.levelSystem === target.levelSystem &&
+        (target.levelAge === undefined || !r.levelAges || r.levelAges.includes(target.levelAge)),
+    ) ?? null
+  );
 }
 
-/** Level systems the wizard lets coaches pick. */
+/** Level systems the wizard lets coaches pick: those with at least one ready age group. */
 export function availableLevelSystems(): LevelSystem[] {
-  return RULESETS.map((r) => r.levelSystem);
+  return [...new Set(RULESETS.filter((r) => r.readyLevelAges.length > 0).map((r) => r.levelSystem))];
 }
 
 export function isLevelAgeReady(levelSystem: LevelSystem, levelAge: string): boolean {
-  return rulesetFor({ levelSystem })?.readyLevelAges.includes(levelAge) ?? false;
+  return rulesetFor({ levelSystem, levelAge })?.readyLevelAges.includes(levelAge) ?? false;
 }
 
 export { applyRulesetRoles, applyRulesetRolesForBlock } from "./roles";
@@ -31,6 +47,7 @@ export {
   individualProblem,
   repeatsIndividualNumber,
   individualValueRange,
+  individualTypes,
   type IndividualProblem,
 } from "./individuals";
 export {

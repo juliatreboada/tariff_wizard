@@ -12,6 +12,14 @@ export function applyRulesetRolesForBlock(
   header: RulesHeader | null,
 ): RoutineItem[] {
   if (!ruleset) return routine;
+  // A block this routine doesn't have (e.g. balance elements left on a sheet
+  // changed to Dynamic): its elements stay but add no difficulty.
+  const slots = blockSlots(ruleset, block, header?.category, header?.exercise);
+  if (slots.compulsory === 0 && slots.optional === 0) {
+    return routine.map((item) =>
+      item.block === block && item.role === "compulsory" ? { ...item, role: "optional" } : item,
+    );
+  }
   switch (header ? roleAssignmentFor(ruleset, header.levelAge) : ruleset.roleAssignment) {
     case "higher-value-compulsory":
       return higherValueCompulsory(routine, block, ruleset, header);
@@ -45,7 +53,7 @@ function higherValueCompulsory(
   ruleset: Ruleset,
   header: RulesHeader | null,
 ): RoutineItem[] {
-  const slots: BlockSlots = blockSlots(ruleset, block, header?.category);
+  const slots: BlockSlots = blockSlots(ruleset, block, header?.category, header?.exercise);
   const inBlock = routine
     .map((item, index) => ({ item, index }))
     .filter(({ item }) => item.block === block && item.role !== "individual");

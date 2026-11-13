@@ -43,15 +43,35 @@ describe("every ruleset", () => {
     }
   });
 
-  it("claims a level system no other ruleset claims", () => {
-    const systems = RULESETS.map((r) => r.levelSystem);
-    expect(new Set(systems).size).toBe(systems.length);
+  it("claims each level and age group at most once", () => {
+    for (const [system, ages] of Object.entries(LEVEL_AGE_BY_SYSTEM)) {
+      for (const age of ages) {
+        const claiming = RULESETS.filter(
+          (r) => r.levelSystem === system && (!r.levelAges || r.levelAges.includes(age)),
+        );
+        expect(claiming.length, `${system} ${age}`).toBeLessThanOrEqual(1);
+      }
+    }
+  });
+
+  it.each(RULESETS.map((r) => [r.id, r] as const))("%s keys its per-age settings by ready ages", (_, r) => {
+    for (const age of r.readyLevelAges) {
+      if (r.levelAges) expect(r.levelAges).toContain(age);
+    }
+    for (const age of [
+      ...Object.keys(r.compulsoryTables ?? {}),
+      ...(r.optionalFromOwnTable ?? []),
+      ...Object.keys(r.notOptional ?? {}),
+      ...Object.keys(r.optionalValueRanges ?? {}),
+    ]) {
+      expect(r.readyLevelAges).toContain(age);
+    }
   });
 });
 
 describe("wizard availability", () => {
   it("offers only level systems with a ruleset", () => {
-    expect(availableLevelSystems()).toEqual(["Escolar", "Base", "RFEG"]);
+    expect(availableLevelSystems()).toEqual(["Escolar", "Base", "RFEG", "FIG"]);
   });
 
   it("offers every ESCOLAR age group but Absoluta", () => {

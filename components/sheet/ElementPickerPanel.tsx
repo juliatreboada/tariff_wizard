@@ -30,6 +30,7 @@ import {
   blockSlots,
   individualEntries,
   individualProblem,
+  individualTypes,
   individualValueRange,
   repeatsIndividualNumber,
   optionalAvailable,
@@ -50,6 +51,7 @@ type PickerElementType = "balance" | "dynamic" | "individual";
 type PickerRole = "compulsory" | "optional";
 
 const INDIVIDUAL_TYPES: ElementType[] = ["EQ", "FLEX", "AG", "TUM"];
+const PICKER_TABS: readonly PickerElementType[] = ["balance", "dynamic", "individual"];
 
 type GymnastPickState = {
   type: ElementType;
@@ -424,8 +426,18 @@ export function ElementPickerPanel({
   const editMode = editItemId != null && editBlock != null;
   const editingGroup = editGroupId != null;
   const maxIndividualSets = ruleset?.individuals.sets ?? Infinity;
+  // A Balance routine has no dynamic block and a Dynamic routine no balance one.
+  const pickerTabs = PICKER_TABS.filter(
+    (tab) =>
+      !(header.exercise === "Balance" && tab === "dynamic") &&
+      !(header.exercise === "Dynamic" && tab === "balance"),
+  );
   const [elementType, setElementType] = useState<PickerElementType>(
-    editingGroup ? "individual" : (editBlock ?? "balance"),
+    editingGroup ? "individual" : (editBlock ?? pickerTabs[0]!),
+  );
+  /** The individual types this routine allows (e.g. a Pre-Youth Dynamic routine: tumbling). */
+  const allowedIndividualTypes = INDIVIDUAL_TYPES.filter((type) =>
+    individualTypes(ruleset, header).includes(type),
   );
   /** The routine without the set being edited: what new individual picks are checked against. */
   const routineForSets = useMemo(
@@ -470,7 +482,7 @@ export function ElementPickerPanel({
       const found = item ? catalogEntryForElement(item.element) : undefined;
       // Only if still allowed here (the sheet's age group may have changed since).
       const entry = found && !individualProblem(ruleset, header, found) ? found : undefined;
-      state[g.key] = { type: found?.type ?? "EQ", entry };
+      state[g.key] = { type: found?.type ?? allowedIndividualTypes[0] ?? "EQ", entry };
     }
     return state;
   }
@@ -521,7 +533,7 @@ export function ElementPickerPanel({
   /** No slot left that the catalog can fill. */
   function isBlockFull(block: "balance" | "dynamic", compulsory: number, optional: number) {
     if (!ruleset) return false;
-    const slots = blockSlots(ruleset, block, header.category);
+    const slots = blockSlots(ruleset, block, header.category, header.exercise);
     // ESCOLAR: full once every slot is taken (as before add-ons existed).
     if (ruleset.roleAssignment === "higher-value-compulsory") {
       return compulsory + optional >= slots.compulsory + slots.optional;
@@ -786,7 +798,7 @@ export function ElementPickerPanel({
         className={`grid gap-3 ${isPopover ? "p-3 md:grid-cols-[130px_1fr]" : "p-4 md:grid-cols-[130px_1fr]"}`}
       >
         <div className="flex flex-row gap-2 md:flex-col">
-          {(["balance", "dynamic", "individual"] as const).map((type) => (
+          {pickerTabs.map((type) => (
             <button
               key={type}
               type="button"
@@ -1070,7 +1082,7 @@ export function ElementPickerPanel({
               {activeGymnast
                 ? (() => {
                     const row = activeGymnast;
-                    const state = individualByGymnast[row.key] ?? { type: "EQ" as const };
+                    const state = individualByGymnast[row.key] ?? { type: allowedIndividualTypes[0] ?? ("EQ" as const) };
                     const choices = individualEntries(ruleset, header, state.type).filter(
                       (entry) => entry.id === state.entry?.id || !isCatalogIdUsedInRoutine(routineForSets, entry.id),
                     );
@@ -1088,7 +1100,7 @@ export function ElementPickerPanel({
                             }
                             className="rounded-md border border-zinc-300 bg-white px-2 py-2 text-sm"
                           >
-                            {INDIVIDUAL_TYPES.map((type) => (
+                            {allowedIndividualTypes.map((type) => (
                               <option key={type} value={type}>
                                 {individualTypeLabel(type, t)}
                               </option>

@@ -1,7 +1,7 @@
 import { type CatalogFilterHeader, filterCatalogEntries } from "../catalog/filter-catalog";
 import { getCatalogEntries } from "../catalog/load-catalog";
 import { catalogEntryForElement } from "../catalog/lookup";
-import type { CatalogEntry, ElementType } from "../catalog/types";
+import { ELEMENT_TYPES, type CatalogEntry, type ElementType } from "../catalog/types";
 import { gymnastCountForCategory } from "../level-category";
 import { gymnastKeysForHeader } from "../routine-groups";
 import type { RoutineItem } from "../routine-types";
@@ -9,6 +9,14 @@ import type { Ruleset, ValueRange } from "./types";
 
 /** Why an individual element can't be picked. */
 export type IndividualProblem = "not-allowed" | "out-of-range";
+
+/** The individual element types this routine allows (e.g. a Pre-Youth Dynamic routine: tumbling). */
+export function individualTypes(
+  ruleset: Ruleset | null,
+  header: Pick<CatalogFilterHeader, "exercise">,
+): readonly ElementType[] {
+  return ruleset?.individuals.typesByExercise?.[header.exercise] ?? ELEMENT_TYPES;
+}
 
 /** The individual elements this sheet may pick from (all of them, in or out of range). */
 export function individualEntries(
@@ -35,6 +43,8 @@ export function individualProblem(
 ): IndividualProblem | null {
   if (!ruleset) return null;
   if (!individualEntries(ruleset, header).some((e) => e.id === entry.id)) return "not-allowed";
+  const types = ruleset.individuals.typesByExercise?.[header.exercise];
+  if (types && (!entry.type || !types.includes(entry.type))) return "not-allowed";
   const range = individualValueRange(ruleset, header.levelAge);
   if (range && (entry.value < range.min || entry.value > range.max)) return "out-of-range";
   return null;

@@ -14,7 +14,6 @@ import {
 import {
   exerciseLabel,
   exerciseOptionsForLevel,
-  isCombinedRoutineLevel,
 } from "@/lib/tariff/exercise-display";
 import { getCategoryOptions, getLevelAgeOptions } from "@/lib/tariff/level-category";
 import {
@@ -58,8 +57,8 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
   const levelAge = watch("levelAge");
   const clubLogo = watch("clubLogo");
   const prevSystem = useRef(levelSystem);
+  const exercise = watch("exercise");
   const exerciseOptions = exerciseOptionsForLevel(levelSystem, levelAge);
-  const combinedRoutineLevel = isCombinedRoutineLevel(levelSystem, levelAge);
 
   useEffect(() => {
     if (AVAILABLE_LEVEL_SYSTEMS.includes(levelSystem)) return;
@@ -84,11 +83,10 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
     setValue("category", categories[0] ?? "");
   }, [levelSystem, setValue]);
 
+  // Keep the routine one this level offers (e.g. Pre-Youth: Balance or Dynamic).
   useEffect(() => {
-    if (combinedRoutineLevel) {
-      setValue("exercise", "Combined");
-    }
-  }, [combinedRoutineLevel, setValue]);
+    if (!exerciseOptions.includes(exercise)) setValue("exercise", exerciseOptions[0]!);
+  }, [exercise, exerciseOptions, setValue]);
 
   useEffect(() => {
     if (!AVAILABLE_LEVEL_SYSTEMS.includes(levelSystem)) return;

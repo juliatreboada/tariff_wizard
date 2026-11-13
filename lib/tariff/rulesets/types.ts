@@ -1,5 +1,5 @@
-import type { CatalogId } from "../catalog/types";
-import type { LevelSystem } from "../enums";
+import type { CatalogId, ElementType } from "../catalog/types";
+import type { Exercise, LevelSystem } from "../enums";
 
 export type ElementBlock = "balance" | "dynamic";
 
@@ -28,8 +28,13 @@ export type BlockSlots = {
 /** Inclusive value range, in TOD WG (FIG) points. */
 export type ValueRange = { min: number; max: number };
 
-/** A range per team (pairs; tríos and cuartetos = groups) and block. */
-export type TeamBlockRanges = Record<"pairs" | "groups", Record<ElementBlock, ValueRange>>;
+/**
+ * A range per team (pairs; tríos and cuartetos = groups) and block, with
+ * optional overrides per sheet category (e.g. Cuartetos dynamic: up to 10).
+ */
+export type TeamBlockRanges = Record<"pairs" | "groups", Record<ElementBlock, ValueRange>> & {
+  categories?: Readonly<Record<string, Partial<Record<ElementBlock, ValueRange>>>>;
+};
 
 /**
  * One competition's rules, as data. Adding a competition = adding a Ruleset
@@ -42,8 +47,21 @@ export type Ruleset = {
   catalogId: CatalogId;
   /** Sheets whose header has this level system follow this ruleset. */
   levelSystem: LevelSystem;
+  /**
+   * The level's age groups this ruleset covers (e.g. FIG Pre-Youth); absent: all
+   * of them. Several rulesets can share a level system with different ages.
+   */
+  levelAges?: readonly string[];
   /** Ages the wizard offers; the rest of the system's ages show as "coming soon". */
   readyLevelAges: readonly string[];
+  /**
+   * Routines a sheet can be (header EXERCISE). Absent: the level's default (a
+   * combined routine where D = DV). A Balance sheet has only its balance block,
+   * a Dynamic sheet only its dynamic block.
+   */
+  exercises?: readonly Exercise[];
+  /** Highest D-SCORE the compulsory elements can give (e.g. 0.5 in Pre-Youth); absent: no cap. */
+  difficultyCap?: number;
   /** Elements per balance and dynamic block; pairs and groups (tríos, cuartetos) can differ. */
   blocks: Record<ElementBlock, { pairs: BlockSlots; groups: BlockSlots }>;
   /**
@@ -97,6 +115,8 @@ export type Ruleset = {
     valueRange?: Readonly<Record<string, ValueRange>>;
     /** Each gymnast must perform at least one tumbling element. */
     requireTumbling?: boolean;
+    /** Routine → the individual element types allowed in it (e.g. Dynamic: tumbling only). Absent: all. */
+    typesByExercise?: Readonly<Partial<Record<Exercise, readonly ElementType[]>>>;
   };
   penalties: {
     /** Per missing compulsory or optional element. */
@@ -112,8 +132,14 @@ export type Ruleset = {
   };
 };
 
-/** The header fields that pick a ruleset. */
-export type RulesetTarget = { levelSystem: LevelSystem };
+/** The header fields that pick a ruleset (without an age: the level's first ruleset). */
+export type RulesetTarget = { levelSystem: LevelSystem; levelAge?: string };
 
 /** The header fields the rules depend on. */
-export type RulesHeader = { levelSystem: LevelSystem; levelAge: string; category: string };
+export type RulesHeader = {
+  levelSystem: LevelSystem;
+  levelAge: string;
+  category: string;
+  /** The routine; absent: combined (both blocks). */
+  exercise?: Exercise;
+};
