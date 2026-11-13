@@ -1,4 +1,5 @@
 import type { CatalogEntry } from "../catalog/types";
+import type { Exercise } from "../enums";
 import { gymnastCountForCategory } from "../level-category";
 import type { RoutineElementRole } from "../routine-types";
 import type {
@@ -11,12 +12,19 @@ import type {
   ValueRange,
 } from "./types";
 
-/** Slots for one block; pairs and groups (tríos, cuartetos) can differ. */
+/**
+ * Slots for one block; pairs and groups (tríos, cuartetos) can differ. A
+ * Balance routine has no dynamic slots and a Dynamic routine no balance ones.
+ */
 export function blockSlots(
   ruleset: Ruleset,
   block: ElementBlock,
   category: string | undefined,
+  exercise?: Exercise,
 ): BlockSlots {
+  if ((exercise === "Balance" && block === "dynamic") || (exercise === "Dynamic" && block === "balance")) {
+    return { compulsory: 0, optional: 0 };
+  }
   return ruleset.blocks[block][teamOf(category)];
 }
 
@@ -30,7 +38,8 @@ export function optionalValueRange(
   header: Pick<RulesHeader, "levelAge" | "category">,
   block: ElementBlock,
 ): ValueRange | null {
-  return ruleset.optionalValueRanges?.[header.levelAge]?.[teamOf(header.category)][block] ?? null;
+  const ranges = ruleset.optionalValueRanges?.[header.levelAge];
+  return ranges?.categories?.[header.category]?.[block] ?? ranges?.[teamOf(header.category)][block] ?? null;
 }
 
 /** Other tables that supply optional elements for this sheet's age group. */

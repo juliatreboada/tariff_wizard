@@ -32,6 +32,7 @@ export const RFEG_ESPANA: Ruleset = {
   label: "Cto. España",
   catalogId: "RFEG",
   levelSystem: "RFEG",
+  levelAges: ["Alevín", "Infantil", "Cadete"],
   readyLevelAges: ["Alevín", "Infantil", "Cadete"],
   blocks: {
     balance: {

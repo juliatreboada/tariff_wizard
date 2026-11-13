@@ -68,9 +68,9 @@ export const es = {
     continueToSheet: "Continuar a la TS",
     comingSoon: "próximamente",
     levelSystemAvailability:
-      "Por ahora están disponibles ESCOLAR, BASE y RFEG. FIG se habilitará próximamente.",
+      "Por ahora están disponibles ESCOLAR, BASE, RFEG y FIG Pre-Youth.",
     levelAgeAvailability:
-      "En ESCOLAR, Absoluta se habilitará próximamente; en BASE, Junior y Senior; en RFEG, de Juvenil a Senior.",
+      "En ESCOLAR, Absoluta se habilitará próximamente; en BASE, Junior y Senior; en RFEG, de Pre-Junior a Senior; en FIG, de Youth a Senior.",
   },
   sheet: {
     title: "Tariff Sheet",

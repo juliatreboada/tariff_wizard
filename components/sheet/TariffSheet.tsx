@@ -162,9 +162,12 @@ function TariffSidebar({
 }) {
   const t = getMessages();
   const dv = valueBreakdown.total;
-  const dScore = usesDvOver100ForDScore(header.levelSystem, header.levelAge)
+  const uncapped = usesDvOver100ForDScore(header.levelSystem, header.levelAge)
     ? dv / 100
     : dv;
+  // Some levels cap D-SCORE (Pre-Youth 11-16: 0.5); DV still shows the sum.
+  const cap = rulesetFor(header)?.difficultyCap;
+  const dScore = cap === undefined ? uncapped : Math.min(uncapped, cap);
   const gymnastRows = gymnastSidebarRows(header, t.sheetLabels, {
     numberedBases: false,
   });

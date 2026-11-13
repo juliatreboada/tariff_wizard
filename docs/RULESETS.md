@@ -8,13 +8,14 @@ Each competition's rules live in one `Ruleset` object in [`lib/tariff/rulesets/`
 | [`fgx-escolar.ts`](../lib/tariff/rulesets/fgx-escolar.ts) | FGX ESCOLAR (2027 rules) |
 | [`rfeg-base.ts`](../lib/tariff/rulesets/rfeg-base.ts) | RFEG Base — Alevín, Infantil, Cadete (Código 2026) |
 | [`rfeg-espana.ts`](../lib/tariff/rulesets/rfeg-espana.ts) | RFEG Campeonato de España — Alevín, Infantil, Cadete (Programa técnico 2027) |
+| [`fig-pre-youth.ts`](../lib/tariff/rulesets/fig-pre-youth.ts) | FIG Pre-Youth (11-16) and RFEG Juvenil (Youth & Junior Rules 2025-2028, Appendix 3) |
 | [`slots.ts`](../lib/tariff/rulesets/slots.ts) | Slots per block and category, an element's role, its table row |
 | [`constraints.ts`](../lib/tariff/rulesets/constraints.ts) | Why an element can't be added (`addProblem`) — used by the store and the picker |
 | [`index.ts`](../lib/tariff/rulesets/index.ts) | Registry (`RULESETS`) and `rulesetFor(header)` |
 | [`roles.ts`](../lib/tariff/rulesets/roles.ts) | Compulsory / optional assignment |
 | [`evaluate.ts`](../lib/tariff/rulesets/evaluate.ts) | Checklist and penalties |
 
-A sheet follows the ruleset whose `levelSystem` matches its header. Levels without a ruleset have no limits or penalties, and the wizard shows them as "coming soon".
+A sheet follows the ruleset whose `levelSystem` and `levelAges` (absent: every age) match its header; one level can have several rulesets (RFEG: Cto. España for Alevín–Cadete, Juvenil apart). Levels without a ruleset have no limits or penalties, and the wizard shows them as "coming soon".
 
 ## ESCOLAR and BASE
 
@@ -49,6 +50,16 @@ From the RFEG *Programa técnico Campeonato de España y Clubes 2027*. Same coun
 - Not checked: assisting the partner on landings, Cadete's "no salto mortal required". The standing-top-on-the-floor rule only concerns FIG optionals.
 - Juvenil follows the full 11-16 code (balance and dynamic routines) and Pre-Júnior to Sénior the FIG code, minimum difficulty and bonuses: "coming soon", with the FIG work.
 - Same-element links for the "different rows" rule: Cto. España Alevín ↔ Infantil and Infantil ↔ 11-16, reviewed by the coach on 2026-11-13 (in `catalog/same-elements.json`).
+
+## Pre-Youth 11-16 (FIG Pre-Youth, RFEG Juvenil)
+
+From the *ACRO Youth & Junior Rules 2025-2028*, Appendix 3. RFEG Juvenil follows it "excepto el límite de dificultad".
+
+- Two routines, Balance and Dynamic (`exercises`): a Balance sheet has only the balance block, a Dynamic sheet only the dynamic one.
+- Compulsory from the 11-16 table, each from a different row: pairs 4 + 4 (rows I–IV), groups 2 pyramids (balance) and 4 (dynamic). Only they add difficulty: D-SCORE up to 0.5 in FIG (`difficultyCap`), no cap in RFEG Juvenil.
+- Optionals: pairs 2 per routine, groups 1 pyramid (balance) and 2 (dynamic), from TOD WG only (Appendix 4 optional elements left out for now, coach 2026-11-13): "próximamente" until TOD WG is in the catalog. Values: pairs balance 1–9, dynamic 1–14; groups balance 4–16, dynamic 1–14 (Men's Group 1–10, `TeamBlockRanges.categories`).
+- Individuals: 3 per gymnast in each routine, up to 10; Balance from the flexibility, balance and agility tables, Dynamic from tumbling (`individuals.typesByExercise`).
+- Not checked: forbidden group elements, landings support, max 3 dismounts.
 
 **Optional value ranges** (`optionalValueRanges`, [`optional-value-ranges.ts`](../lib/tariff/rulesets/optional-value-ranges.ts)). The programmes give the value an optional must have, in TOD WG (FIG) points. Base, Cto. España and 11-16 compulsory tables print tenths (0 / 0,1 / … / 0,5), not points, so their elements aren't held to it; it applies to optionals from TOD WG (and the 11-16 optional elements appendix, valued in points) once those catalogs exist. Until then the checklist shows it under each optional ("de TOD WG: valor 0–4").
 

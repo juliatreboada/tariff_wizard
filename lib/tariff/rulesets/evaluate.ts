@@ -65,8 +65,8 @@ export function evaluateRules(
   const count = (role: "compulsory" | "optional", block: "balance" | "dynamic") =>
     routine.filter((item) => item.role === role && item.block === block).length;
 
-  const balanceSlots = blockSlots(ruleset, "balance", header?.category);
-  const dynamicSlots = blockSlots(ruleset, "dynamic", header?.category);
+  const balanceSlots = blockSlots(ruleset, "balance", header?.category, header?.exercise);
+  const dynamicSlots = blockSlots(ruleset, "dynamic", header?.category, header?.exercise);
   const pendingMessages: string[] = [];
 
   // Optional elements come from tables the catalog may not have yet (e.g. Nacional, FIG).

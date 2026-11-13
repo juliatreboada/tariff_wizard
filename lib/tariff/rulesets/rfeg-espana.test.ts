@@ -32,10 +32,11 @@ beforeEach(() => {
 });
 
 describe("availability", () => {
-  it("offers RFEG Alevín, Infantil and Cadete; Juvenil and up later", () => {
-    expect(rulesetFor({ levelSystem: "RFEG" })?.id).toBe("rfeg-espana");
-    for (const age of ["Alevín", "Infantil", "Cadete"]) expect(isLevelAgeReady("RFEG", age)).toBe(true);
-    for (const age of ["Juvenil", "Pre-Junior", "Junior", "Senior"]) {
+  it("offers RFEG Alevín, Infantil, Cadete (Cto. España) and Juvenil; Pre-Junior and up later", () => {
+    expect(rulesetFor({ levelSystem: "RFEG", levelAge: "Cadete" })?.id).toBe("rfeg-espana");
+    expect(rulesetFor({ levelSystem: "RFEG", levelAge: "Juvenil" })?.id).toBe("rfeg-juvenil");
+    for (const age of ["Alevín", "Infantil", "Cadete", "Juvenil"]) expect(isLevelAgeReady("RFEG", age)).toBe(true);
+    for (const age of ["Pre-Junior", "Junior", "Senior"]) {
       expect(isLevelAgeReady("RFEG", age)).toBe(false);
     }
   });
@@ -103,7 +104,8 @@ describe("Cadete: compulsory from 11-16, optional from another row of the same t
   });
 
   it("doesn't take Cto. España tables", () => {
-    expect(add(espana("infantil-pf-balance-row-i-a"))).toBe(false);
+    const h = rfeg("Cadete");
+    expect(addProblem(rulesetFor(h), h, [], espana("infantil-pf-balance-row-i-a"), "balance")).toBe("not-allowed");
   });
 
   it("keeps a horizontal twist (Women's Group ROW I Box 4) compulsory", () => {

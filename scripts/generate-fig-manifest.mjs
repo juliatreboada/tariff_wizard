@@ -29,10 +29,12 @@ const manifestPath = path.join(root, "catalog/FIG/manifest.json");
 
 const entries = [];
 const problems = [];
-const filters = (category) => ({
+// A table element goes in a combined routine (Base / Cto. España Cadete) and in
+// the Pre-Youth routine of its family (balance or dynamic).
+const filters = (category, elementFamily) => ({
   levelSystems: ["FIG"],
   categories: [category],
-  exercises: ["Combined"],
+  exercises: [elementFamily === "balance" ? "Balance" : "Dynamic", "Combined"],
   levelAges: ["Pre-Youth"],
 });
 
@@ -63,7 +65,7 @@ for (const [team, table] of Object.entries(source.tables)) {
         coordinates: `ROW-${row} ${box}${cell.label ? ` ${cell.label}` : ""}`,
         image,
         value: cell.value,
-        filters: filters(table.category),
+        filters: filters(table.category, elementFamily),
       };
       if (variant && !cell.label) problems.push(`${key}: a variant needs a label`);
       // Two values of one box (360º / 540º-720º) are one element: a routine does one of them.
@@ -104,7 +106,7 @@ for (const [team, table] of Object.entries(source.tables)) {
         coordinates: `T${n}`,
         image,
         value: cell.value,
-        filters: filters(table.category),
+        filters: filters(table.category, "balance"),
         attachesTo: structures,
       });
     }
@@ -118,7 +120,8 @@ const tod = JSON.parse(fs.readFileSync(path.join(root, "catalog/FIG/tod-individu
 const individualFilters = {
   levelSystems: ["FIG"],
   categories: ["Parejas", "Tríos", "Cuartetos", "Pareja Femenina", "Pareja Masculina", "Pareja Mixta"],
-  exercises: ["Combined"],
+  // Every routine; the ruleset says which types it allows (`typesByExercise`).
+  exercises: ["Balance", "Dynamic", "Combined"],
 };
 /**
  * One individual element. `number` is its ID number for "once per gymnast":
