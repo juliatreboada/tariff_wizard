@@ -19,12 +19,11 @@ import {
   slotElements,
 } from "@/lib/tariff/element-display";
 import { rulesetFor } from "@/lib/tariff/rulesets";
+import { sheetDifficulty } from "@/lib/tariff/rulesets/difficulty";
+import type { RoutineItem } from "@/lib/tariff/routine-types";
 import { exerciseLabel } from "@/lib/tariff/exercise-display";
 import { gymnastSidebarRows } from "@/lib/tariff/gymnast-display";
-import {
-  categoryDisplayLabel,
-  usesDvOver100ForDScore,
-} from "@/lib/tariff/level-category";
+import { categoryDisplayLabel } from "@/lib/tariff/level-category";
 import {
   OFFICIAL_ROW_LABELS,
   OFFICIAL_VALUE_SUBCOLS,
@@ -37,6 +36,8 @@ export type TariffSheetProps = {
   header: StoredHeader;
   layout: ComputedSheetLayout;
   valueBreakdown: ValueBreakdown;
+  /** The routine, for difficulty the stored breakdown doesn't hold (free composition). */
+  routine: RoutineItem[];
 };
 
 function ValueSubcells({
@@ -152,22 +153,19 @@ function SidebarBox({
 function TariffSidebar({
   header,
   valueBreakdown,
+  dScore,
   exerciseDisplay,
   hideIndividualValues,
 }: {
   header: StoredHeader;
   valueBreakdown: ValueBreakdown;
+  /** From `sheetDifficulty`: capped, DV or DV / 100 by level. */
+  dScore: number;
   exerciseDisplay: string;
   hideIndividualValues: boolean;
 }) {
   const t = getMessages();
   const dv = valueBreakdown.total;
-  const uncapped = usesDvOver100ForDScore(header.levelSystem, header.levelAge)
-    ? dv / 100
-    : dv;
-  // Some levels cap D-SCORE (Pre-Youth 11-16: 0.5); DV still shows the sum.
-  const cap = rulesetFor(header)?.difficultyCap;
-  const dScore = cap === undefined ? uncapped : Math.min(uncapped, cap);
   const gymnastRows = gymnastSidebarRows(header, t.sheetLabels, {
     numberedBases: false,
   });
@@ -377,8 +375,10 @@ function ElementBlockRows({
 export function TariffSheet({
   header,
   layout,
-  valueBreakdown,
+  valueBreakdown: stored,
+  routine,
 }: TariffSheetProps) {
+  const { breakdown: valueBreakdown, dScore } = sheetDifficulty(header, routine, stored);
   const t = getMessages();
   const exerciseDisplay = exerciseLabel(header.exercise, t.exercises);
   const hideIndividualValues =
@@ -433,6 +433,7 @@ export function TariffSheet({
         <TariffSidebar
           header={header}
           valueBreakdown={valueBreakdown}
+          dScore={dScore}
           exerciseDisplay={exerciseDisplay}
           hideIndividualValues={hideIndividualValues}
         />

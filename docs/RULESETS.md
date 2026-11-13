@@ -9,6 +9,9 @@ Each competition's rules live in one `Ruleset` object in [`lib/tariff/rulesets/`
 | [`rfeg-base.ts`](../lib/tariff/rulesets/rfeg-base.ts) | RFEG Base — Alevín, Infantil, Cadete (Código 2026) |
 | [`rfeg-espana.ts`](../lib/tariff/rulesets/rfeg-espana.ts) | RFEG Campeonato de España — Alevín, Infantil, Cadete (Programa técnico 2027) |
 | [`fig-pre-youth.ts`](../lib/tariff/rulesets/fig-pre-youth.ts) | FIG Pre-Youth (11-16) and RFEG Juvenil (Youth & Junior Rules 2025-2028, Appendix 3) |
+| [`fig-open.ts`](../lib/tariff/rulesets/fig-open.ts) | Free composition: FIG Youth, Junior, Senior; RFEG Pre-Júnior, Júnior, Sénior (not offered yet) |
+| [`open.ts`](../lib/tariff/rulesets/open.ts) | Free composition: Special Requirements and difficulty |
+| [`difficulty.ts`](../lib/tariff/rulesets/difficulty.ts) | What the sheet shows as DV and D-SCORE |
 | [`slots.ts`](../lib/tariff/rulesets/slots.ts) | Slots per block and category, an element's role, its table row |
 | [`constraints.ts`](../lib/tariff/rulesets/constraints.ts) | Why an element can't be added (`addProblem`) — used by the store and the picker |
 | [`index.ts`](../lib/tariff/rulesets/index.ts) | Registry (`RULESETS`) and `rulesetFor(header)` |
@@ -60,6 +63,22 @@ From the *ACRO Youth & Junior Rules 2025-2028*, Appendix 3. RFEG Juvenil follows
 - Optionals: pairs 2 per routine, groups 1 pyramid (balance) and 2 (dynamic), from TOD WG only (Appendix 4 optional elements left out for now, coach 2026-11-13): "próximamente" until TOD WG is in the catalog. Values: pairs balance 1–9, dynamic 1–14; groups balance 4–16, dynamic 1–14 (Men's Group 1–10, `TeamBlockRanges.categories`).
 - Individuals: 3 per gymnast in each routine, up to 10; Balance from the flexibility, balance and agility tables, Dynamic from tumbling (`individuals.typesByExercise`).
 - Not checked: forbidden group elements, landings support, max 3 dismounts.
+
+## Free composition (FIG Youth, Junior, Senior; RFEG Pre-Júnior, Júnior, Sénior)
+
+From the *Code of Points 2025-2028* (Art. 17–27, 41), the *Youth & Junior Rules* (Sections III–IV) and the RFEG *Programa técnico Cto. España 2027*. Written but **not offered** (`readyLevelAges: []`) until TOD WG is in the catalog; switch each age on as its sections arrive.
+
+- A ruleset with `open` has no compulsory/optional slots: up to 8 pair/group elements from TOD WG (`open.source`), all adding difficulty, checked against Special Requirements (`open.requirements`, per routine and team). Balance, Dynamic or Combined.
+- Special Requirements (1 point each missing element, or once):
+  - Pairs balance: 5 balance elements valued 1+; an unsupported handstand.
+  - Groups balance: 2 pyramids of different categories; 3 static holds; a handstand by the top.
+  - Dynamic: 6 elements with flight valued 1+; 2 catches.
+  - Combined: 3 static holds and 3 dynamic elements valued 1+; a catch; a handstand.
+  - RFEG Júnior and Sénior, Dynamic and Combined: one element with 4/4 rotation; at most 3 floor landings with 0/4.
+- Requirements read element **tags** (`CatalogEntry.tags`: static-hold, handstand, pyramid, flight, catch, landing), `pyramidCategory` and the rotation. An element built from parts (an add-on) carries every part's tags. A requirement no catalog element can meet yet is "próximamente", not penalised.
+- Difficulty (`openDifficulty`): pair/group elements (the first 8), plus individuals (up to 3 per gymnast, not required) summed and averaged by partners, rounded half up; in Combined neither balance nor dynamic counts beyond double the other. D-SCORE = DV / 100, up to the limit: Youth 90 / 80 / 110, Junior 120 / 110 / 180 (balance / dynamic / combined), Senior open; 1 point when DV goes more than 20 over. RFEG minimum difficulty (1 point): Júnior pairs 35 / 30 / 40, groups 45 / 40 / 50; Sénior pairs 50 / 45 / 80, groups 60 / 55 / 90.
+- RFEG Pre-Júnior follows FIG Youth 12-18 and RFEG Júnior FIG Junior 13-19 (coach, 2026-11-13), without their difficulty limits: in ESCOLAR, BASE and every RFEG category all counted elements add up to DV with no maximum. Only FIG Pre-Youth (D 0.5), Youth and Junior have limits.
+- Not done yet: RFEG bonuses (Pre-Júnior to Sénior, need element categories), the Code's restrictions that only change difficulty (max 3 horizontal catches, 3 links, identical start points…), Youth forbidden elements, Men's Group Youth clarifications.
 
 **Optional value ranges** (`optionalValueRanges`, [`optional-value-ranges.ts`](../lib/tariff/rulesets/optional-value-ranges.ts)). The programmes give the value an optional must have, in TOD WG (FIG) points. Base, Cto. España and 11-16 compulsory tables print tenths (0 / 0,1 / … / 0,5), not points, so their elements aren't held to it; it applies to optionals from TOD WG (and the 11-16 optional elements appendix, valued in points) once those catalogs exist. Until then the checklist shows it under each optional ("de TOD WG: valor 0–4").
 

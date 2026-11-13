@@ -87,7 +87,7 @@ export function optionalAvailable(ruleset: Ruleset, levelAge: string): boolean {
  * its age group, else the ruleset's catalog at the sheet's own level and age.
  */
 export function ownTable(ruleset: Ruleset, header: RulesHeader): CategoryTable {
-  const table = ruleset.compulsoryTables?.[header.levelAge];
+  const table = ruleset.compulsoryTables?.[header.levelAge] ?? ruleset.open?.source;
   return {
     catalogId: table?.catalogId ?? ruleset.catalogId,
     levelSystem: table?.levelSystem ?? header.levelSystem,

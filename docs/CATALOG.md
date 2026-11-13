@@ -95,3 +95,5 @@ An entry appears only if the sheet **header** matches:
 ```
 
 Keep `catalog/FGX/manifest.json` committed.
+
+**TOD WG (to come).** Free-composition rulesets (`lib/tariff/rulesets/fig-open.ts`) take pair/group elements from catalog `FIG`, level `FIG`, age `TOD WG`. Each entry should carry `tags` for what it is (`static-hold`, `handstand`, `pyramid`, `flight`, `catch`, `landing`), `pyramidCategory` for group pyramids, and `rotation` for dynamic elements (e.g. "4/4 BACK"). In TOD WG an element is built from parts (top position + base position, mount, motion); a part that attaches to another is an add-on (`attachesTo`) and its tags count for the element.
