@@ -27,7 +27,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-i-c"
+        "rfeg-base-cadete-pairs-balance-row-i-c",
+        "rfeg-espana-infantil-pf-balance-row-v-b"
       ]
     },
     {
@@ -54,7 +55,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-i-d"
+        "rfeg-base-cadete-pairs-balance-row-i-d",
+        "rfeg-espana-infantil-pf-balance-row-v-d"
       ]
     },
     {
@@ -109,7 +111,8 @@
       "holdDuration": "3\"",
       "sameAs": [
         "rfeg-base-cadete-pairs-balance-row-i-b-a",
-        "rfeg-base-cadete-pairs-balance-row-i-b-b"
+        "rfeg-base-cadete-pairs-balance-row-i-b-b",
+        "rfeg-espana-infantil-pf-balance-row-i-c"
       ]
     },
     {
@@ -137,7 +140,8 @@
       "holdDuration": "3\"",
       "sameAs": [
         "rfeg-base-cadete-pairs-balance-row-i-b-a",
-        "rfeg-base-cadete-pairs-balance-row-i-b-b"
+        "rfeg-base-cadete-pairs-balance-row-i-b-b",
+        "rfeg-espana-infantil-pf-balance-row-i-b"
       ]
     },
     {
@@ -188,7 +192,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-ii-a"
+        "rfeg-base-cadete-pairs-balance-row-ii-a",
+        "rfeg-espana-infantil-pf-balance-row-ii-a"
       ]
     },
     {
@@ -248,7 +253,9 @@
         "groupImage": "pre-youth/pf/balance/ROW-II-3.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-ii-b"
+        "rfeg-base-cadete-pairs-balance-row-ii-b",
+        "rfeg-espana-infantil-pf-balance-row-ii-c-a",
+        "rfeg-espana-infantil-pf-balance-row-ii-c-b"
       ]
     },
     {
@@ -281,7 +288,9 @@
         "groupImage": "pre-youth/pf/balance/ROW-II-3.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-ii-b"
+        "rfeg-base-cadete-pairs-balance-row-ii-b",
+        "rfeg-espana-infantil-pf-balance-row-ii-c-a",
+        "rfeg-espana-infantil-pf-balance-row-ii-c-b"
       ]
     },
     {
@@ -308,7 +317,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-ii-d"
+        "rfeg-base-cadete-pairs-balance-row-ii-d",
+        "rfeg-espana-infantil-pf-balance-row-ii-d"
       ]
     },
     {
@@ -383,7 +393,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-espana-infantil-pf-balance-row-iii-b"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-balance-row-iii-3",
@@ -409,7 +422,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-iii-d"
+        "rfeg-base-cadete-pairs-balance-row-iii-d",
+        "rfeg-espana-infantil-pf-balance-row-iii-d"
       ]
     },
     {
@@ -533,7 +547,8 @@
       "holdDuration": "3\"",
       "sameAs": [
         "rfeg-base-cadete-pairs-balance-row-iv-d-a",
-        "rfeg-base-cadete-pairs-balance-row-iv-d-b"
+        "rfeg-base-cadete-pairs-balance-row-iv-d-b",
+        "rfeg-espana-infantil-pf-balance-row-iv-c"
       ]
     },
     {
@@ -655,7 +670,8 @@
       },
       "rotation": "0/4",
       "sameAs": [
-        "rfeg-base-cadete-pairs-dynamic-row-i-a"
+        "rfeg-base-cadete-pairs-dynamic-row-i-a",
+        "rfeg-espana-infantil-pf-dynamic-row-i-b"
       ]
     },
     {
@@ -681,7 +697,8 @@
       },
       "rotation": "0/4",
       "sameAs": [
-        "rfeg-base-cadete-pairs-dynamic-row-i-d"
+        "rfeg-base-cadete-pairs-dynamic-row-i-d",
+        "rfeg-espana-infantil-pf-dynamic-row-i-d"
       ]
     },
     {
@@ -730,7 +747,8 @@
       },
       "rotation": "1/4 BACK",
       "sameAs": [
-        "rfeg-base-cadete-pairs-dynamic-row-ii-d"
+        "rfeg-base-cadete-pairs-dynamic-row-ii-d",
+        "rfeg-espana-infantil-pf-dynamic-row-iii-c"
       ]
     },
     {
@@ -858,7 +876,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "1/4 FRONT"
+      "rotation": "1/4 FRONT",
+      "sameAs": [
+        "rfeg-espana-infantil-pf-dynamic-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-dynamic-row-iii-2",
@@ -956,7 +977,10 @@
         "group": "ROW-IV 1",
         "label": "Opción A",
         "groupImage": "pre-youth/pf/dynamic/ROW-IV-1.png"
-      }
+      },
+      "sameAs": [
+        "rfeg-espana-infantil-pf-dynamic-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-dynamic-row-iv-1-b",
@@ -985,7 +1009,10 @@
         "group": "ROW-IV 1",
         "label": "Opción B",
         "groupImage": "pre-youth/pf/dynamic/ROW-IV-1.png"
-      }
+      },
+      "sameAs": [
+        "rfeg-espana-infantil-pf-dynamic-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-dynamic-row-iv-1-c",
@@ -1014,7 +1041,10 @@
         "group": "ROW-IV 1",
         "label": "Opción C",
         "groupImage": "pre-youth/pf/dynamic/ROW-IV-1.png"
-      }
+      },
+      "sameAs": [
+        "rfeg-espana-infantil-pf-dynamic-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pf-dynamic-row-iv-2-a",
@@ -1127,7 +1157,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-ii-a"
+        "rfeg-base-cadete-pairs-balance-row-ii-a",
+        "rfeg-espana-infantil-pm-balance-row-i-b"
       ]
     },
     {
@@ -1184,7 +1215,9 @@
         "groupImage": "pre-youth/pm/balance/ROW-I-3.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-ii-b"
+        "rfeg-base-cadete-pairs-balance-row-ii-b",
+        "rfeg-espana-infantil-pm-balance-row-i-c-a",
+        "rfeg-espana-infantil-pm-balance-row-i-c-b"
       ]
     },
     {
@@ -1217,7 +1250,9 @@
         "groupImage": "pre-youth/pm/balance/ROW-I-3.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-ii-b"
+        "rfeg-base-cadete-pairs-balance-row-ii-b",
+        "rfeg-espana-infantil-pm-balance-row-i-c-a",
+        "rfeg-espana-infantil-pm-balance-row-i-c-b"
       ]
     },
     {
@@ -1242,7 +1277,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-espana-infantil-pm-balance-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-ii-1",
@@ -1266,7 +1304,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-espana-infantil-pm-balance-row-ii-b"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-ii-2",
@@ -1292,7 +1333,9 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-v-b"
+        "rfeg-base-cadete-pairs-balance-row-v-b",
+        "rfeg-espana-infantil-pm-balance-row-ii-c-a",
+        "rfeg-espana-infantil-pm-balance-row-ii-c-b"
       ]
     },
     {
@@ -1392,7 +1435,11 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-espana-infantil-pm-balance-row-ii-d-a",
+        "rfeg-espana-infantil-pm-balance-row-ii-d-b"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-ii-7",
@@ -1515,7 +1562,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-espana-infantil-pm-balance-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-iii-5",
@@ -1563,7 +1613,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-espana-infantil-pm-balance-row-iv-c"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-iv-2",
@@ -1587,7 +1640,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-espana-infantil-pm-balance-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-balance-row-iv-3",
@@ -1684,7 +1740,8 @@
       },
       "rotation": "0/4",
       "sameAs": [
-        "rfeg-base-cadete-pairs-dynamic-row-i-d"
+        "rfeg-base-cadete-pairs-dynamic-row-i-d",
+        "rfeg-espana-infantil-pm-dynamic-row-i-c"
       ]
     },
     {
@@ -1731,7 +1788,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "rfeg-espana-infantil-pm-dynamic-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-dynamic-row-i-4",
@@ -1858,7 +1918,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "4/4 BACK"
+      "rotation": "4/4 BACK",
+      "sameAs": [
+        "rfeg-espana-infantil-pm-dynamic-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pm-dynamic-row-ii-3-a",
@@ -1889,7 +1952,8 @@
         "groupImage": "pre-youth/pm/dynamic/ROW-II-3.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-pairs-dynamic-row-iii-d"
+        "rfeg-base-cadete-pairs-dynamic-row-iii-d",
+        "rfeg-espana-infantil-pm-dynamic-row-iii-d"
       ]
     },
     {
@@ -1921,7 +1985,8 @@
         "groupImage": "pre-youth/pm/dynamic/ROW-II-3.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-pairs-dynamic-row-iii-d"
+        "rfeg-base-cadete-pairs-dynamic-row-iii-d",
+        "rfeg-espana-infantil-pm-dynamic-row-iii-d"
       ]
     },
     {
@@ -2190,7 +2255,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-v-c"
+        "rfeg-base-cadete-pairs-balance-row-v-c",
+        "rfeg-espana-infantil-pmx-balance-row-i-d"
       ]
     },
     {
@@ -2724,7 +2790,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-pairs-balance-row-iii-d"
+        "rfeg-base-cadete-pairs-balance-row-iii-d",
+        "rfeg-espana-infantil-pmx-balance-row-iii-c"
       ]
     },
     {
@@ -2748,7 +2815,10 @@
           "Pre-Youth"
         ]
       },
-      "type": "EQ"
+      "type": "EQ",
+      "sameAs": [
+        "rfeg-espana-infantil-pmx-balance-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-balance-row-iii-3",
@@ -2851,7 +2921,8 @@
       "holdDuration": "3\"",
       "sameAs": [
         "rfeg-base-cadete-pairs-balance-row-iv-d-a",
-        "rfeg-base-cadete-pairs-balance-row-iv-d-b"
+        "rfeg-base-cadete-pairs-balance-row-iv-d-b",
+        "rfeg-espana-infantil-pmx-balance-row-iv-d"
       ]
     },
     {
@@ -2949,7 +3020,8 @@
       },
       "rotation": "0/4",
       "sameAs": [
-        "rfeg-base-cadete-pairs-dynamic-row-i-d"
+        "rfeg-base-cadete-pairs-dynamic-row-i-d",
+        "rfeg-espana-infantil-pmx-dynamic-row-i-d"
       ]
     },
     {
@@ -3042,7 +3114,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "1/4 FRONT"
+      "rotation": "1/4 FRONT",
+      "sameAs": [
+        "rfeg-espana-infantil-pmx-dynamic-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-dynamic-row-ii-2",
@@ -3165,7 +3240,8 @@
         "groupImage": "pre-youth/pmx/dynamic/ROW-III-1.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-pairs-dynamic-row-iii-d"
+        "rfeg-base-cadete-pairs-dynamic-row-iii-d",
+        "rfeg-espana-infantil-pmx-dynamic-row-iii-c"
       ]
     },
     {
@@ -3197,7 +3273,8 @@
         "groupImage": "pre-youth/pmx/dynamic/ROW-III-1.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-pairs-dynamic-row-iii-d"
+        "rfeg-base-cadete-pairs-dynamic-row-iii-d",
+        "rfeg-espana-infantil-pmx-dynamic-row-iii-c"
       ]
     },
     {
@@ -3227,7 +3304,10 @@
         "group": "ROW-III 2",
         "label": "Opción A",
         "groupImage": "pre-youth/pmx/dynamic/ROW-III-2.png"
-      }
+      },
+      "sameAs": [
+        "rfeg-espana-infantil-pmx-dynamic-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-dynamic-row-iii-2-b",
@@ -3256,7 +3336,10 @@
         "group": "ROW-III 2",
         "label": "Opción B",
         "groupImage": "pre-youth/pmx/dynamic/ROW-III-2.png"
-      }
+      },
+      "sameAs": [
+        "rfeg-espana-infantil-pmx-dynamic-row-iv-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-dynamic-row-iii-3",
@@ -3279,7 +3362,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "4/4 BACK"
+      "rotation": "4/4 BACK",
+      "sameAs": [
+        "rfeg-espana-infantil-pmx-dynamic-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-pmx-dynamic-row-iv-1-a",
@@ -3553,7 +3639,9 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-trios-balance-row-i-a"
+        "rfeg-base-cadete-trios-balance-row-i-a",
+        "rfeg-espana-infantil-trios-balance-row-i-b-a",
+        "rfeg-espana-infantil-trios-balance-row-i-b-b"
       ]
     },
     {
@@ -3581,7 +3669,9 @@
       "holdDuration": "3\"",
       "sameAs": [
         "rfeg-base-cadete-trios-balance-row-i-c-a",
-        "rfeg-base-cadete-trios-balance-row-i-c-b"
+        "rfeg-base-cadete-trios-balance-row-i-c-b",
+        "rfeg-espana-infantil-trios-balance-row-i-c-a",
+        "rfeg-espana-infantil-trios-balance-row-i-c-b"
       ]
     },
     {
@@ -3608,7 +3698,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-trios-balance-row-i-d"
+        "rfeg-base-cadete-trios-balance-row-i-d",
+        "rfeg-espana-infantil-trios-balance-row-i-d"
       ]
     },
     {
@@ -3683,7 +3774,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-trios-balance-row-ii-a"
+        "rfeg-base-cadete-trios-balance-row-ii-a",
+        "rfeg-espana-infantil-trios-balance-row-ii-a"
       ]
     },
     {
@@ -3716,7 +3808,9 @@
         "groupImage": "pre-youth/trios/balance/ROW-II-2.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-trios-balance-row-ii-d"
+        "rfeg-base-cadete-trios-balance-row-ii-d",
+        "rfeg-espana-infantil-trios-balance-row-ii-d-a",
+        "rfeg-espana-infantil-trios-balance-row-ii-d-b"
       ]
     },
     {
@@ -3749,7 +3843,9 @@
         "groupImage": "pre-youth/trios/balance/ROW-II-2.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-trios-balance-row-ii-d"
+        "rfeg-base-cadete-trios-balance-row-ii-d",
+        "rfeg-espana-infantil-trios-balance-row-ii-d-a",
+        "rfeg-espana-infantil-trios-balance-row-ii-d-b"
       ]
     },
     {
@@ -3782,7 +3878,9 @@
         "groupImage": "pre-youth/trios/balance/ROW-II-2.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-trios-balance-row-ii-d"
+        "rfeg-base-cadete-trios-balance-row-ii-d",
+        "rfeg-espana-infantil-trios-balance-row-ii-d-a",
+        "rfeg-espana-infantil-trios-balance-row-ii-d-b"
       ]
     },
     {
@@ -4017,7 +4115,10 @@
         "group": "ROW-III 1",
         "label": "Opción A",
         "groupImage": "pre-youth/trios/balance/ROW-III-1.png"
-      }
+      },
+      "sameAs": [
+        "rfeg-espana-infantil-trios-balance-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-balance-row-iii-1-b",
@@ -4047,7 +4148,10 @@
         "group": "ROW-III 1",
         "label": "Opción B",
         "groupImage": "pre-youth/trios/balance/ROW-III-1.png"
-      }
+      },
+      "sameAs": [
+        "rfeg-espana-infantil-trios-balance-row-iii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-trios-balance-row-iii-2",
@@ -4073,7 +4177,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-trios-balance-row-iii-d"
+        "rfeg-base-cadete-trios-balance-row-iii-d",
+        "rfeg-espana-infantil-trios-balance-row-iii-c"
       ]
     },
     {
@@ -4287,7 +4392,9 @@
       "number": "fig-pre-youth-trios-dynamic-row-i-4",
       "rotation": "0/4 - 360º",
       "sameAs": [
-        "rfeg-base-cadete-trios-dynamic-row-i-c"
+        "rfeg-base-cadete-trios-dynamic-row-i-c",
+        "rfeg-espana-infantil-trios-dynamic-row-i-c",
+        "rfeg-espana-infantil-trios-dynamic-row-i-d"
       ]
     },
     {
@@ -4315,7 +4422,9 @@
       "rotation": "0/4 - 540º / 720º",
       "sameAs": [
         "rfeg-base-cadete-trios-dynamic-row-i-d-a",
-        "rfeg-base-cadete-trios-dynamic-row-i-d-b"
+        "rfeg-base-cadete-trios-dynamic-row-i-d-b",
+        "rfeg-espana-infantil-trios-dynamic-row-i-c",
+        "rfeg-espana-infantil-trios-dynamic-row-i-d"
       ]
     },
     {
@@ -4364,7 +4473,8 @@
       },
       "rotation": "1/4 FRONT",
       "sameAs": [
-        "rfeg-base-cadete-trios-dynamic-row-ii-b"
+        "rfeg-base-cadete-trios-dynamic-row-ii-b",
+        "rfeg-espana-infantil-trios-dynamic-row-ii-b"
       ]
     },
     {
@@ -4396,7 +4506,8 @@
         "groupImage": "pre-youth/trios/dynamic/ROW-II-2.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-trios-dynamic-row-ii-c"
+        "rfeg-base-cadete-trios-dynamic-row-ii-c",
+        "rfeg-espana-infantil-trios-dynamic-row-ii-c"
       ]
     },
     {
@@ -4428,7 +4539,8 @@
         "groupImage": "pre-youth/trios/dynamic/ROW-II-2.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-trios-dynamic-row-ii-c"
+        "rfeg-base-cadete-trios-dynamic-row-ii-c",
+        "rfeg-espana-infantil-trios-dynamic-row-ii-c"
       ]
     },
     {
@@ -4477,7 +4589,8 @@
       },
       "rotation": "4/4 FRONT",
       "sameAs": [
-        "rfeg-base-cadete-trios-dynamic-row-ii-d"
+        "rfeg-base-cadete-trios-dynamic-row-ii-d",
+        "rfeg-espana-infantil-trios-dynamic-row-ii-d"
       ]
     },
     {
@@ -4510,7 +4623,9 @@
       },
       "sameAs": [
         "rfeg-base-cadete-trios-dynamic-row-iii-c-a",
-        "rfeg-base-cadete-trios-dynamic-row-iii-c-b"
+        "rfeg-base-cadete-trios-dynamic-row-iii-c-b",
+        "rfeg-espana-infantil-trios-dynamic-row-iii-b-a",
+        "rfeg-espana-infantil-trios-dynamic-row-iii-b-b"
       ]
     },
     {
@@ -4543,7 +4658,9 @@
       },
       "sameAs": [
         "rfeg-base-cadete-trios-dynamic-row-iii-c-a",
-        "rfeg-base-cadete-trios-dynamic-row-iii-c-b"
+        "rfeg-base-cadete-trios-dynamic-row-iii-c-b",
+        "rfeg-espana-infantil-trios-dynamic-row-iii-b-a",
+        "rfeg-espana-infantil-trios-dynamic-row-iii-b-b"
       ]
     },
     {
@@ -4593,7 +4710,11 @@
       "rotation": "4/4 BACK",
       "sameAs": [
         "rfeg-base-cadete-trios-dynamic-row-iii-d-a",
-        "rfeg-base-cadete-trios-dynamic-row-iii-d-b"
+        "rfeg-base-cadete-trios-dynamic-row-iii-d-b",
+        "rfeg-espana-infantil-trios-dynamic-row-iii-c-a",
+        "rfeg-espana-infantil-trios-dynamic-row-iii-c-b",
+        "rfeg-espana-infantil-trios-dynamic-row-iii-d-a",
+        "rfeg-espana-infantil-trios-dynamic-row-iii-d-b"
       ]
     },
     {
@@ -4642,7 +4763,8 @@
       },
       "rotation": "0/4",
       "sameAs": [
-        "rfeg-base-cadete-trios-dynamic-row-iv-c"
+        "rfeg-base-cadete-trios-dynamic-row-iv-c",
+        "rfeg-espana-infantil-trios-dynamic-row-iv-c"
       ]
     },
     {
@@ -4668,7 +4790,8 @@
       },
       "rotation": "3/4 BACK",
       "sameAs": [
-        "rfeg-base-cadete-trios-dynamic-row-iv-d"
+        "rfeg-base-cadete-trios-dynamic-row-iv-d",
+        "rfeg-espana-infantil-trios-dynamic-row-iv-d"
       ]
     },
     {
@@ -4764,7 +4887,8 @@
       "type": "EQ",
       "holdDuration": "3\"",
       "sameAs": [
-        "rfeg-base-cadete-cuartetos-balance-row-i-c"
+        "rfeg-base-cadete-cuartetos-balance-row-i-c",
+        "rfeg-espana-infantil-cuartetos-balance-row-i-b"
       ]
     },
     {
@@ -4837,7 +4961,10 @@
         ]
       },
       "type": "EQ",
-      "holdDuration": "3\""
+      "holdDuration": "3\"",
+      "sameAs": [
+        "rfeg-espana-infantil-cuartetos-balance-row-i-d"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-balance-row-i-5",
@@ -4894,7 +5021,10 @@
         "group": "ROW-II 1",
         "label": "Opción A",
         "groupImage": "pre-youth/cuartetos/balance/ROW-II-1.png"
-      }
+      },
+      "sameAs": [
+        "rfeg-espana-infantil-cuartetos-balance-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-balance-row-ii-1-b",
@@ -4924,7 +5054,10 @@
         "group": "ROW-II 1",
         "label": "Opción B",
         "groupImage": "pre-youth/cuartetos/balance/ROW-II-1.png"
-      }
+      },
+      "sameAs": [
+        "rfeg-espana-infantil-cuartetos-balance-row-ii-d"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-balance-row-ii-2",
@@ -5417,7 +5550,10 @@
           "Pre-Youth"
         ]
       },
-      "rotation": "0/4"
+      "rotation": "0/4",
+      "sameAs": [
+        "rfeg-espana-infantil-cuartetos-dynamic-row-ii-b"
+      ]
     },
     {
       "id": "fig-pre-youth-cuartetos-dynamic-row-ii-4-a",
@@ -5647,7 +5783,8 @@
         "groupImage": "pre-youth/cuartetos/dynamic/ROW-IV-3.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-cuartetos-dynamic-row-iv-d"
+        "rfeg-base-cadete-cuartetos-dynamic-row-iv-d",
+        "rfeg-espana-infantil-cuartetos-dynamic-row-iv-d"
       ]
     },
     {
@@ -5679,7 +5816,8 @@
         "groupImage": "pre-youth/cuartetos/dynamic/ROW-IV-3.png"
       },
       "sameAs": [
-        "rfeg-base-cadete-cuartetos-dynamic-row-iv-d"
+        "rfeg-base-cadete-cuartetos-dynamic-row-iv-d",
+        "rfeg-espana-infantil-cuartetos-dynamic-row-iv-d"
       ]
     },
     {

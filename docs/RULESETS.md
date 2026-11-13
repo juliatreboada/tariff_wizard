@@ -7,6 +7,7 @@ Each competition's rules live in one `Ruleset` object in [`lib/tariff/rulesets/`
 | [`types.ts`](../lib/tariff/rulesets/types.ts) | The `Ruleset` shape: limits, penalties, role assignment, display |
 | [`fgx-escolar.ts`](../lib/tariff/rulesets/fgx-escolar.ts) | FGX ESCOLAR (2027 rules) |
 | [`rfeg-base.ts`](../lib/tariff/rulesets/rfeg-base.ts) | RFEG Base — Alevín, Infantil, Cadete (Código 2026) |
+| [`rfeg-espana.ts`](../lib/tariff/rulesets/rfeg-espana.ts) | RFEG Campeonato de España — Alevín, Infantil, Cadete (Programa técnico 2027) |
 | [`slots.ts`](../lib/tariff/rulesets/slots.ts) | Slots per block and category, an element's role, its table row |
 | [`constraints.ts`](../lib/tariff/rulesets/constraints.ts) | Why an element can't be added (`addProblem`) — used by the store and the picker |
 | [`index.ts`](../lib/tariff/rulesets/index.ts) | Registry (`RULESETS`) and `rulesetFor(header)` |
@@ -15,7 +16,7 @@ Each competition's rules live in one `Ruleset` object in [`lib/tariff/rulesets/`
 
 A sheet follows the ruleset whose `levelSystem` matches its header. Levels without a ruleset have no limits or penalties, and the wizard shows them as "coming soon".
 
-## The two rulesets
+## ESCOLAR and BASE
 
 | | ESCOLAR | BASE |
 |--|--|--|
@@ -32,6 +33,23 @@ A sheet follows the ruleset whose `levelSystem` matches its header. Levels witho
 
 Optionals should come from a higher level. For BASE, the RFEG *Programa técnico Campeonato Nacional Base y Clubes* (approved 26 Sept 2025; Anexo, tabla 1) allows: Alevín → TOD Base Infantil, TOD Alevín, TOD FIG; Infantil → TOD Base Cadete, TOD Infantil, TOD FIG; Cadete → TOD Age Group 11-16, TOD FIG (WG from 2027). "TOD Alevín / Infantil" are the Campeonato de España tables; "TOD Age Group 11-16" is the FIG Pre-Youth compulsory table (catalog `FIG`; Tríos = Women's Group, Cuartetos = Men's Group). A Base Parejas sheet sees their three pair tables (femenina, masculina, mixta) separately (`TableRef.categories`). TOD FIG isn't in the catalog yet. Base Cadete may not use horizontal 360º/540º/720º twists as optionals (`notOptional`: 11-16 Women's Group dynamic ROW I Box 4). The programme asks for optionals from rows "different from the compulsory ones"; across tables the coach reads that as "not a row holding the same element" (below). ESCOLAR may take its optional from any Base age group.
 
+## Campeonato de España (level RFEG)
+
+From the RFEG *Programa técnico Campeonato de España y Clubes 2027*. Same counts and penalties as BASE (compulsory per block: pairs 2 balance and 2 dynamic, groups 1 balance and 2 dynamic; plus one optional per block; 1 point per missing requirement), one combined routine, difficulty from compulsory elements only.
+
+| Age group | Compulsory from | Optionals from |
+|--|--|--|
+| Alevín | Cto. España Alevín | Cto. España Infantil, TOD WG |
+| Infantil | Cto. España Infantil | Age Group 11-16, TOD WG |
+| Cadete | Age Group 11-16 (`compulsoryTables`) | TOD WG, or a different row of its own 11-16 table (`optionalFromOwnTable`) |
+
+- The Alevín text wins over the summary table, which lumps "Alevín e Infantil" with 11-16 optionals and TOD Infantil compulsories.
+- Cadete, whose own table also supplies the optional (coach, 2026-11-13): its 11-16 elements share the block's slots, the highest values compulsory (like ESCOLAR), and every one of them needs a different row. Women's Group dynamic ROW I Box 4 (horizontal 360º/540º twists) can't be optional, so it stays compulsory (`notOptional`).
+- Individuals: 3 sets from TOD 11-16 or TOD WG (today the FIG Table of Difficulty), each element 1–10, tumbling required.
+- Not checked: assisting the partner on landings, Cadete's "no salto mortal required". The standing-top-on-the-floor rule only concerns FIG optionals.
+- Juvenil follows the full 11-16 code (balance and dynamic routines) and Pre-Júnior to Sénior the FIG code, minimum difficulty and bonuses: "coming soon", with the FIG work.
+- Same-element links for the "different rows" rule: Cto. España Alevín ↔ Infantil and Infantil ↔ 11-16, reviewed by the coach on 2026-11-13 (in `catalog/same-elements.json`).
+
 **Optional value ranges** (`optionalValueRanges`, [`optional-value-ranges.ts`](../lib/tariff/rulesets/optional-value-ranges.ts)). The programmes give the value an optional must have, in TOD WG (FIG) points. Base, Cto. España and 11-16 compulsory tables print tenths (0 / 0,1 / … / 0,5), not points, so their elements aren't held to it; it applies to optionals from TOD WG (and the 11-16 optional elements appendix, valued in points) once those catalogs exist. Until then the checklist shows it under each optional ("de TOD WG: valor 0–4").
 
 | Optional (pairs bal. / dyn. · groups bal. / dyn.) | 2026 | 2027 |
@@ -43,13 +61,13 @@ Optionals should come from a higher level. For BASE, the RFEG *Programa técnico
 | Cto. España Infantil | 1–6 / 1–8 · 1–12 / 1–8 | 1–8 / 1–12 · 1–12 / 1–12 |
 | Cto. España Cadete | 1–6 / 1–10 · 1–14 / 1–10 | 1–9 / 1–14 · 1–16 / 1–14 |
 
-The app uses 2027. Base Cadete pairs balance: the requirement text says 1–6 held 3", the summary table 1–8; we follow the text. The España ranges wait for an España ruleset (`RFEG_ESPANA_OPTIONAL_VALUE_RANGES`).
+The app uses 2027. Base Cadete pairs balance: the requirement text says 1–6 held 3", the summary table 1–8; we follow the text. The España ranges apply to the Cto. España ruleset (`RFEG_ESPANA_OPTIONAL_VALUE_RANGES`).
 
 Still to do (same programmes): the top standing on the base's hands or feet with the base on the floor only in Alevín and Infantil; individuals from the 11-16 appendix (page 34; today they come from the FIG ToD only); 2027 España individuals up to 10 for every age.
 
 **2027 programmes.** Mostly "FIG" → "WG" (World Gymnastics). Base Alevín / Infantil / Cadete rules are unchanged; Cto. España optional ranges widened (above). The 2027 España summary table merges "Alevín e Infantil" (compulsory from TOD Infantil), which contradicts its own Alevín text (TOD Alevín) — we follow the text.
 
-**Same element in another table.** In BASE an optional can't come from a row that holds the same element as one of the block's compulsory elements (e.g. Alevín Parejas dynamic ROW I C is Infantil ROW I B, so nothing from Infantil ROW I can be the optional). Which cells are the same element — Base age groups with each other, Base with the Cto. España table of the same age, and Base Cadete with the 11-16 tables (links across catalogs: `scripts/same-elements.mjs` puts them on both sides, `scripts/validate-catalog.mjs` checks they exist and link back) — is in [`catalog/same-elements.json`](../catalog/same-elements.json), reviewed by the coach; the generator turns it into `sameAs` on each entry. A cell with two figures ("OR") can match two cells, so these are links between cells rather than one id per element. A requirement the catalog can't offer yet shows as "próximamente" in the checklist and is **not** penalised.
+**Same element in another table.** In BASE and Cto. España an optional can't come from a row that holds the same element as one of the block's compulsory elements (e.g. Alevín Parejas dynamic ROW I C is Infantil ROW I B, so nothing from Infantil ROW I can be the optional). Which cells are the same element — Base age groups with each other, Base with the Cto. España table of the same age, Base Cadete with the 11-16 tables, Cto. España Alevín with Infantil, and Cto. España Infantil with the 11-16 tables (links across catalogs: `scripts/same-elements.mjs` puts them on both sides, `scripts/validate-catalog.mjs` checks they exist and link back) — is in [`catalog/same-elements.json`](../catalog/same-elements.json), reviewed by the coach; the generator turns it into `sameAs` on each entry. A cell with two figures ("OR") can match two cells, so these are links between cells rather than one id per element. A requirement the catalog can't offer yet shows as "próximamente" in the checklist and is **not** penalised.
 
 **Add-ons.** In Base Cuartetos balance, ROW III is a plus value attached to a pyramid (black arrow in the tables), not an element of its own. The catalog entry lists the pyramids in `attachesTo`; in the routine it is stored on the pyramid (`RoutineItem.addOn`), shares its sheet cell, and adds its value. Removing or replacing the pyramid with one it can't attach to removes it.
 

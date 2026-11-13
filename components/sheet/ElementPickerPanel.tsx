@@ -34,7 +34,9 @@ import {
   repeatsIndividualNumber,
   optionalAvailable,
   optionalCategoryTables,
+  ownTable,
   pyramidForAddOn,
+  roleAssignmentFor,
   roleForEntry,
   rulesetFor,
   type Ruleset,
@@ -192,10 +194,10 @@ function sameNumberLabel(entry: CatalogEntry): string {
   return entry.type === "AG" ? entry.variant.group : `${entry.variant.group} · ${entry.variant.label}`;
 }
 
-/** Add-ons of the sheet's own catalog and of its optional tables' catalogs. */
+/** Add-ons of the sheet's own table's catalog and of its optional tables' catalogs. */
 function addOnEntriesFor(ruleset: Ruleset, header: StoredHeader): CatalogEntry[] {
   const catalogs = new Set([
-    ruleset.catalogId,
+    ownTable(ruleset, header).catalogId,
     ...optionalCategoryTables(ruleset, header).map((table) => table.catalogId),
   ]);
   return [...catalogs].flatMap((id) => getCatalogEntries(id).filter((e) => e.attachesTo));
@@ -410,7 +412,13 @@ export function ElementPickerPanel({
 }: ElementPickerPanelProps) {
   const t = getMessages();
   const ruleset = rulesetFor(header);
-  const allEntries = getCatalogEntries(ruleset?.catalogId);
+  // The sheet's own table: usually the ruleset's catalog at the sheet's level and
+  // age; for some age groups another catalog's table (RFEG Cadete: 11-16).
+  const own = ruleset ? ownTable(ruleset, header) : null;
+  const ownEntries = getCatalogEntries(own?.catalogId ?? ruleset?.catalogId);
+  const ownHeader: StoredHeader = own
+    ? { ...header, levelSystem: own.levelSystem, levelAge: own.levelAge, category: own.category }
+    : header;
   const routine = useWizardStore((s) => s.routine);
 
   const editMode = editItemId != null && editBlock != null;
@@ -514,16 +522,21 @@ export function ElementPickerPanel({
   function isBlockFull(block: "balance" | "dynamic", compulsory: number, optional: number) {
     if (!ruleset) return false;
     const slots = blockSlots(ruleset, block, header.category);
+    // ESCOLAR: full once every slot is taken (as before add-ons existed).
     if (ruleset.roleAssignment === "higher-value-compulsory") {
       return compulsory + optional >= slots.compulsory + slots.optional;
     }
-    // By-table blocks stay open while an add-on (Cuartetos ROW III, an 11-16 top)
+    // Other blocks stay open while an add-on (Cuartetos ROW III, an 11-16 top)
     // can still attach to a pyramid in the routine, from any table the sheet uses.
     const addOnOpen = addOnEntriesFor(ruleset, header).some(
       (entry) => entry.elementFamily === block && pyramidForAddOn(routineExcludingEditing, entry),
     );
+    if (addOnOpen) return false;
+    // The own table also supplies the optional (RFEG Cadete): every slot counts.
+    if (roleAssignmentFor(ruleset, header.levelAge) === "higher-value-compulsory") {
+      return compulsory + optional >= slots.compulsory + slots.optional;
+    }
     return (
-      !addOnOpen &&
       compulsory >= slots.compulsory &&
       (optional >= slots.optional || !optionalAvailable(ruleset, header.levelAge))
     );
@@ -649,13 +662,14 @@ export function ElementPickerPanel({
     ? "flex w-full min-w-0 max-w-5xl flex-col rounded-xl border border-zinc-300 bg-white shadow-lg"
     : "flex w-full min-w-0 max-w-5xl shrink-0 flex-col rounded-lg border border-zinc-200 bg-white shadow-sm";
 
+  const ownTableLabel = own?.label ? t.sheet.picker.tableOwnOther(own.label, header.levelAge) : "";
   /** The sheet's own table, then the tables that supply optional elements. */
   function tablesFor(family: "balance" | "dynamic") {
     const own = {
       key: "own",
-      label: t.sheet.picker.tableOwn(header.levelSystem, header.levelAge),
+      label: ownTableLabel || t.sheet.picker.tableOwn(header.levelSystem, header.levelAge),
       optional: false,
-      entries: entriesForFamily(allEntries, header, family),
+      entries: entriesForFamily(ownEntries, ownHeader, family),
     };
     if (!ruleset) return [own];
     return [

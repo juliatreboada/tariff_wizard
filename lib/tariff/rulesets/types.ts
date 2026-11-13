@@ -54,6 +54,17 @@ export type Ruleset = {
    * Either way, an element from an `optionalTables` table is always optional.
    */
   roleAssignment: "higher-value-compulsory" | "by-table";
+  /**
+   * Sheet age group → the table compulsory elements come from, when it isn't the
+   * sheet's own level and age (e.g. RFEG Cadete: FIG Age Group 11-16).
+   */
+  compulsoryTables?: Readonly<Record<string, TableRef>>;
+  /**
+   * Age groups whose own table also supplies the optional element, from a
+   * different row (e.g. RFEG Cadete). There the block's own-table elements are
+   * assigned like higher-value-compulsory, and they all need different rows.
+   */
+  optionalFromOwnTable?: readonly string[];
   /** Compulsory elements of one block must come from different rows. */
   compulsoryFromDifferentRows: boolean;
   /**

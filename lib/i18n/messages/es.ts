@@ -68,9 +68,9 @@ export const es = {
     continueToSheet: "Continuar a la TS",
     comingSoon: "próximamente",
     levelSystemAvailability:
-      "Por ahora están disponibles ESCOLAR y BASE. RFEG y FIG se habilitarán próximamente.",
+      "Por ahora están disponibles ESCOLAR, BASE y RFEG. FIG se habilitará próximamente.",
     levelAgeAvailability:
-      "En ESCOLAR, Absoluta se habilitará próximamente; en BASE, Junior y Senior.",
+      "En ESCOLAR, Absoluta se habilitará próximamente; en BASE, Junior y Senior; en RFEG, de Juvenil a Senior.",
   },
   sheet: {
     title: "Tariff Sheet",
@@ -119,6 +119,8 @@ export const es = {
       individualsComingSoon: "Elementos individuales: próximamente.",
       tableChooser: "Tabla",
       tableOwn: (system: string, age: string) => `${age} ${system.toUpperCase()}`,
+      /** The sheet's own table is another level's (e.g. RFEG Cadete → Age Group 11-16). */
+      tableOwnOther: (label: string, age: string) => `${label} (${age})`,
       tableOptional: (label: string, age: string, category: string | null) =>
         `${age} ${label}${category ? ` · ${category}` : ""} · opcional`,
       optionalTableHint:

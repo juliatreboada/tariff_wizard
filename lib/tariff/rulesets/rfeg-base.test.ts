@@ -42,7 +42,7 @@ beforeEach(() => {
 
 describe("availability", () => {
   it("offers Base Alevín, Infantil and Cadete", () => {
-    expect(availableLevelSystems()).toEqual(["Escolar", "Base"]);
+    expect(availableLevelSystems()).toEqual(["Escolar", "Base", "RFEG"]);
     for (const age of ["Alevín", "Infantil", "Cadete"]) {
       expect(isLevelAgeReady("Base", age)).toBe(true);
     }
