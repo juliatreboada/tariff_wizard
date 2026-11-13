@@ -48,13 +48,44 @@ export function optionalCategoryTables(ruleset: Ruleset, header: RulesHeader): C
   );
 }
 
+/** Is this entry one this age group may not use as its optional (`notOptional`)? */
+export function isNotOptional(ruleset: Ruleset, levelAge: string, entry: CatalogEntry): boolean {
+  const list = ruleset.notOptional?.[levelAge];
+  return !!list && (list.includes(entry.id) || (entry.number != null && list.includes(entry.number)));
+}
+
+/**
+ * How roles are assigned for this age group: higher-value-compulsory when its
+ * own table also supplies the optional (`optionalFromOwnTable`).
+ */
+export function roleAssignmentFor(ruleset: Ruleset, levelAge: string): Ruleset["roleAssignment"] {
+  return ruleset.optionalFromOwnTable?.includes(levelAge)
+    ? "higher-value-compulsory"
+    : ruleset.roleAssignment;
+}
+
 /** False when the rules ask for optional elements the catalog can't offer yet. */
 export function optionalAvailable(ruleset: Ruleset, levelAge: string): boolean {
   // higher-value-compulsory: the sheet's own table supplies optionals too.
   return (
-    ruleset.roleAssignment === "higher-value-compulsory" ||
+    roleAssignmentFor(ruleset, levelAge) === "higher-value-compulsory" ||
     optionalTables(ruleset, levelAge).length > 0
   );
+}
+
+/**
+ * The table this sheet's compulsory elements come from: `compulsoryTables` for
+ * its age group, else the ruleset's catalog at the sheet's own level and age.
+ */
+export function ownTable(ruleset: Ruleset, header: RulesHeader): CategoryTable {
+  const table = ruleset.compulsoryTables?.[header.levelAge];
+  return {
+    catalogId: table?.catalogId ?? ruleset.catalogId,
+    levelSystem: table?.levelSystem ?? header.levelSystem,
+    levelAge: table?.levelAge ?? header.levelAge,
+    label: table?.label ?? "",
+    category: table?.categories?.[header.category]?.[0] ?? header.category,
+  };
 }
 
 /** Table row of an element ("ROW-II C" → "II"), or null for other coordinates. */
@@ -92,12 +123,8 @@ export function roleForEntry(
   header: RulesHeader,
   entry: CatalogEntry,
 ): Exclude<RoutineElementRole, "individual"> | null {
-  const own = {
-    catalogId: ruleset.catalogId,
-    levelSystem: header.levelSystem,
-    levelAge: header.levelAge,
-  };
-  if (entryInTable(entry, own, header.category)) return "compulsory";
+  const own = ownTable(ruleset, header);
+  if (entryInTable(entry, own, own.category)) return "compulsory";
   return optionalCategoryTables(ruleset, header).some((t) => entryInTable(entry, t, t.category))
     ? "optional"
     : null;

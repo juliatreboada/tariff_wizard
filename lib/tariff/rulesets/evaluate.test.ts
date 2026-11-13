@@ -20,7 +20,7 @@ const fullPairRoutine = () => [
 describe("rulesetFor", () => {
   it("finds the ESCOLAR ruleset only for the Escolar level system", () => {
     expect(rulesetFor(header())?.id).toBe("fgx-escolar");
-    expect(rulesetFor(header({ levelSystem: "RFEG" }))).toBeNull();
+    expect(rulesetFor(header({ levelSystem: "FIG" }))).toBeNull();
     expect(rulesetFor(null)).toBeNull();
   });
 });

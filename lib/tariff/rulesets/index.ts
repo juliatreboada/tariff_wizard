@@ -1,9 +1,10 @@
 import type { LevelSystem } from "../enums";
 import { FGX_ESCOLAR } from "./fgx-escolar";
 import { RFEG_BASE } from "./rfeg-base";
+import { RFEG_ESPANA } from "./rfeg-espana";
 import type { Ruleset, RulesetTarget } from "./types";
 
-export const RULESETS: readonly Ruleset[] = [FGX_ESCOLAR, RFEG_BASE];
+export const RULESETS: readonly Ruleset[] = [FGX_ESCOLAR, RFEG_BASE, RFEG_ESPANA];
 
 /** The ruleset a sheet follows, or null when its level has no rules yet. */
 export function rulesetFor(target: RulesetTarget | null | undefined): Ruleset | null {
@@ -38,6 +39,9 @@ export {
   optionalCategoryTables,
   optionalTables,
   optionalValueRange,
+  ownTable,
+  roleAssignmentFor,
+  isNotOptional,
   entryInTable,
   tableKeyOf,
   roleForEntry,

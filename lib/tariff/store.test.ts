@@ -155,7 +155,7 @@ describe("ESCOLAR individual sets", () => {
 
 describe("level system source", () => {
   it("applies no ESCOLAR limits or roles for other level systems", () => {
-    startSheet(header({ levelSystem: "RFEG" }));
+    startSheet(header({ levelSystem: "FIG" }));
     store().addRoutineElement(entry("fgx-balance-row-i-a"));
     store().addRoutineElement(entry("fgx-balance-row-i-b"));
     expect(store().addRoutineElement(entry("fgx-balance-row-i-c"))).toBe(true);

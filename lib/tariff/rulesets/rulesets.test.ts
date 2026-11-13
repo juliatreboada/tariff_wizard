@@ -51,7 +51,7 @@ describe("every ruleset", () => {
 
 describe("wizard availability", () => {
   it("offers only level systems with a ruleset", () => {
-    expect(availableLevelSystems()).toEqual(["Escolar", "Base"]);
+    expect(availableLevelSystems()).toEqual(["Escolar", "Base", "RFEG"]);
   });
 
   it("offers every ESCOLAR age group but Absoluta", () => {

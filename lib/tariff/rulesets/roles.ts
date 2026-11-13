@@ -1,7 +1,7 @@
 import { catalogEntryForElement } from "../catalog/lookup";
 import type { RoutineItem } from "../routine-types";
 import { fromOwnTable } from "./constraints";
-import { blockSlots, roleForEntry } from "./slots";
+import { blockSlots, isNotOptional, roleAssignmentFor, roleForEntry } from "./slots";
 import type { BlockSlots, ElementBlock, Ruleset, RulesHeader } from "./types";
 
 /** Re-derive compulsory/optional for one block. Routines without a ruleset are left as they are. */
@@ -12,7 +12,7 @@ export function applyRulesetRolesForBlock(
   header: RulesHeader | null,
 ): RoutineItem[] {
   if (!ruleset) return routine;
-  switch (ruleset.roleAssignment) {
+  switch (header ? roleAssignmentFor(ruleset, header.levelAge) : ruleset.roleAssignment) {
     case "higher-value-compulsory":
       return higherValueCompulsory(routine, block, ruleset, header);
     case "by-table":
@@ -61,11 +61,17 @@ function higherValueCompulsory(
     Math.max(0, slots.optional - fixedOptional.size),
     Math.max(0, indexes.length - slots.compulsory),
   );
-  // Lowest value first. On a tie keep whichever element is already optional
-  // (stable across reorder, replace and reload); otherwise the later one — the
-  // newest on add — is optional.
+  // An element that can't be optional (e.g. Cadete's horizontal twists) stays
+  // compulsory. Then lowest value first. On a tie keep whichever element is
+  // already optional (stable across reorder, replace and reload); otherwise the
+  // later one — the newest on add — is optional.
+  const pinned = (item: RoutineItem) => {
+    const entry = header ? catalogEntryForElement(item.element) : undefined;
+    return entry != null && header != null && isNotOptional(ruleset, header.levelAge, entry);
+  };
   const byOptionalPreference = [...indexes].sort(
     (a, b) =>
+      Number(pinned(a.item)) - Number(pinned(b.item)) ||
       a.item.element.value - b.item.element.value ||
       Number(b.item.role === "optional") - Number(a.item.role === "optional") ||
       b.index - a.index,

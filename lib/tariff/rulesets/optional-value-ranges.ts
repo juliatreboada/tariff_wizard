@@ -24,8 +24,8 @@ export const RFEG_BASE_OPTIONAL_VALUE_RANGES: Readonly<Record<string, TeamBlockR
 
 /**
  * Optional element values, Programa técnico Campeonato de España y Clubes 2027
- * (wider than 2026: Alevín pairs 1–6 / 1–6 → 1–8 / 1–12, …). For the España
- * ruleset, when it's added.
+ * (wider than 2026: Alevín pairs 1–6 / 1–6 → 1–8 / 1–12, …). Used by the
+ * Cto. España ruleset (`rfeg-espana.ts`).
  */
 export const RFEG_ESPANA_OPTIONAL_VALUE_RANGES: Readonly<Record<string, TeamBlockRanges>> = {
   Alevín: ranges([[1, 8], [1, 12]], [[1, 12], [1, 12]]),

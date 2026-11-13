@@ -1,7 +1,7 @@
 import { catalogEntryByAnyId, catalogEntryForElement } from "../catalog/lookup";
 import type { CatalogEntry } from "../catalog/types";
 import type { RoutineItem } from "../routine-types";
-import { blockSlots, roleForEntry, rowOf, tableKeyOf } from "./slots";
+import { blockSlots, isNotOptional, roleAssignmentFor, roleForEntry, rowOf, tableKeyOf } from "./slots";
 import type { ElementBlock, Ruleset, RulesHeader } from "./types";
 
 /** Why an element can't go into the routine. */
@@ -89,28 +89,42 @@ export function addProblem(
 
   const role = roleForEntry(ruleset, header, entry);
   if (!role) return "not-allowed";
-  const notOptional = ruleset.notOptional?.[header.levelAge];
-  if (role === "optional" && (notOptional?.includes(entry.id) || (entry.number && notOptional?.includes(entry.number)))) {
-    return "not-allowed";
-  }
+  const notOptional = isNotOptional(ruleset, header.levelAge, entry);
+  if (role === "optional" && notOptional) return "not-allowed";
   const slots = blockSlots(ruleset, block, header.category);
   const others = routine.filter(
     (item) => item.block === block && item.role !== "individual" && item.id !== exceptItemId,
   );
+  // The own table also supplies the optional (e.g. RFEG Cadete): its elements
+  // share the block's slots, highest values compulsory.
+  const ownTableOptional = ruleset.optionalFromOwnTable?.includes(header.levelAge) ?? false;
 
-  if (ruleset.roleAssignment === "higher-value-compulsory") {
+  if (roleAssignmentFor(ruleset, header.levelAge) === "higher-value-compulsory") {
     if (others.length >= slots.compulsory + slots.optional) return "full";
     // An optional-table element needs a free optional slot of its own.
     const fixedOptionals = others.filter((item) => !fromOwnTable(item, ruleset, header)).length;
     if (role === "optional" && fixedOptionals >= slots.optional) return "full";
+    // Elements that can't be optional must all fit in the compulsory slots.
+    if (role === "compulsory" && notOptional) {
+      const pinned = others.filter((item) => {
+        const placed = catalogEntryForElement(item.element);
+        return placed != null && fromOwnTable(item, ruleset, header) && isNotOptional(ruleset, header.levelAge, placed);
+      }).length;
+      if (pinned >= slots.compulsory) return "not-allowed";
+    }
   } else if (others.filter((item) => item.role === role).length >= slots[role]) {
     return "full";
   }
 
   if (ruleset.compulsoryFromDifferentRows && role === "compulsory") {
     const row = rowOf(entry.coordinates);
+    // With the own table supplying the optional, it can't share a compulsory's
+    // row either, and values decide which is which: all need different rows.
     const clash = others.some(
-      (item) => item.role === "compulsory" && row !== null && rowOf(item.element.coordinates) === row,
+      (item) =>
+        (item.role === "compulsory" || (ownTableOptional && fromOwnTable(item, ruleset, header))) &&
+        row !== null &&
+        rowOf(item.element.coordinates) === row,
     );
     if (clash) return "same-row";
   }
