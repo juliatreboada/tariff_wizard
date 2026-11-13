@@ -1,4 +1,4 @@
-import type { CatalogId, ElementType } from "../catalog/types";
+import type { CatalogId, ElementTag, ElementType } from "../catalog/types";
 import type { Exercise, LevelSystem } from "../enums";
 
 export type ElementBlock = "balance" | "dynamic";
@@ -62,6 +62,8 @@ export type Ruleset = {
   exercises?: readonly Exercise[];
   /** Highest D-SCORE the compulsory elements can give (e.g. 0.5 in Pre-Youth); absent: no cap. */
   difficultyCap?: number;
+  /** Free composition from TOD WG (Youth, Junior, Senior) instead of compulsory/optional tables. */
+  open?: OpenComposition;
   /** Elements per balance and dynamic block; pairs and groups (tríos, cuartetos) can differ. */
   blocks: Record<ElementBlock, { pairs: BlockSlots; groups: BlockSlots }>;
   /**
@@ -130,6 +132,60 @@ export type Ruleset = {
     /** Show "-" instead of individual element values on the sheet. */
     hideIndividualValues: boolean;
   };
+};
+
+/** Teams the Code of Points separates: pairs; tríos and cuartetos = groups. */
+export type Team = "pairs" | "groups";
+
+/**
+ * A Special Requirement of a free-composition routine: how many pair/group
+ * elements must (min) or may (max) match, and the penalty.
+ */
+export type OpenRequirement = {
+  id: string;
+  /** Shown in the checklist (Spanish). */
+  label: string;
+  /** Which elements count; all conditions must hold. */
+  match: {
+    tag?: ElementTag;
+    family?: ElementBlock;
+    minValue?: number;
+    /** Transverse rotation, in quarters (from the entry's rotation, e.g. "4/4 BACK" = 4). */
+    minRotation?: number;
+    maxRotation?: number;
+  };
+  min?: number;
+  max?: number;
+  /** Matching elements must have different `pyramidCategory` to count. */
+  distinctPyramidCategories?: boolean;
+  /** "each": per missing (or extra) element; "once": once if not met. */
+  penalty: { amount: number; per: "each" | "once" };
+};
+
+/**
+ * A free-composition routine (FIG Youth, Junior, Senior): pair/group
+ * elements from TOD WG, every one adding difficulty, checked against Special
+ * Requirements instead of compulsory/optional slots.
+ */
+export type OpenComposition = {
+  /** Where pair/group elements come from (TOD WG). */
+  source: TableRef;
+  /** Most pair/group elements counted for difficulty in a routine (CoP 17.5: 8). */
+  maxElements: number;
+  /** Routine → highest DV counted (Youth: Balance 90, …); absent: open (Senior). */
+  difficultyLimit?: Readonly<Partial<Record<Exercise, number>>>;
+  /** A 1.0 penalty when DV goes more than this above the limit (20). */
+  overLimitTolerance?: number;
+  overLimitPenalty?: number;
+  /** Routine → team → minimum DV (RFEG Júnior, Sénior); 1 point when not reached. */
+  minDifficulty?: Readonly<Partial<Record<Exercise, Record<Team, number>>>>;
+  minDifficultyPenalty?: number;
+  /** Routine → team → Special Requirements. */
+  requirements: Readonly<Partial<Record<Exercise, Record<Team, readonly OpenRequirement[]>>>>;
+  /** Up to `individuals.sets` per gymnast, not required; their values, averaged by partners, add difficulty (CoP 27.4). */
+  individualsAddDifficulty: boolean;
+  /** Combined: neither balance nor dynamic DV counts beyond double the other (CoP 25.2). */
+  combinedWeighting: boolean;
 };
 
 /** The header fields that pick a ruleset (without an age: the level's first ruleset). */

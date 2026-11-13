@@ -87,6 +87,7 @@ export function PrintSheetView() {
                 header={header}
                 layout={layout}
                 valueBreakdown={valueBreakdown}
+                routine={routine}
               />
             </div>
           </div>

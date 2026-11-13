@@ -112,7 +112,23 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                 {t.routine.checklistTitle(ruleset.label)}
               </p>
               <ul className="mt-2 grid gap-2 text-xs text-amber-900 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
-                {(
+                {/* Free composition (Youth, Junior, Senior): its Special Requirements. */}
+                {escolarStatus.requirements?.map((req) => (
+                  <li key={req.id} className="rounded-md border border-amber-200/80 bg-white/60 px-2 py-1.5">
+                    {req.pending ? (
+                      <>
+                        <span className="font-medium">–</span> {req.label} ({t.wizard.comingSoon})
+                      </>
+                    ) : (
+                      <>
+                        <span className="font-medium">{req.met ? "✓" : "□"}</span> {req.label} ({req.actual}
+                        {req.min !== undefined ? `/${req.min}` : ""}
+                        {req.max !== undefined ? `, máx. ${req.max}` : ""})
+                      </>
+                    )}
+                  </li>
+                ))}
+                {!escolarStatus.requirements && ((
                   [
                     [escolarStatus.compulsoryBalance, t.routine.escolarRuleCompBalance, false, "balance"],
                     [escolarStatus.compulsoryDynamic, t.routine.escolarRuleCompDynamic, false, "dynamic"],
@@ -150,7 +166,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                       </span>
                     ) : null}
                   </li>
-                ))}
+                )))}
               </ul>
             </div>
             <p className="shrink-0 text-xs font-semibold text-amber-900 lg:pt-6 lg:text-sm">

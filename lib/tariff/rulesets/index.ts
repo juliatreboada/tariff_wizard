@@ -3,6 +3,7 @@ import { FGX_ESCOLAR } from "./fgx-escolar";
 import { RFEG_BASE } from "./rfeg-base";
 import { RFEG_ESPANA } from "./rfeg-espana";
 import { FIG_PRE_YOUTH, RFEG_JUVENIL } from "./fig-pre-youth";
+import { FIG_JUNIOR, FIG_SENIOR, FIG_YOUTH, RFEG_JUNIOR, RFEG_PRE_JUNIOR, RFEG_SENIOR } from "./fig-open";
 import type { Ruleset, RulesetTarget } from "./types";
 
 export const RULESETS: readonly Ruleset[] = [
@@ -10,7 +11,13 @@ export const RULESETS: readonly Ruleset[] = [
   RFEG_BASE,
   RFEG_ESPANA,
   RFEG_JUVENIL,
+  RFEG_PRE_JUNIOR,
+  RFEG_JUNIOR,
+  RFEG_SENIOR,
   FIG_PRE_YOUTH,
+  FIG_YOUTH,
+  FIG_JUNIOR,
+  FIG_SENIOR,
 ];
 
 /**
@@ -40,6 +47,15 @@ export function isLevelAgeReady(levelSystem: LevelSystem, levelAge: string): boo
 export { applyRulesetRoles, applyRulesetRolesForBlock } from "./roles";
 export { addProblem, pyramidForAddOn, type AddProblem } from "./constraints";
 export { evaluateRules, type RuleStatus } from "./evaluate";
+export {
+  openDifficulty,
+  openDifficultyPenalties,
+  openRequirementStatuses,
+  catalogSourceOf,
+  rotationQuarters,
+  type OpenDifficulty,
+  type OpenRequirementStatus,
+} from "./open";
 export {
   gymnastsWithoutTumbling,
   individualEntries,

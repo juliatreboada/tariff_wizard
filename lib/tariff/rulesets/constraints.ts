@@ -92,6 +92,13 @@ export function addProblem(
   const notOptional = isNotOptional(ruleset, header.levelAge, entry);
   if (role === "optional" && notOptional) return "not-allowed";
   const slots = blockSlots(ruleset, block, header.category, header.exercise);
+  // Free composition: at most `maxElements` pair/group elements in the whole routine.
+  if (ruleset.open) {
+    const pairGroup = routine.filter(
+      (item) => item.role !== "individual" && item.id !== exceptItemId && (item.block === "balance" || item.block === "dynamic"),
+    );
+    if (pairGroup.length >= ruleset.open.maxElements) return "full";
+  }
   const others = routine.filter(
     (item) => item.block === block && item.role !== "individual" && item.id !== exceptItemId,
   );

@@ -68,6 +68,7 @@ export function SheetPreviewView() {
               header={header}
               layout={layout}
               valueBreakdown={valueBreakdown}
+              routine={routine}
             />
           </div>
         </div>

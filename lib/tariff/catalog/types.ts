@@ -18,6 +18,18 @@ export type ElementFamily = (typeof ELEMENT_FAMILIES)[number];
 export const ELEMENT_TYPES = ["EQ", "FLEX", "AG", "TUM"] as const;
 export type ElementType = (typeof ELEMENT_TYPES)[number];
 
+/**
+ * Element tags the Code of Points' Special Requirements count (Art. 19–26):
+ * - static-hold: a 3" hold (balance, or the balance part of a combined routine)
+ * - handstand: an unsupported handstand by the top (TOD handstand table)
+ * - pyramid: a group balance pyramid (separate construction)
+ * - flight: a pair/group element with a flight phase (dynamic)
+ * - catch: a catch
+ * - landing: lands on the floor (dismounts and dynamic elements)
+ */
+export const ELEMENT_TAGS = ["static-hold", "handstand", "pyramid", "flight", "catch", "landing"] as const;
+export type ElementTag = (typeof ELEMENT_TAGS)[number];
+
 export type CatalogFilters = {
   levelSystems: LevelSystem[];
   categories: string[];
@@ -58,6 +70,13 @@ export type CatalogEntry = {
   attachesTo?: string[];
   /** The same element in other tables (e.g. an older age group's), for row rules. */
   sameAs?: string[];
+  /**
+   * What the element is, for free-composition Special Requirements (TOD WG):
+   * e.g. "handstand", "catch". An element built from parts carries every part's tags.
+   */
+  tags?: ElementTag[];
+  /** TOD WG group balance: the pyramid's category (2 pyramids must differ). */
+  pyramidCategory?: string;
 };
 
 export type CatalogManifest = {

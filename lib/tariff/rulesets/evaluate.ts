@@ -3,6 +3,7 @@ import { countCompleteIndividualSets } from "../routine-groups";
 import type { RoutineItem } from "../routine-types";
 import type { StoredHeader } from "../types";
 import { gymnastsWithoutTumbling } from "./individuals";
+import { openDifficultyPenalties, openRequirementStatuses, type OpenRequirementStatus } from "./open";
 import { blockSlots, optionalAvailable, optionalValueRange } from "./slots";
 import type { Ruleset, ValueRange } from "./types";
 
@@ -31,6 +32,8 @@ export type RuleStatus = {
   missingMessages: string[];
   /** Requirements the catalog can't offer yet: listed, not penalised. */
   pendingMessages: string[];
+  /** Free composition (Youth, Junior, Senior): its Special Requirements, instead of the slots above. */
+  requirements?: OpenRequirementStatus[];
 };
 
 function status(expected: number, actual: number): RequirementStatus {
@@ -61,6 +64,7 @@ export function evaluateRules(
   routine: RoutineItem[],
 ): RuleStatus {
   if (!ruleset) return disabled();
+  if (ruleset.open && header) return evaluateOpen(ruleset, header, routine);
 
   const count = (role: "compulsory" | "optional", block: "balance" | "dynamic") =>
     routine.filter((item) => item.role === role && item.block === block).length;
@@ -162,6 +166,32 @@ export function evaluateRules(
     missingIndividuals,
     missingTumbling,
     penaltyTotal,
+    missingMessages,
+    pendingMessages,
+  };
+}
+
+/**
+ * A free-composition routine: Special Requirements (each listed with its
+ * penalty), DV over the limit (+ tolerance) and under the minimum. Individual
+ * elements are not required.
+ */
+function evaluateOpen(ruleset: Ruleset, header: StoredHeader, routine: RoutineItem[]): RuleStatus {
+  const requirements = openRequirementStatuses(ruleset, header, routine);
+  const { overLimit, underMinimum, minimum, limit } = openDifficultyPenalties(ruleset, header, routine);
+  const missingMessages = requirements
+    .filter((r) => !r.met && !r.pending)
+    .map((r) => `${r.label}: ${r.actual}${r.min !== undefined ? `/${r.min}` : ""}${r.max !== undefined ? ` (máx. ${r.max})` : ""}.`);
+  if (overLimit) missingMessages.push(`Dificultad por encima del límite (${limit}) en más de ${ruleset.open!.overLimitTolerance ?? 0}.`);
+  if (underMinimum) missingMessages.push(`Dificultad por debajo del mínimo (${minimum}).`);
+  const pendingMessages = requirements
+    .filter((r) => r.pending)
+    .map((r) => `${r.label}: próximamente (tablas TOD WG).`);
+  return {
+    ...disabled(),
+    enabled: true,
+    requirements,
+    penaltyTotal: requirements.reduce((s, r) => s + r.penalty, 0) + overLimit + underMinimum,
     missingMessages,
     pendingMessages,
   };
