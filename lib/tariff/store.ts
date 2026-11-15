@@ -42,6 +42,7 @@ import type {
   RoutineElementRole,
   RoutineGymnastRole,
   RoutineItem,
+  TodWgPick,
 } from "./routine-types";
 import type {
   CompetitionStepFormValues,
@@ -92,6 +93,8 @@ export type WizardStore = {
       /** For an add-on: the pyramid (catalog id) to put it on. */
       attachTo?: string;
       baseIndex?: number;
+      /** TOD WG pyramid: the coach's choices on this base. */
+      todWg?: TodWgPick;
     },
   ) => boolean;
   addIndividualGroup: (
@@ -116,6 +119,8 @@ export type WizardStore = {
     entry: CatalogEntry,
     options?: {
       role?: RoutineElementRole;
+      /** TOD WG pyramid: the choices on the new base (none: a plain element). */
+      todWg?: TodWgPick;
     },
   ) => boolean;
   removeRoutineItem: (itemId: string) => void;
@@ -369,6 +374,7 @@ export const useWizardStore = create<WizardStore>()(
             individualGroupId: options?.individualGroupId,
             individualOrder: options?.individualOrder,
             element: catalogEntryToPlaced(entry),
+            ...(options?.todWg ? { todWg: options.todWg } : {}),
           };
           next = withBlockRoles(state, [...routine, item], block);
         }
@@ -470,6 +476,7 @@ export const useWizardStore = create<WizardStore>()(
             role: options?.role ?? item.role ?? "compulsory",
             element: catalogEntryToPlaced(entry),
             addOn: keepAddOn ? item.addOn : undefined,
+            todWg: options?.todWg,
           };
         });
         next = withBlockRoles(state, next, nextBlock);

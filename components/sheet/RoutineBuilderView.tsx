@@ -21,6 +21,7 @@ import type { RoutineItem } from "@/lib/tariff/routine-types";
 import { useWizardStore } from "@/lib/tariff/store";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
 import { itemValue } from "@/lib/tariff/item-value";
+import { pyramidOf } from "@/lib/tariff/tod-wg/pyramid";
 
 type RoutineBuilderViewProps = {
   header: StoredHeader;
@@ -62,12 +63,13 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
   function savePickerSelection(selection: ElementPickerSelection): boolean {
     if (selection.kind === "single") {
       if (editingSingle) {
-        return replaceRoutineElement(editingSingle.itemId, selection.entry);
+        return replaceRoutineElement(editingSingle.itemId, selection.entry, { todWg: selection.todWg });
       }
       return addRoutineElement(selection.entry, {
         linkedToPrevious: linkNext && routine.length > 0,
         block: selection.block,
         attachTo: selection.attachTo,
+        todWg: selection.todWg,
       });
     }
     if (selection.replaceGroupId) {
@@ -263,10 +265,24 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                           className="h-12 w-12 shrink-0 object-contain"
                         />
                       ) : null}
+                      {pyramidOf(row.item)?.tops.flatMap(({ pick, position }) =>
+                        position.images.map((image) => (
+                          <Image
+                            key={`${pick.slot}-${image}`}
+                            src={catalogImageUrl(image, "FIG")}
+                            alt={position.id}
+                            width={56}
+                            height={42}
+                            className="h-12 w-12 shrink-0 object-contain"
+                          />
+                        )),
+                      )}
                     </div>
                     <p className="mt-1 w-full truncate text-center font-mono text-xs font-semibold text-zinc-900">
                       {row.item.element.coordinates}
                       {row.item.addOn ? ` + ${row.item.addOn.coordinates}` : ""}
+                      {pyramidOf(row.item)?.tops.map(({ position }) => ` + ${position.id}`).join("")}
+                      {pyramidOf(row.item)?.motion ? ` · ${pyramidOf(row.item)!.motion!.key}` : ""}
                       <span className="ml-1.5 rounded bg-zinc-100 px-1 font-medium">
                         {formatSheetValue(itemValue(row.item))}
                       </span>

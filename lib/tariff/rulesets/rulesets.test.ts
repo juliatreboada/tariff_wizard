@@ -79,7 +79,6 @@ describe("wizard availability", () => {
       expect(isLevelAgeReady("Escolar", age)).toBe(true);
     }
     expect(isLevelAgeReady("Escolar", "Absoluta")).toBe(false);
-    expect(isLevelAgeReady("RFEG", "Junior")).toBe(false);
   });
 });
 

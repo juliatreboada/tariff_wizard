@@ -1,4 +1,4 @@
-import type { LevelSystem } from "../enums";
+import type { Exercise, LevelSystem } from "../enums";
 import { FGX_ESCOLAR } from "./fgx-escolar";
 import { RFEG_BASE } from "./rfeg-base";
 import { RFEG_ESPANA } from "./rfeg-espana";
@@ -42,6 +42,18 @@ export function availableLevelSystems(): LevelSystem[] {
 
 export function isLevelAgeReady(levelSystem: LevelSystem, levelAge: string): boolean {
   return rulesetFor({ levelSystem, levelAge })?.readyLevelAges.includes(levelAge) ?? false;
+}
+
+/** Can a sheet of this level and age be this category? (A partly built age offers only some.) */
+export function isCategoryReady(levelSystem: LevelSystem, levelAge: string, category: string): boolean {
+  const only = rulesetFor({ levelSystem, levelAge })?.readyOnly;
+  return !only || only.categories.includes(category);
+}
+
+/** Can a sheet of this level and age be this routine? */
+export function isExerciseReady(levelSystem: LevelSystem, levelAge: string, exercise: Exercise): boolean {
+  const only = rulesetFor({ levelSystem, levelAge })?.readyOnly;
+  return !only || only.exercises.includes(exercise);
 }
 
 export { applyRulesetRoles, applyRulesetRolesForBlock } from "./roles";

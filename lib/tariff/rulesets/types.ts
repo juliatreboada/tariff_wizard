@@ -55,6 +55,11 @@ export type Ruleset = {
   /** Ages the wizard offers; the rest of the system's ages show as "coming soon". */
   readyLevelAges: readonly string[];
   /**
+   * While only part of a ready age is built: the categories and routines the
+   * wizard offers (the rest show as "coming soon"). Absent: all of them.
+   */
+  readyOnly?: { categories: readonly string[]; exercises: readonly Exercise[] };
+  /**
    * Routines a sheet can be (header EXERCISE). Absent: the level's default (a
    * combined routine where D = DV). A Balance sheet has only its balance block,
    * a Dynamic sheet only its dynamic block.

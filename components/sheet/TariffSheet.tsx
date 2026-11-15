@@ -14,6 +14,7 @@ import {
   formatSidebarBreakdownValue,
   sheetCoordinatesInRow,
   sheetImageCellRoleFooter,
+  sheetPyramidLabel,
   sheetSlotMetaDisplay,
   sheetValueInSubcell,
   slotElements,
@@ -69,7 +70,7 @@ function ImageCell({
 
   const roleFooter =
     slot.kind === "element"
-      ? sheetImageCellRoleFooter(slot.role, optionalLabel)
+      ? [sheetPyramidLabel(slot), sheetImageCellRoleFooter(slot.role, optionalLabel)].filter(Boolean).join(" · ")
       : "";
 
   // Individual sets and pyramids with an add-on stack their pictures in one cell.
@@ -332,7 +333,7 @@ function ElementBlockRows({
         </th>
         {columns.map((slot, col) => (
           <td key={col} className="official-element-col official-sh-cell">
-            {sheetCoordinatesInRow(slot, "sh")}
+            {sheetCoordinatesInRow(slot, "sh", { baseInSh: isLastBlock })}
           </td>
         ))}
       </tr>
@@ -363,8 +364,10 @@ function ElementBlockRows({
             </td>
           </>
         ) : (
-          columns.map((_, col) => (
-            <td key={col} className="official-element-col official-base-row" />
+          columns.map((slot, col) => (
+            <td key={col} className="official-element-col official-base-row">
+              {sheetCoordinatesInRow(slot, "base")}
+            </td>
           ))
         )}
       </tr>

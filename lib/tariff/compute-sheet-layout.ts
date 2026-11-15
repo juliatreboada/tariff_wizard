@@ -6,7 +6,7 @@ import {
 } from "./official-sheet-layout";
 import { groupRoutineForDisplay, sortIndividualGroupItems } from "./routine-groups";
 import type { OfficialSheetBlockId } from "./official-sheet-layout";
-import type { RoutineElementRole, RoutineItem } from "./routine-types";
+import type { RoutineElementRole, RoutineItem, TodWgPick } from "./routine-types";
 import type { PlacedElement } from "./sheet-types";
 
 export type SheetColumnSlot =
@@ -17,6 +17,8 @@ export type SheetColumnSlot =
       element: PlacedElement;
       /** Performed with `element` in the same cell (Cuartetos ROW III). */
       addOn?: PlacedElement;
+      /** TOD WG pyramid on this base: the coach's choices. */
+      todWg?: TodWgPick;
       elementNumber: number;
       block: OfficialSheetBlockId;
       role?: RoutineElementRole;
@@ -78,6 +80,7 @@ function placeRoutineInColumns(routine: RoutineItem[]): SheetColumnSlot[] {
         routineItemId: row.item.id,
         element: row.item.element,
         ...(row.item.addOn ? { addOn: row.item.addOn } : {}),
+        ...(row.item.todWg ? { todWg: row.item.todWg } : {}),
         elementNumber,
         block: row.item.block,
         role: row.item.role,

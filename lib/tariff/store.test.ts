@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
+import { getCatalogEntries } from "./catalog/load-catalog";
 import { emptyCompetitionStep } from "./schema";
 import { useWizardStore } from "./store";
 import { entry, header, item, withoutCatalog } from "./test-fixtures";
@@ -256,5 +257,40 @@ describe("persisted data", () => {
     });
     store().loadSavedSheet("old");
     expect(store().routine[0].element.catalog).toBe("FGX");
+  });
+});
+
+describe("TOD WG pyramids", () => {
+  const todWgEntry = (id: string) => {
+    const found = getCatalogEntries("FIG").find((e) => e.id === id);
+    if (!found) throw new Error(`no entry ${id}`);
+    return found;
+  };
+  const seniorTrios = () => header({ levelSystem: "FIG", levelAge: "Senior", category: "Tríos", exercise: "Balance" });
+  const topC = { tops: [{ slot: "top" as const, table: 2, support: "Dos manos", position: "C" }] };
+
+  it("saves the coach's choices on the pyramid and counts its whole value", () => {
+    startSheet(seniorTrios());
+    expect(store().addRoutineElement(todWgEntry("fig-todwg-c1-58-a13"), { block: "balance", todWg: topC })).toBe(true);
+    expect(store().routine[0].todWg).toEqual(topC);
+    expect(store().valueBreakdown.balance).toBe(4 + 7);
+  });
+
+  it("changes the choices when the pyramid is edited", () => {
+    startSheet(seniorTrios());
+    store().addRoutineElement(todWgEntry("fig-todwg-c1-58-a13"), { block: "balance", todWg: topC });
+    const id = store().routine[0].id;
+    const withMotion = { ...topC, motion: "C->D" };
+    expect(store().replaceRoutineElement(id, todWgEntry("fig-todwg-c1-58-a13"), { todWg: withMotion })).toBe(true);
+    expect(store().routine[0].todWg).toEqual(withMotion);
+    expect(store().valueBreakdown.balance).toBe(4 + 7 + 4);
+  });
+
+  it("drops the choices when the element is replaced by a plain one", () => {
+    startSheet(seniorTrios());
+    store().addRoutineElement(todWgEntry("fig-todwg-c1-58-a13"), { block: "balance", todWg: topC });
+    const id = store().routine[0].id;
+    store().replaceRoutineElement(id, todWgEntry("fig-todwg-c1-58-a12"));
+    expect(store().routine[0].todWg).toBeUndefined();
   });
 });
