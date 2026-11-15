@@ -16,7 +16,7 @@ import {
   type TodWgBase,
 } from "@/lib/tariff/tod-wg";
 import { pyramidOf } from "@/lib/tariff/tod-wg/pyramid";
-import { formatSheetValue } from "@/lib/tariff/value-breakdown";
+import { formatTodWgValue as formatSheetValue } from "@/lib/tariff/value-breakdown";
 import { PickerStep } from "./PickerStep";
 
 type Props = {
@@ -30,6 +30,8 @@ type Props = {
   duplicateError: boolean;
   /** The pyramid's static hold right before this one in the routine, if any: this one can continue it. */
   previous?: { item: RoutineItem; entry: CatalogEntry };
+  /** The routine before this hold (a transition can't go back to a base in it). */
+  routineBefore?: RoutineItem[];
 };
 
 type Tile = { entry: CatalogEntry; base: TodWgBase };
@@ -49,7 +51,7 @@ const tileClass = (disabled = false) =>
  * new position's picture), a valued position held during the transition, or
  * one of no value → the next static hold (3").
  */
-export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateError, previous }: Props) {
+export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateError, previous, routineBefore = [] }: Props) {
   const t = getMessages();
   const tw = t.sheet.picker.todWg;
   const tiles = useMemo(
@@ -165,6 +167,7 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
     const rows = [...new Set(inCategory.map(rowKey))];
     const repeated = (row: string) => rows.filter((r) => r.endsWith(`|${row}`)).length > 1;
     const sameAsBefore = (x: Tile) => before != null && x.base.id === before.base.id && x.base.category === before.base.category;
+    const usedBases = new Set(routineBefore.map((i) => baseForCatalogId(i.element.catalogId)).filter(Boolean));
     const body = (
       <>
         <div role="tablist" aria-label={tw.chooseBase} className="flex flex-wrap gap-1.5">
@@ -193,8 +196,14 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
               </h3>
               <ul className="grid gap-1.5" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(6.5rem, 1fr))" }}>
                 {inRow.map((x) => {
-                  // Continuing with a transition: the base changes. Otherwise the usual checks.
-                  const problem = continuing ? (sameAsBefore(x) ? tw.sameBase : null) : problemFor(x.entry);
+                  // A transition goes to another base, not yet in the routine.
+                  const problem = continuing
+                    ? sameAsBefore(x)
+                      ? tw.sameBase
+                      : usedBases.has(x.base)
+                        ? tw.usedBase
+                        : problemFor(x.entry)
+                    : problemFor(x.entry);
                   return (
                     <li key={x.entry.id}>
                       <button
@@ -402,7 +411,7 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
     ...(legs ? { legsTogether: true } : {}),
   };
   const preview: RoutineItem = { id: "todwg-preview", block: "balance", linkedToPrevious: false, element: catalogEntryToPlaced(entry), todWg: pick };
-  const result = continuing ? pyramidOf(preview, [previous.item, preview]) : pyramidOf(preview);
+  const result = continuing ? pyramidOf(preview, [...routineBefore, preview]) : pyramidOf(preview);
   const hasTop = base.topIncluded || tops.some((x) => x.slot === "top");
   return (
     <PickerStep title={tw.finish} onBack={backOneTop}>

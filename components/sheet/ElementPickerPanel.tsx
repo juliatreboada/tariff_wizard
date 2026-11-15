@@ -877,6 +877,9 @@ export function ElementPickerPanel({
                 onSave={saveTodWg}
                 duplicateError={duplicateError}
                 previous={previousTodWg}
+                routineBefore={
+                  editingItem ? routine.slice(0, routine.findIndex((i) => i.id === editingItem.id)) : routine
+                }
               />
             ) :
             optionGroup && !previewEntry ? (

@@ -133,7 +133,8 @@ function openRuleset(
     // Up to 3 per gymnast (CoP 17.9), not required.
     individuals: { sets: 3, available: true, source: { catalogId: "FIG", levelSystem: "FIG" } },
     penalties: { missingElement: 1, missingIndividuals: 0 },
-    display: { hideIndividualValues: false },
+    // TOD WG: pyramid values are whole points; the totals show 2 decimals (coach).
+    display: { hideIndividualValues: false, totalsDecimals: 2 },
   };
 }
 

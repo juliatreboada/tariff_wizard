@@ -225,3 +225,14 @@ describe("chains of three static holds", () => {
     expect(r.cell.base).toBeNull(); // same base as hold 2: counted once
   });
 });
+
+describe("a transition can't go back to a base already used", () => {
+  it("says so, and doesn't count the transition", () => {
+    const hold1 = pyramid("58 A13", { tops: [tab2("C")] }, "h1");
+    const hold2 = pyramid("58 B1", { tops: [tab2("D")], from: { transition: true, moves: [{ slot: "top", how: "no-value" }] } }, "h2");
+    const hold3 = pyramid("58 A13", { tops: [tab2("C")], from: { transition: true, moves: [{ slot: "top", how: "no-value" }] } }, "h3");
+    const r = pyramidOf(hold3, [hold1, hold2, hold3])!;
+    expect(r.problems).toContain("Esa base ya está en la rutina: la transición tiene que ir a otra.");
+    expect(r.link?.transition).toBeUndefined();
+  });
+});

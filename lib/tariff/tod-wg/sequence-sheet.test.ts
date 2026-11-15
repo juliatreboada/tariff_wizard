@@ -31,9 +31,9 @@ describe("a motion on the sheet: three cells", () => {
 
   it("values a 3\" first hold, the motion in B, then the new top without repeating the base", () => {
     const [hold1, link, hold2] = columns([first(), motionTo("D")]);
-    expect(values(hold1)).toEqual(["7.0", "", "4.0", ""]);
-    expect(values(link)).toEqual(["", "4.0", "", ""]);
-    expect(values(hold2)).toEqual(["5.0", "", "", ""]);
+    expect(values(hold1)).toEqual(["7", "", "4", ""]);
+    expect(values(link)).toEqual(["", "4", "", ""]);
+    expect(values(hold2)).toEqual(["5", "", "", ""]);
     expect(sheetCoordinatesInRow(link, "top")).toBe("54/Tab2 - C->D");
     expect(sheetCoordinatesInRow(hold2, "base")).toBe("58 A13");
   });
@@ -42,7 +42,7 @@ describe("a motion on the sheet: three cells", () => {
     const [hold1, , hold2] = columns([first(1), motionTo("D")]);
     expect(sheetSlotMetaDisplay(hold1)).toBe('1"');
     expect(values(hold1)).toEqual(["", "", "", ""]);
-    expect(values(hold2)).toEqual(["5.0", "", "4.0", ""]);
+    expect(values(hold2)).toEqual(["5", "", "4", ""]);
     expect(sheetSlotMetaDisplay(hold2)).toBe('3"');
   });
 
@@ -55,20 +55,21 @@ describe("a motion on the sheet: three cells", () => {
 describe("a transition on the sheet", () => {
   it("puts the transition in C with 52, and a held top in A with its position", () => {
     const [, link, hold2] = columns([first(), transitionTo("held")]);
-    expect(values(link)).toEqual(["7.0", "", "1.0", ""]);
+    expect(values(link)).toEqual(["7", "", "1", ""]);
     expect(sheetCoordinatesInRow(link, "sh")).toBe("54/Tab2 - C");
     expect(sheetCoordinatesInRow(link, "base")).toBe("52");
-    expect(values(hold2)).toEqual(["5.0", "", "3.0", ""]);
+    expect(values(hold2)).toEqual(["5", "", "3", ""]);
   });
 
-  it("writes 52 in SH in the last block, where BASE is the footer", () => {
+  it("writes 52 in BASE, never in SH", () => {
     const [, link] = columns([first(), transitionTo("no-value")]);
-    expect(sheetCoordinatesInRow(link, "sh", { baseInSh: true })).toBe("52");
+    expect(sheetCoordinatesInRow(link, "base")).toBe("52");
+    expect(sheetCoordinatesInRow(link, "sh")).toBe("");
   });
 
   it("puts the top's motion during the transition in B", () => {
     const [, link] = columns([first(), transitionTo("motion")]);
-    expect(values(link)).toEqual(["", "4.0", "1.0", ""]);
+    expect(values(link)).toEqual(["", "4", "1", ""]);
   });
 });
 

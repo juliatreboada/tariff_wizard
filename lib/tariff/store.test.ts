@@ -312,3 +312,43 @@ describe("TOD WG continuations", () => {
     expect(store().valueBreakdown.balance).toBe(4 + 7 + 4 + 5);
   });
 });
+
+describe("TOD WG transitions in the store", () => {
+  it("refuses a transition back to a base already in the routine", () => {
+    startSheet(header({ levelSystem: "FIG", levelAge: "Senior", category: "Tríos", exercise: "Balance" }));
+    const fig = (id: string) => getCatalogEntries("FIG").find((e) => e.id === id)!;
+    const top = (position: string) => [{ slot: "top" as const, table: 2, support: "Dos manos", position }];
+    const via = (how: "no-value") => ({ transition: true, moves: [{ slot: "top" as const, how }] });
+    store().addRoutineElement(fig("fig-todwg-c1-58-a13"), { block: "balance", todWg: { tops: top("C") } });
+    expect(store().addRoutineElement(fig("fig-todwg-c1-58-b1"), { block: "balance", todWg: { tops: top("D"), from: via("no-value") } })).toBe(true);
+    expect(store().addRoutineElement(fig("fig-todwg-c1-58-a13"), { block: "balance", todWg: { tops: top("C"), from: via("no-value") } })).toBe(false);
+  });
+});
+
+describe("sheet number format", () => {
+  it("shows TOD WG totals with 2 decimals and other levels with 1", async () => {
+    const { rulesetFor } = await import("./rulesets");
+    expect(rulesetFor({ levelSystem: "FIG", levelAge: "Senior" })?.display.totalsDecimals).toBe(2);
+    expect(rulesetFor({ levelSystem: "Escolar", levelAge: "Alevín" })?.display.totalsDecimals ?? 1).toBe(1);
+  });
+});
+
+describe("TOD WG continuation without transition", () => {
+  it("only keeps the base of the hold right before", () => {
+    startSheet(header({ levelSystem: "FIG", levelAge: "Senior", category: "Tríos", exercise: "Balance" }));
+    const fig = (id: string) => getCatalogEntries("FIG").find((e) => e.id === id)!;
+    const top = (position: string) => [{ slot: "top" as const, table: 2, support: "Dos manos", position }];
+    store().addRoutineElement(fig("fig-todwg-c1-58-a13"), { block: "balance", todWg: { tops: top("C") } });
+    store().addRoutineElement(fig("fig-todwg-c1-58-b1"), {
+      block: "balance",
+      todWg: { tops: top("D"), from: { transition: true, moves: [{ slot: "top", how: "no-value" }] } },
+    });
+    // "No transition" but back to 58 A13: not the hold before, so refused.
+    expect(
+      store().addRoutineElement(fig("fig-todwg-c1-58-a13"), {
+        block: "balance",
+        todWg: { tops: top("C"), from: { transition: false, moves: [{ slot: "top", how: "motion" }] } },
+      }),
+    ).toBe(false);
+  });
+});

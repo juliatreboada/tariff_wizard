@@ -176,6 +176,7 @@ function TariffSidebar({
 }) {
   const t = getMessages();
   const dv = valueBreakdown.total;
+  const totalsDecimals = rulesetFor(header)?.display.totalsDecimals ?? 1;
   const gymnastRows = gymnastSidebarRows(header, t.sheetLabels, {
     numberedBases: false,
   });
@@ -250,11 +251,11 @@ function TariffSidebar({
         <div className="official-sidebar-box-title">DIFFICULTY</div>
         <div className="official-sidebar-split-row">
           <span>D-SCORE</span>
-          <span className="tabular-nums">{formatSheetValue(dScore)}</span>
+          <span className="tabular-nums">{formatSheetValue(dScore, totalsDecimals)}</span>
         </div>
         <div className="official-sidebar-split-row">
           <span>DV</span>
-          <span className="tabular-nums">{formatSheetValue(dv)}</span>
+          <span className="tabular-nums">{formatSheetValue(dv, totalsDecimals)}</span>
         </div>
       </div>
 
@@ -263,19 +264,19 @@ function TariffSidebar({
         <div className="official-sidebar-split-row">
           <span>BALANCE</span>
           <span className="tabular-nums">
-            {formatSidebarBreakdownValue("balance", valueBreakdown, hideIndividualValues)}
+            {formatSidebarBreakdownValue("balance", valueBreakdown, hideIndividualValues, totalsDecimals)}
           </span>
         </div>
         <div className="official-sidebar-split-row">
           <span>DYNAMIC</span>
           <span className="tabular-nums">
-            {formatSidebarBreakdownValue("dynamic", valueBreakdown, hideIndividualValues)}
+            {formatSidebarBreakdownValue("dynamic", valueBreakdown, hideIndividualValues, totalsDecimals)}
           </span>
         </div>
         <div className="official-sidebar-split-row">
           <span>INDIVIDUAL</span>
           <span className="tabular-nums">
-            {formatSidebarBreakdownValue("individual", valueBreakdown, hideIndividualValues)}
+            {formatSidebarBreakdownValue("individual", valueBreakdown, hideIndividualValues, totalsDecimals)}
           </span>
         </div>
       </div>
@@ -342,7 +343,7 @@ function ElementBlockRows({
         </th>
         {columns.map((slot, col) => (
           <td key={col} className="official-element-col official-sh-cell">
-            {sheetCoordinatesInRow(slot, "sh", { baseInSh: isLastBlock })}
+            {sheetCoordinatesInRow(slot, "sh")}
           </td>
         ))}
       </tr>
@@ -356,30 +357,31 @@ function ElementBlockRows({
           </td>
         ))}
       </tr>
-      <tr className="official-block-last-row">
+      {/* BASE always holds the bases' codes; the last block adds the TF / SR / SIZE footer below. */}
+      <tr className={isLastBlock ? undefined : "official-block-last-row"}>
         <th className="official-row-label" scope="row">
           {OFFICIAL_ROW_LABELS.base}
         </th>
-        {isLastBlock ? (
-          <>
-            <td colSpan={spanA} className="official-footer-label">
-              {OFFICIAL_COMBINED_FOOTER[0]}
-            </td>
-            <td colSpan={spanB} className="official-footer-label">
-              {OFFICIAL_COMBINED_FOOTER[1]}
-            </td>
-            <td colSpan={spanC} className="official-footer-label">
-              {OFFICIAL_COMBINED_FOOTER[2]}
-            </td>
-          </>
-        ) : (
-          columns.map((slot, col) => (
-            <td key={col} className="official-element-col official-base-row">
-              {sheetCoordinatesInRow(slot, "base")}
-            </td>
-          ))
-        )}
+        {columns.map((slot, col) => (
+          <td key={col} className="official-element-col official-base-row">
+            {sheetCoordinatesInRow(slot, "base")}
+          </td>
+        ))}
       </tr>
+      {isLastBlock ? (
+        <tr className="official-block-last-row">
+          <th className="official-row-label" scope="row" />
+          <td colSpan={spanA} className="official-footer-label">
+            {OFFICIAL_COMBINED_FOOTER[0]}
+          </td>
+          <td colSpan={spanB} className="official-footer-label">
+            {OFFICIAL_COMBINED_FOOTER[1]}
+          </td>
+          <td colSpan={spanC} className="official-footer-label">
+            {OFFICIAL_COMBINED_FOOTER[2]}
+          </td>
+        </tr>
+      ) : null}
     </>
   );
 }

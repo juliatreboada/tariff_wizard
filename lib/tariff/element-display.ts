@@ -12,7 +12,7 @@ import type { PlacedElement } from "./sheet-types";
 import type { ValueBreakdown } from "./types";
 import { TRANSITIONS_PAGE } from "./tod-wg";
 import { pyramidOf, type PyramidLink } from "./tod-wg/pyramid";
-import { formatSheetValue } from "./value-breakdown";
+import { formatSheetValue, formatTodWgValue } from "./value-breakdown";
 
 export const SHEET_NO_VALUE = "-";
 
@@ -62,7 +62,7 @@ export function sheetPyramidLabel(slot: SheetColumnSlot): string {
   return pyramid ? `CAT ${pyramid.base.category} GR ${pyramid.group}` : "";
 }
 
-const valueOrBlank = (v: number | null | undefined) => (v == null ? "" : formatSheetValue(v));
+const valueOrBlank = (v: number | null | undefined) => (v == null ? "" : formatTodWgValue(v));
 
 /** A static hold's VALUE subcells: A the tops, C the base, D legs together (a 1" hold shows none). */
 function pyramidValueInSubcell(pyramid: NonNullable<ReturnType<typeof slotPyramid>>, subcellIndex: number): string {
@@ -189,31 +189,26 @@ export function sheetValueInSubcell(
 
 /**
  * Row 4 (SH): balance + all individual coordinates; row 5 (TOP): dynamic only.
- * A TOD WG pyramid: SH the tops' positions, TOP the motion, BASE the base (in
- * the last block, where BASE holds the footer, the base goes in SH: `baseInSh`).
+ * A TOD WG static hold: SH the tops' positions, BASE the base.
  */
 export function sheetCoordinatesInRow(
   slot: SheetColumnSlot,
   row: OfficialIndividualCoordinateRow,
-  options: { baseInSh?: boolean } = {},
 ): string {
   if (slot.kind === "empty") return "";
   // The link: held positions in SH, motions in TOP, a transition by the TOD page
-  // of the transitions table in BASE (in the last block, where BASE is the footer, in SH).
+  // of the transitions table in BASE.
   if (slot.kind === "link") {
     const transition = slot.link.transition ? String(TRANSITIONS_PAGE) : "";
-    if (row === "sh") return [...slot.link.held.map((h) => h.id), ...(options.baseInSh && transition ? [transition] : [])].join(" / ");
+    if (row === "sh") return slot.link.held.map((h) => h.id).join(" / ");
     if (row === "top") return slot.link.motions.map((m) => m.id ?? "—").join(" / ");
     return transition;
   }
 
   const pyramid = slotPyramid(slot);
   if (pyramid) {
-    if (row === "sh") {
-      const codes = pyramid.tops.map((t) => t.position.id);
-      if (options.baseInSh) codes.push(slot.kind === "element" ? slot.element.coordinates : "");
-      return codes.join(" / ");
-    }
+    // SH: only the tops (top, and the middle acting as a top); the base always in BASE.
+    if (row === "sh") return pyramid.tops.map((t) => t.position.id).join(" / ");
     if (row === "top") return "";
     return slot.kind === "element" ? slot.element.coordinates : "";
   }
@@ -240,7 +235,8 @@ export function formatSidebarBreakdownValue(
   key: keyof Pick<ValueBreakdown, "balance" | "dynamic" | "individual">,
   breakdown: ValueBreakdown,
   hideIndividualValues: boolean,
+  decimals = 1,
 ): string {
   if (hideIndividualValues && key === "individual") return SHEET_NO_VALUE;
-  return formatSheetValue(breakdown[key]);
+  return formatSheetValue(breakdown[key], decimals);
 }

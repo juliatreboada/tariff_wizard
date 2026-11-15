@@ -19,7 +19,7 @@ import { evaluateRules, rulesetFor } from "@/lib/tariff/rulesets";
 import type { StoredHeader } from "@/lib/tariff/types";
 import type { RoutineItem } from "@/lib/tariff/routine-types";
 import { useWizardStore } from "@/lib/tariff/store";
-import { formatSheetValue } from "@/lib/tariff/value-breakdown";
+import { formatSheetValue, formatTodWgValue } from "@/lib/tariff/value-breakdown";
 import { itemValue } from "@/lib/tariff/item-value";
 import { pyramidOf } from "@/lib/tariff/tod-wg/pyramid";
 
@@ -284,7 +284,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                       {pyramidOf(row.item, routine)?.tops.map(({ position }) => ` + ${position.id}`).join("")}
                       {pyramidOf(row.item, routine)?.link ? ` · ${t.routine.todWgContinues}` : ""}
                       <span className="ml-1.5 rounded bg-zinc-100 px-1 font-medium">
-                        {formatSheetValue(itemValue(row.item, routine))}
+                        {pyramidOf(row.item) ? formatTodWgValue(itemValue(row.item, routine)) : formatSheetValue(itemValue(row.item, routine))}
                       </span>
                     </p>
                     {pyramidOf(row.item, routine)?.problems.map((problem) => (

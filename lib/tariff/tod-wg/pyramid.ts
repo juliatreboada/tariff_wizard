@@ -111,8 +111,13 @@ export function pyramidOf(item: RoutineItem, routine?: readonly RoutineItem[]): 
     const { from, before: prev } = continuing;
     const sameBase = prev.base.id === base.id && prev.base.category === base.category;
     link = { held: [], motions: [], value: 0 };
+    // A transition goes to a base not yet in the routine.
+    const usedBefore = routine!
+      .slice(0, index)
+      .some((i) => baseForCatalogId(i.element.catalogId) === base);
     if (from.transition) {
       if (sameBase) problems.push("Con transición la base cambia: elige la nueva base.");
+      else if (usedBefore) problems.push("Esa base ya está en la rutina: la transición tiene que ir a otra.");
       else link.transition = { from: prev.base, value: transitionValue(prev.base.value, base.value) };
     } else if (!sameBase) {
       problems.push("Sin transición la base es la misma que antes.");

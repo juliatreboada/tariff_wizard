@@ -104,7 +104,7 @@ describe("TOD WG pyramid cell", () => {
   });
 
   it("puts the top in A, the base in C and legs together in D (motions go in the cell after)", () => {
-    expect([0, 1, 2, 3].map((i) => sheetValueInSubcell(slot, i, false))).toEqual(["7.0", "", "4.0", "1.0"]);
+    expect([0, 1, 2, 3].map((i) => sheetValueInSubcell(slot, i, false))).toEqual(["7", "", "4", "1"]);
   });
 
   it("writes the top's position in SH and the base in BASE", () => {
@@ -113,8 +113,8 @@ describe("TOD WG pyramid cell", () => {
     expect(sheetCoordinatesInRow(slot, "base")).toBe("58 A13");
   });
 
-  it("adds the base to SH where the BASE row holds the footer (last block)", () => {
-    expect(sheetCoordinatesInRow(slot, "sh", { baseInSh: true })).toBe("54/Tab2 - C / 58 A13");
+  it("keeps SH for the tops only: the base goes in BASE in every block", () => {
+    expect(sheetCoordinatesInRow(slot, "sh")).toBe("54/Tab2 - C");
   });
 
   it("stacks the top above the base and labels CAT and GR", () => {
@@ -127,7 +127,7 @@ describe("TOD WG pyramid cell", () => {
 
   it("leaves D empty without legs together", () => {
     const plain = pyramidSlot({ tops: [{ slot: "top", table: 2, support: "Dos manos", position: "C" }] });
-    expect([0, 1, 2, 3].map((i) => sheetValueInSubcell(plain, i, false))).toEqual(["7.0", "", "4.0", ""]);
+    expect([0, 1, 2, 3].map((i) => sheetValueInSubcell(plain, i, false))).toEqual(["7", "", "4", ""]);
   });
 });
 
@@ -146,6 +146,6 @@ describe("TOD WG pyramid cell with a two-drawing top", () => {
     const pics = slotElements(slot);
     expect(pics).toHaveLength(3);
     expect(pics.slice(0, 2).every((p) => p.coordinates === "54/Tab2 - B")).toBe(true);
-    expect(sheetValueInSubcell(slot, 0, false)).toBe("2.0");
+    expect(sheetValueInSubcell(slot, 0, false)).toBe("2");
   });
 });

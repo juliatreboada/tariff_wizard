@@ -147,6 +147,7 @@ export const es = {
         withTransitionHint: "Las bases cambian a otra base: transición + valor de la nueva base",
         chooseNewBase: "Elige la nueva base",
         sameBase: "Es la base de antes",
+        usedBase: "Ya está en la rutina",
         chooseBase: "Elige la base",
         category: (n: number) => `Categoría ${n}`,
         row: (row: string, code: string | null) => (code ? `Fila ${row} (${code}…)` : `Fila ${row}`),

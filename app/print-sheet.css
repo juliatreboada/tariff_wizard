@@ -19,6 +19,8 @@
   --ts-block-count: 3;
   --official-subrow-height: 3.5mm;
   --ts-rows-per-block: 6;
+  /* The last block's TF / SR / SIZE footer is a row of its own (below BASE). */
+  --ts-footer-rows: 1;
   --ts-fixed-per-block: calc(
     var(--ts-rows-per-block) * var(--official-subrow-height)
   );
@@ -28,7 +30,8 @@
       (
           var(--ts-sheet-height) - var(--ts-pad-top) - var(--ts-pad-bottom) -
             var(--ts-banner-height) - 2mm - var(--ts-block-count) *
-            var(--ts-fixed-per-block) - (var(--ts-block-count) - 1) * 1px
+            var(--ts-fixed-per-block) - var(--ts-footer-rows) *
+            var(--official-subrow-height) - (var(--ts-block-count) - 1) * 1px
         ) / var(--ts-block-count)
     )
   );

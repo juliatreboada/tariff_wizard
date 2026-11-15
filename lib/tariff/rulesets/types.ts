@@ -136,6 +136,8 @@ export type Ruleset = {
   display: {
     /** Show "-" instead of individual element values on the sheet. */
     hideIndividualValues: boolean;
+    /** Decimals for DV, D-SCORE and the VALUE totals (default 1). */
+    totalsDecimals?: number;
   };
 };
 
