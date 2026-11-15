@@ -1914,10 +1914,10 @@
       "group": 1,
       "image": "tod-wg/bases/59-C2-E7.png",
       "supports": [
-        "Dos manos"
+        "Dos manos bajas"
       ],
       "supportsMiddle": [
-        "Una mano baja"
+        "Pies"
       ]
     },
     {
@@ -1931,7 +1931,7 @@
       "group": 1,
       "image": "tod-wg/bases/59-C2-E8.png",
       "supports": [
-        "Dos manos"
+        "Dos manos bajas"
       ],
       "supportsMiddle": [
         "Dos manos"
@@ -1967,7 +1967,9 @@
       "supports": [
         "Hombros"
       ],
-      "supportsMiddle": []
+      "supportsMiddle": [
+        "Pies"
+      ]
     },
     {
       "id": "59 E11",
@@ -2000,7 +2002,7 @@
         "Dos manos bajas"
       ],
       "supportsMiddle": [
-        "Una mano baja"
+        "Pies"
       ]
     },
     {
@@ -2019,7 +2021,7 @@
         "Hombros"
       ],
       "supportsMiddle": [
-        "Dos manos"
+        "Dos manos bajas"
       ]
     },
     {
@@ -2038,7 +2040,7 @@
         "Hombros"
       ],
       "supportsMiddle": [
-        "Una mano baja"
+        "Pies"
       ]
     },
     {
@@ -2076,7 +2078,7 @@
         "Hombros"
       ],
       "supportsMiddle": [
-        "Una mano baja"
+        "Pies"
       ]
     },
     {
