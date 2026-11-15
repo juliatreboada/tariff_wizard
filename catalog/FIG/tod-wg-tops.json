@@ -1,5 +1,5 @@
 {
-  "description": "FIG ACRO Table of Difficulty 2025-2028, Women's Group balance: top positions on printed pages 54-57 (PDF 57-60). Tables 1, 2, 6, 7, 9, 10, 12, 13 are wheels (positions A-G, some tables lack one letter; static values from the grey circles); 3, 4, 5, 8, 11, 14, 15 are small tables (numbered boxes, 'Gr. 1-2-3-4' strip). `values` = top value for base groups 1-4 (null = not possible). Each table's `support` pictures, when there are two parts: role 'apoyo' = the middle's point of support, 'agil' = the top's position on it. Boxes with several drawings list them as `options` (one per drawing). Reviewed by the coach 2026-11-14. Wheel tables also list `motions` (the arrows): a motion X->Y (id \"54/Tab1 - A->D\") takes the white circles at the Y end of its arrow, `values` for base groups 1-4; motions to or from a position the table lacks are left out. Motions were read from the PDF's vector drawing (scripts/tod-wg-motions) and reviewed by the coach 2026-11-14.",
+  "description": "FIG ACRO Table of Difficulty 2025-2028, Women's Group balance: top positions on printed pages 54-57 (PDF 57-60). Tables 1, 2, 6, 7, 9, 10, 12, 13 are wheels (positions A-G, some tables lack one letter; static values from the grey circles); 3, 4, 5, 8, 11, 14, 15 are small tables (numbered boxes, 'Gr. 1-2-3-4' strip). `values` = top value for base groups 1-4 (null = not possible). Each table's `support` entries are its drawings, one per drawing, each with its point of support (`support`: the coach's name for it, e.g. \"Dos manos\", \"Dos pies\", \"Una mano baja\", \"Otros\"); almost every top position can be done on any of the table's supports with the same value, except where a position lists `notOnSupport`. The selector (still to build) will offer a support only if the chosen base allows it. Boxes with several drawings list them as `options` (one per drawing). Reviewed by the coach 2026-11-14. Wheel tables also list `motions` (the arrows): a motion X->Y (id \"54/Tab1 - A->D\") takes the white circles at the Y end of its arrow, `values` for base groups 1-4; motions to or from a position the table lacks are left out. Motions were read from the PDF's vector drawing (scripts/tod-wg-motions) and reviewed by the coach 2026-11-14.",
   "tables": {
     "1": {
       "page": 54,
@@ -7,11 +7,11 @@
       "support": [
         {
           "image": "tod-wg/tops/54-T1-support-1.png",
-          "role": "apoyo"
+          "support": "Dos manos bajas"
         },
         {
           "image": "tod-wg/tops/54-T1-support-2.png",
-          "role": "agil"
+          "support": "Otros"
         }
       ],
       "positions": {
@@ -27,6 +27,9 @@
             {
               "image": "tod-wg/tops/54-T1-A.png"
             }
+          ],
+          "notOnSupport": [
+            "Dos manos bajas"
           ]
         },
         "B": {
@@ -44,6 +47,9 @@
             {
               "image": "tod-wg/tops/54-T1-B-2.png"
             }
+          ],
+          "notOnSupport": [
+            "Dos manos bajas"
           ]
         },
         "C": {
@@ -504,11 +510,11 @@
       "support": [
         {
           "image": "tod-wg/tops/54-T2-support-1.png",
-          "role": "apoyo"
+          "support": "Dos manos"
         },
         {
           "image": "tod-wg/tops/54-T2-support-2.png",
-          "role": "agil"
+          "support": "Dos pies"
         }
       ],
       "positions": {
@@ -1002,11 +1008,11 @@
       "support": [
         {
           "image": "tod-wg/tops/54-T3-support-1.png",
-          "role": "apoyo"
+          "support": "Hombros"
         },
         {
           "image": "tod-wg/tops/54-T3-support-2.png",
-          "role": "agil"
+          "support": "Dos manos bajas"
         }
       ],
       "positions": {
@@ -1066,7 +1072,8 @@
       "layout": "grid",
       "support": [
         {
-          "image": "tod-wg/tops/54-T4-support.png"
+          "image": "tod-wg/tops/54-T4-support.png",
+          "support": "Dos manos"
         }
       ],
       "positions": {
@@ -1142,11 +1149,11 @@
       "support": [
         {
           "image": "tod-wg/tops/54-T5-support-1.png",
-          "role": "apoyo"
+          "support": "Dos pies"
         },
         {
           "image": "tod-wg/tops/54-T5-support-2.png",
-          "role": "agil"
+          "support": "Dos manos"
         }
       ],
       "positions": {
@@ -1356,11 +1363,11 @@
       "support": [
         {
           "image": "tod-wg/tops/55-T6-support-1.png",
-          "role": "apoyo"
+          "support": "Una mano baja"
         },
         {
           "image": "tod-wg/tops/55-T6-support-2.png",
-          "role": "agil"
+          "support": "Otros"
         }
       ],
       "positions": {
@@ -1728,11 +1735,11 @@
       "support": [
         {
           "image": "tod-wg/tops/55-T7-support-1.png",
-          "role": "apoyo"
+          "support": "Una mano baja"
         },
         {
           "image": "tod-wg/tops/55-T7-support-2.png",
-          "role": "agil"
+          "support": "Otros"
         }
       ],
       "positions": {
@@ -2103,11 +2110,11 @@
       "support": [
         {
           "image": "tod-wg/tops/55-T8-support-1.png",
-          "role": "apoyo"
+          "support": "Una mano baja"
         },
         {
           "image": "tod-wg/tops/55-T8-support-2.png",
-          "role": "apoyo"
+          "support": "Una mano baja"
         }
       ],
       "positions": {
@@ -2189,11 +2196,11 @@
       "support": [
         {
           "image": "tod-wg/tops/56-T9-support-1.png",
-          "role": "apoyo"
+          "support": "Manos superpuestas"
         },
         {
           "image": "tod-wg/tops/56-T9-support-2.png",
-          "role": "agil"
+          "support": "Pies"
         }
       ],
       "positions": {
@@ -2561,6 +2568,7 @@
       "support": [
         {
           "image": "tod-wg/tops/56-T10-support.png",
+          "support": "Manos superpuestas",
           "croppedFromPage": true
         }
       ],
@@ -2931,7 +2939,8 @@
       "layout": "grid",
       "support": [
         {
-          "image": "tod-wg/tops/56-T11-support.png"
+          "image": "tod-wg/tops/56-T11-support.png",
+          "support": "Manos superpuestas"
         }
       ],
       "positions": {
@@ -3013,11 +3022,11 @@
       "support": [
         {
           "image": "tod-wg/tops/57-T12-support-1.png",
-          "role": "apoyo"
+          "support": "Una mano"
         },
         {
           "image": "tod-wg/tops/57-T12-support-2.png",
-          "role": "agil"
+          "support": "Un pie"
         }
       ],
       "positions": {
@@ -3385,11 +3394,11 @@
       "support": [
         {
           "image": "tod-wg/tops/57-T13-support-1.png",
-          "role": "apoyo"
+          "support": "Una mano"
         },
         {
           "image": "tod-wg/tops/57-T13-support-2.png",
-          "role": "agil"
+          "support": "Un pie"
         }
       ],
       "positions": {
@@ -3760,6 +3769,7 @@
       "support": [
         {
           "image": "tod-wg/tops/57-T14-support.png",
+          "support": "Una mano",
           "croppedFromPage": true
         }
       ],
@@ -3842,6 +3852,7 @@
       "support": [
         {
           "image": "tod-wg/tops/57-T15-support.png",
+          "support": "Una mano",
           "croppedFromPage": true
         }
       ],

@@ -1,5 +1,5 @@
 {
-  "description": "FIG ACRO Table of Difficulty 2025-2028, Women's Group balance: base positions on printed pages 58-64 (PDF 61-67), categories 1-7, reviewed by the coach 2026-11-13. `id` is how the sheet writes it ('58 C4'); page 64 holds Category 6 and 7, so the category tells its two 'A1's apart (the sheet also prints 'CAT n GR g'). `group` is the base group from its value (1: 1-8, 2: 9-13, 3: 14-17, 4: 18+), used to read the top's value. Boxes with two drawings list each as an `option` (same value); '+2' variations are separate entries with their own picture (`variationOf`). `topIncluded`: the drawing already includes the top, so no top is added (coach notes for 61 A5-A8, 62 A7-A10, 62 D6-D10).",
+  "description": "FIG ACRO Table of Difficulty 2025-2028, Women's Group balance: base positions on printed pages 58-64 (PDF 61-67), categories 1-7, reviewed by the coach 2026-11-13. `id` is how the sheet writes it ('58 C4'); page 64 holds Category 6 and 7, so the category tells its two 'A1's apart (the sheet also prints 'CAT n GR g'). `group` is the base group from its value (1: 1-8, 2: 9-13, 3: 14-17, 4: 18+), used to read the top's value. Boxes with two drawings list each as an `option` (same value); '+2' variations are separate entries with their own picture (`variationOf`). `topIncluded`: the drawing already includes the top, so no top is added (coach notes for 60 E9-E11, 61 A5-A8, 62 A7-A10, 62 D6-D10 and both Category 7 bases). `supports`: the points of support the middle can give the top (coach, 2026-11-15); the selector (still to build) will offer only top tables with a matching support drawing (see tod-wg-tops.json). Category 2 pyramids also have `supportsMiddle`: the points of support for the middle acting as a top, chosen separately; both tops' values go in A.",
   "bases": [
     {
       "id": "58 A1",
@@ -10,7 +10,11 @@
       "box": "1",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A1.png"
+      "image": "tod-wg/bases/58-C1-A1.png",
+      "supports": [
+        "Dos pies",
+        "Otros"
+      ]
     },
     {
       "id": "58 A2",
@@ -21,7 +25,11 @@
       "box": "2",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A2.png"
+      "image": "tod-wg/bases/58-C1-A2.png",
+      "supports": [
+        "Dos pies",
+        "Otros"
+      ]
     },
     {
       "id": "58 A3",
@@ -32,7 +40,10 @@
       "box": "3",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A3.png"
+      "image": "tod-wg/bases/58-C1-A3.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 A4",
@@ -43,7 +54,10 @@
       "box": "4",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A4.png"
+      "image": "tod-wg/bases/58-C1-A4.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 A5",
@@ -54,7 +68,10 @@
       "box": "5",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A5.png"
+      "image": "tod-wg/bases/58-C1-A5.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 A6",
@@ -65,7 +82,10 @@
       "box": "6",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A6.png"
+      "image": "tod-wg/bases/58-C1-A6.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 A7",
@@ -76,7 +96,10 @@
       "box": "7",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A7.png"
+      "image": "tod-wg/bases/58-C1-A7.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 A8",
@@ -87,7 +110,10 @@
       "box": "8",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A8.png"
+      "image": "tod-wg/bases/58-C1-A8.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "58 A9",
@@ -98,7 +124,10 @@
       "box": "9",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A9.png"
+      "image": "tod-wg/bases/58-C1-A9.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 A10",
@@ -109,7 +138,10 @@
       "box": "10",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A10.png"
+      "image": "tod-wg/bases/58-C1-A10.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 A11",
@@ -120,7 +152,10 @@
       "box": "11",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A11.png"
+      "image": "tod-wg/bases/58-C1-A11.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 A12",
@@ -131,7 +166,10 @@
       "box": "12",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A12.png"
+      "image": "tod-wg/bases/58-C1-A12.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 A13",
@@ -142,7 +180,12 @@
       "box": "13",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-A13.png"
+      "image": "tod-wg/bases/58-C1-A13.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "58 B1",
@@ -153,7 +196,12 @@
       "box": "1",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B1.png"
+      "image": "tod-wg/bases/58-C1-B1.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "58 B2a",
@@ -165,7 +213,12 @@
       "option": "a",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B2a.png"
+      "image": "tod-wg/bases/58-C1-B2a.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "58 B2b",
@@ -177,7 +230,12 @@
       "option": "b",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B2b.png"
+      "image": "tod-wg/bases/58-C1-B2b.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "58 B3",
@@ -188,7 +246,10 @@
       "box": "3",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B3.png"
+      "image": "tod-wg/bases/58-C1-B3.png",
+      "supports": [
+        "Una mano"
+      ]
     },
     {
       "id": "58 B4",
@@ -199,7 +260,10 @@
       "box": "4",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B4.png"
+      "image": "tod-wg/bases/58-C1-B4.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 B5",
@@ -210,7 +274,11 @@
       "box": "5",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B5.png"
+      "image": "tod-wg/bases/58-C1-B5.png",
+      "supports": [
+        "Dos pies",
+        "Pies"
+      ]
     },
     {
       "id": "58 B6",
@@ -221,7 +289,10 @@
       "box": "6",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B6.png"
+      "image": "tod-wg/bases/58-C1-B6.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 B7",
@@ -232,7 +303,10 @@
       "box": "7",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B7.png"
+      "image": "tod-wg/bases/58-C1-B7.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 B8",
@@ -243,7 +317,10 @@
       "box": "8",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B8.png"
+      "image": "tod-wg/bases/58-C1-B8.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 B9",
@@ -254,7 +331,10 @@
       "box": "9",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B9.png"
+      "image": "tod-wg/bases/58-C1-B9.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 B10",
@@ -265,7 +345,10 @@
       "box": "10",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-B10.png"
+      "image": "tod-wg/bases/58-C1-B10.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 B11",
@@ -276,7 +359,10 @@
       "box": "11",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-B11.png"
+      "image": "tod-wg/bases/58-C1-B11.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 B12",
@@ -287,7 +373,10 @@
       "box": "12",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-B12.png"
+      "image": "tod-wg/bases/58-C1-B12.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "58 B13",
@@ -298,7 +387,10 @@
       "box": "13",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-B13.png"
+      "image": "tod-wg/bases/58-C1-B13.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 C1",
@@ -309,7 +401,10 @@
       "box": "1",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-C1.png"
+      "image": "tod-wg/bases/58-C1-C1.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 C2",
@@ -320,7 +415,10 @@
       "box": "2",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-C2.png"
+      "image": "tod-wg/bases/58-C1-C2.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 C3",
@@ -331,7 +429,10 @@
       "box": "3",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-C3.png"
+      "image": "tod-wg/bases/58-C1-C3.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 C4",
@@ -342,7 +443,10 @@
       "box": "4",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-C4.png"
+      "image": "tod-wg/bases/58-C1-C4.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 C5",
@@ -353,7 +457,10 @@
       "box": "5",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-C5.png"
+      "image": "tod-wg/bases/58-C1-C5.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 C6",
@@ -364,7 +471,10 @@
       "box": "6",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-C6.png"
+      "image": "tod-wg/bases/58-C1-C6.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 C7",
@@ -375,7 +485,10 @@
       "box": "7",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-C7.png"
+      "image": "tod-wg/bases/58-C1-C7.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 C8a",
@@ -387,7 +500,10 @@
       "option": "a",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-C8a.png"
+      "image": "tod-wg/bases/58-C1-C8a.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 C8b",
@@ -399,7 +515,10 @@
       "option": "b",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-C8b.png"
+      "image": "tod-wg/bases/58-C1-C8b.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 C9",
@@ -410,7 +529,10 @@
       "box": "9",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-C9.png"
+      "image": "tod-wg/bases/58-C1-C9.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 C10",
@@ -421,7 +543,10 @@
       "box": "10",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-C10.png"
+      "image": "tod-wg/bases/58-C1-C10.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 C11",
@@ -432,7 +557,10 @@
       "box": "11",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-C11.png"
+      "image": "tod-wg/bases/58-C1-C11.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 C12",
@@ -443,7 +571,10 @@
       "box": "12",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-C12.png"
+      "image": "tod-wg/bases/58-C1-C12.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 C13",
@@ -454,7 +585,10 @@
       "box": "13",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-C13.png"
+      "image": "tod-wg/bases/58-C1-C13.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 C14",
@@ -465,7 +599,10 @@
       "box": "14",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-C14.png"
+      "image": "tod-wg/bases/58-C1-C14.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D1",
@@ -476,7 +613,10 @@
       "box": "1",
       "value": 18,
       "group": 4,
-      "image": "tod-wg/bases/58-C1-D1.png"
+      "image": "tod-wg/bases/58-C1-D1.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D2",
@@ -487,7 +627,10 @@
       "box": "2",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-D2.png"
+      "image": "tod-wg/bases/58-C1-D2.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D3",
@@ -498,7 +641,10 @@
       "box": "3",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-D3.png"
+      "image": "tod-wg/bases/58-C1-D3.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D4",
@@ -509,7 +655,10 @@
       "box": "4",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-D4.png"
+      "image": "tod-wg/bases/58-C1-D4.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D5a",
@@ -521,7 +670,10 @@
       "option": "a",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-D5a.png"
+      "image": "tod-wg/bases/58-C1-D5a.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D5b",
@@ -533,7 +685,10 @@
       "option": "b",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-D5b.png"
+      "image": "tod-wg/bases/58-C1-D5b.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D6",
@@ -544,7 +699,10 @@
       "box": "6",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-D6.png"
+      "image": "tod-wg/bases/58-C1-D6.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D7",
@@ -555,7 +713,10 @@
       "box": "7",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-D7.png"
+      "image": "tod-wg/bases/58-C1-D7.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D8",
@@ -566,7 +727,10 @@
       "box": "8",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-D8.png"
+      "image": "tod-wg/bases/58-C1-D8.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D9",
@@ -577,7 +741,10 @@
       "box": "9",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-D9.png"
+      "image": "tod-wg/bases/58-C1-D9.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D10",
@@ -588,7 +755,10 @@
       "box": "10",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-D10.png"
+      "image": "tod-wg/bases/58-C1-D10.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D11",
@@ -599,7 +769,10 @@
       "box": "11",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-D11.png"
+      "image": "tod-wg/bases/58-C1-D11.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 D12",
@@ -610,7 +783,10 @@
       "box": "12",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-D12.png"
+      "image": "tod-wg/bases/58-C1-D12.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 D13",
@@ -621,7 +797,10 @@
       "box": "13",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-D13.png"
+      "image": "tod-wg/bases/58-C1-D13.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 E1",
@@ -632,7 +811,10 @@
       "box": "1",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-E1.png"
+      "image": "tod-wg/bases/58-C1-E1.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 E2",
@@ -643,7 +825,10 @@
       "box": "2",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-E2.png"
+      "image": "tod-wg/bases/58-C1-E2.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 E3",
@@ -654,7 +839,10 @@
       "box": "3",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-E3.png"
+      "image": "tod-wg/bases/58-C1-E3.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 E4",
@@ -665,7 +853,10 @@
       "box": "4",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-E4.png"
+      "image": "tod-wg/bases/58-C1-E4.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 E5",
@@ -676,7 +867,10 @@
       "box": "5",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-E5.png"
+      "image": "tod-wg/bases/58-C1-E5.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 E6",
@@ -687,7 +881,10 @@
       "box": "6",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-E6.png"
+      "image": "tod-wg/bases/58-C1-E6.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 E7",
@@ -698,7 +895,10 @@
       "box": "7",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-E7.png"
+      "image": "tod-wg/bases/58-C1-E7.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 E8",
@@ -709,7 +909,10 @@
       "box": "8",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-E8.png"
+      "image": "tod-wg/bases/58-C1-E8.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "58 E9",
@@ -720,7 +923,10 @@
       "box": "9",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-E9.png"
+      "image": "tod-wg/bases/58-C1-E9.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 E10",
@@ -731,7 +937,10 @@
       "box": "10",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-E10.png"
+      "image": "tod-wg/bases/58-C1-E10.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 E11",
@@ -742,7 +951,10 @@
       "box": "11",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/58-C1-E11.png"
+      "image": "tod-wg/bases/58-C1-E11.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "58 E12",
@@ -753,7 +965,10 @@
       "box": "12",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/58-C1-E12.png"
+      "image": "tod-wg/bases/58-C1-E12.png",
+      "supports": [
+        "Otros"
+      ]
     },
     {
       "id": "58 E13",
@@ -764,7 +979,10 @@
       "box": "13",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/58-C1-E13.png"
+      "image": "tod-wg/bases/58-C1-E13.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "59 A1",
@@ -775,7 +993,11 @@
       "box": "1",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A1.png"
+      "image": "tod-wg/bases/59-C1-A1.png",
+      "supports": [
+        "Dos manos",
+        "Hombros"
+      ]
     },
     {
       "id": "59 A2",
@@ -786,7 +1008,10 @@
       "box": "2",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A2.png"
+      "image": "tod-wg/bases/59-C1-A2.png",
+      "supports": [
+        "Una mano"
+      ]
     },
     {
       "id": "59 A3",
@@ -797,7 +1022,11 @@
       "box": "3",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A3.png"
+      "image": "tod-wg/bases/59-C1-A3.png",
+      "supports": [
+        "Dos manos",
+        "Hombros"
+      ]
     },
     {
       "id": "59 A4",
@@ -808,7 +1037,11 @@
       "box": "4",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A4.png"
+      "image": "tod-wg/bases/59-C1-A4.png",
+      "supports": [
+        "Dos manos",
+        "Hombros"
+      ]
     },
     {
       "id": "59 A5",
@@ -819,7 +1052,10 @@
       "box": "5",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A5.png"
+      "image": "tod-wg/bases/59-C1-A5.png",
+      "supports": [
+        "Una mano"
+      ]
     },
     {
       "id": "59 A6",
@@ -830,7 +1066,10 @@
       "box": "6",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A6.png"
+      "image": "tod-wg/bases/59-C1-A6.png",
+      "supports": [
+        "Una mano"
+      ]
     },
     {
       "id": "59 A7",
@@ -841,7 +1080,10 @@
       "box": "7",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A7.png"
+      "image": "tod-wg/bases/59-C1-A7.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "59 A8",
@@ -852,7 +1094,10 @@
       "box": "8",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A8.png"
+      "image": "tod-wg/bases/59-C1-A8.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "59 A9",
@@ -863,7 +1108,10 @@
       "box": "9",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A9.png"
+      "image": "tod-wg/bases/59-C1-A9.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "59 A10",
@@ -874,7 +1122,10 @@
       "box": "10",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A10.png"
+      "image": "tod-wg/bases/59-C1-A10.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "59 A11",
@@ -885,7 +1136,10 @@
       "box": "11",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A11.png"
+      "image": "tod-wg/bases/59-C1-A11.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 A12",
@@ -896,7 +1150,10 @@
       "box": "12",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A12.png"
+      "image": "tod-wg/bases/59-C1-A12.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 A13",
@@ -907,7 +1164,10 @@
       "box": "13",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-A13.png"
+      "image": "tod-wg/bases/59-C1-A13.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 B1",
@@ -918,7 +1178,10 @@
       "box": "1",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-B1.png"
+      "image": "tod-wg/bases/59-C1-B1.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 B2",
@@ -929,7 +1192,10 @@
       "box": "2",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-B2.png"
+      "image": "tod-wg/bases/59-C1-B2.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 B3",
@@ -940,7 +1206,10 @@
       "box": "3",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-B3.png"
+      "image": "tod-wg/bases/59-C1-B3.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 B4",
@@ -951,7 +1220,10 @@
       "box": "4",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-B4.png"
+      "image": "tod-wg/bases/59-C1-B4.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 B5",
@@ -962,7 +1234,10 @@
       "box": "5",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-B5.png"
+      "image": "tod-wg/bases/59-C1-B5.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 B6",
@@ -973,7 +1248,10 @@
       "box": "6",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/59-C1-B6.png"
+      "image": "tod-wg/bases/59-C1-B6.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 C1",
@@ -984,7 +1262,16 @@
       "box": "1",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C1.png"
+      "image": "tod-wg/bases/59-C2-C1.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas",
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 C2a",
@@ -996,7 +1283,15 @@
       "option": "a",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C2a.png"
+      "image": "tod-wg/bases/59-C2-C2a.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ],
+      "supportsMiddle": [
+        "Dos manos",
+        "Una mano"
+      ]
     },
     {
       "id": "59 C2b",
@@ -1008,7 +1303,17 @@
       "option": "b",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C2b.png"
+      "image": "tod-wg/bases/59-C2-C2b.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Dos manos",
+        "Una mano"
+      ]
     },
     {
       "id": "59 C3",
@@ -1019,7 +1324,14 @@
       "box": "3",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C3.png"
+      "image": "tod-wg/bases/59-C2-C3.png",
+      "supports": [
+        "Dos pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 C3 +2",
@@ -1032,7 +1344,14 @@
       "group": 1,
       "image": "tod-wg/bases/59-C2-C3-plus2.png",
       "variationOf": "59 C3",
-      "note": "+2 variation, separate picture"
+      "note": "+2 variation, separate picture",
+      "supports": [
+        "Pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 C4",
@@ -1043,7 +1362,14 @@
       "box": "4",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C4.png"
+      "image": "tod-wg/bases/59-C2-C4.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 C5",
@@ -1054,7 +1380,14 @@
       "box": "5",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C5.png"
+      "image": "tod-wg/bases/59-C2-C5.png",
+      "supports": [
+        "Dos pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 C5 +2",
@@ -1067,7 +1400,14 @@
       "group": 1,
       "image": "tod-wg/bases/59-C2-C5-plus2.png",
       "variationOf": "59 C5",
-      "note": "+2 variation, separate picture"
+      "note": "+2 variation, separate picture",
+      "supports": [
+        "Pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 C6",
@@ -1078,7 +1418,16 @@
       "box": "6",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C6.png"
+      "image": "tod-wg/bases/59-C2-C6.png",
+      "supports": [
+        "Dos pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "59 C6 +2",
@@ -1091,7 +1440,16 @@
       "group": 1,
       "image": "tod-wg/bases/59-C2-C6-plus2.png",
       "variationOf": "59 C6",
-      "note": "+2 variation, separate picture"
+      "note": "+2 variation, separate picture",
+      "supports": [
+        "Pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "59 C7",
@@ -1102,7 +1460,16 @@
       "box": "7",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C7.png"
+      "image": "tod-wg/bases/59-C2-C7.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "59 C8",
@@ -1113,7 +1480,15 @@
       "box": "8",
       "value": 1,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C8.png"
+      "image": "tod-wg/bases/59-C2-C8.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 C9",
@@ -1124,7 +1499,13 @@
       "box": "9",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C9.png"
+      "image": "tod-wg/bases/59-C2-C9.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 C10",
@@ -1135,7 +1516,13 @@
       "box": "10",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/59-C2-C10.png"
+      "image": "tod-wg/bases/59-C2-C10.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 C11",
@@ -1146,7 +1533,13 @@
       "box": "11",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/59-C2-C11.png"
+      "image": "tod-wg/bases/59-C2-C11.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 C12",
@@ -1157,7 +1550,13 @@
       "box": "12",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C12.png"
+      "image": "tod-wg/bases/59-C2-C12.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Una mano"
+      ]
     },
     {
       "id": "59 C13",
@@ -1168,7 +1567,13 @@
       "box": "13",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-C13.png"
+      "image": "tod-wg/bases/59-C2-C13.png",
+      "supports": [
+        "Una mano"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D1",
@@ -1179,7 +1584,13 @@
       "box": "1",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/59-C2-D1.png"
+      "image": "tod-wg/bases/59-C2-D1.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D2",
@@ -1190,7 +1601,13 @@
       "box": "2",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/59-C2-D2.png"
+      "image": "tod-wg/bases/59-C2-D2.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 D3",
@@ -1201,7 +1618,13 @@
       "box": "3",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-D3.png"
+      "image": "tod-wg/bases/59-C2-D3.png",
+      "supports": [
+        "Dos pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D4",
@@ -1212,7 +1635,13 @@
       "box": "4",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/59-C2-D4.png"
+      "image": "tod-wg/bases/59-C2-D4.png",
+      "supports": [
+        "Pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D5",
@@ -1223,7 +1652,13 @@
       "box": "5",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/59-C2-D5.png"
+      "image": "tod-wg/bases/59-C2-D5.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D6",
@@ -1234,7 +1669,13 @@
       "box": "6",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/59-C2-D6.png"
+      "image": "tod-wg/bases/59-C2-D6.png",
+      "supports": [
+        "Dos pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D7",
@@ -1245,7 +1686,13 @@
       "box": "7",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/59-C2-D7.png"
+      "image": "tod-wg/bases/59-C2-D7.png",
+      "supports": [
+        "Dos pies"
+      ],
+      "supportsMiddle": [
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 D8",
@@ -1256,7 +1703,13 @@
       "box": "8",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/59-C2-D8.png"
+      "image": "tod-wg/bases/59-C2-D8.png",
+      "supports": [
+        "Pies"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D9",
@@ -1267,7 +1720,13 @@
       "box": "9",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/59-C2-D9.png"
+      "image": "tod-wg/bases/59-C2-D9.png",
+      "supports": [
+        "Un pie"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D10",
@@ -1278,7 +1737,13 @@
       "box": "10",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-D10.png"
+      "image": "tod-wg/bases/59-C2-D10.png",
+      "supports": [
+        "Dos manos bajas"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D11",
@@ -1289,7 +1754,14 @@
       "box": "11",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-D11.png"
+      "image": "tod-wg/bases/59-C2-D11.png",
+      "supports": [
+        "Dos manos bajas"
+      ],
+      "supportsMiddle": [
+        "Una mano baja",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "59 D12",
@@ -1300,7 +1772,13 @@
       "box": "12",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-D12.png"
+      "image": "tod-wg/bases/59-C2-D12.png",
+      "supports": [
+        "Dos manos bajas"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 D13",
@@ -1311,7 +1789,13 @@
       "box": "13",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-D13.png"
+      "image": "tod-wg/bases/59-C2-D13.png",
+      "supports": [
+        "Una mano baja"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 E1",
@@ -1322,7 +1806,13 @@
       "box": "1",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E1.png"
+      "image": "tod-wg/bases/59-C2-E1.png",
+      "supports": [
+        "Una mano baja"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 E2",
@@ -1333,7 +1823,14 @@
       "box": "2",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E2.png"
+      "image": "tod-wg/bases/59-C2-E2.png",
+      "supports": [
+        "Dos manos",
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 E3",
@@ -1344,7 +1841,15 @@
       "box": "3",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E3.png"
+      "image": "tod-wg/bases/59-C2-E3.png",
+      "supports": [
+        "Dos manos",
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Una mano baja",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "59 E4",
@@ -1355,7 +1860,13 @@
       "box": "4",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E4.png"
+      "image": "tod-wg/bases/59-C2-E4.png",
+      "supports": [
+        "Una mano"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 E5",
@@ -1366,7 +1877,14 @@
       "box": "5",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E5.png"
+      "image": "tod-wg/bases/59-C2-E5.png",
+      "supports": [
+        "Dos manos",
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "59 E6",
@@ -1377,7 +1895,13 @@
       "box": "6",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E6.png"
+      "image": "tod-wg/bases/59-C2-E6.png",
+      "supports": [
+        "Una mano baja"
+      ],
+      "supportsMiddle": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 E7",
@@ -1388,7 +1912,13 @@
       "box": "7",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E7.png"
+      "image": "tod-wg/bases/59-C2-E7.png",
+      "supports": [
+        "Dos manos"
+      ],
+      "supportsMiddle": [
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 E8",
@@ -1399,7 +1929,13 @@
       "box": "8",
       "value": 2,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E8.png"
+      "image": "tod-wg/bases/59-C2-E8.png",
+      "supports": [
+        "Dos manos"
+      ],
+      "supportsMiddle": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 E9",
@@ -1410,7 +1946,13 @@
       "box": "9",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E9.png"
+      "image": "tod-wg/bases/59-C2-E9.png",
+      "supports": [
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 E10",
@@ -1421,7 +1963,11 @@
       "box": "10",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E10.png"
+      "image": "tod-wg/bases/59-C2-E10.png",
+      "supports": [
+        "Hombros"
+      ],
+      "supportsMiddle": []
     },
     {
       "id": "59 E11",
@@ -1432,7 +1978,13 @@
       "box": "11",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E11.png"
+      "image": "tod-wg/bases/59-C2-E11.png",
+      "supports": [
+        "Dos manos bajas"
+      ],
+      "supportsMiddle": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 E12",
@@ -1443,7 +1995,13 @@
       "box": "12",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E12.png"
+      "image": "tod-wg/bases/59-C2-E12.png",
+      "supports": [
+        "Dos manos bajas"
+      ],
+      "supportsMiddle": [
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 E13",
@@ -1454,7 +2012,15 @@
       "box": "13",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-E13.png"
+      "image": "tod-wg/bases/59-C2-E13.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas",
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 F1",
@@ -1465,7 +2031,15 @@
       "box": "1",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-F1.png"
+      "image": "tod-wg/bases/59-C2-F1.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas",
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Una mano baja"
+      ]
     },
     {
       "id": "59 F2",
@@ -1476,7 +2050,15 @@
       "box": "2",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-F2.png"
+      "image": "tod-wg/bases/59-C2-F2.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas",
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Dos manos"
+      ]
     },
     {
       "id": "59 F3",
@@ -1487,7 +2069,15 @@
       "box": "3",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/59-C2-F3.png"
+      "image": "tod-wg/bases/59-C2-F3.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas",
+        "Hombros"
+      ],
+      "supportsMiddle": [
+        "Una mano baja"
+      ]
     },
     {
       "id": "60 A1",
@@ -1498,7 +2088,10 @@
       "box": "1",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-A1.png"
+      "image": "tod-wg/bases/60-C3-A1.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 A2",
@@ -1509,7 +2102,10 @@
       "box": "2",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-A2.png"
+      "image": "tod-wg/bases/60-C3-A2.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 A3",
@@ -1520,7 +2116,10 @@
       "box": "3",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-A3.png"
+      "image": "tod-wg/bases/60-C3-A3.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 A4",
@@ -1531,7 +2130,10 @@
       "box": "4",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-A4.png"
+      "image": "tod-wg/bases/60-C3-A4.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 A5",
@@ -1542,7 +2144,10 @@
       "box": "5",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-A5.png"
+      "image": "tod-wg/bases/60-C3-A5.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 A6",
@@ -1553,7 +2158,10 @@
       "box": "6",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-A6.png"
+      "image": "tod-wg/bases/60-C3-A6.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 A7",
@@ -1564,7 +2172,10 @@
       "box": "7",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-A7.png"
+      "image": "tod-wg/bases/60-C3-A7.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 A8",
@@ -1575,7 +2186,10 @@
       "box": "8",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-A8.png"
+      "image": "tod-wg/bases/60-C3-A8.png",
+      "supports": [
+        "Una mano"
+      ]
     },
     {
       "id": "60 A9",
@@ -1586,7 +2200,10 @@
       "box": "9",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-A9.png"
+      "image": "tod-wg/bases/60-C3-A9.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 A10",
@@ -1597,7 +2214,10 @@
       "box": "10",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-A10.png"
+      "image": "tod-wg/bases/60-C3-A10.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 A11",
@@ -1608,7 +2228,10 @@
       "box": "11",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-A11.png"
+      "image": "tod-wg/bases/60-C3-A11.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 A12",
@@ -1619,7 +2242,10 @@
       "box": "12",
       "value": 18,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-A12.png"
+      "image": "tod-wg/bases/60-C3-A12.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 B1",
@@ -1630,7 +2256,10 @@
       "box": "1",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-B1.png"
+      "image": "tod-wg/bases/60-C3-B1.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 B2",
@@ -1641,7 +2270,10 @@
       "box": "2",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-B2.png"
+      "image": "tod-wg/bases/60-C3-B2.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "60 B3",
@@ -1652,7 +2284,10 @@
       "box": "3",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-B3.png"
+      "image": "tod-wg/bases/60-C3-B3.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "60 B4",
@@ -1663,7 +2298,10 @@
       "box": "4",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-B4.png"
+      "image": "tod-wg/bases/60-C3-B4.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "60 B5",
@@ -1674,7 +2312,10 @@
       "box": "5",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-B5.png"
+      "image": "tod-wg/bases/60-C3-B5.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "60 B6",
@@ -1685,7 +2326,10 @@
       "box": "6",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-B6.png"
+      "image": "tod-wg/bases/60-C3-B6.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "60 B7",
@@ -1696,7 +2340,11 @@
       "box": "7",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-B7.png"
+      "image": "tod-wg/bases/60-C3-B7.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "60 B8",
@@ -1707,7 +2355,11 @@
       "box": "8",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-B8.png"
+      "image": "tod-wg/bases/60-C3-B8.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "60 B9",
@@ -1718,7 +2370,11 @@
       "box": "9",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-B9.png"
+      "image": "tod-wg/bases/60-C3-B9.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano"
+      ]
     },
     {
       "id": "60 B10",
@@ -1729,7 +2385,12 @@
       "box": "10",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-B10.png"
+      "image": "tod-wg/bases/60-C3-B10.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "60 B11",
@@ -1740,7 +2401,12 @@
       "box": "11",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-B11.png"
+      "image": "tod-wg/bases/60-C3-B11.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "60 B12",
@@ -1751,7 +2417,11 @@
       "box": "12",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-B12.png"
+      "image": "tod-wg/bases/60-C3-B12.png",
+      "supports": [
+        "Dos manos",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "60 C1",
@@ -1762,7 +2432,10 @@
       "box": "1",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-C1.png"
+      "image": "tod-wg/bases/60-C3-C1.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 C2",
@@ -1773,7 +2446,10 @@
       "box": "2",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-C2.png"
+      "image": "tod-wg/bases/60-C3-C2.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 C3",
@@ -1784,7 +2460,10 @@
       "box": "3",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-C3.png"
+      "image": "tod-wg/bases/60-C3-C3.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 C4",
@@ -1795,7 +2474,10 @@
       "box": "4",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-C4.png"
+      "image": "tod-wg/bases/60-C3-C4.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 C5",
@@ -1806,7 +2488,10 @@
       "box": "5",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-C5.png"
+      "image": "tod-wg/bases/60-C3-C5.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 C6",
@@ -1817,7 +2502,10 @@
       "box": "6",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-C6.png"
+      "image": "tod-wg/bases/60-C3-C6.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 C7",
@@ -1828,7 +2516,10 @@
       "box": "7",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-C7.png"
+      "image": "tod-wg/bases/60-C3-C7.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 C8",
@@ -1839,7 +2530,10 @@
       "box": "8",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-C8.png"
+      "image": "tod-wg/bases/60-C3-C8.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 C9",
@@ -1850,7 +2544,10 @@
       "box": "9",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-C9.png"
+      "image": "tod-wg/bases/60-C3-C9.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 C10",
@@ -1861,7 +2558,10 @@
       "box": "10",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-C10.png"
+      "image": "tod-wg/bases/60-C3-C10.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 C11",
@@ -1872,7 +2572,10 @@
       "box": "11",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-C11.png"
+      "image": "tod-wg/bases/60-C3-C11.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 C12",
@@ -1883,7 +2586,10 @@
       "box": "12",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-C12.png"
+      "image": "tod-wg/bases/60-C3-C12.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D1",
@@ -1894,7 +2600,10 @@
       "box": "1",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-D1.png"
+      "image": "tod-wg/bases/60-C3-D1.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D2",
@@ -1905,7 +2614,10 @@
       "box": "2",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/60-C3-D2.png"
+      "image": "tod-wg/bases/60-C3-D2.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D3",
@@ -1916,7 +2628,10 @@
       "box": "3",
       "value": 22,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-D3.png"
+      "image": "tod-wg/bases/60-C3-D3.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D4",
@@ -1927,7 +2642,10 @@
       "box": "4",
       "value": 24,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-D4.png"
+      "image": "tod-wg/bases/60-C3-D4.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D5",
@@ -1938,7 +2656,10 @@
       "box": "5",
       "value": 24,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-D5.png"
+      "image": "tod-wg/bases/60-C3-D5.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D6",
@@ -1949,7 +2670,10 @@
       "box": "6",
       "value": 25,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-D6.png"
+      "image": "tod-wg/bases/60-C3-D6.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "60 D7",
@@ -1960,7 +2684,10 @@
       "box": "7",
       "value": 26,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-D7.png"
+      "image": "tod-wg/bases/60-C3-D7.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "60 D8",
@@ -1971,7 +2698,10 @@
       "box": "8",
       "value": 27,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-D8.png"
+      "image": "tod-wg/bases/60-C3-D8.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D9",
@@ -1982,7 +2712,10 @@
       "box": "9",
       "value": 28,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-D9.png"
+      "image": "tod-wg/bases/60-C3-D9.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D10",
@@ -1993,7 +2726,10 @@
       "box": "10",
       "value": 28,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-D10.png"
+      "image": "tod-wg/bases/60-C3-D10.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D11",
@@ -2004,7 +2740,10 @@
       "box": "11",
       "value": 29,
       "group": 4,
-      "image": "tod-wg/bases/60-C3-D11.png"
+      "image": "tod-wg/bases/60-C3-D11.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "60 D12",
@@ -2015,7 +2754,10 @@
       "box": "12",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-D12.png"
+      "image": "tod-wg/bases/60-C3-D12.png",
+      "supports": [
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "60 E1",
@@ -2026,7 +2768,10 @@
       "box": "1",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-E1.png"
+      "image": "tod-wg/bases/60-C3-E1.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "60 E2",
@@ -2037,7 +2782,10 @@
       "box": "2",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-E2.png"
+      "image": "tod-wg/bases/60-C3-E2.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 E3",
@@ -2048,7 +2796,10 @@
       "box": "3",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-E3.png"
+      "image": "tod-wg/bases/60-C3-E3.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 E4",
@@ -2059,7 +2810,10 @@
       "box": "4",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-E4.png"
+      "image": "tod-wg/bases/60-C3-E4.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 E5",
@@ -2070,7 +2824,10 @@
       "box": "5",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-E5.png"
+      "image": "tod-wg/bases/60-C3-E5.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 E6",
@@ -2081,7 +2838,10 @@
       "box": "6",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-E6.png"
+      "image": "tod-wg/bases/60-C3-E6.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 E7",
@@ -2092,7 +2852,10 @@
       "box": "7",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-E7.png"
+      "image": "tod-wg/bases/60-C3-E7.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 E8",
@@ -2103,7 +2866,10 @@
       "box": "8",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-E8.png"
+      "image": "tod-wg/bases/60-C3-E8.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "60 E9",
@@ -2114,7 +2880,8 @@
       "box": "9",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-E9.png"
+      "image": "tod-wg/bases/60-C3-E9.png",
+      "topIncluded": true
     },
     {
       "id": "60 E10",
@@ -2125,7 +2892,8 @@
       "box": "10",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/60-C3-E10.png"
+      "image": "tod-wg/bases/60-C3-E10.png",
+      "topIncluded": true
     },
     {
       "id": "60 E11",
@@ -2136,7 +2904,8 @@
       "box": "11",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-E11.png"
+      "image": "tod-wg/bases/60-C3-E11.png",
+      "topIncluded": true
     },
     {
       "id": "60 E12",
@@ -2147,7 +2916,10 @@
       "box": "12",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/60-C3-E12.png"
+      "image": "tod-wg/bases/60-C3-E12.png",
+      "supports": [
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "61 A1",
@@ -2158,7 +2930,10 @@
       "box": "1",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-A1.png"
+      "image": "tod-wg/bases/61-C3-A1.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 A2",
@@ -2169,7 +2944,10 @@
       "box": "2",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/61-C3-A2.png"
+      "image": "tod-wg/bases/61-C3-A2.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 A3",
@@ -2180,7 +2958,10 @@
       "box": "3",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/61-C3-A3.png"
+      "image": "tod-wg/bases/61-C3-A3.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 A4",
@@ -2191,7 +2972,10 @@
       "box": "4",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/61-C3-A4.png"
+      "image": "tod-wg/bases/61-C3-A4.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 A5",
@@ -2250,7 +3034,10 @@
       "box": "9",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-A9.png"
+      "image": "tod-wg/bases/61-C3-A9.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "61 A10",
@@ -2261,7 +3048,10 @@
       "box": "10",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-A10.png"
+      "image": "tod-wg/bases/61-C3-A10.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 A11a",
@@ -2273,7 +3063,10 @@
       "option": "a",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-A11a.png"
+      "image": "tod-wg/bases/61-C3-A11a.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 A11b",
@@ -2285,7 +3078,10 @@
       "option": "b",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-A11b.png"
+      "image": "tod-wg/bases/61-C3-A11b.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 A12",
@@ -2296,7 +3092,10 @@
       "box": "12",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-A12.png"
+      "image": "tod-wg/bases/61-C3-A12.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "61 A13",
@@ -2307,7 +3106,10 @@
       "box": "13",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-A13.png"
+      "image": "tod-wg/bases/61-C3-A13.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "61 B1",
@@ -2318,7 +3120,10 @@
       "box": "1",
       "value": 3,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-B1.png"
+      "image": "tod-wg/bases/61-C3-B1.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "61 B2",
@@ -2329,7 +3134,10 @@
       "box": "2",
       "value": 4,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-B2.png"
+      "image": "tod-wg/bases/61-C3-B2.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "61 B3",
@@ -2340,7 +3148,10 @@
       "box": "3",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-B3.png"
+      "image": "tod-wg/bases/61-C3-B3.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "61 B4",
@@ -2351,7 +3162,11 @@
       "box": "4",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-B4.png"
+      "image": "tod-wg/bases/61-C3-B4.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "61 B5",
@@ -2362,7 +3177,11 @@
       "box": "5",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-B5.png"
+      "image": "tod-wg/bases/61-C3-B5.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "61 B6",
@@ -2373,7 +3192,12 @@
       "box": "6",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/61-C3-B6.png"
+      "image": "tod-wg/bases/61-C3-B6.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "61 B7",
@@ -2384,7 +3208,12 @@
       "box": "7",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/61-C3-B7.png"
+      "image": "tod-wg/bases/61-C3-B7.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "61 B8",
@@ -2395,7 +3224,13 @@
       "box": "8",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/61-C3-B8.png"
+      "image": "tod-wg/bases/61-C3-B8.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "61 B9",
@@ -2406,7 +3241,13 @@
       "box": "9",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/61-C3-B9.png"
+      "image": "tod-wg/bases/61-C3-B9.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "61 B10",
@@ -2417,7 +3258,11 @@
       "box": "10",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/61-C3-B10.png"
+      "image": "tod-wg/bases/61-C3-B10.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "61 B11",
@@ -2428,7 +3273,13 @@
       "box": "11",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/61-C3-B11.png"
+      "image": "tod-wg/bases/61-C3-B11.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "61 B12",
@@ -2439,7 +3290,12 @@
       "box": "12",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/61-C3-B12.png"
+      "image": "tod-wg/bases/61-C3-B12.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "61 B13",
@@ -2450,7 +3306,13 @@
       "box": "13",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/61-C3-B13.png"
+      "image": "tod-wg/bases/61-C3-B13.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "61 C1",
@@ -2461,7 +3323,10 @@
       "box": "1",
       "value": 20,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C1.png"
+      "image": "tod-wg/bases/61-C3-C1.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "61 C2",
@@ -2472,7 +3337,10 @@
       "box": "2",
       "value": 22,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C2.png"
+      "image": "tod-wg/bases/61-C3-C2.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "61 C3",
@@ -2483,7 +3351,10 @@
       "box": "3",
       "value": 18,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C3.png"
+      "image": "tod-wg/bases/61-C3-C3.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 C4",
@@ -2494,7 +3365,10 @@
       "box": "4",
       "value": 20,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C4.png"
+      "image": "tod-wg/bases/61-C3-C4.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 C5",
@@ -2505,7 +3379,10 @@
       "box": "5",
       "value": 24,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C5.png"
+      "image": "tod-wg/bases/61-C3-C5.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 C6",
@@ -2516,7 +3393,10 @@
       "box": "6",
       "value": 20,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C6.png"
+      "image": "tod-wg/bases/61-C3-C6.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 C7",
@@ -2527,7 +3407,10 @@
       "box": "7",
       "value": 24,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C7.png"
+      "image": "tod-wg/bases/61-C3-C7.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 C8",
@@ -2538,7 +3421,10 @@
       "box": "8",
       "value": 20,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C8.png"
+      "image": "tod-wg/bases/61-C3-C8.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "61 C9",
@@ -2549,7 +3435,10 @@
       "box": "9",
       "value": 26,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C9.png"
+      "image": "tod-wg/bases/61-C3-C9.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "61 C10",
@@ -2560,7 +3449,10 @@
       "box": "10",
       "value": 22,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C10.png"
+      "image": "tod-wg/bases/61-C3-C10.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 C11",
@@ -2571,7 +3463,10 @@
       "box": "11",
       "value": 30,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-C11.png"
+      "image": "tod-wg/bases/61-C3-C11.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 C12",
@@ -2582,7 +3477,10 @@
       "box": "12",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-C12.png"
+      "image": "tod-wg/bases/61-C3-C12.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "61 C13",
@@ -2593,7 +3491,10 @@
       "box": "13",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/61-C3-C13.png"
+      "image": "tod-wg/bases/61-C3-C13.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "61 D1",
@@ -2604,7 +3505,10 @@
       "box": "1",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/61-C3-D1.png"
+      "image": "tod-wg/bases/61-C3-D1.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 D2",
@@ -2615,7 +3519,10 @@
       "box": "2",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/61-C3-D2.png"
+      "image": "tod-wg/bases/61-C3-D2.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 D3",
@@ -2626,7 +3533,10 @@
       "box": "3",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-D3.png"
+      "image": "tod-wg/bases/61-C3-D3.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 D4",
@@ -2637,7 +3547,10 @@
       "box": "4",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-D4.png"
+      "image": "tod-wg/bases/61-C3-D4.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 D5a",
@@ -2649,7 +3562,10 @@
       "value": 18,
       "group": 4,
       "image": "tod-wg/bases/61-C3-D5a.png",
-      "option": "a"
+      "option": "a",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 D5b",
@@ -2661,7 +3577,10 @@
       "option": "b",
       "value": 18,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-D5b.png"
+      "image": "tod-wg/bases/61-C3-D5b.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 D6",
@@ -2672,7 +3591,10 @@
       "box": "6",
       "value": 22,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-D6.png"
+      "image": "tod-wg/bases/61-C3-D6.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 D7",
@@ -2683,7 +3605,10 @@
       "box": "7",
       "value": 28,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-D7.png"
+      "image": "tod-wg/bases/61-C3-D7.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 D8",
@@ -2694,7 +3619,10 @@
       "box": "8",
       "value": 32,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-D8.png"
+      "image": "tod-wg/bases/61-C3-D8.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "61 D9",
@@ -2705,7 +3633,10 @@
       "box": "9",
       "value": 20,
       "group": 4,
-      "image": "tod-wg/bases/61-C3-D9.png"
+      "image": "tod-wg/bases/61-C3-D9.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 D10",
@@ -2716,7 +3647,10 @@
       "box": "10",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-D10.png"
+      "image": "tod-wg/bases/61-C3-D10.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "61 D11",
@@ -2727,7 +3661,10 @@
       "box": "11",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-D11.png"
+      "image": "tod-wg/bases/61-C3-D11.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "61 D12",
@@ -2738,7 +3675,10 @@
       "box": "12",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/61-C3-D12.png"
+      "image": "tod-wg/bases/61-C3-D12.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "62 A1",
@@ -2749,7 +3689,10 @@
       "box": "1",
       "value": 18,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-A1.png"
+      "image": "tod-wg/bases/62-C4-A1.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "62 A2",
@@ -2760,7 +3703,10 @@
       "box": "2",
       "value": 20,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-A2.png"
+      "image": "tod-wg/bases/62-C4-A2.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "62 A3",
@@ -2771,7 +3717,11 @@
       "box": "3",
       "value": 24,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-A3.png"
+      "image": "tod-wg/bases/62-C4-A3.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "62 A4",
@@ -2782,7 +3732,11 @@
       "box": "4",
       "value": 25,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-A4.png"
+      "image": "tod-wg/bases/62-C4-A4.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "62 A5",
@@ -2793,7 +3747,12 @@
       "box": "5",
       "value": 28,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-A5.png"
+      "image": "tod-wg/bases/62-C4-A5.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "62 A6",
@@ -2804,7 +3763,12 @@
       "box": "6",
       "value": 29,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-A6.png"
+      "image": "tod-wg/bases/62-C4-A6.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "62 A7",
@@ -2863,7 +3827,10 @@
       "box": "11",
       "value": 36,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-A11.png"
+      "image": "tod-wg/bases/62-C4-A11.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 A12",
@@ -2874,7 +3841,10 @@
       "box": "12",
       "value": 36,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-A12.png"
+      "image": "tod-wg/bases/62-C4-A12.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 A13",
@@ -2885,7 +3855,10 @@
       "box": "13",
       "value": 18,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-A13.png"
+      "image": "tod-wg/bases/62-C4-A13.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 B1",
@@ -2896,7 +3869,10 @@
       "box": "1",
       "value": 18,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-B1.png"
+      "image": "tod-wg/bases/62-C4-B1.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 B2",
@@ -2907,7 +3883,10 @@
       "box": "2",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/62-C4-B2.png"
+      "image": "tod-wg/bases/62-C4-B2.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "62 B3",
@@ -2918,7 +3897,10 @@
       "box": "3",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/62-C4-B3.png"
+      "image": "tod-wg/bases/62-C4-B3.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "62 B4",
@@ -2929,7 +3911,10 @@
       "box": "4",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-B4.png"
+      "image": "tod-wg/bases/62-C4-B4.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "62 B5",
@@ -2940,7 +3925,11 @@
       "box": "5",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-B5.png"
+      "image": "tod-wg/bases/62-C4-B5.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "62 B6",
@@ -2951,7 +3940,11 @@
       "box": "6",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-B6.png"
+      "image": "tod-wg/bases/62-C4-B6.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "62 B7",
@@ -2962,7 +3955,11 @@
       "box": "7",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-B7.png"
+      "image": "tod-wg/bases/62-C4-B7.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "62 B8",
@@ -2973,7 +3970,12 @@
       "box": "8",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/62-C4-B8.png"
+      "image": "tod-wg/bases/62-C4-B8.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "62 B9",
@@ -2984,7 +3986,12 @@
       "box": "9",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/62-C4-B9.png"
+      "image": "tod-wg/bases/62-C4-B9.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "62 B10",
@@ -2995,7 +4002,12 @@
       "box": "10",
       "value": 18,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-B10.png"
+      "image": "tod-wg/bases/62-C4-B10.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "62 B11",
@@ -3006,7 +4018,10 @@
       "box": "11",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/62-C4-B11.png"
+      "image": "tod-wg/bases/62-C4-B11.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "62 B12",
@@ -3017,7 +4032,10 @@
       "box": "12",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-B12.png"
+      "image": "tod-wg/bases/62-C4-B12.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "62 B13",
@@ -3028,7 +4046,11 @@
       "box": "13",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-B13.png"
+      "image": "tod-wg/bases/62-C4-B13.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "62 C1",
@@ -3039,7 +4061,11 @@
       "box": "1",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/62-C4-C1.png"
+      "image": "tod-wg/bases/62-C4-C1.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "62 C2",
@@ -3050,7 +4076,12 @@
       "box": "2",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/62-C4-C2.png"
+      "image": "tod-wg/bases/62-C4-C2.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "62 C3",
@@ -3061,7 +4092,10 @@
       "box": "3",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-C3.png"
+      "image": "tod-wg/bases/62-C4-C3.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "62 C4",
@@ -3072,7 +4106,11 @@
       "box": "4",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/62-C4-C4.png"
+      "image": "tod-wg/bases/62-C4-C4.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "62 C5",
@@ -3083,7 +4121,12 @@
       "box": "5",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/62-C4-C5.png"
+      "image": "tod-wg/bases/62-C4-C5.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "62 C6",
@@ -3094,7 +4137,12 @@
       "box": "6",
       "value": 20,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-C6.png"
+      "image": "tod-wg/bases/62-C4-C6.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "62 C7",
@@ -3105,7 +4153,10 @@
       "box": "7",
       "value": 22,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-C7.png"
+      "image": "tod-wg/bases/62-C4-C7.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 C8",
@@ -3116,7 +4167,10 @@
       "box": "8",
       "value": 24,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-C8.png"
+      "image": "tod-wg/bases/62-C4-C8.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 C9",
@@ -3127,7 +4181,10 @@
       "box": "9",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-C9.png"
+      "image": "tod-wg/bases/62-C4-C9.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 C10",
@@ -3138,7 +4195,10 @@
       "box": "10",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-C10.png"
+      "image": "tod-wg/bases/62-C4-C10.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 C11",
@@ -3149,7 +4209,10 @@
       "box": "11",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-C11.png"
+      "image": "tod-wg/bases/62-C4-C11.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 C12",
@@ -3160,7 +4223,10 @@
       "box": "12",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-C12.png"
+      "image": "tod-wg/bases/62-C4-C12.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "62 C13",
@@ -3171,7 +4237,10 @@
       "box": "13",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-C13.png"
+      "image": "tod-wg/bases/62-C4-C13.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "62 D1",
@@ -3182,7 +4251,10 @@
       "box": "1",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-D1.png"
+      "image": "tod-wg/bases/62-C4-D1.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "62 D2",
@@ -3193,7 +4265,10 @@
       "box": "2",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-D2.png"
+      "image": "tod-wg/bases/62-C4-D2.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "62 D3",
@@ -3204,7 +4279,10 @@
       "box": "3",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-D3.png"
+      "image": "tod-wg/bases/62-C4-D3.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "62 D4",
@@ -3215,7 +4293,10 @@
       "box": "4",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-D4.png"
+      "image": "tod-wg/bases/62-C4-D4.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "62 D5",
@@ -3226,7 +4307,10 @@
       "box": "5",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-D5.png"
+      "image": "tod-wg/bases/62-C4-D5.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "62 D6",
@@ -3298,7 +4382,10 @@
       "value": 10,
       "group": 2,
       "image": "tod-wg/bases/62-C4-D11a.png",
-      "option": "a"
+      "option": "a",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "62 D11b",
@@ -3310,7 +4397,10 @@
       "option": "b",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-D11b.png"
+      "image": "tod-wg/bases/62-C4-D11b.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "62 D12a",
@@ -3322,7 +4412,10 @@
       "value": 12,
       "group": 2,
       "image": "tod-wg/bases/62-C4-D12a.png",
-      "option": "a"
+      "option": "a",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "62 D12b",
@@ -3334,7 +4427,10 @@
       "option": "b",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/62-C4-D12b.png"
+      "image": "tod-wg/bases/62-C4-D12b.png",
+      "supports": [
+        "Dos manos bajas"
+      ]
     },
     {
       "id": "62 D13",
@@ -3345,7 +4441,10 @@
       "box": "13",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/62-C4-D13.png"
+      "image": "tod-wg/bases/62-C4-D13.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "62 E1",
@@ -3356,7 +4455,10 @@
       "box": "1",
       "value": 44,
       "group": 4,
-      "image": "tod-wg/bases/62-C4-E1.png"
+      "image": "tod-wg/bases/62-C4-E1.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "63 A1",
@@ -3367,7 +4469,10 @@
       "box": "1",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-A1.png"
+      "image": "tod-wg/bases/63-C5-A1.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "63 A2",
@@ -3378,7 +4483,10 @@
       "box": "2",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-A2.png"
+      "image": "tod-wg/bases/63-C5-A2.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "63 A3",
@@ -3389,7 +4497,11 @@
       "box": "3",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-A3.png"
+      "image": "tod-wg/bases/63-C5-A3.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "63 A4",
@@ -3400,7 +4512,11 @@
       "box": "4",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-A4.png"
+      "image": "tod-wg/bases/63-C5-A4.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "63 A5",
@@ -3411,7 +4527,12 @@
       "box": "5",
       "value": 20,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-A5.png"
+      "image": "tod-wg/bases/63-C5-A5.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "63 A6",
@@ -3422,7 +4543,12 @@
       "box": "6",
       "value": 22,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-A6.png"
+      "image": "tod-wg/bases/63-C5-A6.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "63 A7",
@@ -3433,7 +4559,10 @@
       "box": "7",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-A7.png"
+      "image": "tod-wg/bases/63-C5-A7.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "63 A8",
@@ -3444,7 +4573,10 @@
       "box": "8",
       "value": 19,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-A8.png"
+      "image": "tod-wg/bases/63-C5-A8.png",
+      "supports": [
+        "Hombros"
+      ]
     },
     {
       "id": "63 A9",
@@ -3455,7 +4587,11 @@
       "box": "9",
       "value": 22,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-A9.png"
+      "image": "tod-wg/bases/63-C5-A9.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "63 A10",
@@ -3466,7 +4602,11 @@
       "box": "10",
       "value": 24,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-A10.png"
+      "image": "tod-wg/bases/63-C5-A10.png",
+      "supports": [
+        "Dos manos bajas",
+        "Una mano baja"
+      ]
     },
     {
       "id": "63 A11",
@@ -3477,7 +4617,12 @@
       "box": "11",
       "value": 28,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-A11.png"
+      "image": "tod-wg/bases/63-C5-A11.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "63 A12",
@@ -3488,7 +4633,12 @@
       "box": "12",
       "value": 32,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-A12.png"
+      "image": "tod-wg/bases/63-C5-A12.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas"
+      ]
     },
     {
       "id": "63 B1",
@@ -3499,7 +4649,10 @@
       "box": "1",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-B1.png"
+      "image": "tod-wg/bases/63-C5-B1.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 B2",
@@ -3510,7 +4663,10 @@
       "box": "2",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-B2.png"
+      "image": "tod-wg/bases/63-C5-B2.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 B3",
@@ -3521,7 +4677,10 @@
       "box": "3",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-B3.png"
+      "image": "tod-wg/bases/63-C5-B3.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 B4",
@@ -3532,7 +4691,10 @@
       "box": "4",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-B4.png"
+      "image": "tod-wg/bases/63-C5-B4.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 B5",
@@ -3543,7 +4705,10 @@
       "box": "5",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-B5.png"
+      "image": "tod-wg/bases/63-C5-B5.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 B6",
@@ -3554,7 +4719,10 @@
       "box": "6",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-B6.png"
+      "image": "tod-wg/bases/63-C5-B6.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 B7",
@@ -3565,7 +4733,10 @@
       "box": "7",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-B7.png"
+      "image": "tod-wg/bases/63-C5-B7.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 B8",
@@ -3576,7 +4747,10 @@
       "box": "8",
       "value": 19,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-B8.png"
+      "image": "tod-wg/bases/63-C5-B8.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 B9",
@@ -3587,7 +4761,10 @@
       "box": "9",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-B9.png"
+      "image": "tod-wg/bases/63-C5-B9.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "63 B10",
@@ -3598,7 +4775,10 @@
       "box": "10",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-B10.png"
+      "image": "tod-wg/bases/63-C5-B10.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 B11",
@@ -3609,7 +4789,10 @@
       "box": "11",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-B11.png"
+      "image": "tod-wg/bases/63-C5-B11.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 B12",
@@ -3620,7 +4803,10 @@
       "box": "12",
       "value": 26,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-B12.png"
+      "image": "tod-wg/bases/63-C5-B12.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 B13",
@@ -3631,7 +4817,10 @@
       "box": "13",
       "value": 28,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-B13.png"
+      "image": "tod-wg/bases/63-C5-B13.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 C1",
@@ -3642,7 +4831,13 @@
       "box": "1",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/63-C5-C1.png"
+      "image": "tod-wg/bases/63-C5-C1.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "63 C2",
@@ -3653,7 +4848,13 @@
       "box": "2",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-C2.png"
+      "image": "tod-wg/bases/63-C5-C2.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "63 C3",
@@ -3664,7 +4865,13 @@
       "box": "3",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-C3.png"
+      "image": "tod-wg/bases/63-C5-C3.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "63 C4",
@@ -3675,7 +4882,13 @@
       "box": "4",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-C4.png"
+      "image": "tod-wg/bases/63-C5-C4.png",
+      "supports": [
+        "Dos manos",
+        "Una mano",
+        "Manos superpuestas",
+        "Hombros"
+      ]
     },
     {
       "id": "63 C5",
@@ -3686,7 +4899,10 @@
       "box": "5",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/63-C5-C5.png"
+      "image": "tod-wg/bases/63-C5-C5.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 C6",
@@ -3697,7 +4913,10 @@
       "box": "6",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-C6.png"
+      "image": "tod-wg/bases/63-C5-C6.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "63 C7",
@@ -3708,7 +4927,10 @@
       "box": "7",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-C7.png"
+      "image": "tod-wg/bases/63-C5-C7.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 C8",
@@ -3719,7 +4941,10 @@
       "box": "8",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-C8.png"
+      "image": "tod-wg/bases/63-C5-C8.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "63 C9",
@@ -3730,7 +4955,10 @@
       "box": "9",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-C9.png"
+      "image": "tod-wg/bases/63-C5-C9.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 C10",
@@ -3741,7 +4969,10 @@
       "box": "10",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-C10.png"
+      "image": "tod-wg/bases/63-C5-C10.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 C11",
@@ -3752,7 +4983,10 @@
       "box": "11",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-C11.png"
+      "image": "tod-wg/bases/63-C5-C11.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 C12",
@@ -3763,7 +4997,10 @@
       "box": "12",
       "value": 16,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-C12.png"
+      "image": "tod-wg/bases/63-C5-C12.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "63 C13",
@@ -3774,7 +5011,10 @@
       "box": "13",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-C13.png"
+      "image": "tod-wg/bases/63-C5-C13.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 D1",
@@ -3785,7 +5025,10 @@
       "box": "1",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-D1.png"
+      "image": "tod-wg/bases/63-C5-D1.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 D2",
@@ -3796,7 +5039,10 @@
       "box": "2",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/63-C5-D2.png"
+      "image": "tod-wg/bases/63-C5-D2.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 D3",
@@ -3807,7 +5053,10 @@
       "box": "3",
       "value": 18,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-D3.png"
+      "image": "tod-wg/bases/63-C5-D3.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 D4",
@@ -3818,7 +5067,10 @@
       "box": "4",
       "value": 24,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-D4.png"
+      "image": "tod-wg/bases/63-C5-D4.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 D5",
@@ -3829,7 +5081,10 @@
       "box": "5",
       "value": 26,
       "group": 4,
-      "image": "tod-wg/bases/63-C5-D5.png"
+      "image": "tod-wg/bases/63-C5-D5.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "63 D6",
@@ -3840,7 +5095,10 @@
       "box": "6",
       "value": 5,
       "group": 1,
-      "image": "tod-wg/bases/63-C5-D6.png"
+      "image": "tod-wg/bases/63-C5-D6.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 D7",
@@ -3851,7 +5109,10 @@
       "box": "7",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/63-C5-D7.png"
+      "image": "tod-wg/bases/63-C5-D7.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 D8",
@@ -3862,7 +5123,10 @@
       "box": "8",
       "value": 9,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-D8.png"
+      "image": "tod-wg/bases/63-C5-D8.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "63 D9",
@@ -3873,7 +5137,10 @@
       "box": "9",
       "value": 11,
       "group": 2,
-      "image": "tod-wg/bases/63-C5-D9.png"
+      "image": "tod-wg/bases/63-C5-D9.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 A1",
@@ -3884,7 +5151,10 @@
       "box": "1",
       "value": 7,
       "group": 1,
-      "image": "tod-wg/bases/64-C6-A1.png"
+      "image": "tod-wg/bases/64-C6-A1.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "64 A2",
@@ -3895,7 +5165,10 @@
       "box": "2",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/64-C6-A2.png"
+      "image": "tod-wg/bases/64-C6-A2.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "64 A3",
@@ -3906,7 +5179,10 @@
       "box": "3",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/64-C6-A3.png"
+      "image": "tod-wg/bases/64-C6-A3.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "64 A4",
@@ -3917,7 +5193,10 @@
       "box": "4",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/64-C6-A4.png"
+      "image": "tod-wg/bases/64-C6-A4.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 A5",
@@ -3928,7 +5207,10 @@
       "box": "5",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/64-C6-A5.png"
+      "image": "tod-wg/bases/64-C6-A5.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 A6",
@@ -3939,7 +5221,10 @@
       "box": "6",
       "value": 20,
       "group": 4,
-      "image": "tod-wg/bases/64-C6-A6.png"
+      "image": "tod-wg/bases/64-C6-A6.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 A7",
@@ -3950,7 +5235,10 @@
       "box": "7",
       "value": 24,
       "group": 4,
-      "image": "tod-wg/bases/64-C6-A7.png"
+      "image": "tod-wg/bases/64-C6-A7.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 A8",
@@ -3961,7 +5249,10 @@
       "box": "8",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/64-C6-A8.png"
+      "image": "tod-wg/bases/64-C6-A8.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 A9",
@@ -3972,7 +5263,10 @@
       "box": "9",
       "value": 6,
       "group": 1,
-      "image": "tod-wg/bases/64-C6-A9.png"
+      "image": "tod-wg/bases/64-C6-A9.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 A10",
@@ -3983,7 +5277,10 @@
       "box": "10",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/64-C6-A10.png"
+      "image": "tod-wg/bases/64-C6-A10.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 A11",
@@ -3994,7 +5291,10 @@
       "box": "11",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/64-C6-A11.png"
+      "image": "tod-wg/bases/64-C6-A11.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "64 A12",
@@ -4005,7 +5305,10 @@
       "box": "12",
       "value": 8,
       "group": 1,
-      "image": "tod-wg/bases/64-C6-A12.png"
+      "image": "tod-wg/bases/64-C6-A12.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 B1",
@@ -4016,7 +5319,10 @@
       "box": "1",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/64-C6-B1.png"
+      "image": "tod-wg/bases/64-C6-B1.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "64 B2",
@@ -4027,7 +5333,10 @@
       "box": "2",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/64-C6-B2.png"
+      "image": "tod-wg/bases/64-C6-B2.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 B3",
@@ -4038,7 +5347,10 @@
       "box": "3",
       "value": 14,
       "group": 3,
-      "image": "tod-wg/bases/64-C6-B3.png"
+      "image": "tod-wg/bases/64-C6-B3.png",
+      "supports": [
+        "Pies"
+      ]
     },
     {
       "id": "64 B4",
@@ -4049,7 +5361,10 @@
       "box": "4",
       "value": 23,
       "group": 4,
-      "image": "tod-wg/bases/64-C6-B4.png"
+      "image": "tod-wg/bases/64-C6-B4.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "64 B5",
@@ -4060,7 +5375,10 @@
       "box": "5",
       "value": 10,
       "group": 2,
-      "image": "tod-wg/bases/64-C6-B5.png"
+      "image": "tod-wg/bases/64-C6-B5.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 B6",
@@ -4071,7 +5389,10 @@
       "box": "6",
       "value": 15,
       "group": 3,
-      "image": "tod-wg/bases/64-C6-B6.png"
+      "image": "tod-wg/bases/64-C6-B6.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 B7",
@@ -4082,7 +5403,10 @@
       "box": "7",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/64-C6-B7.png"
+      "image": "tod-wg/bases/64-C6-B7.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 B8",
@@ -4093,7 +5417,10 @@
       "box": "8",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/64-C6-B8.png"
+      "image": "tod-wg/bases/64-C6-B8.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 B9",
@@ -4104,7 +5431,10 @@
       "box": "9",
       "value": 17,
       "group": 3,
-      "image": "tod-wg/bases/64-C6-B9.png"
+      "image": "tod-wg/bases/64-C6-B9.png",
+      "supports": [
+        "Dos manos"
+      ]
     },
     {
       "id": "64 B10",
@@ -4115,7 +5445,10 @@
       "box": "10",
       "value": 25,
       "group": 4,
-      "image": "tod-wg/bases/64-C6-B10.png"
+      "image": "tod-wg/bases/64-C6-B10.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "64 B11",
@@ -4126,7 +5459,10 @@
       "box": "11",
       "value": 27,
       "group": 4,
-      "image": "tod-wg/bases/64-C6-B11.png"
+      "image": "tod-wg/bases/64-C6-B11.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "64 C1",
@@ -4137,7 +5473,10 @@
       "box": "1",
       "value": 25,
       "group": 4,
-      "image": "tod-wg/bases/64-C6-C1.png"
+      "image": "tod-wg/bases/64-C6-C1.png",
+      "supports": [
+        "Dos pies"
+      ]
     },
     {
       "id": "64 C2",
@@ -4148,7 +5487,10 @@
       "box": "2",
       "value": 27,
       "group": 4,
-      "image": "tod-wg/bases/64-C6-C2.png"
+      "image": "tod-wg/bases/64-C6-C2.png",
+      "supports": [
+        "Un pie"
+      ]
     },
     {
       "id": "64 A1",
@@ -4159,7 +5501,8 @@
       "box": "1",
       "value": 12,
       "group": 2,
-      "image": "tod-wg/bases/64-C7-A1.png"
+      "image": "tod-wg/bases/64-C7-A1.png",
+      "topIncluded": true
     },
     {
       "id": "64 A2",
@@ -4170,7 +5513,8 @@
       "box": "2",
       "value": 13,
       "group": 2,
-      "image": "tod-wg/bases/64-C7-A2.png"
+      "image": "tod-wg/bases/64-C7-A2.png",
+      "topIncluded": true
     }
   ]
 }
