@@ -5,12 +5,15 @@ import {
   OFFICIAL_MAX_ELEMENT_COLUMNS,
 } from "./official-sheet-layout";
 import { groupRoutineForDisplay, sortIndividualGroupItems } from "./routine-groups";
+import { pyramidOf } from "./tod-wg/pyramid";
 import type { OfficialSheetBlockId } from "./official-sheet-layout";
 import type { RoutineElementRole, RoutineItem, TodWgPick } from "./routine-types";
 import type { PlacedElement } from "./sheet-types";
 
 export type SheetColumnSlot =
   | { kind: "empty" }
+  /** The open cell between two TOD WG pyramids, holding the transition (value C). */
+  | { kind: "transition"; routineItemId: string; value: number }
   | {
       kind: "element";
       routineItemId: string;
@@ -66,7 +69,17 @@ function placeRoutineInColumns(routine: RoutineItem[]): SheetColumnSlot[] {
         ? row.item.linkedToPrevious
         : row.items[0]?.linkedToPrevious ?? false;
 
-    if (columns.length > 0 && row.index > 0 && !linked) {
+    // A pyramid reached by a transition: the open cell before it holds the
+    // transition, even when the coach linked it.
+    const transition =
+      row.kind === "single" && row.item.todWg?.transitionFromPrevious
+        ? pyramidOf(row.item, routine)?.transition
+        : undefined;
+    if (columns.length > 0 && transition) {
+      // The transition and its pyramid go together: no arrow without the pyramid.
+      if (columns.length + 2 > MAX_TIMELINE_COLUMNS) break;
+      columns.push({ kind: "transition", routineItemId: row.kind === "single" ? row.item.id : "", value: transition.value });
+    } else if (columns.length > 0 && row.index > 0 && !linked) {
       if (columns.length >= MAX_TIMELINE_COLUMNS) break;
       columns.push({ kind: "empty" });
     }

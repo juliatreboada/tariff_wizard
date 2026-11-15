@@ -11,7 +11,7 @@ export function recalculateValueBreakdown(
 
   for (const item of routine) {
     if (item.role !== "compulsory") continue;
-    const value = itemValue(item);
+    const value = itemValue(item, routine);
     if (item.block === "balance") balance += value;
     else if (item.block === "dynamic") dynamic += value;
   }

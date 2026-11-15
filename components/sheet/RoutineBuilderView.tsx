@@ -284,9 +284,14 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                       {pyramidOf(row.item)?.tops.map(({ position }) => ` + ${position.id}`).join("")}
                       {pyramidOf(row.item)?.motion ? ` · ${pyramidOf(row.item)!.motion!.key}` : ""}
                       <span className="ml-1.5 rounded bg-zinc-100 px-1 font-medium">
-                        {formatSheetValue(itemValue(row.item))}
+                        {formatSheetValue(itemValue(row.item, routine))}
                       </span>
                     </p>
+                    {pyramidOf(row.item, routine)?.problems.map((problem) => (
+                      <p key={problem} className="mt-0.5 text-center text-[11px] leading-tight text-amber-700">
+                        {problem}
+                      </p>
+                    ))}
                     {row.item.addOn ? (
                       <button
                         type="button"

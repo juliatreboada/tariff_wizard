@@ -9,6 +9,7 @@ import {
   type MotionOption,
   type TodWgBase,
   type TopPositionOption,
+  transitionValue,
 } from "./index";
 
 export type PyramidTop = { pick: TodWgTopPick; position: TopPositionOption };
@@ -21,7 +22,9 @@ export type PyramidBreakdown = {
   motion?: MotionOption;
   /** +1 for legs together, else 0. */
   legs: number;
-  /** Base + tops + motion + legs. */
+  /** The transition from the pyramid right before (its base and the value). */
+  transition?: { from: TodWgBase; value: number };
+  /** Base + tops + motion + legs + transition. */
   value: number;
   /** Top steps the base still needs ("top", "middle"). */
   missing: ("top" | "middle")[];
@@ -31,9 +34,10 @@ export type PyramidBreakdown = {
 
 /**
  * A TOD WG pyramid's parts and value, read from the TOD WG data. Null when the
- * item's element isn't a TOD WG base.
+ * item's element isn't a TOD WG base. Pass the routine to count a transition
+ * from the pyramid right before it.
  */
-export function pyramidOf(item: RoutineItem): PyramidBreakdown | null {
+export function pyramidOf(item: RoutineItem, routine?: readonly RoutineItem[]): PyramidBreakdown | null {
   const base = baseForCatalogId(item.element.catalogId);
   if (!base) return null;
   const group = baseGroup(base.value);
@@ -78,6 +82,15 @@ export function pyramidOf(item: RoutineItem): PyramidBreakdown | null {
   const legs = pick.legsTogether && hasTop ? 1 : 0;
   if (pick.legsTogether && !hasTop) problems.push("«Piernas juntas» necesita un ágil.");
   const missing = slots.map((s) => s.slot).filter((s) => !tops.some((t) => t.pick.slot === s));
-  const value = base.value + tops.reduce((sum, t) => sum + t.position.value, 0) + (motion?.value ?? 0) + legs;
-  return { base, group, tops, motion, legs, value, missing, problems };
+  let transition: PyramidBreakdown["transition"];
+  if (pick.transitionFromPrevious && routine) {
+    const index = routine.findIndex((i) => i.id === item.id);
+    const before = index > 0 ? pyramidOf(routine[index - 1]) : null;
+    if (before) transition = { from: before.base, value: transitionValue(before.base.value, base.value) };
+    else problems.push("La transición necesita una pirámide justo antes.");
+  }
+
+  const value =
+    base.value + tops.reduce((sum, t) => sum + t.position.value, 0) + (motion?.value ?? 0) + legs + (transition?.value ?? 0);
+  return { base, group, tops, motion, legs, transition, value, missing, problems };
 }

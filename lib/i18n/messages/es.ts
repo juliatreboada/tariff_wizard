@@ -155,6 +155,8 @@ export const es = {
         summaryLegs: "Piernas juntas",
         summaryTotal: "Valor total",
         changeTop: "Cambiar ágil",
+        transition: (from: string) => `Transición desde la pirámide anterior (${from})`,
+        summaryTransition: "Transición",
       },
       option: "Opción",
       individualElement: "Elemento individual",

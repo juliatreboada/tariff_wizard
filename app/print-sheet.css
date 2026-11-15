@@ -551,3 +551,10 @@
     padding-bottom: 12mm;
   }
 }
+
+/* The open cell between two TOD WG pyramids that holds a transition. */
+.official-transition-arrow {
+  font-size: 28px;
+  line-height: 1;
+  color: #000;
+}

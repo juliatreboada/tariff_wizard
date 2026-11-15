@@ -51,6 +51,9 @@ type TopTable = {
 
 const BASES = basesData.bases as TodWgBase[];
 const TABLES = topsData.tables as unknown as Record<string, TopTable>;
+/** Printed TOD page of the transitions table (how a transition is written on the sheet). */
+export const TRANSITIONS_PAGE: number = transitionsData.page;
+
 const TRANSITIONS = transitionsData as unknown as { ranges: [number, number | null][]; values: number[][] };
 
 /** Every base, in TOD order (a copy). */

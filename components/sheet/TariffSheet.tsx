@@ -67,6 +67,15 @@ function ImageCell({
   optionalLabel: string;
 }) {
   if (slot.kind === "empty") return null;
+  if (slot.kind === "transition") {
+    return (
+      <div className="official-img-wrap">
+        <div className="official-img-main official-transition-arrow" aria-label="Transición">
+          →
+        </div>
+      </div>
+    );
+  }
 
   const roleFooter =
     slot.kind === "element"
@@ -117,7 +126,7 @@ function ImageCell({
 }
 
 function MetaRowCell({ slot }: { slot: SheetColumnSlot }) {
-  if (slot.kind === "empty") {
+  if (slot.kind === "empty" || slot.kind === "transition") {
     return (
       <div className="official-meta-grid">
         <div className="official-meta-num" />

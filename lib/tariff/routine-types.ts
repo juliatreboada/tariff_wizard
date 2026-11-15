@@ -46,4 +46,9 @@ export type TodWgPick = {
   motion?: string;
   /** Legs together: +1. */
   legsTogether?: boolean;
+  /**
+   * Reached by a transition from the pyramid right before it in the routine:
+   * its value (TOD WG transitions table, from the two bases' values) counts here.
+   */
+  transitionFromPrevious?: boolean;
 };

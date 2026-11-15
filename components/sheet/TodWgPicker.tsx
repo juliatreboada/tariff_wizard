@@ -12,6 +12,7 @@ import {
   supportOptions,
   topPositions,
   topSlots,
+  transitionValue,
   type SupportOption,
   type TodWgBase,
 } from "@/lib/tariff/tod-wg";
@@ -28,6 +29,8 @@ type Props = {
   initial?: { entry: CatalogEntry; pick: TodWgPick };
   onSave: (entry: CatalogEntry, pick: TodWgPick) => boolean;
   duplicateError: boolean;
+  /** The pyramid right before this one in the routine, if any: a transition can come from it. */
+  previousBase?: TodWgBase;
 };
 
 type Tile = { entry: CatalogEntry; base: TodWgBase };
@@ -35,7 +38,7 @@ type Tile = { entry: CatalogEntry; base: TodWgBase };
 const figImage = (path: string) => catalogImageUrl(path, "FIG");
 
 /** Women's Group pyramid builder: base → (per top step) support table → position → motion / legs together. */
-export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateError }: Props) {
+export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateError, previousBase }: Props) {
   const t = getMessages();
   const tw = t.sheet.picker.todWg;
   const tiles = useMemo(
@@ -57,6 +60,7 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
   const [support, setSupport] = useState<SupportOption | null>(null);
   const [motion, setMotion] = useState<string | undefined>(initial?.pick.motion);
   const [legs, setLegs] = useState(initial?.pick.legsTogether ?? false);
+  const [transition, setTransition] = useState(initial?.pick.transitionFromPrevious ?? false);
 
   const activePage = page ?? pages[0];
   const slotLabel = (slot: "top" | "middle") => (slot === "top" ? tw.slotTop : tw.slotMiddle);
@@ -67,6 +71,7 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
     setSupport(null);
     setMotion(undefined);
     setLegs(false);
+    setTransition(false);
   }
 
   // Step 1: the base.
@@ -227,7 +232,15 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
   }
 
   // Step 4: motion (wheels), legs together, and the value.
-  const pick: TodWgPick = { tops, ...(motion ? { motion } : {}), ...(legs ? { legsTogether: true } : {}) };
+  const withTransition = transition && previousBase != null;
+  const pick: TodWgPick = {
+    tops,
+    ...(motion ? { motion } : {}),
+    ...(legs ? { legsTogether: true } : {}),
+    ...(withTransition ? { transitionFromPrevious: true } : {}),
+  };
+  // The transition is valued against the pyramid before it in the routine.
+  const transitionPoints = withTransition ? transitionValue(previousBase.value, base.value) : 0;
   const preview: RoutineItem = { id: "todwg-preview", block: "balance", linkedToPrevious: false, element: catalogEntryToPlaced(entry), todWg: pick };
   const result = pyramidOf(preview);
   const top = tops.find((x) => x.slot === "top");
@@ -286,6 +299,12 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
           {tw.legsTogether}
         </label>
       ) : null}
+      {previousBase ? (
+        <label className="flex items-center gap-2 text-sm text-zinc-800">
+          <input id="todwg-transition" type="checkbox" checked={transition} onChange={(e) => setTransition(e.target.checked)} />
+          {tw.transition(previousBase.id)}
+        </label>
+      ) : null}
       {result ? (
         <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-sm">
           <dt className="text-zinc-500">{tw.summaryBase}</dt>
@@ -302,8 +321,14 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
               <dd className="font-mono">{formatSheetValue(result.legs)}</dd>
             </>
           ) : null}
+          {withTransition ? (
+            <>
+              <dt className="text-zinc-500">{tw.summaryTransition}</dt>
+              <dd className="font-mono">{formatSheetValue(transitionPoints)}</dd>
+            </>
+          ) : null}
           <dt className="font-medium text-zinc-800">{tw.summaryTotal}</dt>
-          <dd className="font-mono font-medium">{formatSheetValue(result.value)}</dd>
+          <dd className="font-mono font-medium">{formatSheetValue(result.value + transitionPoints)}</dd>
         </dl>
       ) : null}
       {result?.problems.map((p) => (

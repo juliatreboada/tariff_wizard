@@ -10,6 +10,7 @@ import {
 import type { RoutineElementRole } from "./routine-types";
 import type { PlacedElement } from "./sheet-types";
 import type { ValueBreakdown } from "./types";
+import { TRANSITIONS_PAGE } from "./tod-wg";
 import { pyramidOf } from "./tod-wg/pyramid";
 import { formatSheetValue } from "./value-breakdown";
 
@@ -131,6 +132,8 @@ export function sheetValueInSubcell(
   hideIndividualValues: boolean,
 ): string {
   if (slot.kind === "empty") return "";
+  // The transition between two pyramids: its value in C.
+  if (slot.kind === "transition") return subcellIndex === 2 ? formatSheetValue(slot.value) : "";
 
   if (slot.kind === "individual-group") {
     const el = individualElementAt(slot, subcellIndex);
@@ -176,6 +179,11 @@ export function sheetCoordinatesInRow(
   options: { baseInSh?: boolean } = {},
 ): string {
   if (slot.kind === "empty") return "";
+  // A transition is written by the TOD page of the transitions table.
+  // (In the last block the BASE row is the footer: it goes in SH, like a pyramid's base.)
+  if (slot.kind === "transition") {
+    return row === "base" || (row === "sh" && options.baseInSh) ? String(TRANSITIONS_PAGE) : "";
+  }
 
   const pyramid = slotPyramid(slot);
   if (pyramid) {

@@ -126,3 +126,35 @@ describe("pyramid edge cases", () => {
     expect(baseForCatalogId("fig-pre-youth-trios-balance-row-i-1")).toBeUndefined();
   });
 });
+
+describe("transitions between pyramids", () => {
+  const first = { ...pyramid("58 A13", { tops: [{ slot: "top", table: 2, support: "Dos manos", position: "C" }] }), id: "p1" };
+  const second = (pick: Partial<TodWgPick> = {}) => ({ ...pyramid("60 C8", { tops: [], transitionFromPrevious: true, ...pick }), id: "p2" });
+
+  it("adds the transition from the 1st base's value (row) to the 2nd base's (column)", () => {
+    const routine = [first, second()];
+    const r = pyramidOf(routine[1], routine)!;
+    expect(r.transition?.value).toBe(3); // 4 (1-8) → 15 (14-15)
+    expect(itemValue(routine[1], routine)).toBe(15 + 3);
+    expect(itemValue(routine[0], routine)).toBe(4 + 7);
+  });
+
+  it("isn't counted without a pyramid right before, and says why", () => {
+    const routine = [second()];
+    const r = pyramidOf(routine[0], routine)!;
+    expect(r.transition).toBeUndefined();
+    expect(r.value).toBe(15);
+    expect(r.problems).toHaveLength(1);
+  });
+
+  it("isn't counted without the routine to look back in", () => {
+    expect(pyramidOf(second())!.transition).toBeUndefined();
+  });
+
+  it("isn't counted when another element comes in between", () => {
+    const fgx = getCatalogEntries("FGX")[0];
+    const plain: RoutineItem = { id: "x", block: "balance", linkedToPrevious: false, element: catalogEntryToPlaced(fgx) };
+    const routine = [first, plain, second()];
+    expect(pyramidOf(routine[2], routine)!.transition).toBeUndefined();
+  });
+});

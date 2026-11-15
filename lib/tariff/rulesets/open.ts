@@ -75,12 +75,12 @@ function pairGroupItems(routine: RoutineItem[]): RoutineItem[] {
 }
 
 /** An element's tags and data, from all its parts (the element and an add-on). */
-function describe(item: RoutineItem, source: CatalogSource) {
+function describe(item: RoutineItem, source: CatalogSource, routine: RoutineItem[]) {
   const parts = [item.element, ...(item.addOn ? [item.addOn] : [])].map(source.entryOf);
   const main = parts[0];
   return {
     family: item.block as "balance" | "dynamic",
-    value: itemValue(item),
+    value: itemValue(item, routine),
     tags: new Set(parts.flatMap((p) => p?.tags ?? [])),
     rotation: rotationQuarters(main?.rotation),
     pyramidCategory: main?.pyramidCategory,
@@ -111,7 +111,7 @@ export function openRequirementStatuses(
   source: CatalogSource = appCatalog(ruleset),
 ): OpenRequirementStatus[] {
   const reqs = ruleset.open?.requirements[header.exercise]?.[teamOf(header.category)] ?? [];
-  const elements = pairGroupItems(routine).map((item) => describe(item, source));
+  const elements = pairGroupItems(routine).map((item) => describe(item, source, routine));
   return reqs.map((req) => {
     const matching = elements.filter((el) => matches(req, el));
     const actual = req.distinctPyramidCategories
@@ -142,7 +142,7 @@ export function openDifficulty(
   let dynamic = 0;
   // Only the first `maxElements` pair/group elements count (CoP 38.7).
   for (const item of pairGroupItems(routine).slice(0, open.maxElements)) {
-    const value = itemValue(item);
+    const value = itemValue(item, routine);
     if (item.block === "balance") balance += value;
     else dynamic += value;
   }

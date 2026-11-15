@@ -46,6 +46,7 @@ import { useWizardStore } from "@/lib/tariff/store";
 import { IndividualChoices } from "./IndividualChoices";
 import { PickerStep } from "./PickerStep";
 import { TodWgPicker } from "./TodWgPicker";
+import { baseForCatalogId } from "@/lib/tariff/tod-wg";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
 
 type PickerElementType = "balance" | "dynamic" | "individual";
@@ -581,6 +582,13 @@ export function ElementPickerPanel({
         })()
       : undefined;
 
+  /** The pyramid right before the one being added (the routine's last) or edited. */
+  const previousTodWgBase = (() => {
+    const index = editingItem ? routine.findIndex((i) => i.id === editingItem.id) : routine.length;
+    const before = index > 0 ? routine[index - 1] : undefined;
+    return before ? baseForCatalogId(before.element.catalogId) : undefined;
+  })();
+
   function saveTodWg(entry: CatalogEntry, pick: TodWgPick): boolean {
     const ok = onSave({ kind: "single", entry, block: "balance", role: "compulsory", todWg: pick });
     setDuplicateError(!ok);
@@ -867,6 +875,7 @@ export function ElementPickerPanel({
                 initial={editingTodWg}
                 onSave={saveTodWg}
                 duplicateError={duplicateError}
+                previousBase={previousTodWgBase}
               />
             ) :
             optionGroup && !previewEntry ? (
