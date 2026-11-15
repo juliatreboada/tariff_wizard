@@ -100,17 +100,16 @@ describe("TOD WG pyramid cell", () => {
   });
   const slot = pyramidSlot({
     tops: [{ slot: "top", table: 2, support: "Dos manos", position: "C" }],
-    motion: "C->D",
     legsTogether: true,
   });
 
-  it("puts the top in A, the motion in B, the base in C and legs together in D", () => {
-    expect([0, 1, 2, 3].map((i) => sheetValueInSubcell(slot, i, false))).toEqual(["7.0", "4.0", "4.0", "1.0"]);
+  it("puts the top in A, the base in C and legs together in D (motions go in the cell after)", () => {
+    expect([0, 1, 2, 3].map((i) => sheetValueInSubcell(slot, i, false))).toEqual(["7.0", "", "4.0", "1.0"]);
   });
 
-  it("writes the top's position in SH, the motion in TOP and the base in BASE", () => {
+  it("writes the top's position in SH and the base in BASE", () => {
     expect(sheetCoordinatesInRow(slot, "sh")).toBe("54/Tab2 - C");
-    expect(sheetCoordinatesInRow(slot, "top")).toBe("54/Tab2 - C->D");
+    expect(sheetCoordinatesInRow(slot, "top")).toBe("");
     expect(sheetCoordinatesInRow(slot, "base")).toBe("58 A13");
   });
 
@@ -126,7 +125,7 @@ describe("TOD WG pyramid cell", () => {
     expect(sheetPyramidLabel(slot)).toBe("CAT 1 GR 1");
   });
 
-  it("leaves B and D empty without a motion or legs together", () => {
+  it("leaves D empty without legs together", () => {
     const plain = pyramidSlot({ tops: [{ slot: "top", table: 2, support: "Dos manos", position: "C" }] });
     expect([0, 1, 2, 3].map((i) => sheetValueInSubcell(plain, i, false))).toEqual(["7.0", "", "4.0", ""]);
   });

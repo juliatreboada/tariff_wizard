@@ -280,10 +280,10 @@ describe("TOD WG pyramids", () => {
     startSheet(seniorTrios());
     store().addRoutineElement(todWgEntry("fig-todwg-c1-58-a13"), { block: "balance", todWg: topC });
     const id = store().routine[0].id;
-    const withMotion = { ...topC, motion: "C->D" };
-    expect(store().replaceRoutineElement(id, todWgEntry("fig-todwg-c1-58-a13"), { todWg: withMotion })).toBe(true);
-    expect(store().routine[0].todWg).toEqual(withMotion);
-    expect(store().valueBreakdown.balance).toBe(4 + 7 + 4);
+    const withLegs = { ...topC, legsTogether: true };
+    expect(store().replaceRoutineElement(id, todWgEntry("fig-todwg-c1-58-a13"), { todWg: withLegs })).toBe(true);
+    expect(store().routine[0].todWg).toEqual(withLegs);
+    expect(store().valueBreakdown.balance).toBe(4 + 7 + 1);
   });
 
   it("drops the choices when the element is replaced by a plain one", () => {
@@ -292,5 +292,23 @@ describe("TOD WG pyramids", () => {
     const id = store().routine[0].id;
     store().replaceRoutineElement(id, todWgEntry("fig-todwg-c1-58-a12"));
     expect(store().routine[0].todWg).toBeUndefined();
+  });
+});
+
+describe("TOD WG continuations", () => {
+  const fig = (id: string) => getCatalogEntries("FIG").find((e) => e.id === id)!;
+  it("accepts the same base again as the next static hold of its pyramid, but not as a new pyramid", () => {
+    startSheet(header({ levelSystem: "FIG", levelAge: "Senior", category: "Tríos", exercise: "Balance" }));
+    const base = fig("fig-todwg-c1-58-a13");
+    const top = (position: string) => [{ slot: "top" as const, table: 2, support: "Dos manos", position }];
+    expect(store().addRoutineElement(base, { block: "balance", todWg: { tops: top("C") } })).toBe(true);
+    expect(store().addRoutineElement(base, { block: "balance", todWg: { tops: top("D") } })).toBe(false);
+    expect(
+      store().addRoutineElement(base, {
+        block: "balance",
+        todWg: { tops: top("D"), from: { transition: false, moves: [{ slot: "top", how: "motion" }] } },
+      }),
+    ).toBe(true);
+    expect(store().valueBreakdown.balance).toBe(4 + 7 + 4 + 5);
   });
 });

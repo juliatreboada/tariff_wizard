@@ -67,10 +67,10 @@ function ImageCell({
   optionalLabel: string;
 }) {
   if (slot.kind === "empty") return null;
-  if (slot.kind === "transition") {
+  if (slot.kind === "link") {
     return (
       <div className="official-img-wrap">
-        <div className="official-img-main official-transition-arrow" aria-label="Transición">
+        <div className="official-img-main official-transition-arrow" aria-label="Movimiento o transición">
           →
         </div>
       </div>
@@ -126,7 +126,7 @@ function ImageCell({
 }
 
 function MetaRowCell({ slot }: { slot: SheetColumnSlot }) {
-  if (slot.kind === "empty" || slot.kind === "transition") {
+  if (slot.kind === "empty" || slot.kind === "link") {
     return (
       <div className="official-meta-grid">
         <div className="official-meta-num" />

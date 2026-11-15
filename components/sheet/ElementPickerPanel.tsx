@@ -582,11 +582,12 @@ export function ElementPickerPanel({
         })()
       : undefined;
 
-  /** The pyramid right before the one being added (the routine's last) or edited. */
-  const previousTodWgBase = (() => {
+  /** The static hold right before the one being added (the routine's last) or edited, if it's a TOD WG pyramid. */
+  const previousTodWg = (() => {
     const index = editingItem ? routine.findIndex((i) => i.id === editingItem.id) : routine.length;
-    const before = index > 0 ? routine[index - 1] : undefined;
-    return before ? baseForCatalogId(before.element.catalogId) : undefined;
+    const item = index > 0 ? routine[index - 1] : undefined;
+    const entry = item && baseForCatalogId(item.element.catalogId) ? catalogEntryForElement(item.element) : undefined;
+    return item && entry ? { item, entry } : undefined;
   })();
 
   function saveTodWg(entry: CatalogEntry, pick: TodWgPick): boolean {
@@ -875,7 +876,7 @@ export function ElementPickerPanel({
                 initial={editingTodWg}
                 onSave={saveTodWg}
                 duplicateError={duplicateError}
-                previousBase={previousTodWgBase}
+                previous={previousTodWg}
               />
             ) :
             optionGroup && !previewEntry ? (

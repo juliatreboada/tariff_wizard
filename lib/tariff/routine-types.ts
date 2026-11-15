@@ -40,15 +40,24 @@ export type TodWgTopPick = {
   option?: string;
 };
 
+/**
+ * What a top does between two static holds: holds a valued position during
+ * the transition, holds a position of no value (only with a transition, Art.
+ * 18.4 exception), or makes a motion to its new position.
+ */
+export type TodWgTopMove = "motion" | "held" | "no-value";
+
+/** One static hold of a TOD WG pyramid. */
 export type TodWgPick = {
   tops: TodWgTopPick[];
-  /** A motion of the top's wheel ("A->D"), on the top's support. */
-  motion?: string;
+  /** 3" (valued, default) or 1" (only shown: announces the motion that follows). */
+  hold?: 1 | 3;
   /** Legs together: +1. */
   legsTogether?: boolean;
   /**
-   * Reached by a transition from the pyramid right before it in the routine:
-   * its value (TOD WG transitions table, from the two bases' values) counts here.
+   * The next static hold of the pyramid right before it in the routine: the
+   * cell between them holds the bases' transition (if they change) and what
+   * each top does (`moves`).
    */
-  transitionFromPrevious?: boolean;
+  from?: { transition: boolean; moves: { slot: "top" | "middle"; how: TodWgTopMove }[] };
 };

@@ -265,7 +265,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                           className="h-12 w-12 shrink-0 object-contain"
                         />
                       ) : null}
-                      {pyramidOf(row.item)?.tops.flatMap(({ pick, position }) =>
+                      {pyramidOf(row.item, routine)?.tops.flatMap(({ pick, position }) =>
                         position.images.map((image) => (
                           <Image
                             key={`${pick.slot}-${image}`}
@@ -281,8 +281,8 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                     <p className="mt-1 w-full truncate text-center font-mono text-xs font-semibold text-zinc-900">
                       {row.item.element.coordinates}
                       {row.item.addOn ? ` + ${row.item.addOn.coordinates}` : ""}
-                      {pyramidOf(row.item)?.tops.map(({ position }) => ` + ${position.id}`).join("")}
-                      {pyramidOf(row.item)?.motion ? ` · ${pyramidOf(row.item)!.motion!.key}` : ""}
+                      {pyramidOf(row.item, routine)?.tops.map(({ position }) => ` + ${position.id}`).join("")}
+                      {pyramidOf(row.item, routine)?.link ? ` · ${t.routine.todWgContinues}` : ""}
                       <span className="ml-1.5 rounded bg-zinc-100 px-1 font-medium">
                         {formatSheetValue(itemValue(row.item, routine))}
                       </span>

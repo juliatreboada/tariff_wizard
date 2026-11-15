@@ -347,11 +347,10 @@ export const useWizardStore = create<WizardStore>()(
         const state = get();
         const routine = state.routine;
         const block = options?.block ?? inferElementBlock(entry);
-        if (
-          (block === "balance" || block === "dynamic") &&
-          addProblem(activeRuleset(state), rulesHeader(state), routine, entry, block, undefined, options?.attachTo)
-        ) {
-          return false;
+        if (block === "balance" || block === "dynamic") {
+          const problem = addProblem(activeRuleset(state), rulesHeader(state), routine, entry, block, undefined, options?.attachTo);
+          // The next static hold of a TOD WG pyramid can keep its base: it's the same pyramid.
+          if (problem && !(problem === "duplicate" && options?.todWg?.from)) return false;
         }
         if (block !== "balance" && block !== "dynamic" && isCatalogIdUsedInRoutine(routine, entry.id)) {
           return false;
@@ -459,12 +458,10 @@ export const useWizardStore = create<WizardStore>()(
         if (!target || target.role === "individual") return false;
         const nextBlock = target.block;
         if (inferElementBlock(entry) !== nextBlock) return false;
-        if (
-          (nextBlock !== "balance" && nextBlock !== "dynamic") ||
-          addProblem(activeRuleset(state), rulesHeader(state), state.routine, entry, nextBlock, itemId)
-        ) {
-          return false;
-        }
+        if (nextBlock !== "balance" && nextBlock !== "dynamic") return false;
+        const problem = addProblem(activeRuleset(state), rulesHeader(state), state.routine, entry, nextBlock, itemId);
+        // The next static hold of a TOD WG pyramid can keep its base: it's the same pyramid.
+        if (problem && !(problem === "duplicate" && options?.todWg?.from)) return false;
 
         let next = state.routine.map((item) => {
           if (item.id !== itemId) return item;
