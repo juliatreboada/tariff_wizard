@@ -56,6 +56,16 @@ const rfeg = (levelAge: string, exercise: Exercise, category = "Pareja Femenina"
 
 const byId = (list: ReturnType<typeof openRequirementStatuses>) => Object.fromEntries(list.map((r) => [r.id, r]));
 
+describe("free composition with the real TOD WG catalog", () => {
+  it("counts pyramids and static holds now that TOD WG bases carry them; handstand stays coming soon", () => {
+    const status = byId(openRequirementStatuses(FIG_SENIOR, fig("Senior", "Balance", "Tríos"), []));
+    expect(status.pyramids.pending).toBe(false);
+    expect(status.pyramids.penalty).toBeGreaterThan(0);
+    const pendingIds = Object.values(status).filter((r) => r.pending).map((r) => r.id);
+    expect(pendingIds.some((id) => id.includes("handstand"))).toBe(true);
+  });
+});
+
 describe("free composition rulesets", () => {
   it("are written but not offered until TOD WG is in the catalog", () => {
     for (const age of ["Youth", "Junior", "Senior"]) {

@@ -6,6 +6,7 @@ import { gymnastCountForCategory } from "../level-category";
 import type { PlacedElement } from "../sheet-types";
 import type { RoutineItem } from "../routine-types";
 import type { OpenRequirement, Ruleset, RulesHeader, Team } from "./types";
+import { itemValue } from "../item-value";
 
 /** Where entries come from: the app's catalogs, or (tests) a list of sample entries. */
 export type CatalogSource = { entryOf: (element: PlacedElement) => CatalogEntry | undefined; entries: () => CatalogEntry[] };
@@ -79,7 +80,7 @@ function describe(item: RoutineItem, source: CatalogSource) {
   const main = parts[0];
   return {
     family: item.block as "balance" | "dynamic",
-    value: item.element.value + (item.addOn?.value ?? 0),
+    value: itemValue(item),
     tags: new Set(parts.flatMap((p) => p?.tags ?? [])),
     rotation: rotationQuarters(main?.rotation),
     pyramidCategory: main?.pyramidCategory,
@@ -141,7 +142,7 @@ export function openDifficulty(
   let dynamic = 0;
   // Only the first `maxElements` pair/group elements count (CoP 38.7).
   for (const item of pairGroupItems(routine).slice(0, open.maxElements)) {
-    const value = item.element.value + (item.addOn?.value ?? 0);
+    const value = itemValue(item);
     if (item.block === "balance") balance += value;
     else dynamic += value;
   }

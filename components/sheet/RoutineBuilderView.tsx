@@ -20,6 +20,7 @@ import type { StoredHeader } from "@/lib/tariff/types";
 import type { RoutineItem } from "@/lib/tariff/routine-types";
 import { useWizardStore } from "@/lib/tariff/store";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
+import { itemValue } from "@/lib/tariff/item-value";
 
 type RoutineBuilderViewProps = {
   header: StoredHeader;
@@ -267,7 +268,7 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                       {row.item.element.coordinates}
                       {row.item.addOn ? ` + ${row.item.addOn.coordinates}` : ""}
                       <span className="ml-1.5 rounded bg-zinc-100 px-1 font-medium">
-                        {formatSheetValue(row.item.element.value + (row.item.addOn?.value ?? 0))}
+                        {formatSheetValue(itemValue(row.item))}
                       </span>
                     </p>
                     {row.item.addOn ? (

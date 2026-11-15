@@ -1,5 +1,6 @@
 import type { RoutineItem } from "../routine-types";
 import type { ValueBreakdown } from "../types";
+import { itemValue } from "../item-value";
 
 /** Sum element values for the sidebar — compulsory balance/dynamic (with add-ons) only; no individual DV. */
 export function recalculateValueBreakdown(
@@ -10,7 +11,7 @@ export function recalculateValueBreakdown(
 
   for (const item of routine) {
     if (item.role !== "compulsory") continue;
-    const value = item.element.value + (item.addOn?.value ?? 0);
+    const value = itemValue(item);
     if (item.block === "balance") balance += value;
     else if (item.block === "dynamic") dynamic += value;
   }

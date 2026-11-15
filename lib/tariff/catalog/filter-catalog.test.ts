@@ -54,6 +54,30 @@ describe("RFEG Base catalog", () => {
   });
 });
 
+describe("FIG catalog (TOD WG bases)", () => {
+  const todWg = getCatalogEntries("FIG").filter((e) => e.filters.levelAges?.includes("TOD WG"));
+
+  it("has the 376 Women's Group bases as tagged pyramids, for Tríos only", () => {
+    expect(todWg).toHaveLength(376);
+    expect(todWg.every((e) => e.elementFamily === "balance" && e.filters.categories.join() === "Tríos")).toBe(true);
+    expect(todWg.every((e) => e.tags?.includes("pyramid") && e.pyramidCategory)).toBe(true);
+  });
+
+  it("keeps the two 64 A1 bases apart by category", () => {
+    const a1 = todWg.filter((e) => e.coordinates === "64 A1");
+    expect(a1.map((e) => [e.pyramidCategory, e.value])).toEqual([["6", 7], ["7", 12]]);
+    expect(new Set(a1.map((e) => e.number)).size).toBe(2);
+  });
+
+  it("isn't offered to the Pre-Youth tables", () => {
+    const preYouthTrios = filterCatalogEntries(getCatalogEntries("FIG"), {
+      header: header({ levelSystem: "FIG", levelAge: "Pre-Youth", category: "Tríos" }),
+      elementFamily: "balance",
+    });
+    expect(preYouthTrios.some((e) => e.id.startsWith("fig-todwg"))).toBe(false);
+  });
+});
+
 describe("FIG catalog (Pre-Youth 11-16)", () => {
   const fig = getCatalogEntries("FIG");
   /** Table cells (a cell's options count once). */
@@ -66,7 +90,8 @@ describe("FIG catalog (Pre-Youth 11-16)", () => {
     );
 
   it("has the five 11-16 tables, balance and dynamic", () => {
-    expect(fig.filter((e) => e.elementFamily !== "individual")).toHaveLength(232); // with cell options
+    const preYouth = fig.filter((e) => e.filters.levelAges?.includes("Pre-Youth"));
+    expect(preYouth.filter((e) => e.elementFamily !== "individual")).toHaveLength(232); // with cell options
     expect(count("Pareja Femenina", "balance")).toBe(23);
     expect(count("Pareja Masculina", "dynamic")).toBe(17);
     expect(count("Tríos", "dynamic")).toBe(18); // ROW I Box 4 (360º / 540º-720º) is one cell

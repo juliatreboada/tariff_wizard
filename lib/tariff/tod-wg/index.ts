@@ -68,6 +68,21 @@ export function baseById(id: string, category?: number): TodWgBase | undefined {
   return found[0];
 }
 
+const slug = (s: string) =>
+  s.toLowerCase().replace(/\+/g, "plus").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+/** The base's FIG catalog entry id (as scripts/generate-fig-manifest.mjs writes it). */
+export function todWgCatalogId(base: TodWgBase): string {
+  return `fig-todwg-c${base.category}-${slug(base.id)}`;
+}
+
+const BY_CATALOG_ID = new Map(BASES.map((b) => [todWgCatalogId(b), b]));
+
+/** The base behind a FIG catalog entry id, if it's a TOD WG base. */
+export function baseForCatalogId(catalogId: string): TodWgBase | undefined {
+  return BY_CATALOG_ID.get(catalogId);
+}
+
 /** Base group from the base value: 1 = 1-8, 2 = 9-13, 3 = 14-17, 4 = 18 or more. */
 export function baseGroup(value: number): BaseGroup {
   if (!Number.isInteger(value) || value < 1) throw new Error(`Not a base value: ${value}`);

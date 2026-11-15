@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { EXERCISES, LEVEL_SYSTEMS } from "../enums";
-import { CATALOG_IDS, ELEMENT_FAMILIES, ELEMENT_TYPES } from "./types";
+import { CATALOG_IDS, ELEMENT_FAMILIES, ELEMENT_TAGS, ELEMENT_TYPES } from "./types";
 
 const catalogEntrySchema = z.object({
   id: z.string().min(1),
@@ -18,6 +18,8 @@ const catalogEntrySchema = z.object({
   number: z.string().min(1).optional(),
   attachesTo: z.array(z.string().min(1)).min(1).optional(),
   sameAs: z.array(z.string().min(1)).min(1).optional(),
+  tags: z.array(z.enum(ELEMENT_TAGS)).min(1).optional(),
+  pyramidCategory: z.string().min(1).optional(),
   filters: z.object({
     levelSystems: z.array(z.enum(LEVEL_SYSTEMS)).min(1),
     categories: z.array(z.string().min(1)).min(1),
