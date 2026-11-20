@@ -182,6 +182,37 @@ for (const [column, twists] of Object.entries(tod.tumbling.columns)) {
   }
 }
 
+// TOD WG Women's Group bases (catalog/FIG/tod-wg-bases.json, printed pages
+// 58-64): the pyramid's base, for the free-composition levels (source "TOD WG").
+// The top, motion and transition are chosen on top of it (lib/tariff/tod-wg).
+const todWg = JSON.parse(fs.readFileSync(path.join(root, "catalog/FIG/tod-wg-bases.json"), "utf8"));
+const todWgFilters = {
+  levelSystems: ["FIG", "RFEG"],
+  categories: ["Tríos"],
+  exercises: ["Balance", "Combined"],
+  levelAges: ["TOD WG"],
+};
+const todWgSlug = (s) => s.toLowerCase().replace(/\+/g, "plus").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+for (const base of todWg.bases) {
+  if (!fs.existsSync(path.join(publicFig, base.image))) problems.push(`missing picture ${base.image}`);
+  const group = todWg.bases.filter((b) => b.category === base.category && b.number === base.number);
+  const label = base.variationOf ? "+2" : base.option ? `Opción ${base.option.toUpperCase()}` : "Sin variación";
+  entries.push({
+    id: `fig-todwg-c${base.category}-${todWgSlug(base.id)}`,
+    code: "FIG",
+    elementFamily: "balance",
+    coordinates: base.id,
+    image: base.image,
+    value: base.value,
+    holdDuration: '3"',
+    number: `C${base.category} ${base.number}`,
+    ...(group.length > 1 ? { variant: { group: base.number, label, groupImage: group[0].image } } : {}),
+    tags: ["pyramid", "static-hold"],
+    pyramidCategory: String(base.category),
+    filters: todWgFilters,
+  });
+}
+
 // Cells with alternative pictures ("OR"): one entry per option.
 const withOptions = applyCellOptions(root, "FIG", entries, problems);
 entries.splice(0, entries.length, ...withOptions);

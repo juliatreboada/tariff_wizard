@@ -41,10 +41,9 @@ beforeEach(() => {
 });
 
 describe("availability", () => {
-  it("offers FIG Pre-Youth and RFEG Juvenil; Youth, Junior and Senior later", () => {
+  it("offers FIG Pre-Youth and RFEG Juvenil", () => {
     expect(isLevelAgeReady("FIG", "Pre-Youth")).toBe(true);
     expect(isLevelAgeReady("RFEG", "Juvenil")).toBe(true);
-    for (const age of ["Youth", "Junior", "Senior"]) expect(isLevelAgeReady("FIG", age)).toBe(false);
   });
 
   it("has a Balance and a Dynamic routine, no combined one", () => {

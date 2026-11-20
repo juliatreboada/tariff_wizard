@@ -10,25 +10,87 @@ import {
 import type { RoutineElementRole } from "./routine-types";
 import type { PlacedElement } from "./sheet-types";
 import type { ValueBreakdown } from "./types";
-import { formatSheetValue } from "./value-breakdown";
+import { TRANSITIONS_PAGE } from "./tod-wg";
+import { pyramidOf, type PyramidLink } from "./tod-wg/pyramid";
+import { formatSheetValue, formatTodWgValue } from "./value-breakdown";
 
 export const SHEET_NO_VALUE = "-";
 
-/** The pictures in an element cell: the element, then its add-on. */
-export function slotElements(
-  slot: Extract<SheetColumnSlot, { kind: "element" }>,
-): PlacedElement[] {
+type ElementSlot = Extract<SheetColumnSlot, { kind: "element" }>;
+
+/** The TOD WG static hold in a cell (its base is the element), or null. */
+function slotPyramid(slot: SheetColumnSlot) {
+  if (slot.kind !== "element") return null;
+  return (
+    slot.pyramid ??
+    pyramidOf({ id: slot.routineItemId, block: slot.block, linkedToPrevious: false, element: slot.element, todWg: slot.todWg })
+  );
+}
+
+/** The pictures in an element cell: the element, then its add-on; a pyramid's tops above its base. */
+export function slotElements(slot: ElementSlot): PlacedElement[] {
+  const pyramid = slotPyramid(slot);
+  if (pyramid) {
+    // Every drawing of a top (some positions have two), above the base.
+    const tops = pyramid.tops.flatMap(({ position }) =>
+      position.images.map((image, i) => ({
+        catalogId: `todwg-top:${position.id}${position.option ?? ""}:${i}`,
+        catalog: "FIG" as const,
+        coordinates: position.id,
+        value: i === 0 ? position.value : 0,
+        image,
+      })),
+    );
+    return [...tops, slot.element];
+  }
   return slot.addOn ? [slot.element, slot.addOn] : [slot.element];
 }
 
 /** Value of an element cell: the element plus its add-on. */
-function slotValue(slot: Extract<SheetColumnSlot, { kind: "element" }>): number {
+function slotValue(slot: ElementSlot): number {
   return slot.element.value + (slot.addOn?.value ?? 0);
 }
 
 /** Codes of an element cell ("ROW-I D + ROW-III C"). */
-function slotCoordinates(slot: Extract<SheetColumnSlot, { kind: "element" }>): string {
+function slotCoordinates(slot: ElementSlot): string {
   return slotElements(slot).map((el) => el.coordinates).join(" + ");
+}
+
+/** Under a pyramid's pictures: its category and base group ("CAT 6 GR 3"); "" otherwise. */
+export function sheetPyramidLabel(slot: SheetColumnSlot): string {
+  const pyramid = slotPyramid(slot);
+  return pyramid ? `CAT ${pyramid.base.category} GR ${pyramid.group}` : "";
+}
+
+const valueOrBlank = (v: number | null | undefined) => (v == null ? "" : formatTodWgValue(v));
+
+/** A static hold's VALUE subcells: A the tops, C the base, D legs together (a 1" hold shows none). */
+function pyramidValueInSubcell(pyramid: NonNullable<ReturnType<typeof slotPyramid>>, subcellIndex: number): string {
+  switch (subcellIndex) {
+    case 0:
+      return valueOrBlank(pyramid.cell.tops);
+    case 2:
+      return valueOrBlank(pyramid.cell.base);
+    case 3:
+      return valueOrBlank(pyramid.cell.legs);
+    default:
+      return "";
+  }
+}
+
+/** The link cell's VALUE subcells: A tops held during the transition, B the motions, C the transition. */
+function linkValueInSubcell(link: PyramidLink, subcellIndex: number): string {
+  const total = (values: number[]) => (values.length ? values.reduce((s, v) => s + v, 0) : null);
+  switch (subcellIndex) {
+    case 0:
+      return valueOrBlank(total(link.held.map((h) => h.value)));
+    case 1:
+      return valueOrBlank(total(link.motions.map((m) => m.value)));
+    case 2:
+      return valueOrBlank(link.transition?.value);
+    default:
+      return "";
+  }
 }
 
 /** Meta row (top): rotation (dynamic) or hold time (balance / individual EQ static). */
@@ -38,8 +100,10 @@ export function elementMetaDisplay(element: PlacedElement | undefined): string {
   return element.holdDuration ?? "";
 }
 
-/** Meta row for a sheet column (single element or stacked individuals). */
+/** Meta row for a sheet column (single element or stacked individuals); a static hold's time (3" or 1"). */
 export function sheetSlotMetaDisplay(slot: SheetColumnSlot): string {
+  const pyramid = slotPyramid(slot);
+  if (pyramid) return `${pyramid.hold}"`;
   const elements =
     slot.kind === "element"
       ? slotElements(slot)
@@ -88,11 +152,18 @@ export function sheetValueInSubcell(
   hideIndividualValues: boolean,
 ): string {
   if (slot.kind === "empty") return "";
+  if (slot.kind === "link") return linkValueInSubcell(slot.link, subcellIndex);
 
   if (slot.kind === "individual-group") {
     const el = individualElementAt(slot, subcellIndex);
     if (!el) return "";
     return hideIndividualValues ? SHEET_NO_VALUE : formatSheetValue(el.value);
+  }
+
+  const pyramid = slotPyramid(slot);
+  if (pyramid) {
+    if (slot.role === "optional") return subcellIndex === OFFICIAL_BALANCE_VALUE_SUBCELL ? SHEET_NO_VALUE : "";
+    return pyramidValueInSubcell(pyramid, subcellIndex);
   }
 
   if (slot.block === "balance" && subcellIndex === OFFICIAL_BALANCE_VALUE_SUBCELL) {
@@ -116,12 +187,31 @@ export function sheetValueInSubcell(
   return "";
 }
 
-/** Row 4 (SH): balance + all individual coordinates; row 5 (TOP): dynamic only. */
+/**
+ * Row 4 (SH): balance + all individual coordinates; row 5 (TOP): dynamic only.
+ * A TOD WG static hold: SH the tops' positions, BASE the base.
+ */
 export function sheetCoordinatesInRow(
   slot: SheetColumnSlot,
   row: OfficialIndividualCoordinateRow,
 ): string {
   if (slot.kind === "empty") return "";
+  // The link: held positions in SH, motions in TOP, a transition by the TOD page
+  // of the transitions table in BASE.
+  if (slot.kind === "link") {
+    const transition = slot.link.transition ? String(TRANSITIONS_PAGE) : "";
+    if (row === "sh") return slot.link.held.map((h) => h.id).join(" / ");
+    if (row === "top") return slot.link.motions.map((m) => m.id ?? "—").join(" / ");
+    return transition;
+  }
+
+  const pyramid = slotPyramid(slot);
+  if (pyramid) {
+    // SH: only the tops (top, and the middle acting as a top); the base always in BASE.
+    if (row === "sh") return pyramid.tops.map((t) => t.position.id).join(" / ");
+    if (row === "top") return "";
+    return slot.kind === "element" ? slot.element.coordinates : "";
+  }
 
   if (slot.kind === "individual-group") {
     if (row !== "sh") return "";
@@ -145,7 +235,8 @@ export function formatSidebarBreakdownValue(
   key: keyof Pick<ValueBreakdown, "balance" | "dynamic" | "individual">,
   breakdown: ValueBreakdown,
   hideIndividualValues: boolean,
+  decimals = 1,
 ): string {
   if (hideIndividualValues && key === "individual") return SHEET_NO_VALUE;
-  return formatSheetValue(breakdown[key]);
+  return formatSheetValue(breakdown[key], decimals);
 }

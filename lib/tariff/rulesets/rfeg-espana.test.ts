@@ -32,13 +32,10 @@ beforeEach(() => {
 });
 
 describe("availability", () => {
-  it("offers RFEG Alevín, Infantil, Cadete (Cto. España) and Juvenil; Pre-Junior and up later", () => {
+  it("offers RFEG Alevín, Infantil, Cadete (Cto. España) and Juvenil", () => {
     expect(rulesetFor({ levelSystem: "RFEG", levelAge: "Cadete" })?.id).toBe("rfeg-espana");
     expect(rulesetFor({ levelSystem: "RFEG", levelAge: "Juvenil" })?.id).toBe("rfeg-juvenil");
     for (const age of ["Alevín", "Infantil", "Cadete", "Juvenil"]) expect(isLevelAgeReady("RFEG", age)).toBe(true);
-    for (const age of ["Pre-Junior", "Junior", "Senior"]) {
-      expect(isLevelAgeReady("RFEG", age)).toBe(false);
-    }
   });
 });
 

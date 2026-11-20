@@ -5,9 +5,10 @@ import type { OpenComposition, OpenRequirement, Ruleset, Team } from "./types";
  * Free composition from TOD WG: FIG Youth (12-18), Junior (13-19) and Senior,
  * and the RFEG Pre-Júnior, Júnior and Sénior that follow them (Code of Points
  * 2025-2028, Art. 17–27; Youth & Junior Rules 2025-2028, Sections III–IV;
- * Programa técnico Cto. España 2027). Not offered until TOD WG is in the
- * catalog (`readyLevelAges` empty); requirements that need an element tag stay
- * "próximamente" until TOD WG entries carry it.
+ * Programa técnico Cto. España 2027). Offered for Women's Group (Tríos) Balance
+ * only, the part of TOD WG that's in the catalog (`readyOnly`). The TOD WG bases carry the `pyramid` and
+ * `static-hold` tags, so those requirements count; one no entry carries yet
+ * (e.g. `handstand`) stays "próximamente".
  */
 
 const once = { amount: 1, per: "once" } as const;
@@ -108,7 +109,9 @@ function openRuleset(
   return {
     ...base,
     catalogId: "FIG",
-    readyLevelAges: [],
+    // TOD WG has only the Women's Group balance tables so far.
+    readyLevelAges: base.levelAges ?? [],
+    readyOnly: { categories: ["Tríos"], exercises: ["Balance"] },
     exercises: ["Balance", "Dynamic", "Combined"],
     // Every pair/group element is "compulsory" (adds difficulty); `maxElements` limits the routine.
     blocks: {
@@ -130,7 +133,8 @@ function openRuleset(
     // Up to 3 per gymnast (CoP 17.9), not required.
     individuals: { sets: 3, available: true, source: { catalogId: "FIG", levelSystem: "FIG" } },
     penalties: { missingElement: 1, missingIndividuals: 0 },
-    display: { hideIndividualValues: false },
+    // TOD WG: pyramid values are whole points; the totals show 2 decimals (coach).
+    display: { hideIndividualValues: false, totalsDecimals: 2 },
   };
 }
 

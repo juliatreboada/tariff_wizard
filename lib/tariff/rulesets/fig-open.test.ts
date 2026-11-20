@@ -8,6 +8,8 @@ import {
   addProblem,
   catalogSourceOf,
   evaluateRules,
+  isCategoryReady,
+  isExerciseReady,
   isLevelAgeReady,
   openDifficulty,
   openDifficultyPenalties,
@@ -56,16 +58,36 @@ const rfeg = (levelAge: string, exercise: Exercise, category = "Pareja Femenina"
 
 const byId = (list: ReturnType<typeof openRequirementStatuses>) => Object.fromEntries(list.map((r) => [r.id, r]));
 
+describe("free composition with the real TOD WG catalog", () => {
+  it("counts pyramids and static holds now that TOD WG bases carry them; handstand stays coming soon", () => {
+    const status = byId(openRequirementStatuses(FIG_SENIOR, fig("Senior", "Balance", "Tríos"), []));
+    expect(status.pyramids.pending).toBe(false);
+    expect(status.pyramids.penalty).toBeGreaterThan(0);
+    const pendingIds = Object.values(status).filter((r) => r.pending).map((r) => r.id);
+    expect(pendingIds.some((id) => id.includes("handstand"))).toBe(true);
+  });
+});
+
 describe("free composition rulesets", () => {
-  it("are written but not offered until TOD WG is in the catalog", () => {
-    for (const age of ["Youth", "Junior", "Senior"]) {
-      expect(rulesetFor({ levelSystem: "FIG", levelAge: age })?.open).toBeDefined();
-      expect(isLevelAgeReady("FIG", age)).toBe(false);
+  it("are offered for Women's Group (Tríos) Balance only, the TOD WG part in the catalog", () => {
+    const levels = [
+      ...["Youth", "Junior", "Senior"].map((age) => ["FIG", age] as const),
+      ...["Pre-Junior", "Junior", "Senior"].map((age) => ["RFEG", age] as const),
+    ];
+    for (const [system, age] of levels) {
+      expect(rulesetFor({ levelSystem: system, levelAge: age })?.open).toBeDefined();
+      expect(isLevelAgeReady(system, age)).toBe(true);
+      expect(isCategoryReady(system, age, "Tríos")).toBe(true);
+      expect(isCategoryReady(system, age, "Pareja Femenina")).toBe(false);
+      expect(isExerciseReady(system, age, "Balance")).toBe(true);
+      expect(isExerciseReady(system, age, "Dynamic")).toBe(false);
+      expect(isExerciseReady(system, age, "Combined")).toBe(false);
     }
-    for (const age of ["Pre-Junior", "Junior", "Senior"]) {
-      expect(rulesetFor({ levelSystem: "RFEG", levelAge: age })?.open).toBeDefined();
-      expect(isLevelAgeReady("RFEG", age)).toBe(false);
-    }
+  });
+
+  it("leaves other levels' categories and routines alone", () => {
+    expect(isCategoryReady("FIG", "Pre-Youth", "Pareja Femenina")).toBe(true);
+    expect(isExerciseReady("FIG", "Pre-Youth", "Dynamic")).toBe(true);
   });
 
   it("reads transverse rotation in quarters", () => {

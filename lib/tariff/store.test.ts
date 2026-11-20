@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
+import { getCatalogEntries } from "./catalog/load-catalog";
 import { emptyCompetitionStep } from "./schema";
 import { useWizardStore } from "./store";
 import { entry, header, item, withoutCatalog } from "./test-fixtures";
@@ -256,5 +257,98 @@ describe("persisted data", () => {
     });
     store().loadSavedSheet("old");
     expect(store().routine[0].element.catalog).toBe("FGX");
+  });
+});
+
+describe("TOD WG pyramids", () => {
+  const todWgEntry = (id: string) => {
+    const found = getCatalogEntries("FIG").find((e) => e.id === id);
+    if (!found) throw new Error(`no entry ${id}`);
+    return found;
+  };
+  const seniorTrios = () => header({ levelSystem: "FIG", levelAge: "Senior", category: "Tríos", exercise: "Balance" });
+  const topC = { tops: [{ slot: "top" as const, table: 2, support: "Dos manos", position: "C" }] };
+
+  it("saves the coach's choices on the pyramid and counts its whole value", () => {
+    startSheet(seniorTrios());
+    expect(store().addRoutineElement(todWgEntry("fig-todwg-c1-58-a13"), { block: "balance", todWg: topC })).toBe(true);
+    expect(store().routine[0].todWg).toEqual(topC);
+    expect(store().valueBreakdown.balance).toBe(4 + 7);
+  });
+
+  it("changes the choices when the pyramid is edited", () => {
+    startSheet(seniorTrios());
+    store().addRoutineElement(todWgEntry("fig-todwg-c1-58-a13"), { block: "balance", todWg: topC });
+    const id = store().routine[0].id;
+    const withLegs = { ...topC, legsTogether: true };
+    expect(store().replaceRoutineElement(id, todWgEntry("fig-todwg-c1-58-a13"), { todWg: withLegs })).toBe(true);
+    expect(store().routine[0].todWg).toEqual(withLegs);
+    expect(store().valueBreakdown.balance).toBe(4 + 7 + 1);
+  });
+
+  it("drops the choices when the element is replaced by a plain one", () => {
+    startSheet(seniorTrios());
+    store().addRoutineElement(todWgEntry("fig-todwg-c1-58-a13"), { block: "balance", todWg: topC });
+    const id = store().routine[0].id;
+    store().replaceRoutineElement(id, todWgEntry("fig-todwg-c1-58-a12"));
+    expect(store().routine[0].todWg).toBeUndefined();
+  });
+});
+
+describe("TOD WG continuations", () => {
+  const fig = (id: string) => getCatalogEntries("FIG").find((e) => e.id === id)!;
+  it("accepts the same base again as the next static hold of its pyramid, but not as a new pyramid", () => {
+    startSheet(header({ levelSystem: "FIG", levelAge: "Senior", category: "Tríos", exercise: "Balance" }));
+    const base = fig("fig-todwg-c1-58-a13");
+    const top = (position: string) => [{ slot: "top" as const, table: 2, support: "Dos manos", position }];
+    expect(store().addRoutineElement(base, { block: "balance", todWg: { tops: top("C") } })).toBe(true);
+    expect(store().addRoutineElement(base, { block: "balance", todWg: { tops: top("D") } })).toBe(false);
+    expect(
+      store().addRoutineElement(base, {
+        block: "balance",
+        todWg: { tops: top("D"), from: { transition: false, moves: [{ slot: "top", how: "motion" }] } },
+      }),
+    ).toBe(true);
+    expect(store().valueBreakdown.balance).toBe(4 + 7 + 4 + 5);
+  });
+});
+
+describe("TOD WG transitions in the store", () => {
+  it("refuses a transition back to a base already in the routine", () => {
+    startSheet(header({ levelSystem: "FIG", levelAge: "Senior", category: "Tríos", exercise: "Balance" }));
+    const fig = (id: string) => getCatalogEntries("FIG").find((e) => e.id === id)!;
+    const top = (position: string) => [{ slot: "top" as const, table: 2, support: "Dos manos", position }];
+    const via = (how: "no-value") => ({ transition: true, moves: [{ slot: "top" as const, how }] });
+    store().addRoutineElement(fig("fig-todwg-c1-58-a13"), { block: "balance", todWg: { tops: top("C") } });
+    expect(store().addRoutineElement(fig("fig-todwg-c1-58-b1"), { block: "balance", todWg: { tops: top("D"), from: via("no-value") } })).toBe(true);
+    expect(store().addRoutineElement(fig("fig-todwg-c1-58-a13"), { block: "balance", todWg: { tops: top("C"), from: via("no-value") } })).toBe(false);
+  });
+});
+
+describe("sheet number format", () => {
+  it("shows TOD WG totals with 2 decimals and other levels with 1", async () => {
+    const { rulesetFor } = await import("./rulesets");
+    expect(rulesetFor({ levelSystem: "FIG", levelAge: "Senior" })?.display.totalsDecimals).toBe(2);
+    expect(rulesetFor({ levelSystem: "Escolar", levelAge: "Alevín" })?.display.totalsDecimals ?? 1).toBe(1);
+  });
+});
+
+describe("TOD WG continuation without transition", () => {
+  it("only keeps the base of the hold right before", () => {
+    startSheet(header({ levelSystem: "FIG", levelAge: "Senior", category: "Tríos", exercise: "Balance" }));
+    const fig = (id: string) => getCatalogEntries("FIG").find((e) => e.id === id)!;
+    const top = (position: string) => [{ slot: "top" as const, table: 2, support: "Dos manos", position }];
+    store().addRoutineElement(fig("fig-todwg-c1-58-a13"), { block: "balance", todWg: { tops: top("C") } });
+    store().addRoutineElement(fig("fig-todwg-c1-58-b1"), {
+      block: "balance",
+      todWg: { tops: top("D"), from: { transition: true, moves: [{ slot: "top", how: "no-value" }] } },
+    });
+    // "No transition" but back to 58 A13: not the hold before, so refused.
+    expect(
+      store().addRoutineElement(fig("fig-todwg-c1-58-a13"), {
+        block: "balance",
+        todWg: { tops: top("C"), from: { transition: false, moves: [{ slot: "top", how: "motion" }] } },
+      }),
+    ).toBe(false);
   });
 });

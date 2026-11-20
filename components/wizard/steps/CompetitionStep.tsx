@@ -9,6 +9,8 @@ import { getMessages } from "@/lib/i18n";
 import { LEVEL_SYSTEMS } from "@/lib/tariff/enums";
 import {
   availableLevelSystems,
+  isCategoryReady,
+  isExerciseReady,
   isLevelAgeReady,
 } from "@/lib/tariff/rulesets";
 import {
@@ -85,8 +87,20 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
 
   // Keep the routine one this level offers (e.g. Pre-Youth: Balance or Dynamic).
   useEffect(() => {
-    if (!exerciseOptions.includes(exercise)) setValue("exercise", exerciseOptions[0]!);
-  }, [exercise, exerciseOptions, setValue]);
+    if (exerciseOptions.includes(exercise) && isExerciseReady(levelSystem, levelAge, exercise)) return;
+    const ready = exerciseOptions.find((ex) => isExerciseReady(levelSystem, levelAge, ex));
+    // No ready routine at all: leave it (setting one would just repeat every render).
+    const next = ready ?? (exerciseOptions.includes(exercise) ? undefined : exerciseOptions[0]);
+    if (next !== undefined && next !== exercise) setValue("exercise", next);
+  }, [exercise, exerciseOptions, levelSystem, levelAge, setValue]);
+
+  // A partly built level (TOD WG: Tríos only): keep a category it offers.
+  const category = watch("category");
+  useEffect(() => {
+    if (isCategoryReady(levelSystem, levelAge, category)) return;
+    const ready = getCategoryOptions(levelSystem).find((c) => isCategoryReady(levelSystem, levelAge, c));
+    if (ready) setValue("category", ready);
+  }, [category, levelSystem, levelAge, setValue]);
 
   useEffect(() => {
     if (!AVAILABLE_LEVEL_SYSTEMS.includes(levelSystem)) return;
@@ -261,8 +275,9 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
                 {...register("category")}
               >
                 {categoryOptions.map((cat) => (
-                  <option key={cat} value={cat}>
+                  <option key={cat} value={cat} disabled={!isCategoryReady(levelSystem, levelAge, cat)}>
                     {cat}
+                    {!isCategoryReady(levelSystem, levelAge, cat) ? ` · ${t.wizard.comingSoon}` : ""}
                   </option>
                 ))}
               </select>
@@ -279,8 +294,9 @@ export function CompetitionStep({ onSuccess }: CompetitionStepProps) {
                 {...register("exercise")}
               >
                 {exerciseOptions.map((ex) => (
-                  <option key={ex} value={ex}>
+                  <option key={ex} value={ex} disabled={!isExerciseReady(levelSystem, levelAge, ex)}>
                     {exerciseLabel(ex, t.exercises)}
+                    {!isExerciseReady(levelSystem, levelAge, ex) ? ` · ${t.wizard.comingSoon}` : ""}
                   </option>
                 ))}
               </select>

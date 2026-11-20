@@ -5,18 +5,28 @@ import {
   OFFICIAL_MAX_ELEMENT_COLUMNS,
 } from "./official-sheet-layout";
 import { groupRoutineForDisplay, sortIndividualGroupItems } from "./routine-groups";
+import { pyramidOf, type PyramidBreakdown, type PyramidLink } from "./tod-wg/pyramid";
 import type { OfficialSheetBlockId } from "./official-sheet-layout";
-import type { RoutineElementRole, RoutineItem } from "./routine-types";
+import type { RoutineElementRole, RoutineItem, TodWgPick } from "./routine-types";
 import type { PlacedElement } from "./sheet-types";
 
 export type SheetColumnSlot =
   | { kind: "empty" }
+  /**
+   * The cell between two TOD WG static holds: the bases' transition (C), tops
+   * held during it (A) and the tops' motions (B).
+   */
+  | { kind: "link"; routineItemId: string; link: PyramidLink }
   | {
       kind: "element";
       routineItemId: string;
       element: PlacedElement;
       /** Performed with `element` in the same cell (Cuartetos ROW III). */
       addOn?: PlacedElement;
+      /** TOD WG pyramid on this base: the coach's choices. */
+      todWg?: TodWgPick;
+      /** Its static hold, worked out against the whole routine (a continuation depends on the hold before). */
+      pyramid?: PyramidBreakdown;
       elementNumber: number;
       block: OfficialSheetBlockId;
       role?: RoutineElementRole;
@@ -64,7 +74,14 @@ function placeRoutineInColumns(routine: RoutineItem[]): SheetColumnSlot[] {
         ? row.item.linkedToPrevious
         : row.items[0]?.linkedToPrevious ?? false;
 
-    if (columns.length > 0 && row.index > 0 && !linked) {
+    // The next static hold of a pyramid: the cell before it holds the motion
+    // and/or transition, even when the coach linked it.
+    const pyramid = row.kind === "single" ? (pyramidOf(row.item, routine) ?? undefined) : undefined;
+    if (columns.length > 0 && pyramid?.link) {
+      // The link and its static hold go together: no link without the hold.
+      if (columns.length + 2 > MAX_TIMELINE_COLUMNS) break;
+      columns.push({ kind: "link", routineItemId: row.kind === "single" ? row.item.id : "", link: pyramid.link });
+    } else if (columns.length > 0 && row.index > 0 && !linked) {
       if (columns.length >= MAX_TIMELINE_COLUMNS) break;
       columns.push({ kind: "empty" });
     }
@@ -78,6 +95,8 @@ function placeRoutineInColumns(routine: RoutineItem[]): SheetColumnSlot[] {
         routineItemId: row.item.id,
         element: row.item.element,
         ...(row.item.addOn ? { addOn: row.item.addOn } : {}),
+        ...(row.item.todWg ? { todWg: row.item.todWg } : {}),
+        ...(pyramid ? { pyramid } : {}),
         elementNumber,
         block: row.item.block,
         role: row.item.role,

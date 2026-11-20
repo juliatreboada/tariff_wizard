@@ -19,7 +19,9 @@ import { evaluateRules, rulesetFor } from "@/lib/tariff/rulesets";
 import type { StoredHeader } from "@/lib/tariff/types";
 import type { RoutineItem } from "@/lib/tariff/routine-types";
 import { useWizardStore } from "@/lib/tariff/store";
-import { formatSheetValue } from "@/lib/tariff/value-breakdown";
+import { formatSheetValue, formatTodWgValue } from "@/lib/tariff/value-breakdown";
+import { itemValue } from "@/lib/tariff/item-value";
+import { pyramidOf } from "@/lib/tariff/tod-wg/pyramid";
 
 type RoutineBuilderViewProps = {
   header: StoredHeader;
@@ -61,12 +63,13 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
   function savePickerSelection(selection: ElementPickerSelection): boolean {
     if (selection.kind === "single") {
       if (editingSingle) {
-        return replaceRoutineElement(editingSingle.itemId, selection.entry);
+        return replaceRoutineElement(editingSingle.itemId, selection.entry, { todWg: selection.todWg });
       }
       return addRoutineElement(selection.entry, {
         linkedToPrevious: linkNext && routine.length > 0,
         block: selection.block,
         attachTo: selection.attachTo,
+        todWg: selection.todWg,
       });
     }
     if (selection.replaceGroupId) {
@@ -262,14 +265,33 @@ export function RoutineBuilderView({ header }: RoutineBuilderViewProps) {
                           className="h-12 w-12 shrink-0 object-contain"
                         />
                       ) : null}
+                      {pyramidOf(row.item, routine)?.tops.flatMap(({ pick, position }) =>
+                        position.images.map((image) => (
+                          <Image
+                            key={`${pick.slot}-${image}`}
+                            src={catalogImageUrl(image, "FIG")}
+                            alt={position.id}
+                            width={56}
+                            height={42}
+                            className="h-12 w-12 shrink-0 object-contain"
+                          />
+                        )),
+                      )}
                     </div>
                     <p className="mt-1 w-full truncate text-center font-mono text-xs font-semibold text-zinc-900">
                       {row.item.element.coordinates}
                       {row.item.addOn ? ` + ${row.item.addOn.coordinates}` : ""}
+                      {pyramidOf(row.item, routine)?.tops.map(({ position }) => ` + ${position.id}`).join("")}
+                      {pyramidOf(row.item, routine)?.link ? ` · ${t.routine.todWgContinues}` : ""}
                       <span className="ml-1.5 rounded bg-zinc-100 px-1 font-medium">
-                        {formatSheetValue(row.item.element.value + (row.item.addOn?.value ?? 0))}
+                        {pyramidOf(row.item) ? formatTodWgValue(itemValue(row.item, routine)) : formatSheetValue(itemValue(row.item, routine))}
                       </span>
                     </p>
+                    {pyramidOf(row.item, routine)?.problems.map((problem) => (
+                      <p key={problem} className="mt-0.5 text-center text-[11px] leading-tight text-amber-700">
+                        {problem}
+                      </p>
+                    ))}
                     {row.item.addOn ? (
                       <button
                         type="button"

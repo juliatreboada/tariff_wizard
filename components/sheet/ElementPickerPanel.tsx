@@ -23,7 +23,7 @@ import {
   gymnastKeysForHeader,
   individualGroupId,
 } from "@/lib/tariff/routine-groups";
-import type { RoutineGymnastRole, RoutineItem } from "@/lib/tariff/routine-types";
+import type { RoutineGymnastRole, RoutineItem, TodWgPick } from "@/lib/tariff/routine-types";
 import type { StoredHeader } from "@/lib/tariff/types";
 import {
   addProblem,
@@ -45,6 +45,8 @@ import {
 import { useWizardStore } from "@/lib/tariff/store";
 import { IndividualChoices } from "./IndividualChoices";
 import { PickerStep } from "./PickerStep";
+import { TodWgPicker } from "./TodWgPicker";
+import { baseForCatalogId } from "@/lib/tariff/tod-wg";
 import { formatSheetValue } from "@/lib/tariff/value-breakdown";
 
 type PickerElementType = "balance" | "dynamic" | "individual";
@@ -66,6 +68,8 @@ export type ElementPickerSelection =
       role: PickerRole;
       /** For an add-on: the pyramid (catalog id) to put it on. */
       attachTo?: string;
+      /** TOD WG pyramid: the choices on this base. */
+      todWg?: TodWgPick;
     }
   | {
       kind: "individual";
@@ -568,6 +572,31 @@ export function ElementPickerPanel({
         ? dynamicBlockFull
         : false;
 
+  /** Women's Group balance in a free-composition level: pyramids built from TOD WG. */
+  const todWgMode = ruleset?.open != null && elementType === "balance" && header.category === "Tríos";
+  const editingTodWg =
+    editingItem?.todWg != null
+      ? (() => {
+          const entry = catalogEntryForElement(editingItem.element);
+          return entry ? { entry, pick: editingItem.todWg } : undefined;
+        })()
+      : undefined;
+
+  /** The static hold right before the one being added (the routine's last) or edited, if it's a TOD WG pyramid. */
+  const previousTodWg = (() => {
+    const index = editingItem ? routine.findIndex((i) => i.id === editingItem.id) : routine.length;
+    const item = index > 0 ? routine[index - 1] : undefined;
+    const entry = item && baseForCatalogId(item.element.catalogId) ? catalogEntryForElement(item.element) : undefined;
+    return item && entry ? { item, entry } : undefined;
+  })();
+
+  function saveTodWg(entry: CatalogEntry, pick: TodWgPick): boolean {
+    const ok = onSave({ kind: "single", entry, block: "balance", role: "compulsory", todWg: pick });
+    setDuplicateError(!ok);
+    if (ok) onClose();
+    return ok;
+  }
+
   function saveSingle(block: "balance" | "dynamic", entry: CatalogEntry) {
     const ok = onSave({
       kind: "single",
@@ -840,6 +869,18 @@ export function ElementPickerPanel({
           {elementType !== "individual" ? (
             currentBlockIsFull ? (
               <p className="text-sm text-amber-700">{t.sheet.picker.limitRoleBlock}</p>
+            ) : todWgMode ? (
+              <TodWgPicker
+                entries={activeTable?.entries ?? []}
+                problemFor={(entry) => problemFor(entry)}
+                initial={editingTodWg}
+                onSave={saveTodWg}
+                duplicateError={duplicateError}
+                previous={previousTodWg}
+                routineBefore={
+                  editingItem ? routine.slice(0, routine.findIndex((i) => i.id === editingItem.id)) : routine
+                }
+              />
             ) :
             optionGroup && !previewEntry ? (
               <PickerStep title={t.sheet.picker.chooseVariant} onBack={() => setOptionGroup(null)}>

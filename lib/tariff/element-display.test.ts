@@ -6,8 +6,10 @@ import {
   formatSidebarBreakdownValue,
   SHEET_NO_VALUE,
   sheetCoordinatesInRow,
+  sheetPyramidLabel,
   sheetSlotMetaDisplay,
   sheetValueInSubcell,
+  slotElements,
 } from "./element-display";
 import { item } from "./test-fixtures";
 
@@ -82,5 +84,68 @@ describe("a pyramid with an add-on (Cuartetos ROW III)", () => {
     expect(sheetValueInSubcell(slot, 0, true)).toBe("0.5");
     expect(sheetCoordinatesInRow(slot, "sh")).toBe("ROW-II D + ROW-III C");
     expect(sheetSlotMetaDisplay(slot)).toBe('3"');
+  });
+});
+
+describe("TOD WG pyramid cell", () => {
+  const base = getCatalogEntries("FIG").find((e) => e.id === "fig-todwg-c1-58-a13")!;
+  const pyramidSlot = (todWg: NonNullable<Extract<SheetColumnSlot, { kind: "element" }>["todWg"]>): SheetColumnSlot => ({
+    kind: "element",
+    routineItemId: "p",
+    element: catalogEntryToPlaced(base),
+    todWg,
+    elementNumber: 1,
+    block: "balance",
+    role: "compulsory",
+  });
+  const slot = pyramidSlot({
+    tops: [{ slot: "top", table: 2, support: "Dos manos", position: "C" }],
+    legsTogether: true,
+  });
+
+  it("puts the top in A, the base in C and legs together in D (motions go in the cell after)", () => {
+    expect([0, 1, 2, 3].map((i) => sheetValueInSubcell(slot, i, false))).toEqual(["7", "", "4", "1"]);
+  });
+
+  it("writes the top's position in SH and the base in BASE", () => {
+    expect(sheetCoordinatesInRow(slot, "sh")).toBe("54/Tab2 - C");
+    expect(sheetCoordinatesInRow(slot, "top")).toBe("");
+    expect(sheetCoordinatesInRow(slot, "base")).toBe("58 A13");
+  });
+
+  it("keeps SH for the tops only: the base goes in BASE in every block", () => {
+    expect(sheetCoordinatesInRow(slot, "sh")).toBe("54/Tab2 - C");
+  });
+
+  it("stacks the top above the base and labels CAT and GR", () => {
+    expect(slotElements(slot as Extract<SheetColumnSlot, { kind: "element" }>).map((e) => e.coordinates)).toEqual([
+      "54/Tab2 - C",
+      "58 A13",
+    ]);
+    expect(sheetPyramidLabel(slot)).toBe("CAT 1 GR 1");
+  });
+
+  it("leaves D empty without legs together", () => {
+    const plain = pyramidSlot({ tops: [{ slot: "top", table: 2, support: "Dos manos", position: "C" }] });
+    expect([0, 1, 2, 3].map((i) => sheetValueInSubcell(plain, i, false))).toEqual(["7", "", "4", ""]);
+  });
+});
+
+describe("TOD WG pyramid cell with a two-drawing top", () => {
+  it("shows both drawings of the top above the base and counts its value once", () => {
+    const base = getCatalogEntries("FIG").find((e) => e.id === "fig-todwg-c1-58-a13")!;
+    const slot: Extract<SheetColumnSlot, { kind: "element" }> = {
+      kind: "element",
+      routineItemId: "p",
+      element: catalogEntryToPlaced(base),
+      todWg: { tops: [{ slot: "top", table: 2, support: "Dos manos", position: "B" }] },
+      elementNumber: 1,
+      block: "balance",
+      role: "compulsory",
+    };
+    const pics = slotElements(slot);
+    expect(pics).toHaveLength(3);
+    expect(pics.slice(0, 2).every((p) => p.coordinates === "54/Tab2 - B")).toBe(true);
+    expect(sheetValueInSubcell(slot, 0, false)).toBe("2");
   });
 });

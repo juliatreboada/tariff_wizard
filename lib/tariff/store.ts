@@ -42,6 +42,7 @@ import type {
   RoutineElementRole,
   RoutineGymnastRole,
   RoutineItem,
+  TodWgPick,
 } from "./routine-types";
 import type {
   CompetitionStepFormValues,
@@ -92,6 +93,8 @@ export type WizardStore = {
       /** For an add-on: the pyramid (catalog id) to put it on. */
       attachTo?: string;
       baseIndex?: number;
+      /** TOD WG pyramid: the coach's choices on this base. */
+      todWg?: TodWgPick;
     },
   ) => boolean;
   addIndividualGroup: (
@@ -116,6 +119,8 @@ export type WizardStore = {
     entry: CatalogEntry,
     options?: {
       role?: RoutineElementRole;
+      /** TOD WG pyramid: the choices on the new base (none: a plain element). */
+      todWg?: TodWgPick;
     },
   ) => boolean;
   removeRoutineItem: (itemId: string) => void;
@@ -342,11 +347,12 @@ export const useWizardStore = create<WizardStore>()(
         const state = get();
         const routine = state.routine;
         const block = options?.block ?? inferElementBlock(entry);
-        if (
-          (block === "balance" || block === "dynamic") &&
-          addProblem(activeRuleset(state), rulesHeader(state), routine, entry, block, undefined, options?.attachTo)
-        ) {
-          return false;
+        if (block === "balance" || block === "dynamic") {
+          const problem = addProblem(activeRuleset(state), rulesHeader(state), routine, entry, block, undefined, options?.attachTo);
+          // The next static hold of a TOD WG pyramid without transition keeps its base: the same pyramid.
+          const keepsBase =
+            options?.todWg?.from?.transition === false && routine.at(-1)?.element.catalogId === entry.id;
+          if (problem && !(problem === "duplicate" && keepsBase)) return false;
         }
         if (block !== "balance" && block !== "dynamic" && isCatalogIdUsedInRoutine(routine, entry.id)) {
           return false;
@@ -369,6 +375,7 @@ export const useWizardStore = create<WizardStore>()(
             individualGroupId: options?.individualGroupId,
             individualOrder: options?.individualOrder,
             element: catalogEntryToPlaced(entry),
+            ...(options?.todWg ? { todWg: options.todWg } : {}),
           };
           next = withBlockRoles(state, [...routine, item], block);
         }
@@ -453,12 +460,13 @@ export const useWizardStore = create<WizardStore>()(
         if (!target || target.role === "individual") return false;
         const nextBlock = target.block;
         if (inferElementBlock(entry) !== nextBlock) return false;
-        if (
-          (nextBlock !== "balance" && nextBlock !== "dynamic") ||
-          addProblem(activeRuleset(state), rulesHeader(state), state.routine, entry, nextBlock, itemId)
-        ) {
-          return false;
-        }
+        if (nextBlock !== "balance" && nextBlock !== "dynamic") return false;
+        const problem = addProblem(activeRuleset(state), rulesHeader(state), state.routine, entry, nextBlock, itemId);
+        // The next static hold of a TOD WG pyramid without transition keeps its base: the same pyramid.
+        const index = state.routine.findIndex((item) => item.id === itemId);
+        const keepsBase =
+          options?.todWg?.from?.transition === false && state.routine[index - 1]?.element.catalogId === entry.id;
+        if (problem && !(problem === "duplicate" && keepsBase)) return false;
 
         let next = state.routine.map((item) => {
           if (item.id !== itemId) return item;
@@ -470,6 +478,7 @@ export const useWizardStore = create<WizardStore>()(
             role: options?.role ?? item.role ?? "compulsory",
             element: catalogEntryToPlaced(entry),
             addOn: keepAddOn ? item.addOn : undefined,
+            todWg: options?.todWg,
           };
         });
         next = withBlockRoles(state, next, nextBlock);
