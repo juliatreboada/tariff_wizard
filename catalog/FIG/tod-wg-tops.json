@@ -1,0 +1,3975 @@
+{
+  "description": "FIG ACRO Table of Difficulty 2025-2028, Women's Group balance: top positions on printed pages 54-57 (PDF 57-60). Tables 1, 2, 6, 7, 9, 10, 12, 13 are wheels (positions A-G, some tables lack one letter; static values from the grey circles); 3, 4, 5, 8, 11, 14, 15 are small tables (numbered boxes, 'Gr. 1-2-3-4' strip). `values` = top value for base groups 1-4 (null = not possible). Each table's `support` entries are its drawings, one per drawing, each with its point of support (`support`: the coach's name for it, e.g. \"Dos manos\", \"Dos pies\", \"Una mano baja\", \"Otros\"); almost every top position can be done on any of the table's supports with the same value, except where a position lists `notOnSupport`. The selector (still to build) will offer a support only if the chosen base allows it. Boxes with several drawings list them as `options` (one per drawing). Reviewed by the coach 2026-11-14. Wheel tables also list `motions` (the arrows): a motion X->Y (id \"54/Tab1 - A->D\") takes the white circles at the Y end of its arrow, `values` for base groups 1-4; motions to or from a position the table lacks are left out. Motions were read from the PDF's vector drawing (scripts/tod-wg-motions) and reviewed by the coach 2026-11-14.",
+  "tables": {
+    "1": {
+      "page": 54,
+      "layout": "wheel",
+      "support": [
+        {
+          "image": "tod-wg/tops/54-T1-support-1.png",
+          "support": "Dos manos bajas"
+        },
+        {
+          "image": "tod-wg/tops/54-T1-support-2.png",
+          "support": "Otros"
+        }
+      ],
+      "positions": {
+        "A": {
+          "id": "54/Tab1 - A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T1-A.png"
+            }
+          ],
+          "notOnSupport": [
+            "Dos manos bajas"
+          ]
+        },
+        "B": {
+          "id": "54/Tab1 - B",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T1-B-1.png"
+            },
+            {
+              "image": "tod-wg/tops/54-T1-B-2.png"
+            }
+          ],
+          "notOnSupport": [
+            "Dos manos bajas"
+          ]
+        },
+        "C": {
+          "id": "54/Tab1 - C",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T1-C.png"
+            }
+          ]
+        },
+        "D": {
+          "id": "54/Tab1 - D",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T1-D.png"
+            }
+          ]
+        },
+        "E": {
+          "id": "54/Tab1 - E",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T1-E.png"
+            }
+          ]
+        },
+        "F": {
+          "id": "54/Tab1 - F",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T1-F.png"
+            }
+          ]
+        },
+        "G": {
+          "id": "54/Tab1 - G",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T1-G.png"
+            }
+          ]
+        }
+      },
+      "motions": {
+        "A->B": {
+          "id": "54/Tab1 - A->B",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "A->C": {
+          "id": "54/Tab1 - A->C",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "A->D": {
+          "id": "54/Tab1 - A->D",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->E": {
+          "id": "54/Tab1 - A->E",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->F": {
+          "id": "54/Tab1 - A->F",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->G": {
+          "id": "54/Tab1 - A->G",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "B->A": {
+          "id": "54/Tab1 - B->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "B->C": {
+          "id": "54/Tab1 - B->C",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "B->D": {
+          "id": "54/Tab1 - B->D",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "B->E": {
+          "id": "54/Tab1 - B->E",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "B->F": {
+          "id": "54/Tab1 - B->F",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "B->G": {
+          "id": "54/Tab1 - B->G",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->A": {
+          "id": "54/Tab1 - C->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "C->B": {
+          "id": "54/Tab1 - C->B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "C->D": {
+          "id": "54/Tab1 - C->D",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->E": {
+          "id": "54/Tab1 - C->E",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->F": {
+          "id": "54/Tab1 - C->F",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->G": {
+          "id": "54/Tab1 - C->G",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "D->A": {
+          "id": "54/Tab1 - D->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->B": {
+          "id": "54/Tab1 - D->B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "D->C": {
+          "id": "54/Tab1 - D->C",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->E": {
+          "id": "54/Tab1 - D->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->F": {
+          "id": "54/Tab1 - D->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->G": {
+          "id": "54/Tab1 - D->G",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "E->A": {
+          "id": "54/Tab1 - E->A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "E->B": {
+          "id": "54/Tab1 - E->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->C": {
+          "id": "54/Tab1 - E->C",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "E->D": {
+          "id": "54/Tab1 - E->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "E->F": {
+          "id": "54/Tab1 - E->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "E->G": {
+          "id": "54/Tab1 - E->G",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->A": {
+          "id": "54/Tab1 - F->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->B": {
+          "id": "54/Tab1 - F->B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "F->C": {
+          "id": "54/Tab1 - F->C",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->D": {
+          "id": "54/Tab1 - F->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->E": {
+          "id": "54/Tab1 - F->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->G": {
+          "id": "54/Tab1 - F->G",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->A": {
+          "id": "54/Tab1 - G->A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "G->B": {
+          "id": "54/Tab1 - G->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "G->C": {
+          "id": "54/Tab1 - G->C",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "G->D": {
+          "id": "54/Tab1 - G->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->E": {
+          "id": "54/Tab1 - G->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->F": {
+          "id": "54/Tab1 - G->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    "2": {
+      "page": 54,
+      "layout": "wheel",
+      "support": [
+        {
+          "image": "tod-wg/tops/54-T2-support-1.png",
+          "support": "Dos manos"
+        },
+        {
+          "image": "tod-wg/tops/54-T2-support-2.png",
+          "support": "Dos pies"
+        }
+      ],
+      "positions": {
+        "A": {
+          "id": "54/Tab2 - A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T2-A.png"
+            }
+          ]
+        },
+        "B": {
+          "id": "54/Tab2 - B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T2-B-1.png"
+            },
+            {
+              "image": "tod-wg/tops/54-T2-B-2.png"
+            }
+          ]
+        },
+        "C": {
+          "id": "54/Tab2 - C",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T2-C.png"
+            }
+          ]
+        },
+        "D": {
+          "id": "54/Tab2 - D",
+          "values": [
+            5,
+            7,
+            9,
+            11
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T2-D.png"
+            }
+          ]
+        },
+        "E": {
+          "id": "54/Tab2 - E",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T2-E.png"
+            }
+          ]
+        },
+        "F": {
+          "id": "54/Tab2 - F",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T2-F.png"
+            }
+          ]
+        },
+        "G": {
+          "id": "54/Tab2 - G",
+          "values": [
+            7,
+            9,
+            10,
+            13
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T2-G.png"
+            }
+          ],
+          "note": "Printed 7-9-10-13; kept as printed (coach, 2026-11-14)."
+        }
+      },
+      "motions": {
+        "A->B": {
+          "id": "54/Tab2 - A->B",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "A->C": {
+          "id": "54/Tab2 - A->C",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "A->D": {
+          "id": "54/Tab2 - A->D",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->E": {
+          "id": "54/Tab2 - A->E",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->F": {
+          "id": "54/Tab2 - A->F",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->G": {
+          "id": "54/Tab2 - A->G",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "B->A": {
+          "id": "54/Tab2 - B->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "B->C": {
+          "id": "54/Tab2 - B->C",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "B->D": {
+          "id": "54/Tab2 - B->D",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "B->E": {
+          "id": "54/Tab2 - B->E",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "B->F": {
+          "id": "54/Tab2 - B->F",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "B->G": {
+          "id": "54/Tab2 - B->G",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->A": {
+          "id": "54/Tab2 - C->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "C->B": {
+          "id": "54/Tab2 - C->B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "C->D": {
+          "id": "54/Tab2 - C->D",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->E": {
+          "id": "54/Tab2 - C->E",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->F": {
+          "id": "54/Tab2 - C->F",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->G": {
+          "id": "54/Tab2 - C->G",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "D->A": {
+          "id": "54/Tab2 - D->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->B": {
+          "id": "54/Tab2 - D->B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "D->C": {
+          "id": "54/Tab2 - D->C",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->E": {
+          "id": "54/Tab2 - D->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->F": {
+          "id": "54/Tab2 - D->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->G": {
+          "id": "54/Tab2 - D->G",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "E->A": {
+          "id": "54/Tab2 - E->A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "E->B": {
+          "id": "54/Tab2 - E->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->C": {
+          "id": "54/Tab2 - E->C",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "E->D": {
+          "id": "54/Tab2 - E->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "E->F": {
+          "id": "54/Tab2 - E->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "E->G": {
+          "id": "54/Tab2 - E->G",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->A": {
+          "id": "54/Tab2 - F->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->B": {
+          "id": "54/Tab2 - F->B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "F->C": {
+          "id": "54/Tab2 - F->C",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->D": {
+          "id": "54/Tab2 - F->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->E": {
+          "id": "54/Tab2 - F->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->G": {
+          "id": "54/Tab2 - F->G",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->A": {
+          "id": "54/Tab2 - G->A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "G->B": {
+          "id": "54/Tab2 - G->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "G->C": {
+          "id": "54/Tab2 - G->C",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "G->D": {
+          "id": "54/Tab2 - G->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->E": {
+          "id": "54/Tab2 - G->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->F": {
+          "id": "54/Tab2 - G->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    "3": {
+      "page": 54,
+      "layout": "grid",
+      "support": [
+        {
+          "image": "tod-wg/tops/54-T3-support-1.png",
+          "support": "Hombros"
+        },
+        {
+          "image": "tod-wg/tops/54-T3-support-2.png",
+          "support": "Dos manos bajas"
+        }
+      ],
+      "positions": {
+        "1": {
+          "id": "54/Tab3 - 1",
+          "values": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T3-1.png"
+            }
+          ]
+        },
+        "5": {
+          "id": "54/Tab3 - 5",
+          "options": [
+            {
+              "option": "a",
+              "image": "tod-wg/tops/54-T3-5a.png",
+              "values": [
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            {
+              "option": "b",
+              "image": "tod-wg/tops/54-T3-5b.png",
+              "values": [
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            {
+              "option": "c",
+              "image": "tod-wg/tops/54-T3-5c.png",
+              "values": [
+                2,
+                2,
+                2,
+                2
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "4": {
+      "page": 54,
+      "layout": "grid",
+      "support": [
+        {
+          "image": "tod-wg/tops/54-T4-support.png",
+          "support": "Dos manos"
+        }
+      ],
+      "positions": {
+        "6": {
+          "id": "54/Tab4 - 6",
+          "values": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T4-6.png"
+            }
+          ]
+        },
+        "10": {
+          "id": "54/Tab4 - 10",
+          "options": [
+            {
+              "option": "a",
+              "image": "tod-wg/tops/54-T4-10a.png",
+              "values": [
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "option": "b",
+              "image": "tod-wg/tops/54-T4-10b.png",
+              "values": [
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "option": "c",
+              "image": "tod-wg/tops/54-T4-10c.png",
+              "values": [
+                4,
+                4,
+                4,
+                4
+              ],
+              "note": "+1 applied (printed 3-3-3-3 +1)"
+            }
+          ]
+        },
+        "11": {
+          "id": "54/Tab4 - 11",
+          "values": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T4-11.png"
+            }
+          ]
+        }
+      }
+    },
+    "5": {
+      "page": 54,
+      "layout": "grid",
+      "support": [
+        {
+          "image": "tod-wg/tops/54-T5-support-1.png",
+          "support": "Dos pies"
+        },
+        {
+          "image": "tod-wg/tops/54-T5-support-2.png",
+          "support": "Dos manos"
+        }
+      ],
+      "positions": {
+        "12": {
+          "id": "54/Tab5 - 12",
+          "values": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-12.png"
+            }
+          ]
+        },
+        "13": {
+          "id": "54/Tab5 - 13",
+          "values": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-13.png"
+            }
+          ]
+        },
+        "14": {
+          "id": "54/Tab5 - 14",
+          "values": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-14.png"
+            }
+          ]
+        },
+        "15": {
+          "id": "54/Tab5 - 15",
+          "values": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-15.png"
+            }
+          ]
+        },
+        "16": {
+          "id": "54/Tab5 - 16",
+          "values": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-16.png"
+            }
+          ]
+        },
+        "18": {
+          "id": "54/Tab5 - 18",
+          "values": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-18-1.png"
+            },
+            {
+              "image": "tod-wg/tops/54-T5-18-2.png"
+            }
+          ]
+        },
+        "19": {
+          "id": "54/Tab5 - 19",
+          "values": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-19.png"
+            }
+          ]
+        },
+        "20": {
+          "id": "54/Tab5 - 20",
+          "values": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-20.png"
+            }
+          ]
+        },
+        "21": {
+          "id": "54/Tab5 - 21",
+          "values": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-21-1.png"
+            },
+            {
+              "image": "tod-wg/tops/54-T5-21-2.png"
+            }
+          ]
+        },
+        "22": {
+          "id": "54/Tab5 - 22",
+          "values": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-22.png"
+            }
+          ]
+        },
+        "23": {
+          "id": "54/Tab5 - 23",
+          "values": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-23.png"
+            }
+          ]
+        },
+        "24": {
+          "id": "54/Tab5 - 24",
+          "values": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-24-1.png",
+              "role": "apoyo"
+            },
+            {
+              "image": "tod-wg/tops/54-T5-24-2.png",
+              "role": "agil"
+            }
+          ]
+        },
+        "25": {
+          "id": "54/Tab5 - 25",
+          "values": [
+            2,
+            2,
+            3,
+            3
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/54-T5-25-1.png",
+              "role": "apoyo"
+            },
+            {
+              "image": "tod-wg/tops/54-T5-25-2.png",
+              "role": "agil"
+            }
+          ]
+        }
+      }
+    },
+    "6": {
+      "page": 55,
+      "layout": "wheel",
+      "support": [
+        {
+          "image": "tod-wg/tops/55-T6-support-1.png",
+          "support": "Una mano baja"
+        },
+        {
+          "image": "tod-wg/tops/55-T6-support-2.png",
+          "support": "Otros"
+        }
+      ],
+      "positions": {
+        "A": {
+          "id": "55/Tab6 - A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T6-A.png"
+            }
+          ]
+        },
+        "B": {
+          "id": "55/Tab6 - B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T6-B.png"
+            }
+          ]
+        },
+        "C": {
+          "id": "55/Tab6 - C",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T6-C.png"
+            }
+          ]
+        },
+        "D": {
+          "id": "55/Tab6 - D",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T6-D.png"
+            }
+          ]
+        },
+        "E": {
+          "id": "55/Tab6 - E",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T6-E.png"
+            }
+          ]
+        },
+        "F": {
+          "id": "55/Tab6 - F",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T6-F.png"
+            }
+          ]
+        }
+      },
+      "motions": {
+        "A->B": {
+          "id": "55/Tab6 - A->B",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "A->C": {
+          "id": "55/Tab6 - A->C",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->D": {
+          "id": "55/Tab6 - A->D",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "A->E": {
+          "id": "55/Tab6 - A->E",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "A->F": {
+          "id": "55/Tab6 - A->F",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "B->A": {
+          "id": "55/Tab6 - B->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "B->C": {
+          "id": "55/Tab6 - B->C",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "B->D": {
+          "id": "55/Tab6 - B->D",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "B->E": {
+          "id": "55/Tab6 - B->E",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "B->F": {
+          "id": "55/Tab6 - B->F",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "C->A": {
+          "id": "55/Tab6 - C->A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "C->B": {
+          "id": "55/Tab6 - C->B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "C->D": {
+          "id": "55/Tab6 - C->D",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "C->E": {
+          "id": "55/Tab6 - C->E",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "C->F": {
+          "id": "55/Tab6 - C->F",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "D->A": {
+          "id": "55/Tab6 - D->A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "D->B": {
+          "id": "55/Tab6 - D->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "D->C": {
+          "id": "55/Tab6 - D->C",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "D->E": {
+          "id": "55/Tab6 - D->E",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "D->F": {
+          "id": "55/Tab6 - D->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "E->A": {
+          "id": "55/Tab6 - E->A",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->B": {
+          "id": "55/Tab6 - E->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->C": {
+          "id": "55/Tab6 - E->C",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "E->D": {
+          "id": "55/Tab6 - E->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "E->F": {
+          "id": "55/Tab6 - E->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->A": {
+          "id": "55/Tab6 - F->A",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "F->B": {
+          "id": "55/Tab6 - F->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "F->C": {
+          "id": "55/Tab6 - F->C",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "F->D": {
+          "id": "55/Tab6 - F->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->E": {
+          "id": "55/Tab6 - F->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    "7": {
+      "page": 55,
+      "layout": "wheel",
+      "support": [
+        {
+          "image": "tod-wg/tops/55-T7-support-1.png",
+          "support": "Una mano baja"
+        },
+        {
+          "image": "tod-wg/tops/55-T7-support-2.png",
+          "support": "Otros"
+        }
+      ],
+      "positions": {
+        "A": {
+          "id": "55/Tab7 - A",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T7-A-1.png"
+            },
+            {
+              "image": "tod-wg/tops/55-T7-A-2.png"
+            }
+          ]
+        },
+        "B": {
+          "id": "55/Tab7 - B",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T7-B.png"
+            }
+          ]
+        },
+        "D": {
+          "id": "55/Tab7 - D",
+          "values": [
+            7,
+            8,
+            9,
+            10
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T7-D.png"
+            }
+          ]
+        },
+        "E": {
+          "id": "55/Tab7 - E",
+          "values": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T7-E.png"
+            }
+          ]
+        },
+        "F": {
+          "id": "55/Tab7 - F",
+          "values": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T7-F.png"
+            }
+          ]
+        },
+        "G": {
+          "id": "55/Tab7 - G",
+          "values": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T7-G.png"
+            }
+          ]
+        }
+      },
+      "motions": {
+        "A->B": {
+          "id": "55/Tab7 - A->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->D": {
+          "id": "55/Tab7 - A->D",
+          "values": [
+            10,
+            13,
+            16,
+            19
+          ]
+        },
+        "A->E": {
+          "id": "55/Tab7 - A->E",
+          "values": [
+            11,
+            14,
+            17,
+            20
+          ]
+        },
+        "A->F": {
+          "id": "55/Tab7 - A->F",
+          "values": [
+            10,
+            13,
+            16,
+            19
+          ]
+        },
+        "A->G": {
+          "id": "55/Tab7 - A->G",
+          "values": [
+            10,
+            13,
+            16,
+            19
+          ]
+        },
+        "B->A": {
+          "id": "55/Tab7 - B->A",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "B->D": {
+          "id": "55/Tab7 - B->D",
+          "values": [
+            13,
+            16,
+            19,
+            21
+          ]
+        },
+        "B->E": {
+          "id": "55/Tab7 - B->E",
+          "values": [
+            15,
+            18,
+            21,
+            24
+          ]
+        },
+        "B->F": {
+          "id": "55/Tab7 - B->F",
+          "values": [
+            15,
+            18,
+            21,
+            24
+          ]
+        },
+        "B->G": {
+          "id": "55/Tab7 - B->G",
+          "values": [
+            13,
+            16,
+            19,
+            22
+          ]
+        },
+        "D->A": {
+          "id": "55/Tab7 - D->A",
+          "values": [
+            5,
+            7,
+            9,
+            11
+          ]
+        },
+        "D->B": {
+          "id": "55/Tab7 - D->B",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "D->E": {
+          "id": "55/Tab7 - D->E",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "D->F": {
+          "id": "55/Tab7 - D->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->G": {
+          "id": "55/Tab7 - D->G",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "E->A": {
+          "id": "55/Tab7 - E->A",
+          "values": [
+            6,
+            8,
+            10,
+            12
+          ]
+        },
+        "E->B": {
+          "id": "55/Tab7 - E->B",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "E->D": {
+          "id": "55/Tab7 - E->D",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->F": {
+          "id": "55/Tab7 - E->F",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->G": {
+          "id": "55/Tab7 - E->G",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->A": {
+          "id": "55/Tab7 - F->A",
+          "values": [
+            5,
+            7,
+            9,
+            11
+          ]
+        },
+        "F->B": {
+          "id": "55/Tab7 - F->B",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "F->D": {
+          "id": "55/Tab7 - F->D",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "F->E": {
+          "id": "55/Tab7 - F->E",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "F->G": {
+          "id": "55/Tab7 - F->G",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->A": {
+          "id": "55/Tab7 - G->A",
+          "values": [
+            5,
+            7,
+            9,
+            11
+          ]
+        },
+        "G->B": {
+          "id": "55/Tab7 - G->B",
+          "values": [
+            5,
+            7,
+            9,
+            11
+          ]
+        },
+        "G->D": {
+          "id": "55/Tab7 - G->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->E": {
+          "id": "55/Tab7 - G->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->F": {
+          "id": "55/Tab7 - G->F",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      }
+    },
+    "8": {
+      "page": 55,
+      "layout": "grid",
+      "support": [
+        {
+          "image": "tod-wg/tops/55-T8-support-1.png",
+          "support": "Una mano baja"
+        },
+        {
+          "image": "tod-wg/tops/55-T8-support-2.png",
+          "support": "Una mano baja"
+        }
+      ],
+      "positions": {
+        "1": {
+          "id": "55/Tab8 - 1",
+          "values": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T8-1.png"
+            }
+          ]
+        },
+        "2": {
+          "id": "55/Tab8 - 2",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T8-2.png"
+            }
+          ]
+        },
+        "3": {
+          "id": "55/Tab8 - 3",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T8-3.png"
+            }
+          ]
+        },
+        "4": {
+          "id": "55/Tab8 - 4",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T8-4.png"
+            }
+          ]
+        },
+        "5": {
+          "id": "55/Tab8 - 5",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/55-T8-5.png"
+            }
+          ]
+        }
+      }
+    },
+    "9": {
+      "page": 56,
+      "layout": "wheel",
+      "support": [
+        {
+          "image": "tod-wg/tops/56-T9-support-1.png",
+          "support": "Manos superpuestas"
+        },
+        {
+          "image": "tod-wg/tops/56-T9-support-2.png",
+          "support": "Pies"
+        }
+      ],
+      "positions": {
+        "A": {
+          "id": "56/Tab9 - A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T9-A.png"
+            }
+          ]
+        },
+        "B": {
+          "id": "56/Tab9 - B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T9-B.png"
+            }
+          ]
+        },
+        "C": {
+          "id": "56/Tab9 - C",
+          "values": [
+            9,
+            11,
+            13,
+            15
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T9-C.png"
+            }
+          ]
+        },
+        "D": {
+          "id": "56/Tab9 - D",
+          "values": [
+            6,
+            8,
+            10,
+            12
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T9-D.png"
+            }
+          ]
+        },
+        "E": {
+          "id": "56/Tab9 - E",
+          "values": [
+            8,
+            10,
+            12,
+            14
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T9-E.png"
+            }
+          ]
+        },
+        "F": {
+          "id": "56/Tab9 - F",
+          "values": [
+            8,
+            10,
+            12,
+            14
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T9-F.png"
+            }
+          ]
+        }
+      },
+      "motions": {
+        "A->B": {
+          "id": "56/Tab9 - A->B",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "A->C": {
+          "id": "56/Tab9 - A->C",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->D": {
+          "id": "56/Tab9 - A->D",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "A->E": {
+          "id": "56/Tab9 - A->E",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "A->F": {
+          "id": "56/Tab9 - A->F",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "B->A": {
+          "id": "56/Tab9 - B->A",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "B->C": {
+          "id": "56/Tab9 - B->C",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "B->D": {
+          "id": "56/Tab9 - B->D",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "B->E": {
+          "id": "56/Tab9 - B->E",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "B->F": {
+          "id": "56/Tab9 - B->F",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "C->A": {
+          "id": "56/Tab9 - C->A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "C->B": {
+          "id": "56/Tab9 - C->B",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "C->D": {
+          "id": "56/Tab9 - C->D",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "C->E": {
+          "id": "56/Tab9 - C->E",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "C->F": {
+          "id": "56/Tab9 - C->F",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "D->A": {
+          "id": "56/Tab9 - D->A",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "D->B": {
+          "id": "56/Tab9 - D->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "D->C": {
+          "id": "56/Tab9 - D->C",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "D->E": {
+          "id": "56/Tab9 - D->E",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "D->F": {
+          "id": "56/Tab9 - D->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "E->A": {
+          "id": "56/Tab9 - E->A",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->B": {
+          "id": "56/Tab9 - E->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->C": {
+          "id": "56/Tab9 - E->C",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "E->D": {
+          "id": "56/Tab9 - E->D",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "E->F": {
+          "id": "56/Tab9 - E->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->A": {
+          "id": "56/Tab9 - F->A",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "F->B": {
+          "id": "56/Tab9 - F->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "F->C": {
+          "id": "56/Tab9 - F->C",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "F->D": {
+          "id": "56/Tab9 - F->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->E": {
+          "id": "56/Tab9 - F->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    "10": {
+      "page": 56,
+      "layout": "wheel",
+      "support": [
+        {
+          "image": "tod-wg/tops/56-T10-support.png",
+          "support": "Manos superpuestas",
+          "croppedFromPage": true
+        }
+      ],
+      "positions": {
+        "A": {
+          "id": "56/Tab10 - A",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T10-A-1.png"
+            },
+            {
+              "image": "tod-wg/tops/56-T10-A-2.png"
+            }
+          ]
+        },
+        "B": {
+          "id": "56/Tab10 - B",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T10-B.png"
+            }
+          ]
+        },
+        "D": {
+          "id": "56/Tab10 - D",
+          "values": [
+            9,
+            11,
+            13,
+            15
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T10-D.png"
+            }
+          ]
+        },
+        "E": {
+          "id": "56/Tab10 - E",
+          "values": [
+            11,
+            13,
+            15,
+            17
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T10-E.png"
+            }
+          ]
+        },
+        "F": {
+          "id": "56/Tab10 - F",
+          "values": [
+            11,
+            13,
+            15,
+            17
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T10-F.png"
+            }
+          ]
+        },
+        "G": {
+          "id": "56/Tab10 - G",
+          "values": [
+            11,
+            13,
+            15,
+            17
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T10-G.png"
+            }
+          ]
+        }
+      },
+      "motions": {
+        "A->B": {
+          "id": "56/Tab10 - A->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->D": {
+          "id": "56/Tab10 - A->D",
+          "values": [
+            10,
+            13,
+            16,
+            19
+          ]
+        },
+        "A->E": {
+          "id": "56/Tab10 - A->E",
+          "values": [
+            11,
+            14,
+            17,
+            20
+          ]
+        },
+        "A->F": {
+          "id": "56/Tab10 - A->F",
+          "values": [
+            10,
+            13,
+            16,
+            19
+          ]
+        },
+        "A->G": {
+          "id": "56/Tab10 - A->G",
+          "values": [
+            10,
+            13,
+            16,
+            19
+          ]
+        },
+        "B->A": {
+          "id": "56/Tab10 - B->A",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "B->D": {
+          "id": "56/Tab10 - B->D",
+          "values": [
+            13,
+            16,
+            19,
+            21
+          ]
+        },
+        "B->E": {
+          "id": "56/Tab10 - B->E",
+          "values": [
+            15,
+            18,
+            21,
+            24
+          ]
+        },
+        "B->F": {
+          "id": "56/Tab10 - B->F",
+          "values": [
+            15,
+            18,
+            21,
+            24
+          ]
+        },
+        "B->G": {
+          "id": "56/Tab10 - B->G",
+          "values": [
+            13,
+            16,
+            19,
+            22
+          ]
+        },
+        "D->A": {
+          "id": "56/Tab10 - D->A",
+          "values": [
+            5,
+            7,
+            9,
+            11
+          ]
+        },
+        "D->B": {
+          "id": "56/Tab10 - D->B",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "D->E": {
+          "id": "56/Tab10 - D->E",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "D->F": {
+          "id": "56/Tab10 - D->F",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "D->G": {
+          "id": "56/Tab10 - D->G",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->A": {
+          "id": "56/Tab10 - E->A",
+          "values": [
+            6,
+            8,
+            10,
+            12
+          ]
+        },
+        "E->B": {
+          "id": "56/Tab10 - E->B",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "E->D": {
+          "id": "56/Tab10 - E->D",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->F": {
+          "id": "56/Tab10 - E->F",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->G": {
+          "id": "56/Tab10 - E->G",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "F->A": {
+          "id": "56/Tab10 - F->A",
+          "values": [
+            5,
+            7,
+            9,
+            11
+          ]
+        },
+        "F->B": {
+          "id": "56/Tab10 - F->B",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "F->D": {
+          "id": "56/Tab10 - F->D",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "F->E": {
+          "id": "56/Tab10 - F->E",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "F->G": {
+          "id": "56/Tab10 - F->G",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->A": {
+          "id": "56/Tab10 - G->A",
+          "values": [
+            5,
+            7,
+            9,
+            11
+          ]
+        },
+        "G->B": {
+          "id": "56/Tab10 - G->B",
+          "values": [
+            5,
+            7,
+            9,
+            11
+          ]
+        },
+        "G->D": {
+          "id": "56/Tab10 - G->D",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->E": {
+          "id": "56/Tab10 - G->E",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "G->F": {
+          "id": "56/Tab10 - G->F",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      }
+    },
+    "11": {
+      "page": 56,
+      "layout": "grid",
+      "support": [
+        {
+          "image": "tod-wg/tops/56-T11-support.png",
+          "support": "Manos superpuestas"
+        }
+      ],
+      "positions": {
+        "1": {
+          "id": "56/Tab11 - 1",
+          "values": [
+            2,
+            4,
+            6,
+            8
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T11-1.png"
+            }
+          ]
+        },
+        "2": {
+          "id": "56/Tab11 - 2",
+          "values": [
+            4,
+            6,
+            8,
+            10
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T11-2.png"
+            }
+          ]
+        },
+        "3": {
+          "id": "56/Tab11 - 3",
+          "values": [
+            4,
+            6,
+            8,
+            10
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T11-3.png"
+            }
+          ]
+        },
+        "4": {
+          "id": "56/Tab11 - 4",
+          "values": [
+            7,
+            9,
+            11,
+            12
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T11-4.png"
+            }
+          ]
+        },
+        "5": {
+          "id": "56/Tab11 - 5",
+          "values": [
+            8,
+            10,
+            12,
+            13
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/56-T11-5.png"
+            }
+          ]
+        }
+      }
+    },
+    "12": {
+      "page": 57,
+      "layout": "wheel",
+      "support": [
+        {
+          "image": "tod-wg/tops/57-T12-support-1.png",
+          "support": "Una mano"
+        },
+        {
+          "image": "tod-wg/tops/57-T12-support-2.png",
+          "support": "Un pie"
+        }
+      ],
+      "positions": {
+        "A": {
+          "id": "57/Tab12 - A",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T12-A.png"
+            }
+          ]
+        },
+        "B": {
+          "id": "57/Tab12 - B",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T12-B.png"
+            }
+          ]
+        },
+        "C": {
+          "id": "57/Tab12 - C",
+          "values": [
+            11,
+            13,
+            15,
+            17
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T12-C.png"
+            }
+          ]
+        },
+        "D": {
+          "id": "57/Tab12 - D",
+          "values": [
+            8,
+            10,
+            12,
+            14
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T12-D.png"
+            }
+          ]
+        },
+        "E": {
+          "id": "57/Tab12 - E",
+          "values": [
+            10,
+            12,
+            14,
+            16
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T12-E.png"
+            }
+          ]
+        },
+        "F": {
+          "id": "57/Tab12 - F",
+          "values": [
+            10,
+            12,
+            14,
+            16
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T12-F.png"
+            }
+          ]
+        }
+      },
+      "motions": {
+        "A->B": {
+          "id": "57/Tab12 - A->B",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "A->C": {
+          "id": "57/Tab12 - A->C",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "A->D": {
+          "id": "57/Tab12 - A->D",
+          "values": [
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        "A->E": {
+          "id": "57/Tab12 - A->E",
+          "values": [
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        "A->F": {
+          "id": "57/Tab12 - A->F",
+          "values": [
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        "B->A": {
+          "id": "57/Tab12 - B->A",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "B->C": {
+          "id": "57/Tab12 - B->C",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "B->D": {
+          "id": "57/Tab12 - B->D",
+          "values": [
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        "B->E": {
+          "id": "57/Tab12 - B->E",
+          "values": [
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        "B->F": {
+          "id": "57/Tab12 - B->F",
+          "values": [
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        "C->A": {
+          "id": "57/Tab12 - C->A",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->B": {
+          "id": "57/Tab12 - C->B",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "C->D": {
+          "id": "57/Tab12 - C->D",
+          "values": [
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        "C->E": {
+          "id": "57/Tab12 - C->E",
+          "values": [
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        "C->F": {
+          "id": "57/Tab12 - C->F",
+          "values": [
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        "D->A": {
+          "id": "57/Tab12 - D->A",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "D->B": {
+          "id": "57/Tab12 - D->B",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "D->C": {
+          "id": "57/Tab12 - D->C",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "D->E": {
+          "id": "57/Tab12 - D->E",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "D->F": {
+          "id": "57/Tab12 - D->F",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "E->A": {
+          "id": "57/Tab12 - E->A",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "E->B": {
+          "id": "57/Tab12 - E->B",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "E->C": {
+          "id": "57/Tab12 - E->C",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "E->D": {
+          "id": "57/Tab12 - E->D",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "E->F": {
+          "id": "57/Tab12 - E->F",
+          "values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "F->A": {
+          "id": "57/Tab12 - F->A",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "F->B": {
+          "id": "57/Tab12 - F->B",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "F->C": {
+          "id": "57/Tab12 - F->C",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "F->D": {
+          "id": "57/Tab12 - F->D",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "F->E": {
+          "id": "57/Tab12 - F->E",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      }
+    },
+    "13": {
+      "page": 57,
+      "layout": "wheel",
+      "support": [
+        {
+          "image": "tod-wg/tops/57-T13-support-1.png",
+          "support": "Una mano"
+        },
+        {
+          "image": "tod-wg/tops/57-T13-support-2.png",
+          "support": "Un pie"
+        }
+      ],
+      "positions": {
+        "A": {
+          "id": "57/Tab13 - A",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T13-A-1.png"
+            },
+            {
+              "image": "tod-wg/tops/57-T13-A-2.png"
+            }
+          ]
+        },
+        "B": {
+          "id": "57/Tab13 - B",
+          "values": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T13-B.png"
+            }
+          ]
+        },
+        "D": {
+          "id": "57/Tab13 - D",
+          "values": [
+            12,
+            14,
+            16,
+            18
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T13-D.png"
+            }
+          ]
+        },
+        "E": {
+          "id": "57/Tab13 - E",
+          "values": [
+            14,
+            16,
+            18,
+            20
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T13-E.png"
+            }
+          ]
+        },
+        "F": {
+          "id": "57/Tab13 - F",
+          "values": [
+            14,
+            16,
+            18,
+            20
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T13-F.png"
+            }
+          ]
+        },
+        "G": {
+          "id": "57/Tab13 - G",
+          "values": [
+            14,
+            16,
+            18,
+            20
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T13-G.png"
+            }
+          ]
+        }
+      },
+      "motions": {
+        "A->B": {
+          "id": "57/Tab13 - A->B",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "A->D": {
+          "id": "57/Tab13 - A->D",
+          "values": [
+            14,
+            17,
+            20,
+            23
+          ]
+        },
+        "A->E": {
+          "id": "57/Tab13 - A->E",
+          "values": [
+            13,
+            16,
+            19,
+            22
+          ]
+        },
+        "A->F": {
+          "id": "57/Tab13 - A->F",
+          "values": [
+            12,
+            15,
+            18,
+            21
+          ]
+        },
+        "A->G": {
+          "id": "57/Tab13 - A->G",
+          "values": [
+            1,
+            15,
+            18,
+            21
+          ]
+        },
+        "B->A": {
+          "id": "57/Tab13 - B->A",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "B->D": {
+          "id": "57/Tab13 - B->D",
+          "values": [
+            15,
+            18,
+            21,
+            24
+          ]
+        },
+        "B->E": {
+          "id": "57/Tab13 - B->E",
+          "values": [
+            17,
+            20,
+            23,
+            26
+          ]
+        },
+        "B->F": {
+          "id": "57/Tab13 - B->F",
+          "values": [
+            17,
+            20,
+            23,
+            26
+          ]
+        },
+        "B->G": {
+          "id": "57/Tab13 - B->G",
+          "values": [
+            15,
+            18,
+            21,
+            24
+          ]
+        },
+        "D->A": {
+          "id": "57/Tab13 - D->A",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "D->B": {
+          "id": "57/Tab13 - D->B",
+          "values": [
+            9,
+            11,
+            13,
+            15
+          ]
+        },
+        "D->E": {
+          "id": "57/Tab13 - D->E",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "D->F": {
+          "id": "57/Tab13 - D->F",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "D->G": {
+          "id": "57/Tab13 - D->G",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "E->A": {
+          "id": "57/Tab13 - E->A",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "E->B": {
+          "id": "57/Tab13 - E->B",
+          "values": [
+            9,
+            11,
+            13,
+            15
+          ]
+        },
+        "E->D": {
+          "id": "57/Tab13 - E->D",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "E->F": {
+          "id": "57/Tab13 - E->F",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "E->G": {
+          "id": "57/Tab13 - E->G",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "F->A": {
+          "id": "57/Tab13 - F->A",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "F->B": {
+          "id": "57/Tab13 - F->B",
+          "values": [
+            9,
+            11,
+            13,
+            15
+          ]
+        },
+        "F->D": {
+          "id": "57/Tab13 - F->D",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "F->E": {
+          "id": "57/Tab13 - F->E",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "F->G": {
+          "id": "57/Tab13 - F->G",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "G->A": {
+          "id": "57/Tab13 - G->A",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "G->B": {
+          "id": "57/Tab13 - G->B",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "G->D": {
+          "id": "57/Tab13 - G->D",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "G->E": {
+          "id": "57/Tab13 - G->E",
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "G->F": {
+          "id": "57/Tab13 - G->F",
+          "values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        }
+      }
+    },
+    "14": {
+      "page": 57,
+      "layout": "grid",
+      "support": [
+        {
+          "image": "tod-wg/tops/57-T14-support.png",
+          "support": "Una mano",
+          "croppedFromPage": true
+        }
+      ],
+      "positions": {
+        "1": {
+          "id": "57/Tab14 - 1",
+          "values": [
+            4,
+            6,
+            8,
+            10
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T14-1.png"
+            }
+          ]
+        },
+        "2": {
+          "id": "57/Tab14 - 2",
+          "values": [
+            6,
+            8,
+            10,
+            12
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T14-2.png"
+            }
+          ]
+        },
+        "3": {
+          "id": "57/Tab14 - 3",
+          "values": [
+            7,
+            9,
+            11,
+            13
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T14-3.png"
+            }
+          ]
+        },
+        "4": {
+          "id": "57/Tab14 - 4",
+          "values": [
+            11,
+            13,
+            15,
+            17
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T14-4.png"
+            }
+          ]
+        },
+        "5": {
+          "id": "57/Tab14 - 5",
+          "values": [
+            12,
+            14,
+            16,
+            18
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T14-5.png"
+            }
+          ]
+        }
+      }
+    },
+    "15": {
+      "page": 57,
+      "layout": "grid",
+      "support": [
+        {
+          "image": "tod-wg/tops/57-T15-support.png",
+          "support": "Una mano",
+          "croppedFromPage": true
+        }
+      ],
+      "positions": {
+        "6": {
+          "id": "57/Tab15 - 6",
+          "values": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T15-6.png"
+            }
+          ]
+        },
+        "7": {
+          "id": "57/Tab15 - 7",
+          "values": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T15-7.png"
+            }
+          ]
+        },
+        "8": {
+          "id": "57/Tab15 - 8",
+          "values": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T15-8.png"
+            }
+          ]
+        },
+        "9": {
+          "id": "57/Tab15 - 9",
+          "values": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T15-9.png"
+            }
+          ]
+        },
+        "10": {
+          "id": "57/Tab15 - 10",
+          "values": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T15-10.png"
+            }
+          ]
+        },
+        "11": {
+          "id": "57/Tab15 - 11",
+          "values": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T15-11.png"
+            }
+          ]
+        },
+        "12": {
+          "id": "57/Tab15 - 12",
+          "values": [
+            2,
+            2,
+            3,
+            3
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T15-12.png"
+            }
+          ]
+        },
+        "13": {
+          "id": "57/Tab15 - 13",
+          "values": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "images": [
+            {
+              "image": "tod-wg/tops/57-T15-13.png"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
