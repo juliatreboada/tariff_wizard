@@ -7,6 +7,7 @@ import {
   topSlots,
   transitionValue,
   type BaseGroup,
+  type HandstandCategory,
   type TodWgBase,
   type TopPositionOption,
 } from "./index";
@@ -40,6 +41,12 @@ export type PyramidBreakdown = {
   link?: PyramidLink;
   /** Everything this item adds: its cell and its link. */
   value: number;
+  /**
+   * The top's handstand in this static hold (its category), or null. Only the
+   * top counts, not the middle acting as a top (CoP 20.3, 26.3), and only in a
+   * 3" hold.
+   */
+  handstand: HandstandCategory | null;
   /** Top steps the base still needs ("top", "middle"). */
   missing: ("top" | "middle")[];
   /** Choices that don't fit (not counted), in the coach's words. */
@@ -161,5 +168,9 @@ export function pyramidOf(item: RoutineItem, routine?: readonly RoutineItem[]): 
     legs: legs ? legs : null,
   };
   const value = (cell.tops ?? 0) + (cell.base ?? 0) + legs + (link?.value ?? 0);
-  return { base, group, hold, tops, cell, legs, link, value, missing, problems };
+  const topHandstand = base.topIncluded
+    ? base.handstand
+    : tops.find((t) => t.pick.slot === "top")?.position.handstand;
+  const handstand = hold === 3 ? (topHandstand ?? null) : null;
+  return { base, group, hold, tops, cell, legs, link, value, handstand, missing, problems };
 }

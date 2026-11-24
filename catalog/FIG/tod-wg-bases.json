@@ -5504,7 +5504,8 @@
       "value": 12,
       "group": 2,
       "image": "tod-wg/bases/64-C7-A1.png",
-      "topIncluded": true
+      "topIncluded": true,
+      "handstand": "A"
     },
     {
       "id": "64 A2",
@@ -5516,7 +5517,8 @@
       "value": 13,
       "group": 2,
       "image": "tod-wg/bases/64-C7-A2.png",
-      "topIncluded": true
+      "topIncluded": true,
+      "handstand": "D"
     }
   ]
 }

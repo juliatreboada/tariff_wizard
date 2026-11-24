@@ -7,8 +7,8 @@ import type { OpenComposition, OpenRequirement, Ruleset, Team } from "./types";
  * 2025-2028, Art. 17–27; Youth & Junior Rules 2025-2028, Sections III–IV;
  * Programa técnico Cto. España 2027). Offered for Women's Group (Tríos) Balance
  * only, the part of TOD WG that's in the catalog (`readyOnly`). The TOD WG bases carry the `pyramid` and
- * `static-hold` tags, so those requirements count; one no entry carries yet
- * (e.g. `handstand`) stays "próximamente".
+ * `static-hold` tags; `handstand` comes from the top's position (its handstand
+ * category in the TOD WG data, see lib/tariff/tod-wg/pyramid.ts).
  */
 
 const once = { amount: 1, per: "once" } as const;
