@@ -7,9 +7,16 @@ import type { PlacedElement } from "../sheet-types";
 import type { RoutineItem } from "../routine-types";
 import type { OpenRequirement, Ruleset, RulesHeader, Team } from "./types";
 import { itemValue } from "../item-value";
+import { pyramidOf } from "../tod-wg/pyramid";
+import { todWgOfferedTags } from "../tod-wg";
 
 /** Where entries come from: the app's catalogs, or (tests) a list of sample entries. */
-export type CatalogSource = { entryOf: (element: PlacedElement) => CatalogEntry | undefined; entries: () => CatalogEntry[] };
+export type CatalogSource = {
+  entryOf: (element: PlacedElement) => CatalogEntry | undefined;
+  entries: () => CatalogEntry[];
+  /** Tags an element gets from the coach's choices, not its entry (TOD WG: the top's handstand). */
+  offeredTags?: () => Set<string>;
+};
 
 function appCatalog(ruleset: Ruleset): CatalogSource {
   return {
@@ -26,6 +33,7 @@ function appCatalog(ruleset: Ruleset): CatalogSource {
           (!e.filters.levelAges || e.filters.levelAges.includes(source.levelAge)),
       );
     },
+    offeredTags: () => (ruleset.open?.source.levelAge === "TOD WG" ? todWgOfferedTags() : new Set()),
   };
 }
 
@@ -78,10 +86,13 @@ function pairGroupItems(routine: RoutineItem[]): RoutineItem[] {
 function describe(item: RoutineItem, source: CatalogSource, routine: RoutineItem[]) {
   const parts = [item.element, ...(item.addOn ? [item.addOn] : [])].map(source.entryOf);
   const main = parts[0];
+  const tags = new Set(parts.flatMap((p) => p?.tags ?? []));
+  // A TOD WG pyramid: the top's handstand comes from the coach's choices.
+  if (pyramidOf(item, routine)?.handstand) tags.add("handstand");
   return {
     family: item.block as "balance" | "dynamic",
     value: itemValue(item, routine),
-    tags: new Set(parts.flatMap((p) => p?.tags ?? [])),
+    tags,
     rotation: rotationQuarters(main?.rotation),
     pyramidCategory: main?.pyramidCategory,
   };
@@ -100,7 +111,9 @@ function matches(req: OpenRequirement, el: ReturnType<typeof describe>): boolean
 /** Can any catalog element meet this requirement's tag? */
 function tagOffered(req: OpenRequirement, source: CatalogSource): boolean {
   if (!req.match.tag) return true;
-  return source.entries().some((e) => e.tags?.includes(req.match.tag!));
+  return (
+    source.entries().some((e) => e.tags?.includes(req.match.tag!)) || (source.offeredTags?.().has(req.match.tag) ?? false)
+  );
 }
 
 /** The routine's Special Requirements: what the routine has against each. */

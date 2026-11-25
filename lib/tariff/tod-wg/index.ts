@@ -12,6 +12,9 @@ import transitionsData from "@/catalog/FIG/tod-wg-transitions.json";
 
 export type BaseGroup = 1 | 2 | 3 | 4;
 
+/** Handstand categories (TOD page 15): handstands of the same category count as the same. */
+export type HandstandCategory = "A" | "B" | "C" | "D" | "D1";
+
 export type TodWgBase = {
   id: string;
   number: string;
@@ -26,6 +29,8 @@ export type TodWgBase = {
   variationOf?: string;
   note?: string;
   topIncluded?: boolean;
+  /** The top drawn in the base is in a handstand of this category (Category 7). */
+  handstand?: HandstandCategory;
   /** Points of support the middle can give the top. */
   supports?: string[];
   /** Category 2: points of support for the middle acting as a top. */
@@ -36,6 +41,8 @@ type Values = [number | null, number | null, number | null, number | null];
 type ImageRef = { image: string; role?: string };
 type TopPosition = {
   id: string;
+  /** A handstand position: its category (coach review, 2026-11-24). */
+  handstand?: HandstandCategory;
   values?: Values;
   images?: ImageRef[];
   options?: { option: string; image: string; values: Values }[];
@@ -144,6 +151,8 @@ export type TopPositionOption = {
   id: string;
   value: number;
   images: string[];
+  /** A handstand position: its category. */
+  handstand?: HandstandCategory;
 };
 
 function tableOf(table: number): TopTable | undefined {
@@ -158,6 +167,8 @@ function possibleOn(p: TopPosition, support: string): boolean {
   return !p.notOnSupport?.includes(support);
 }
 
+const hs = (p: TopPosition) => (p.handstand ? { handstand: p.handstand } : {});
+
 /** Top positions of a table on one of its supports, valued for the base group. */
 export function topPositions(table: number, support: string, group: BaseGroup): TopPositionOption[] {
   const t = tableOf(table);
@@ -168,14 +179,25 @@ export function topPositions(table: number, support: string, group: BaseGroup): 
     if (p.options) {
       for (const o of p.options) {
         const value = o.values[group - 1];
-        if (value != null) out.push({ key, option: o.option, id: p.id, value, images: [o.image] });
+        if (value != null) out.push({ key, option: o.option, id: p.id, value, images: [o.image], ...hs(p) });
       }
     } else if (p.values) {
       const value = p.values[group - 1];
-      if (value != null) out.push({ key, id: p.id, value, images: (p.images ?? []).map((i) => i.image) });
+      if (value != null) out.push({ key, id: p.id, value, images: (p.images ?? []).map((i) => i.image), ...hs(p) });
     }
   }
   return out;
+}
+
+/**
+ * Tags a pyramid can get from the top's choices rather than its catalog entry:
+ * "handstand" when a top position (or a base's drawn top) is a handstand.
+ */
+export function todWgOfferedTags(): Set<string> {
+  const handstand =
+    BASES.some((b) => b.handstand) ||
+    Object.values(TABLES).some((t) => Object.values(t.positions).some((p) => p.handstand));
+  return new Set(handstand ? ["handstand"] : []);
 }
 
 export type MotionOption = { key: string; from: string; to: string; id: string; value: number };

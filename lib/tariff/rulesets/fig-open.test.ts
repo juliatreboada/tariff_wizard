@@ -4,6 +4,9 @@ import type { CatalogEntry, ElementTag } from "../catalog/types";
 import type { Exercise } from "../enums";
 import type { RoutineItem } from "../routine-types";
 import { header } from "../test-fixtures";
+import { getCatalogEntries } from "../catalog/load-catalog";
+import type { TodWgPick, TodWgTopPick } from "../routine-types";
+import { baseById, todWgCatalogId } from "../tod-wg";
 import {
   addProblem,
   catalogSourceOf,
@@ -59,12 +62,57 @@ const rfeg = (levelAge: string, exercise: Exercise, category = "Pareja Femenina"
 const byId = (list: ReturnType<typeof openRequirementStatuses>) => Object.fromEntries(list.map((r) => [r.id, r]));
 
 describe("free composition with the real TOD WG catalog", () => {
-  it("counts pyramids and static holds now that TOD WG bases carry them; handstand stays coming soon", () => {
-    const status = byId(openRequirementStatuses(FIG_SENIOR, fig("Senior", "Balance", "Tríos"), []));
+  /** A TOD WG pyramid from the real data, as the picker saves it. */
+  const realPyramid = (id: string, top: TodWgTopPick | undefined, extra: Partial<TodWgPick> = {}, itemKey = "p1"): RoutineItem => {
+    const base = baseById(id)!;
+    const entry = getCatalogEntries("FIG").find((e) => e.id === todWgCatalogId(base))!;
+    return placed(entry, { id: itemKey, block: "balance", todWg: { tops: top ? [top] : [], ...extra } });
+  };
+  const tab2 = (position: string): TodWgTopPick => ({ slot: "top", table: 2, support: "Dos manos", position });
+  const groupsBalance = fig("Senior", "Balance", "Tríos");
+
+  it("counts pyramids, static holds and the top's handstand from the TOD WG data", () => {
+    const status = byId(openRequirementStatuses(FIG_SENIOR, groupsBalance, []));
     expect(status.pyramids.pending).toBe(false);
     expect(status.pyramids.penalty).toBeGreaterThan(0);
-    const pendingIds = Object.values(status).filter((r) => r.pending).map((r) => r.id);
-    expect(pendingIds.some((id) => id.includes("handstand"))).toBe(true);
+    expect(status.handstand).toMatchObject({ met: false, pending: false, penalty: 1 });
+  });
+
+  it("meets the handstand with a top in a handstand position (Tab2 D, category A)", () => {
+    const status = byId(openRequirementStatuses(FIG_SENIOR, groupsBalance, [realPyramid("58 A13", tab2("D"))]));
+    expect(status.handstand).toMatchObject({ actual: 1, met: true, penalty: 0 });
+  });
+
+  it("doesn't count a top position that isn't a handstand (Tab2 C)", () => {
+    const status = byId(openRequirementStatuses(FIG_SENIOR, groupsBalance, [realPyramid("58 A13", tab2("C"))]));
+    expect(status.handstand.met).toBe(false);
+  });
+
+  it("doesn't count a handstand by the middle acting as a top (CoP 20.3)", () => {
+    const base = baseById("59 E10")!;
+    const entry = getCatalogEntries("FIG").find((e) => e.id === todWgCatalogId(base))!;
+    const item = placed(entry, {
+      block: "balance",
+      todWg: {
+        tops: [
+          { slot: "top", table: 3, support: "Hombros", position: "1" },
+          { slot: "middle", table: 9, support: "Pies", position: "D" },
+        ],
+      },
+    });
+    expect(byId(openRequirementStatuses(FIG_SENIOR, groupsBalance, [item])).handstand.met).toBe(false);
+  });
+
+  it("meets the handstand with a Category 7 base whose drawn top is in a handstand (64 A2)", () => {
+    const base = baseById("64 A2", 7)!;
+    const entry = getCatalogEntries("FIG").find((e) => e.id === todWgCatalogId(base))!;
+    const item = placed(entry, { block: "balance", todWg: { tops: [] } });
+    expect(byId(openRequirementStatuses(FIG_SENIOR, groupsBalance, [item])).handstand.met).toBe(true);
+  });
+
+  it("doesn't count a handstand held only 1\" before a motion", () => {
+    const status = byId(openRequirementStatuses(FIG_SENIOR, groupsBalance, [realPyramid("58 A13", tab2("D"), { hold: 1 })]));
+    expect(status.handstand.met).toBe(false);
   });
 });
 

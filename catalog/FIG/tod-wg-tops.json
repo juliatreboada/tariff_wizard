@@ -1,5 +1,5 @@
 {
-  "description": "FIG ACRO Table of Difficulty 2025-2028, Women's Group balance: top positions on printed pages 54-57 (PDF 57-60). Tables 1, 2, 6, 7, 9, 10, 12, 13 are wheels (positions A-G, some tables lack one letter; static values from the grey circles); 3, 4, 5, 8, 11, 14, 15 are small tables (numbered boxes, 'Gr. 1-2-3-4' strip). `values` = top value for base groups 1-4 (null = not possible). Each table's `support` entries are its drawings, one per drawing, each with its point of support (`support`: the coach's name for it, e.g. \"Dos manos\", \"Dos pies\", \"Una mano baja\", \"Otros\"); almost every top position can be done on any of the table's supports with the same value, except where a position lists `notOnSupport`. The selector (still to build) will offer a support only if the chosen base allows it. Boxes with several drawings list them as `options` (one per drawing). Reviewed by the coach 2026-11-14. Wheel tables also list `motions` (the arrows): a motion X->Y (id \"54/Tab1 - A->D\") takes the white circles at the Y end of its arrow, `values` for base groups 1-4; motions to or from a position the table lacks are left out. Motions were read from the PDF's vector drawing (scripts/tod-wg-motions) and reviewed by the coach 2026-11-14.",
+  "description": "FIG ACRO Table of Difficulty 2025-2028, Women's Group balance: top positions on printed pages 54-57 (PDF 57-60). Tables 1, 2, 6, 7, 9, 10, 12, 13 are wheels (positions A-G, some tables lack one letter; static values from the grey circles); 3, 4, 5, 8, 11, 14, 15 are small tables (numbered boxes, 'Gr. 1-2-3-4' strip). `values` = top value for base groups 1-4 (null = not possible). Each table's `support` entries are its drawings, one per drawing, each with its point of support (`support`: the coach's name for it, e.g. \"Dos manos\", \"Dos pies\", \"Una mano baja\", \"Otros\"); almost every top position can be done on any of the table's supports with the same value, except where a position lists `notOnSupport`. The selector (still to build) will offer a support only if the chosen base allows it. Boxes with several drawings list them as `options` (one per drawing). Reviewed by the coach 2026-11-14. Wheel tables also list `motions` (the arrows): a motion X->Y (id \"54/Tab1 - A->D\") takes the white circles at the Y end of its arrow, `values` for base groups 1-4; motions to or from a position the table lacks are left out. Motions were read from the PDF's vector drawing (scripts/tod-wg-motions) and reviewed by the coach 2026-11-14. A position's \"handstand\" is its handstand category (TOD page 15: A, B, C, D, D1), reviewed by the coach 2026-11-24; positions without it are not handstands.",
   "tables": {
     "1": {
       "page": 54,
@@ -68,6 +68,7 @@
         },
         "D": {
           "id": "54/Tab1 - D",
+          "handstand": "A",
           "values": [
             3,
             4,
@@ -82,6 +83,7 @@
         },
         "E": {
           "id": "54/Tab1 - E",
+          "handstand": "B",
           "values": [
             5,
             6,
@@ -96,6 +98,7 @@
         },
         "F": {
           "id": "54/Tab1 - F",
+          "handstand": "C",
           "values": [
             5,
             6,
@@ -110,6 +113,7 @@
         },
         "G": {
           "id": "54/Tab1 - G",
+          "handstand": "D",
           "values": [
             5,
             6,
@@ -565,6 +569,7 @@
         },
         "D": {
           "id": "54/Tab2 - D",
+          "handstand": "A",
           "values": [
             5,
             7,
@@ -579,6 +584,7 @@
         },
         "E": {
           "id": "54/Tab2 - E",
+          "handstand": "B",
           "values": [
             7,
             9,
@@ -593,6 +599,7 @@
         },
         "F": {
           "id": "54/Tab2 - F",
+          "handstand": "C",
           "values": [
             7,
             9,
@@ -607,6 +614,7 @@
         },
         "G": {
           "id": "54/Tab2 - G",
+          "handstand": "D",
           "values": [
             7,
             9,
@@ -1415,6 +1423,7 @@
         },
         "D": {
           "id": "55/Tab6 - D",
+          "handstand": "A",
           "values": [
             4,
             5,
@@ -1429,6 +1438,7 @@
         },
         "E": {
           "id": "55/Tab6 - E",
+          "handstand": "B",
           "values": [
             6,
             7,
@@ -1443,6 +1453,7 @@
         },
         "F": {
           "id": "55/Tab6 - F",
+          "handstand": "C",
           "values": [
             6,
             7,
@@ -1776,6 +1787,7 @@
         },
         "D": {
           "id": "55/Tab7 - D",
+          "handstand": "A",
           "values": [
             7,
             8,
@@ -1790,6 +1802,7 @@
         },
         "E": {
           "id": "55/Tab7 - E",
+          "handstand": "B",
           "values": [
             9,
             10,
@@ -1804,6 +1817,7 @@
         },
         "F": {
           "id": "55/Tab7 - F",
+          "handstand": "C",
           "values": [
             9,
             10,
@@ -1818,6 +1832,7 @@
         },
         "G": {
           "id": "55/Tab7 - G",
+          "handstand": "D",
           "values": [
             9,
             10,
@@ -2248,6 +2263,7 @@
         },
         "D": {
           "id": "56/Tab9 - D",
+          "handstand": "A",
           "values": [
             6,
             8,
@@ -2262,6 +2278,7 @@
         },
         "E": {
           "id": "56/Tab9 - E",
+          "handstand": "B",
           "values": [
             8,
             10,
@@ -2276,6 +2293,7 @@
         },
         "F": {
           "id": "56/Tab9 - F",
+          "handstand": "C",
           "values": [
             8,
             10,
@@ -2606,6 +2624,7 @@
         },
         "D": {
           "id": "56/Tab10 - D",
+          "handstand": "A",
           "values": [
             9,
             11,
@@ -2620,6 +2639,7 @@
         },
         "E": {
           "id": "56/Tab10 - E",
+          "handstand": "B",
           "values": [
             11,
             13,
@@ -2634,6 +2654,7 @@
         },
         "F": {
           "id": "56/Tab10 - F",
+          "handstand": "C",
           "values": [
             11,
             13,
@@ -2648,6 +2669,7 @@
         },
         "G": {
           "id": "56/Tab10 - G",
+          "handstand": "D",
           "values": [
             11,
             13,
@@ -3074,6 +3096,7 @@
         },
         "D": {
           "id": "57/Tab12 - D",
+          "handstand": "A",
           "values": [
             8,
             10,
@@ -3088,6 +3111,7 @@
         },
         "E": {
           "id": "57/Tab12 - E",
+          "handstand": "B",
           "values": [
             10,
             12,
@@ -3102,6 +3126,7 @@
         },
         "F": {
           "id": "57/Tab12 - F",
+          "handstand": "C",
           "values": [
             10,
             12,
@@ -3435,6 +3460,7 @@
         },
         "D": {
           "id": "57/Tab13 - D",
+          "handstand": "A",
           "values": [
             12,
             14,
@@ -3449,6 +3475,7 @@
         },
         "E": {
           "id": "57/Tab13 - E",
+          "handstand": "B",
           "values": [
             14,
             16,
@@ -3463,6 +3490,7 @@
         },
         "F": {
           "id": "57/Tab13 - F",
+          "handstand": "C",
           "values": [
             14,
             16,
@@ -3477,6 +3505,7 @@
         },
         "G": {
           "id": "57/Tab13 - G",
+          "handstand": "D",
           "values": [
             14,
             16,

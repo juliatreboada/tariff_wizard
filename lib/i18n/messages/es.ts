@@ -166,6 +166,8 @@ export const es = {
         chooseDestination: (slot: string) => `${slot}: elige la nueva posición`,
         motionValue: (v: string) => `Movimiento ${v}`,
         holdValue: (v: string) => `Estático ${v}`,
+        handstand: (category: string) => `Pino ${category}`,
+        handstandSummary: (category: string) => `Pino del ágil (categoría ${category}): cuenta para «Pino sin apoyo del ágil».`,
         otherPosition: "Otra posición (movimiento sin valor)",
         chooseSupport: (slot: string) => `${slot}: elige tabla y apoyo`,
         noSupport: "Esta base no da ningún apoyo de las tablas de ágiles.",

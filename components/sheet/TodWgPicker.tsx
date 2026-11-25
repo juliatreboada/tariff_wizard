@@ -333,6 +333,7 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
                   <Pictures images={p.images} alt={p.id} />
                   <span className="mt-1 text-[11px] text-zinc-700">{tw.motionValue(formatSheetValue(motion.value))}</span>
                   <span className="text-[11px] text-zinc-700">{tw.holdValue(formatSheetValue(p.value))}</span>
+                  {p.handstand ? <span className="text-[11px] font-medium text-emerald-800">{tw.handstand(p.handstand)}</span> : null}
                 </button>
               </li>
             )),
@@ -396,6 +397,7 @@ export function TodWgPicker({ entries, problemFor, initial, onSave, duplicateErr
                   {p.option ? ` · ${tw.optionLabel(p.option)}` : ""}
                 </span>
                 <span className="font-mono text-[11px] text-zinc-600">{formatSheetValue(p.value)}</span>
+                {p.handstand ? <span className="text-[11px] font-medium text-emerald-800">{tw.handstand(p.handstand)}</span> : null}
               </button>
             </li>
           ))}
@@ -477,6 +479,7 @@ function Summary({ result }: { result: NonNullable<ReturnType<typeof pyramidOf>>
           <dd className="font-mono">{formatSheetValue(value)}</dd>
         </div>
       ))}
+      {result.handstand ? <dd className="col-span-2 text-emerald-800">{tw.handstandSummary(result.handstand)}</dd> : null}
       <dt className="font-medium text-zinc-800">{tw.summaryTotal}</dt>
       <dd className="font-mono font-medium">{formatSheetValue(result.value)}</dd>
     </dl>

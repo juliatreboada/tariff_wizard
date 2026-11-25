@@ -236,3 +236,43 @@ describe("a transition can't go back to a base already used", () => {
     expect(r.link?.transition).toBeUndefined();
   });
 });
+
+describe("the top's handstand", () => {
+  it("is the top position's category (Tab2 D = A, E = B, F = C, G = D) in a 3\" hold", () => {
+    for (const [position, category] of [["D", "A"], ["E", "B"], ["F", "C"], ["G", "D"]] as const) {
+      expect(pyramidOf(pyramid("58 A13", { tops: [tab2(position)] }))!.handstand).toBe(category);
+    }
+  });
+
+  it("isn't one for wheel positions A, B, C or the small tables", () => {
+    expect(pyramidOf(pyramid("58 A13", { tops: [tab2("C")] }))!.handstand).toBeNull();
+    expect(pyramidOf(pyramid("58 A13", { tops: [{ slot: "top", table: 4, support: "Dos manos", position: "6" }] }))!.handstand).toBeNull();
+  });
+
+  it("doesn't count in a 1\" hold", () => {
+    expect(pyramidOf(pyramid("58 A13", { tops: [tab2("D")], hold: 1 }))!.handstand).toBeNull();
+  });
+
+  it("counts after a motion into a handstand (next 3\" hold)", () => {
+    const first = pyramid("58 A13", { tops: [tab2("C")] }, "p1");
+    const next = pyramid("58 A13", { tops: [tab2("D")], from: { transition: false, moves: [{ slot: "top", how: "motion" }] } }, "p2");
+    expect(pyramidOf(next, [first, next])!.handstand).toBe("A");
+  });
+
+  it("doesn't count the middle acting as a top (CoP 20.3)", () => {
+    const p = pyramid("59 E10", {
+      tops: [
+        { slot: "top", table: 3, support: "Hombros", position: "1" },
+        { slot: "middle", table: 9, support: "Pies", position: "D" },
+      ],
+    });
+    expect(pyramidOf(p)!.tops).toHaveLength(2);
+    expect(pyramidOf(p)!.handstand).toBeNull();
+  });
+
+  it("reads the top drawn in a Category 7 base (64 A1 = A, 64 A2 = D)", () => {
+    expect(pyramidOf(pyramid("64 A1", { tops: [] }, "p1", 7))!.handstand).toBe("A");
+    expect(pyramidOf(pyramid("64 A2", { tops: [] }, "p1", 7))!.handstand).toBe("D");
+    expect(pyramidOf(pyramid("61 A5", { tops: [] }))!.handstand).toBeNull();
+  });
+});
